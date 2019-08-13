@@ -1,21 +1,23 @@
 \documentclass[12pt]{iopart}
 %Uncomment next line if AMS fonts required
 %\usepackage{iopams}  
+\setlength\parindent{0pt}
+\setlength{\parskip}{13pt} %found this single-line pt value using \the\baselineskip
 \begin{document}
 
-\title[]{Global AdS$_4$}
+\title[]{Cauchy Evolution of Asymptotically AdS Spacetimes with No Symmetries}
 
-\author{Lorenzo Rossi$^1$, Hans Bantilan$^1$, Pau Figueras$^1$}
+\author{Hans Bantilan$^1$, Pau Figueras$^1$, Lorenzo Rossi$^1$}
 \address{$^1$ School of Mathematical Sciences, Queen Mary University of
   London, \\ Mile End Road, London E1 4NS, United Kingdom}
 \ead{l.rossi@qmul.ac.uk}
 
 \begin{abstract}
-Abstract
+We present a first proof-of-principle study
 \end{abstract}
 
 
-\noindent{Keywords}: AdS
+\noindent{Keywords}: AdS, generalized harmonic, 3+1, superradiance, gravitational collapse
 
 % Uncomment for Submitted to journal title message
 %\submitto{\JPA}
@@ -30,6 +32,41 @@ Abstract
 
 
 \section{Introduction}
+
+In an unprecedented way, the simulation of asymptotically anti-de Sitter (AdS) spacetimes has opened up the field of numerical relativity to the study of phenomena in areas beyond General Relativity (GR). 
+At the heart of this push to understand AdS is a deep mathematical connection between gravity in AdS to certain conformal field theories (CFT), now known as the AdS/CFT correspondence~\cite{Maldacena:1997re,Gubser:1998bc,Witten:1998qj}. 
+Through this connection, the study of AdS spacetimes has become immediately relevant to fundamental questions in many areas in physics, such as fluid dynamics [cite], relativistic heavy ion collisions [cite], and superconductivity [cite].
+See, for example, [cite] for excellent reviews. 
+
+The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important --and in most cases the only-- window into the real-time dynamics of quantum field theories far from equilibrium. 
+The dynamical far-from-equilibrium regime is precisely the one that is least explored and understood, and the one that has the best chance of making contact with experiment.
+Even within GR, the dynamics of AdS provides a detailed look at how the Einstein field equations behave in the fully non-linear regime and with non-trivial boundary conditions.
+This has led to important head-way into understanding fundamental phenomena in gravity, such as gravitational collapse, black hole collisions, and superradiance. 
+
+Our current understanding of AdS, however, remains limited. 
+This is due to several reasons.
+First, evolution in AdS is notoriously hard, in part because it is an initial boundary value problem whose systematic study is still in its infancy. 
+Cauchy evolution in AdS requires data to be prescribed not only at an initial space-like hypersurface, but also at spatial and null infinity which constitute the time-like boundary of an asymptotically AdS spacetime.
+Second, the most interesting phenomena involve spacetimes that have very little or no symmetry, making these evolutions beyond the reach of most numerical codes. 
+Third, for many of these phenomena, there is a large separation of scales that must be adequately resolved to capture the correct physics.
+
+The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions.
+The results presented here are based on a code that solves the Einstein equations for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities. 
+This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
+
+This article is organized as follows. 
+In Section~\ref{sec:numerical_scheme} we describe the generalized harmonic scheme that we use in our simulations, and details the gauge choice in Section~\ref{sec:gauge} in terms of a specific choice of generalized harmonic source functions that respresents the crucial result that stabilizes these evolutions with no symmetry.
+Section~\ref{sec:results} contains preliminary results from this new code, and we conclude with a discussion in Section~\ref{sec:Discussion}.
+
+
+
+\section{Numerical Scheme}\label{sec:numerical_scheme}
+
+\section{Gauge}\label{sec:gauge}
+
+\section{Results}\label{sec:results}
+
+\section{Discussion}\label{sec:Discussion}
 
 \cite{Bantilan:2012vu}
 
