@@ -17,6 +17,7 @@ We present the first proof-of-principle Cauchy evolutions of asymptotically AdS 
 We use a numerical scheme that is based on the generalized harmonic form of the Einstein equations expressed in Cartesian coordinates.
 For this first study, we perform 3+1 simulations of four dimensional spacetimes with a negative cosmological constant, using initial data sourced by a massless scalar field.
 We demonstrate stable and convergent Cauchy evolution of horizonless data, as well as data that undergoes gravitational collapse.
+The main difficulty in removing all symmetry restrictions in this setting is to find a generalized harmonic gauge choice that is consistent with the AdS boundary conditions.
 We explicitly write down the gauge choice that achieves this in terms of a specific choice of generalized harmonic source functions.
 These preliminary results are a direct precursor to important specialized studies of AdS dynamics with no symmetry assumptions, most notably of gravitational collapse, and of the superradiant instability.
 \end{abstract}
@@ -60,22 +61,69 @@ The results presented here are based on a code that solves the Einstein equation
 This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
 
 This article is organized as follows. 
-In Section~\ref{sec:numerical_scheme} we describe the generalized harmonic scheme that we use in our simulations, and details the gauge choice in Section~\ref{sec:gauge} in terms of a specific choice of generalized harmonic source functions that respresents the crucial result that stabilizes these evolutions with no symmetry.
+In Section~\ref{sec:setup} we describe the setup, and in Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations.
+In Section~\ref{sec:gauge} we explicitly write down our gauge choice in terms of a specific choice of generalized harmonic source functions that stabilizes these evolutions with no symmetry.
 Section~\ref{sec:results} contains preliminary results from this new code, and we conclude with a discussion in Section~\ref{sec:Discussion}.
 
 
 
+\section{Setup}\label{sec:setup}
+
+The dynamics of gravity with a cosmological constant $\Lambda$ in four dimensions coupled to a massless scalar field $\varphi$ can be described by the following action
+\begin{equation}\label{eqn:action}
+S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^{\alpha\beta} \partial_\alpha \varphi \partial_\beta \varphi \right),
+\end{equation}
+where $R$ is the Ricci scalar of the metric $g_{\mu\nu}$ with determinant $g$.
+Here, we use geometric units where Newton's constant $G$ and the speed of light $c$ are set to 1.
+The variation of the action \eref{eqn:action} with respect to $g_{\mu\nu}$ and $\varphi$ gives the equations of motion
+\begin{eqnarray}\label{eqn:eoms1}
+R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi \left( \partial_\mu \varphi \partial_\nu \varphi - g_{\mu\nu} \frac{1}{2} g^{\alpha\beta} \partial_{\alpha} \varphi \partial_{\beta} \varphi \right),
+\end{eqnarray}
+\begin{equation}\label{eqn:eoms2}
+g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0.
+\end{equation}
+The metric of AdS$_4$ is the maximally symmetric vacuum (i.e. $\varphi=0$) solution of \eref{eqn:eoms1},\eref{eqn:eoms2} in four dimensions.
+In terms of global coordinates $x^\mu=(t,r,\theta,\phi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
+\begin{equation}\label{eqn:ads4}
+\hat{g}_{\mu\nu} dx^\mu dx^\nu = \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
+\end{equation}
+with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere.
+
+First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ to include the boundary at $r \rightarrow \infty$ as part of the spacetime at $\rho=\ell$, which we hereafter set to $\ell=1$ without loss of generality.
+Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, this compactification brings the metric of AdS$_4$ into the form
+\begin{equation}\label{eqn:ads4_compact}
+\hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
+\end{equation}
+
+Second, we define Cartesian coordinates $x=\rho\sin\theta\cos\phi$, $y=\rho\sin\theta\sin\phi$, $z=\rho\cos\theta$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
+This brings the metric of AdS$_4$ into its final form
+\begin{eqnarray}\label{eqn:ads4_final}
+\hat{g}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}^{-1}(\rho) \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
+&+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
+&\left. \left. + \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \right] \right),
+\end{eqnarray}
+
+
 \section{Numerical Scheme}\label{sec:numerical_scheme}
+
+We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg}, which were written down for asymptotically AdS spacetimes in~\cite{Bantilan:2012vu}.
+We discretize the resulting PDEs with second order finite differences, and integrate in time using an iterative Newton-Gauss-Seidel relaxation procedure. 
+We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement.
+Initial data is obtained using a multigrid algorithm built into PAMR/AMRD.
+The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
+The typical grid resolution gives $N_x=N_y=N_z=257$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z$.
+We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.2$.
+
+
+
+
+
 
 \section{Gauge}\label{sec:gauge}
 
 \section{Results}\label{sec:results}
 
 \section{Discussion}\label{sec:Discussion}
-
-\cite{Bantilan:2012vu}
-
-
 
 
 
