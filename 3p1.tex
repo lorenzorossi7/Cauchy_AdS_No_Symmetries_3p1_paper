@@ -89,7 +89,8 @@ In terms of global coordinates $x^\mu=(t,r,\theta,\phi)$ that cover the whole sp
 \end{equation}
 with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere.
 
-First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ to include the boundary at $r \rightarrow \infty$ as part of the spacetime at $\rho=\ell$, which we hereafter set to $\ell=1$ without loss of generality.
+First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ to include the boundary at $r \rightarrow \infty$ as part of the spacetime at $\rho=\ell$.
+We hereafter set to $\ell=1$ without loss of generality, so that the AdS boundary is $\rho=1$.
 Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, this compactification brings the metric of AdS$_4$ into the form
 \begin{equation}\label{eqn:ads4_compact}
 \hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
@@ -104,22 +105,30 @@ This brings the metric of AdS$_4$ into its final form
 \end{eqnarray}
 
 
+
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
-We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg}, which were written down for asymptotically AdS spacetimes in~\cite{Bantilan:2012vu}.
+We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg} with constraint damping, for asymptotically AdS spacetimes~\cite{Bantilan:2012vu}.
 We discretize the resulting PDEs with second order finite differences, and integrate in time using an iterative Newton-Gauss-Seidel relaxation procedure. 
-We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement.
-Initial data is obtained using a multigrid algorithm built into PAMR/AMRD.
+We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement support.
+We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
 The typical grid resolution gives $N_x=N_y=N_z=257$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z$.
 We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.2$.
 
+We search for apparent horizons (AH) using a flow method, and use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain.
+At the excision surface, the usual equations of motion are solved using one-sided stencils. 
+Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
 
-
+We set Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
+The simulations described here are performed in Cartesian coordinates $x,y,z$ in terms of which $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
+For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation. 
 
 
 
 \section{Gauge}\label{sec:gauge}
+
+In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$. 
 
 \section{Results}\label{sec:results}
 
