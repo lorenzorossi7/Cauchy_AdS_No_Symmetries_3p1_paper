@@ -1,6 +1,5 @@
 \documentclass[12pt]{iopart}
-%Uncomment next line if AMS fonts required
-%\usepackage{iopams}  
+\usepackage{iopams}  
 \setlength\parindent{0pt}
 \setlength{\parskip}{13pt} %found this single-line pt value using \the\baselineskip
 \begin{document}
@@ -54,7 +53,7 @@ This is due to several reasons.
 First, evolution in AdS is notoriously hard, in part because it is an initial boundary value problem whose systematic study is still in its infancy. 
 Cauchy evolution in AdS requires data to be prescribed not only at an initial space-like hypersurface, but also at spatial and null infinity which constitute the time-like boundary of an asymptotically AdS spacetime.
 Second, the most interesting phenomena involve spacetimes that have very little or no symmetry, making these evolutions beyond the reach of most numerical codes. 
-Third, for many of these phenomena, there is a large separation of scales that must be adequately resolved to capture the correct physics.
+Third, for many of these phenomena, there is a variety of physical scales that must be adequately resolved to capture the correct physics.
 
 The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions.
 The results presented here are based on a code that solves the Einstein equations for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities. 
@@ -96,7 +95,7 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, this 
 \hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
 \end{equation}
 
-Second, we define Cartesian coordinates $x=\rho\sin\theta\cos\phi$, $y=\rho\sin\theta\sin\phi$, $z=\rho\cos\theta$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
+Second, we define Cartesian coordinates $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
 This brings the metric of AdS$_4$ into its final form
 \begin{eqnarray}\label{eqn:ads4_final}
 \hat{g}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}^{-1}(\rho) \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
@@ -122,11 +121,129 @@ Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysic
 
 We set Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
 The simulations described here are performed in Cartesian coordinates $x,y,z$ in terms of which $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
-For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation. 
+For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation.
+
+The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
+Similarly, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full GH source functions $H_\mu$ and the values they take on in pure AdS $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
+The evolved scalar field variable $\bar{\phi}$ is constructed out of a real scalar field $\phi$ by
+$\phi = (1-\rho^2)^2 \bar{\phi}$.
 
 
 
 \section{Gauge}\label{sec:gauge}
+
+Here we work out the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution in for asymptotically AdS$_4$ spacetimes.
+
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)tt}=&-(\cos \theta (3 \cos \theta  \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
+&+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
+   \sin \theta  \sin \phi (2 \cos \phi  \bar{g}_{(1) yz}+\sin\phi
+   \bar{g}_{(1) zz}) \nonumber \\
+   &-2 (\cos \phi \bar{H}_{(1) y}+\sin\phi
+   \bar{H}_{(1) z}))+3 \sin 2 \theta  \cos \phi \bar{g}_{(1) xy}+3
+   \sin 2 \theta  \sin \phi \bar{g}_{(1) xz})q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)tx}=&-2 \cos \theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
+   (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
+   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)ty}=&-2 \cos \phi \sin\theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
+   (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
+   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)tz}=&-2 \sin \theta \sin\phi (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
+   (\cos \phi \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
+   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)xx}=&\frac{1}{4} (3 (-4 \cos ^2\theta (\bar{g}_{(1) tt}+2 \bar{g}_{(1)
+   xx})+(\cos 2 \theta +3) (\bar{g}_{(1) yy}+\bar{g}_{(1)
+zz}) \nonumber \\
+&+8 \cos \theta  \bar{H}_{(1) x})-8 \sin \theta  \cos \phi 
+   (3 \cos \theta  \bar{g}_{(1)xy}+\bar{H}_{(1) y}) \nonumber \\
+   &-8 \sin\theta \sin\phi (3 \cos\theta \bar{g}_{(1) xz}+\bar{H}_{(1) z}) \nonumber \\
+   &+6 \sin^2\theta  \cos 2 \phi  (\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+12
+   \sin^2\theta  \sin 2 \phi  \bar{g}_{(1) yz})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)xy}=&-\frac{1}{2} (2 \sin \theta  \cos \phi  (3 \cos \theta (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}+\bar{g}_{(1)yy}-\bar{g}_{(1)zz})-4 \bar{H}_{(1) x}) \nonumber \\
+&+3 \bar{g}_{(1)xy} (2 \cos 2\theta  \sin ^2\phi +\cos 2 \phi +3)+6 \sin ^2\theta  \sin 2 \phi 
+   \bar{g}_{(1)xz} \nonumber \\
+   &+6 \sin 2 \theta  \sin \phi  \bar{g}_{(1)yz}-8 \cos
+   \theta  \bar{H}_{(1) y})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)xz}=&- (\sin \theta  \sin \phi  (3 \cos \theta  (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}-\bar{g}_{(1)yy}+\bar{g}_{(1)zz})-4
+   \bar{H}_{(1) x}) \nonumber \\
+   &+3 \sin ^2\theta \sin 2 \phi  \bar{g}_{(1)xy}-3 \sin
+   ^2\theta  \cos 2 \phi  \bar{g}_{(1)xz} \nonumber \\
+   &+\frac{3}{2} (\cos 2 \theta +3)
+   \bar{g}_{(1)xz}+3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)yz}-4 \cos
+   \theta  \bar{H}_{(1)z})    q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)yy}=&-( (\sin \theta (3 \sin \theta  (2 \cos ^2\phi  \bar{g}_{(1)yy}+\sin 2 \phi  \bar{g}_{(1)yz}-\bar{g}_{(1)zz}) \nonumber \\
+&-6 \cos\phi \bar{H}_{(1) y}+2 \sin \phi  \bar{H}_{(1) z}) \nonumber \\
+&+6 \sin \theta \cos
+   \theta \cos \phi  \bar{g}_{(1)xy}-6 \sin \theta  \cos \theta  \sin   \phi  \bar{g}_{(1)xz}+2 \cos \theta  \bar{H}_{(1) x}) \nonumber \\
+   &-3 \sin ^2\theta \cos ^2\phi  \bar{g}_{(1)tt}+\frac{3}{4} \bar{g}_{(1)xx} (2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta +3)  )  q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)yz}=&-\frac{1}{2} \sin \theta (4 \sin \phi  (3 \cos \theta  \bar{g}_{(1)xy}-2 \bar{H}_{(1) y})+4 \cos \phi  (3 \cos \theta  \bar{g}_{(1)xz}-2 \bar{H}_{(1) z}) \nonumber \\
+&+3 \sin \theta  \sin 2 \phi  (\bar{g}_{(1)tt}-\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz})+12 \sin \theta  \bar{g}_{(1)yz})  q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+\begin{eqnarray}
+\tilde{\Box}\bar{g}_{(1)zz}=&(-2 \cos \theta  (3 \sin \theta  \sin \phi  \bar{g}_{(1)xz}+\bar{H}_{(1)x}) \nonumber \\
+&+ \sin \theta  (3 \sin \theta  \bar{g}_{(1)yy}-6 \sin\theta  \sin \phi  (\cos \phi  \bar{g}_{(1)yz}+\sin \phi 
+   \bar{g}_{(1)zz}) \nonumber \\
+   &-2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
+   &+\frac{3}{4}  \bar{g}_{(1)xx} (-2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta
+   +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
+&+\mathcal{O}(q^{-1}),
+\end{eqnarray}
+along with the generalized harmonic constraints
+
+\begin{eqnarray}
+C_t=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
+   \bar{H}_{(1) t}) \nonumber \\
+   &+\mathcal{O}(q^3),
+\end{eqnarray}
+\begin{eqnarray}
+C_x=&\frac{1}{2} q^2 (-3 \cos \theta  \bar{g}_{(1)tt}-3 \cos \theta  \bar{g}_{(1)xx}-6 \sin \theta  \cos \phi  \bar{g}_{(1)xy}-6 \sin
+   \theta  \sin \phi  \bar{g}_{(1)xz} \nonumber \\
+   &+3 \cos \theta  \bar{g}_{(1)yy}+3
+   \cos \theta  \bar{g}_{(1)zz}+4 \bar{H}_{(1) x}) \nonumber \\
+   &+\mathcal{O}(q^3),
+\end{eqnarray}
+\begin{eqnarray}
+C_y=&\frac{1}{2} q^2 (-3 \sin \theta  \cos \phi  \bar{g}_{(1)tt}+3 \sin
+   \theta  \cos \phi  \bar{g}_{(1)xx}-6 \cos \theta  \bar{g}_{(1)xy} \nonumber \\
+   &-3
+   \sin \theta  \cos \phi  \bar{g}_{(1) yy}-6 \sin \theta  \sin \phi
+   \bar{g}_{(1)yz}+3 \sin \theta  \cos \phi  \bar{g}_{(1)zz}+4
+   \bar{H}_{(1) y}) \nonumber \\
+   &+\mathcal{O}(q^3),
+\end{eqnarray}
+\begin{eqnarray}
+C_z=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
+   \theta \sin \phi \bar{g}_{(1)xx}-6 \cos \theta  \bar{g}_{(1)xz} \nonumber \\
+   &+3
+   \sin \theta \sin \phi  \bar{g}_{(1)yy}-6 \sin \theta  \cos \phi    \bar{g}_{(1)yz}-3 \sin \theta  \sin \phi  \bar{g}_{(1)zz}+4
+   \bar{H}_{(1)z}) \nonumber \\
+   &+\mathcal{O}(q^3).
+\end{eqnarray}
 
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$. 
 
