@@ -45,7 +45,7 @@ See, for example, [cite] for excellent reviews.
 
 The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important --and in most cases the only-- window into the real-time dynamics of quantum field theories far from equilibrium. 
 The dynamical far-from-equilibrium regime is precisely the one that is least explored and understood, and the one that has the best chance of making contact with experiment.
-Within GR, the dynamics of AdS provides a detailed look at how the Einstein field equations behave in the fully non-linear regime and with non-trivial boundary conditions.
+Within GR, the dynamics of AdS provides a detailed look at how the Einstein equations behave in the fully non-linear regime and with non-trivial boundary conditions.
 This has led to important progress in our understanding fundamental phenomena in gravity, such as gravitational collapse, black hole collisions, and superradiance. 
 
 Our current understanding of AdS, however, remains limited. 
@@ -61,7 +61,7 @@ This code is the next step in an ongoing program initiated in \cite{Bantilan:201
 
 This article is organized as follows. 
 In Section~\ref{sec:setup} we describe the setup, and in Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations.
-In Section~\ref{sec:gauge} we explicitly write down our gauge choice in terms of a specific choice of generalized harmonic source functions that stabilizes these evolutions with no symmetry.
+In Section~\ref{sec:gauge_choice} we explicitly write down our gauge choice in terms of a specific choice of generalized harmonic source functions that stabilizes these evolutions with no symmetry.
 Section~\ref{sec:results} contains preliminary results from this new code, and we conclude with a discussion in Section~\ref{sec:Discussion}.
 
 
@@ -125,16 +125,25 @@ For any given evolved variable, we thus take its Dirichlet boundary condition at
 
 The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
 Similarly, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full GH source functions $H_\mu$ and the values they take on in pure AdS $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
-The evolved scalar field variable $\bar{\phi}$ is constructed out of a real scalar field $\phi$ by
-$\phi = (1-\rho^2)^2 \bar{\phi}$.
+The evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
+$\varphi = (1-\rho^2)^2 \bar{\varphi}$.
+By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
 
 
 
-\section{Gauge}\label{sec:gauge}
+\section{Gauge Choice}\label{sec:gauge_choice}
 
-Here we work out the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution in for asymptotically AdS$_4$ spacetimes.
+Here we sketch the procedure for finding the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution in for asymptotically AdS$_4$ spacetimes.
+For a more detailed discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}. 
+The first step involves expanding the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ in power series about $(1-\rho) \equiv q = 0$
+\begin{eqnarray}\label{eqn:qexp}
+\bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4) \nonumber \\
+\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) \nonumber \\
+\bar{\varphi} &=& \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4). 
+\end{eqnarray}
 
-\begin{eqnarray}
+In terms of the expansion coefficients that appear in \eref{eqn:qexp}, the Einstein equations near $q=0$ are
+\begin{eqnarray}\label{eqn:efett}
 \tilde{\Box}\bar{g}_{(1)tt}=&-(\cos \theta (3 \cos \theta  \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
 &+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
    \sin \theta  \sin \phi (2 \cos \phi  \bar{g}_{(1) yz}+\sin\phi
@@ -144,25 +153,25 @@ Here we work out the generalized harmonic gauge choice that achieves stable Cauc
    \sin 2 \theta  \sin \phi \bar{g}_{(1) xz})q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efetx}
 \tilde{\Box}\bar{g}_{(1)tx}=&-2 \cos \theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
    (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
    \bar{H}_{(1) t})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efety}
 \tilde{\Box}\bar{g}_{(1)ty}=&-2 \cos \phi \sin\theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
    (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
    \bar{H}_{(1) t})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efetz}
 \tilde{\Box}\bar{g}_{(1)tz}=&-2 \sin \theta \sin\phi (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
    (\cos \phi \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
    \bar{H}_{(1) t})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efexx}
 \tilde{\Box}\bar{g}_{(1)xx}=&\frac{1}{4} (3 (-4 \cos ^2\theta (\bar{g}_{(1) tt}+2 \bar{g}_{(1)
    xx})+(\cos 2 \theta +3) (\bar{g}_{(1) yy}+\bar{g}_{(1)
 zz}) \nonumber \\
@@ -173,7 +182,7 @@ zz}) \nonumber \\
    \sin^2\theta  \sin 2 \phi  \bar{g}_{(1) yz})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efexy}
 \tilde{\Box}\bar{g}_{(1)xy}=&-\frac{1}{2} (2 \sin \theta  \cos \phi  (3 \cos \theta (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}+\bar{g}_{(1)yy}-\bar{g}_{(1)zz})-4 \bar{H}_{(1) x}) \nonumber \\
 &+3 \bar{g}_{(1)xy} (2 \cos 2\theta  \sin ^2\phi +\cos 2 \phi +3)+6 \sin ^2\theta  \sin 2 \phi 
    \bar{g}_{(1)xz} \nonumber \\
@@ -181,7 +190,7 @@ zz}) \nonumber \\
    \theta  \bar{H}_{(1) y})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efexz}
 \tilde{\Box}\bar{g}_{(1)xz}=&- (\sin \theta  \sin \phi  (3 \cos \theta  (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}-\bar{g}_{(1)yy}+\bar{g}_{(1)zz})-4
    \bar{H}_{(1) x}) \nonumber \\
    &+3 \sin ^2\theta \sin 2 \phi  \bar{g}_{(1)xy}-3 \sin
@@ -191,7 +200,7 @@ zz}) \nonumber \\
    \theta  \bar{H}_{(1)z})    q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efeyy}
 \tilde{\Box}\bar{g}_{(1)yy}=&-( (\sin \theta (3 \sin \theta  (2 \cos ^2\phi  \bar{g}_{(1)yy}+\sin 2 \phi  \bar{g}_{(1)yz}-\bar{g}_{(1)zz}) \nonumber \\
 &-6 \cos\phi \bar{H}_{(1) y}+2 \sin \phi  \bar{H}_{(1) z}) \nonumber \\
 &+6 \sin \theta \cos
@@ -199,35 +208,34 @@ zz}) \nonumber \\
    &-3 \sin ^2\theta \cos ^2\phi  \bar{g}_{(1)tt}+\frac{3}{4} \bar{g}_{(1)xx} (2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta +3)  )  q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efeyz}
 \tilde{\Box}\bar{g}_{(1)yz}=&-\frac{1}{2} \sin \theta (4 \sin \phi  (3 \cos \theta  \bar{g}_{(1)xy}-2 \bar{H}_{(1) y})+4 \cos \phi  (3 \cos \theta  \bar{g}_{(1)xz}-2 \bar{H}_{(1) z}) \nonumber \\
 &+3 \sin \theta  \sin 2 \phi  (\bar{g}_{(1)tt}-\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz})+12 \sin \theta  \bar{g}_{(1)yz})  q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:efezz}
 \tilde{\Box}\bar{g}_{(1)zz}=&(-2 \cos \theta  (3 \sin \theta  \sin \phi  \bar{g}_{(1)xz}+\bar{H}_{(1)x}) \nonumber \\
 &+ \sin \theta  (3 \sin \theta  \bar{g}_{(1)yy}-6 \sin\theta  \sin \phi  (\cos \phi  \bar{g}_{(1)yz}+\sin \phi 
    \bar{g}_{(1)zz}) \nonumber \\
    &-2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
    &+\frac{3}{4}  \bar{g}_{(1)xx} (-2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta
    +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
-&+\mathcal{O}(q^{-1}),
+&+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-along with the generalized harmonic constraints
-
-\begin{eqnarray}
+All that remains is to write down the generalized harmonic constraints $0=C_\mu \equiv H_\mu-\Box x_\mu$ in terms the same expansion coefficients
+\begin{eqnarray}\label{eqn:ct}
 C_t=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
    \bar{H}_{(1) t}) \nonumber \\
    &+\mathcal{O}(q^3),
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:cx}
 C_x=&\frac{1}{2} q^2 (-3 \cos \theta  \bar{g}_{(1)tt}-3 \cos \theta  \bar{g}_{(1)xx}-6 \sin \theta  \cos \phi  \bar{g}_{(1)xy}-6 \sin
    \theta  \sin \phi  \bar{g}_{(1)xz} \nonumber \\
    &+3 \cos \theta  \bar{g}_{(1)yy}+3
    \cos \theta  \bar{g}_{(1)zz}+4 \bar{H}_{(1) x}) \nonumber \\
    &+\mathcal{O}(q^3),
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:cy}
 C_y=&\frac{1}{2} q^2 (-3 \sin \theta  \cos \phi  \bar{g}_{(1)tt}+3 \sin
    \theta  \cos \phi  \bar{g}_{(1)xx}-6 \cos \theta  \bar{g}_{(1)xy} \nonumber \\
    &-3
@@ -236,7 +244,7 @@ C_y=&\frac{1}{2} q^2 (-3 \sin \theta  \cos \phi  \bar{g}_{(1)tt}+3 \sin
    \bar{H}_{(1) y}) \nonumber \\
    &+\mathcal{O}(q^3),
 \end{eqnarray}
-\begin{eqnarray}
+\begin{eqnarray}\label{eqn:cz}
 C_z=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    \theta \sin \phi \bar{g}_{(1)xx}-6 \cos \theta  \bar{g}_{(1)xz} \nonumber \\
    &+3
@@ -246,6 +254,14 @@ C_z=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 \end{eqnarray}
 
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$. 
+As long as the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are satisfied, a gauge choice that explicitly eliminates all order $q^{-2}$ terms that appear in \eref{eqn:efett}-\eref{eqn:efezz} has leading order coefficients that satisfy
+\begin{eqnarray}\label{eqn:target_gauge}
+\bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}) \nonumber \\
+\bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}) \nonumber \\
+\bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
+\end{eqnarray}
+This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution.
+
 
 \section{Results}\label{sec:results}
 
