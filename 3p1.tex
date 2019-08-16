@@ -124,7 +124,7 @@ The simulations described here are performed in Cartesian coordinates $x,y,z$ in
 For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation.
 
 The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
-Similarly, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full GH source functions $H_\mu$ and the values they take on in pure AdS $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
+Similarly, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
 The evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
 $\varphi = (1-\rho^2)^2 \bar{\varphi}$.
 By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
@@ -267,9 +267,56 @@ This is the asymptotic gauge condition that we have empirically verified to lead
 
 \section{Discussion}\label{sec:Discussion}
 
+\ack
+Simulations were run on the {\bf Apocrita} cluster at Queen Mary University of London.
 
+\appendix
+\section{Generalized Harmonic Formulation}
 
+The generalized harmonic formulation of the Einstein equations is based on coordinates $x^\mu$ that each satisfies a wave equation $\Box x^{\mu}=H^\mu$ with source functions $H^\mu$.
+As long as the constraint $0=C^\mu \equiv H^\mu-\Box x^\mu$ is satisfied, we can then write the trace-reversed Einstein equations in $d$ dimensions with cosmological constant $\Lambda$
+\begin{equation}
+0=R_{\mu\nu} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} T g_{\mu\nu} \right)
+\end{equation}
+as
+\begin{eqnarray}
+0
+&=& R_{\mu\nu} - \nabla_{(\mu} C_{\nu)} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber \\
+&=& R_{\mu\nu} - \nabla_{(\mu} H_{\nu)} + \nabla_{(\mu} \Box{x}_{\nu)} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber \\
+&=& -\frac{1}{2} g^{\alpha\beta} g_{\mu\nu,\alpha\beta} - g^{\alpha\beta}{}_{,(\mu}g_{\nu)\alpha,\beta} - H_{(\mu,\nu)} + H_\alpha \Gamma^\alpha{}_{\mu\nu} \nonumber \\
+&&- \Gamma^\alpha{}_{\mu\beta}\Gamma^\beta{}_{\alpha\nu} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber,
+\end{eqnarray}
+where the choice of $H_\mu = g_{\mu\nu} H^\nu$ constitutes a gauge choice. 
+To suppress constraint-violating solutions that do not satisfy $C_\mu=0$, we supplement with constraint-damping terms as introduced in~\cite{Gundlach:2005eh} and obtain our final form of the Einstein equations
+\begin{eqnarray}\label{eqn:efe_gh_modified}
+&-& \frac{1}{2} g^{\alpha \beta} g_{\mu \nu, \alpha \beta} - 
+{g^{\alpha \beta}}_{,(\mu} g_{\nu) \alpha, \beta} - H_{(\mu, \nu)} + H_\alpha {\Gamma^\alpha}_{\mu \nu} \nonumber \\
+&-& {\Gamma^\alpha}_{\beta \mu} {\Gamma^\beta}_{\alpha \nu} - \kappa \left( 2 n_{(\mu} C_{\nu)} - (1+P) g_{\mu \nu} n^\alpha 
+C_\alpha \right) \nonumber \\
+&=&   \frac{2}{d-2} \Lambda g_{\mu \nu} + 8\pi \left( T_{\mu \nu} - 
+\frac{1}{d-2} {T^\alpha}_\alpha g_{\mu \nu} \right).
+\end{eqnarray}
 
+\section{Convergence Tests}
+
+Here we display a pair of numerical tests that demonstrate convergence trends for a representative simulation with no mesh refinement.
+We do this for [pick simulation] with initial data parameters [display parameters]
+
+To show that the solution we obtain is consistent, we compute the rate of convergence $Q(t,x,y,z)$ at each point on the grid with mesh spacing $\Delta$, for a given field $f_\Delta$
+\begin{equation}\label{eq:qconv}
+Q(t,x,y,z)=\frac{1}{\ln(2)}\ln\left( \frac{f_{4h}(t,x,y,z)-f_{2h}(t,x,y,z)}{f_{2h}(t,x,y,z)-f_{h}(t,x,y,z)} \right).
+\end{equation}
+We use second-order accurate finite difference stencils, and there is a factor of 2 between successive resolutions.
+Thus, we expect $Q$ to asymptote to $Q=2$ in the limit $\Delta\rightarrow0$.
+
+To show that the solution is converging to a solution of the Einstein equations, we compute an independent residual. 
+This is obtained by taking the numerical solution and substituting it into a discretized version of
+the Einstein equations, a component of which we denote $f_\Delta$. 
+The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions
+\begin{equation}\label{eq:qires}
+Q_{EFE}(t,x^i)=\frac{1}{\ln(2)}\ln\left( \frac{f_{2h}(t,x,y,z)}{f_{h}(t,x,y,z)} \right).
+\end{equation}
+Again, with second-order accurate finite difference stencils and with a factor of two between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
 
 %-------------------------------------------------------
 % Bibliography
