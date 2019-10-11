@@ -50,7 +50,7 @@ splot 'ascii_t0' using 2:1:3 with pm3d title ''
 unset colorbox
 
 eval(set_margins(2))
-set ylabel 'y' offset -16,-9.4 rotate by 0 
+set ylabel 'z' offset -16,-9.4 rotate by 0 
 set xlabel 't={/Symbol p}/16' offset 0,21
 splot 'ascii_t1' using 2:1:3 with pm3d title '' 
 unset ylabel
