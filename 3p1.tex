@@ -1,6 +1,7 @@
 \documentclass[12pt]{iopart}
 \usepackage{iopams}  
 \usepackage{graphicx}
+\usepackage{subfig}
 \setlength\parindent{0pt}
 \setlength{\parskip}{13pt} %found this single-line pt value using \the\baselineskip
 \begin{document}
@@ -269,10 +270,41 @@ This is the asymptotic gauge condition that we have empirically verified to lead
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=7.0in,clip=true]{snapshots-crop}
-\parbox{5.0in}{\caption{Snapshots of the scalar field on the $y=0$ slice.
-        }\label{fig:snapshots-crop}}
+        \includegraphics[width=7.0in,clip=true]{plots/bulkplots/L3/phi1/phi1_L3_snapshots_2.pdf}
+\parbox{5.0in}{\caption{Snapshots of the scalar field on the $z=0$ slice.
+        }\label{fig:snapshotsscalarfield-crop}}
 \end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=4.0in,clip=true]{plots/timeseries/AdSmass/fullplotAdSmassL1L2L3res-cropped.pdf}
+\parbox{5.0in}{\caption{Time series for AdS mass for different resolutions.
+        }\label{fig:AdSmass-crop}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=4.0in,clip=true]{plots/timeseries/L2norm_iresallconvergence/fullplotiresallconvergenceL1L2L3res-cropped.pdf}
+\parbox{5.0in}{\caption{Time evolution for $L^2$ norm of convergence factor for independent residual of EFE at different resolutions.
+        }\label{fig:L2norm_iresallconvergence-crop}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=4.0in,clip=true]{plots/timeseries/L2norm_quasiset_trace/fullplotL2normtraceL2L3res-cropped.pdf}
+\parbox{5.0in}{\caption{Time evolution for $L^2$ norm of trace of quasi-local energy-momentum tensor of the boundary CFT at different resolutions.
+        }\label{fig:L2norm_quasisettrace-crop}}
+\end{figure}
+
+\begin{figure}%
+    \centering
+    \subfloat[x-dependency]{{\includegraphics[width=3.0in]{/Users/lorenzorossi/Desktop/PhD/Research/Codes/lrossi_PAMR_AMRD_codes/Paper1/2019_3p1/plots/bulkplots/L2/relkretsch/fullplotxcoordrelkretschL2res-cropped.pdf} }}%
+    \qquad
+    \subfloat[y-dependency]{{\includegraphics[width=3.0in]{/Users/lorenzorossi/Desktop/PhD/Research/Codes/lrossi_PAMR_AMRD_codes/Paper1/2019_3p1/plots/bulkplots/L2/relkretsch/fullplotycoordrelkretschL2res-cropped.pdf} }}%
+    \caption{Time evolution of Kretschmann: the Kretschmann scalar of the solution approaches the one for Schwarzschild-AdS}%
+    \label{fig:example}%
+\end{figure}
+
 
 
 
@@ -328,6 +360,8 @@ The independent residual should be purely numerical truncation error, so we can 
 Q_{EFE}(t,x^i)=\frac{1}{\ln(2)}\ln\left( \frac{f_{2h}(t,x,y,z)}{f_{h}(t,x,y,z)} \right).
 \end{equation}
 Again, with second-order accurate finite difference stencils and with a factor of two between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
+
+
 
 %-------------------------------------------------------
 % Bibliography
