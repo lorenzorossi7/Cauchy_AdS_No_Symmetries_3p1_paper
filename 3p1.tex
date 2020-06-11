@@ -78,15 +78,15 @@ where $R$ is the Ricci scalar of the metric $g_{\mu\nu}$ with determinant $g$.
 Here, we use geometric units where Newton's constant $G$ and the speed of light $c$ are set to 1.
 The variation of the action \eref{eqn:action} with respect to $g_{\mu\nu}$ and $\varphi$ gives the equations of motion
 \begin{eqnarray}\label{eqn:eoms1}
-R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi \left( \partial_\mu \varphi \partial_\nu \varphi - g_{\mu\nu} \frac{1}{2} g^{\alpha\beta} \partial_{\alpha} \varphi \partial_{\beta} \varphi \right),
+R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right),
 \end{eqnarray}
 \begin{equation}\label{eqn:eoms2}
 g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0.
 \end{equation}
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e. $\varphi=0$) solution of \eref{eqn:eoms1},\eref{eqn:eoms2} in four dimensions.
-In terms of global coordinates $x^\mu=(t,r,\theta,\phi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
+In terms of global coordinates $x^\alpha=(t,r,\theta,\phi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
 \begin{equation}\label{eqn:ads4}
-\hat{g}_{\mu\nu} dx^\mu dx^\nu = \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
+\hat{g}_{\alpha\beta} dx^\alpha dx^\beta = \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
 \end{equation}
 with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere.
 
@@ -97,10 +97,10 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, this 
 \hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
 \end{equation}
 
-Second, we define Cartesian coordinates $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
+Second, we define Cartesian coordinates $x^\mu=(t,x,y,z)$ by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
 This brings the metric of AdS$_4$ into its final form
 \begin{eqnarray}\label{eqn:ads4_final}
-\hat{g}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}^{-1}(\rho) \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
+\hat{g}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
 &+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
 &\left. \left. + \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \right] \right),
 \end{eqnarray}
@@ -114,7 +114,7 @@ We discretize the resulting PDEs with second order finite differences, and integ
 We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement support.
 We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
-The typical grid resolution gives $N_x=N_y=N_z=257$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z$.
+The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z$.
 We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.2$.
 
 We search for apparent horizons (AH) using a flow method, and use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain.
@@ -224,7 +224,7 @@ zz}) \nonumber \\
    +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
 &+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-All that remains is to write down the generalized harmonic constraints $0=C_\mu \equiv H_\mu-\Box x_\mu$ in terms the same expansion coefficients
+All that remains is to write down the generalized harmonic constraints $0=C_\mu \equiv H_\mu-\Box x_\mu$ in terms of the same expansion coefficients
 \begin{eqnarray}\label{eqn:ct}
 C_t=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
    \bar{H}_{(1) t}) \nonumber \\
@@ -257,12 +257,19 @@ C_z=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$. 
 As long as the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are satisfied, a gauge choice that explicitly eliminates all order $q^{-2}$ terms that appear in \eref{eqn:efett}-\eref{eqn:efezz} has leading order coefficients that satisfy
-\begin{eqnarray}\label{eqn:target_gauge}
+\begin{eqnarray}\label{eqn:target_gauge_xyz}
 \bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}) \nonumber \\
 \bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}) \nonumber \\
 \bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
 \end{eqnarray}
+Finally, for the t-component we choose
+\begin{equation}\label{eqn:target_gauge_t}
+\bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
+\end{equation}
+which makes the leading order of \eref{eqn:ct} vanish trivially.
 This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution.
+
+Notice that calculation just outlined would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this criterion would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.
 
 
 
@@ -284,19 +291,20 @@ In this Section we present the details of a representative run starting from ini
 \subsection{Boundary stress-energy tensor}
 \label{sec:bouset}
 
-In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We do this in spherical coordinates $x^\mu=(t,\rho,\chi,\xi)$ as they are adapted to the AdS boundary ($\chi=\theta/\pi$ and $\xi=\phi/2\pi$, where $\theta$ and $\phi$ are the usual angular coordinates on the 2-sphere). We compute this by first computing the quasi-local stress-energy tensor $^{(q)}T_{\mu\nu}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
+In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We do this in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$ as they are adapted to the AdS boundary. First of all, we define barred metric variables in spherical coordinates with a criterion similar to the one used for the definition of the Cartesian barred metric variables: we require that their leading order in the near-boundary expansion is $\mathcal{O}(q)$.
+We compute this by first computing the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
 \begin{equation}
-^{(q)}T_{\mu\nu}=\frac{1}{8\pi}\biggl(\;   ^{(q)}\Theta_{\mu\nu}-^{(q)}\Theta \gamma_{\mu\nu}-\frac{2}{L}\gamma_{\mu\nu}+L \;^{(q)}G_{\mu\nu} \biggr),
+^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \gamma_{\alpha\beta}-\frac{2}{L}\gamma_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
 \end{equation}
-where $^{(q)}\Theta_{\mu\nu}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $^{(q)}G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$. (Notice the different minus sign in the last term w.r.t. to  [CITE hep-th/9902121] ). We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e. near the boundary.
-Restricting to the 3 coordinates on the AdS boundary at $rho=1$, i.e. $x^i=(t,\chi,\xi)$, this enables us to compute the boundary stress-energy tensor as
+where $\Theta_{\alpha\beta}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$. (Notice the different minus sign in the last term w.r.t. to  [CITE hep-th/9902121] ). We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e. near the boundary.
+Restricting to the 3 coordinates on the AdS boundary at $\rho=1$, i.e. $x^i=(t,\theta,\phi)$, this enables us to compute the boundary stress-energy tensor as
 \begin{equation}
 <T_{ij}>_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ij}.
 \end{equation}
 
 From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/9902121]. At each time $t$ of evolution, we take a spacelike hypersurface $\Sigma$ in $\partial M_q$, with induced 3-metric $\sigma_{\mu\nu}=\Sigma_{\mu\nu}-u_\mu u_\nu$, where $u^\mu$ is the future pointing unit vector normal to $\Sigma$ in $\partial M_q$, lapse $N$ and shift $N^i$. The AdS mass is
 \begin{equation}
-M_{AdS}=\lim_{q\to0}\int_\Sigma d\chi d\xi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
+M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
 \end{equation}
 
 In terms of the evolved metric variables, we obtain
@@ -307,8 +315,11 @@ In terms of the evolved metric variables, we obtain
 <T_{\chi\chi}>_{CFT}&=& \nonumber \\
 <T_{\chi\xi}>_{CFT}&=& \nonumber \\
 <T_{\xi\xi}>_{CFT}&=& \nonumber \\
-M=\int_\Sigma d\chi d\xi \nonumber \\
+M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi \nonumber, \\
 \end{eqnarray}
+where the barred metric variables $\bar{g}_{ij}$ in spherical coordinates can be obtained from the Cartesian ones $\bar{g}_{\mu\nu}$ in the usual way: $\bar{g}_{ij}=\frac{\partial x^\mu}{\partial x^i}\frac{\partial x^\nu}{\partial x^j}\bar{g}_{\mu\nu}$ \footnote{Notice that this relation is not true in general for all the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates, due to the fact that they are defined by considering the deviations of the full metric from the pure AdS metric in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary so that the leading order in the expansion around $q=0$ has order 1 (similarly to what we have in \eref{eqn:qexp} for Cartesian variables). The final result is $h_{\alpha\beta}=(1-\rho^2)\bar{g}_{\alpha\beta}$ if $\alpha=\beta=\rho$, $h_{\alpha\beta}=\bar{g}_{\alpha\beta}$ otherwise.}.
+
+
 
 \subsection{Collapse and ringdown}\label{sec:results}
 
