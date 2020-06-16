@@ -117,7 +117,7 @@ We discretize the resulting PDEs with second order finite differences, and integ
 We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement support.
 We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
-The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z$.
+The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
 We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.2$.
 
 We search for apparent horizons (AH) using a flow method, and use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain.
@@ -265,6 +265,8 @@ As long as the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are 
 \bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}) \nonumber \\
 \bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
 \end{eqnarray}
+This can be immediately seen from the fact that the $q^{-2}$ order of $\tilde{\Box}\bar{g}_{(1)t\mu}$ for $\mu\neq t$ is proportional to the leading order of $C_t$ (for any choice of $\bar{H}_\mu$) while, for our particular choice of $\bar{H}_\mu$, the $q^{-2}$ order of the remaining $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ and the leading order of $C_x,C_y,C_z$ depend only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$.
+
 Finally, for the t-component we choose
 \begin{equation}\label{eqn:target_gauge_t}
 \bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
@@ -272,7 +274,7 @@ Finally, for the t-component we choose
 which makes the leading order of \eref{eqn:ct} vanish trivially.
 This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution.
 
-\textcolor{blue}{Notice that calculation just outlined would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.}
+\textcolor{blue}{Notice that the calculation just outlined would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.}
 
 
 
@@ -312,17 +314,25 @@ M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu}
 
 In terms of the evolved metric variables, we obtain
 \begin{eqnarray}
-<T_{tt}>_{CFT}&=& \nonumber \\
-<T_{t\chi}>_{CFT}&=& \nonumber \\
-<T_{t\xi}>_{CFT}&=& \nonumber \\
-<T_{\chi\chi}>_{CFT}&=& \nonumber \\
-<T_{\chi\xi}>_{CFT}&=& \nonumber \\
-<T_{\xi\xi}>_{CFT}&=& \nonumber \\
-M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi \nonumber, \\
+<T_{tt}>_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
+<T_{t\theta}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
+<T_{t\phi}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
+<T_{\theta\theta}>_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
+<T_{\theta\phi}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
+<T_{\phi\phi}>_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}) \nonumber \\
+M_{AdS}&=&\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber, \\
 \end{eqnarray}
-where the barred metric variables $\bar{g}_{ij}$ in spherical coordinates can be obtained from the Cartesian ones $\bar{g}_{\mu\nu}$ in the usual way: $\bar{g}_{ij}=\frac{\partial x^\mu}{\partial x^i}\frac{\partial x^\nu}{\partial x^j}\bar{g}_{\mu\nu}$ \footnote{\textcolor{blue}{Notice that this relation is not true in general for all the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates, due to the fact that they are defined by considering the deviations of the full metric from the pure AdS metric in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary so that the leading order in the expansion around $q=0$ has order 1 (similarly to what we have in \eref{eqn:qexp} for Cartesian variables). The final result is $h_{\alpha\beta}=(1-\rho^2)\bar{g}_{\alpha\beta}$ if $\alpha=\beta=\rho$, $h_{\alpha\beta}=\bar{g}_{\alpha\beta}$ otherwise.}}.
+where the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates can be obtained from the Cartesian ones $\bar{g}_{\mu\nu}$ in the usual way: $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ for all $\alpha,\beta$ appearing in the expressions above \footnote{\textcolor{blue}{Notice that this relation is not true in general for all the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates, since $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not necessarily components of the same tensor. Instead, they are defined by considering the deviation of the full metric from the pure AdS metric, i.e. the tensor $h=g-\hat{g}$, choosing a set of coordinates, and stripping the components of $h$ of as many factors of $(1-\rho^2)$ as necessary so that the leading order in the expansion around $q=0$ has order 1. The final result in Cartesian coordinates is $h_{\mu\nu}=\bar{g}_{\mu\nu}$ (as we saw in Section~\ref{sec:setup}), while in spherical coordinates we have $h_{\rho\alpha}=(1-\rho^2)\bar{g}_{\rho\alpha}$ if $\alpha\neq\rho$, $h_{\alpha\beta}=\bar{g}_{\alpha\beta}$ otherwise.)
+}}.
 
+One useful quantity to compute is the trace of the stress-energy tensor, $<trT>_{CFT}=\gamma^{ij} <T_{ij}>_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
+\begin{equation}
+<trT>_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
+\end{equation}
+If we convert the spherical quantities into Cartesian ones (and we evaluate the expression at $\rho=1$), we see that $<trT>_{CFT}$ depends only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$, as for $C_x,C_y,C_z$. This is an important sanity check: the validity of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, as expected for the boundary CFT.
+Another important test that we performed is conservation of the analytic form of $<T_{ij}>_{CFT}$. The proof of this is conceptually straightforward but lenghty, so it is not presented here. We will instead show below that conservation is preserved numerically during evolution. Since this test is computationally expensive, we will do it only for 4 representative time steps.
 
+Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of boundary quantities we use extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
 
 \subsection{Collapse and ringdown}\label{sec:results}
 
@@ -398,26 +408,58 @@ C_\alpha \right) \nonumber \\
 \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu \nu} \right).
 \end{eqnarray}
 
-\section{Convergence Tests}
+\section{Convergence Tests in the Bulk}\label{sec:convbulk}
 
 Here we display a pair of numerical tests that demonstrate convergence trends for a representative simulation with no mesh refinement.
 We do this for [pick simulation] with initial data parameters [display parameters]
 
-To show that the solution we obtain is consistent, we compute the rate of convergence $Q(t,x,y,z)$ at each point on the grid with mesh spacing $\Delta$, for a given field $f_\Delta$
+Let us denote the value of the field $f$ at the point $(t,x,y,z)$ in a simulation with mesh spacing $\Delta$ by $f_\Delta(t,x,y,z)$.
+To show that the solution $f_\Delta(t,x,y,z)$ converges to a function $f(t,x,y,z)$ in the continuum limit $\Delta\rightarrow0$, we compute the rate of convergence $Q(t,x,y,z)$ at each point of interest
 \begin{equation}\label{eq:qconv}
-Q(t,x,y,z)=\frac{1}{\ln(2)}\ln\left( \frac{f_{4h}(t,x,y,z)-f_{2h}(t,x,y,z)}{f_{2h}(t,x,y,z)-f_{h}(t,x,y,z)} \right).
+Q(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{f_{9h/4}(t,x,y,z)-f_{3h/2}(t,x,y,z)}{f_{3h/2}(t,x,y,z)-f_{h}(t,x,y,z)} \right).
 \end{equation}
-We use second-order accurate finite difference stencils, and there is a factor of 2 between successive resolutions.
+We use second-order accurate finite difference stencils, and there is a factor of 3/2 between successive resolutions.
 Thus, we expect $Q$ to asymptote to $Q=2$ in the limit $\Delta\rightarrow0$.
 
 To show that the solution is converging to a solution of the Einstein equations, we compute an independent residual. 
 This is obtained by taking the numerical solution and substituting it into a discretized version of
-the Einstein equations, a component of which we denote $f_\Delta$. 
+the Einstein equations, a component of which we denote $\Phi_\Delta$. 
 The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions
 \begin{equation}\label{eq:qires}
-Q_{EFE}(t,x^i)=\frac{1}{\ln(2)}\ln\left( \frac{f_{2h}(t,x,y,z)}{f_{h}(t,x,y,z)} \right).
+Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
 \end{equation}
-Again, with second-order accurate finite difference stencils and with a factor of two between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
+Again, with second-order accurate finite difference stencils and with a factor of 3/2 between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
+
+\section{Extrapolation Technique and Convergence at AdS Boundary}\label{sec:extrapconvbdy}
+
+As explained in Section~\ref{sec:results}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this Section  we describe how grid points are chosen for extrapolation and we show convergence by computing the factor \eref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points.
+
+If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
+\begin{enumerate}
+ \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $n^{th}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2),\dots,f_\Delta(p_{n+1})$ (where $p_1,p_2,\dots,p_{n+1}$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,\dots,p_{n_{\Delta}+1}$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})+c_\Delta(p_1,p_2,\dots,p_{n+1})\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2,\dots,p_{n+1}$ are the same for all 3 resolutions involved.
+ 
+ \item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (i.e. points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (i.e. points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (i.e. points between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$.
+ \end{enumerate}
+Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=6.0in,clip=true]{plots/lego_circle/Lego_circle.pdf}
+\parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for the lowest resolution, with grid spacing $\Delta$, among the 3 involved in a convergence test ($const.$ is chosen as the $z-$coordinate value of one of the points common to all 3 resolutions). We show a typical example in which common points are 4 grid points away from each other along each direction.
+        }\label{fig:lego_circle}}
+\end{figure}
+ 
+Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circle}), the extrapolation technique proceeds as follows:
+ \begin{itemize}
+ \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$.
+ \item take the next $n$ points, $p_2,\dots,p_{n+1}$, used for $n^{th}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy (i) ((ii) is trivially satisfied by construction). For the case of first order extrapolation, each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
+ \item use $n^{th}-$ order extrapolation on $f_\Delta(p_1),\dots,f_\Delta(p_{n+1})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Fig. ~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
+ \item repeat the previous steps until the last suitable point.
+ \end{itemize}
+
+CONVERGENCE PLOTS
+
+Notice that the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $<trT>_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
 
 
 
