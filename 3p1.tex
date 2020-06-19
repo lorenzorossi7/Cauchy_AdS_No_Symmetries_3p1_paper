@@ -73,13 +73,14 @@ Section~\ref{sec:results} contains preliminary results from this new code, and w
 
 \section{Setup}\label{sec:setup}
 
+\subsection{Anti-de Sitter Spacetime}\label{subsec:AdS}
 The dynamics of gravity with a cosmological constant $\Lambda$ in four dimensions coupled to a massless scalar field $\varphi$ can be described by the following action
 \begin{equation}\label{eqn:action}
 S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^{\alpha\beta} \partial_\alpha \varphi \partial_\beta \varphi \right),
 \end{equation}
-where $R$ is the Ricci scalar of the metric $g_{\mu\nu}$ with determinant $g$.
+where $R$ is the Ricci scalar of the metric $g_{\alpha\beta}$ with determinant $g$.
 Here, we use geometric units where Newton's constant $G$ and the speed of light $c$ are set to 1.
-The variation of the action \eref{eqn:action} with respect to $g_{\mu\nu}$ and $\varphi$ gives the equations of motion
+The variation of the action \eref{eqn:action} with respect to $g_{\alpha\beta}$ and $\varphi$ gives the equations of motion
 \begin{eqnarray}\label{eqn:eoms1}
 R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right),
 \end{eqnarray}
@@ -87,28 +88,54 @@ R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi
 g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0.
 \end{equation}
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e. $\varphi=0$) solution of \eref{eqn:eoms1},\eref{eqn:eoms2} in four dimensions.
-In terms of global coordinates $x^\alpha=(t,r,\theta,\phi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
+In terms of global coordinates $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
 \begin{equation}\label{eqn:ads4}
-\hat{g}_{\alpha\beta} dx^\alpha dx^\beta = \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
+\hat{g}= \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
 \end{equation}
 with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere.
 
-First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ to include the boundary at $r \rightarrow \infty$ as part of the spacetime at $\rho=\ell$.
-We hereafter set to $\ell=1$ without loss of generality, so that the AdS boundary is $\rho=1$.
-Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, this compactification brings the metric of AdS$_4$ into the form
+First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.
+We hereafter set $\ell=1$ without loss of generality, so that the AdS boundary is $\rho=1$. In this way, we obtain (compactified) spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$.
+Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the metric of AdS$_4$ in this set of coordinates reads
 \begin{equation}\label{eqn:ads4_compact}
-\hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
+\hat{g}_{\alpha\beta}dx^{\alpha}dx^{\beta} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right). \nonumber
 \end{equation}
 
 Second, we define Cartesian coordinates $x^\mu=(t,x,y,z)$ by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
 This brings the metric of AdS$_4$ into its final form
 \begin{eqnarray}\label{eqn:ads4_final}
-\hat{g}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
+\hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
 &+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
 &\left. \left. + \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \right] \right),
 \end{eqnarray}
 
+\subsection{Boundary conditions for Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
+We will be interested in spacetimes whose asymptotic isometry group is the same as AdS, i.e. $SO(3,2)$. These are called asymptotically AdS spacetimes. In other words, we will require that the metric solution, written in the form $g=\hat{g}+h$, satisfies the asymptotic Killing equation in any set of coordinates, 
+\begin{equation}\label{eqn:asyKilleq}
+(\mathcal{L}_X g)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near the AdS boundary at $\rho=1$},
+\end{equation}
+for any $X$ generator of $SO(3,2)$. \textcolor{blue}{In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates), and to any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_final} as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates).}
 
+If we consider spherical coordinates, the solution to \eref{eqn:asyKilleq} gives the boundary conditions (see [cite 1201.2132] for the details)
+\begin{eqnarray}
+\label{eq:sphbounconh}
+h_{\rho\alpha}&=f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) \;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
+h_{\alpha\beta}&=f_{\alpha\beta}(t,\theta,\phi)(1-\rho)+\mathcal{O}((1-\rho)^{2}) \;\; \textrm{ otherwise},
+\end{eqnarray}
+(where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we impose a boundary condition on the massless scalar field $\varphi$ in order to preserve the asymptotics \eref{eq:sphbounconh} during evolution:
+\begin{equation}
+\varphi=b(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4)
+\end{equation}
+for arbitrary $b(t,\theta,\phi)$.
+
+In Cartesian coordinates, these become
+\begin{eqnarray}
+\label{eq:carbouncondh}
+h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))+\mathcal{O}((1-\rho(x,y,z))^{2}), \\
+\label{eq:carbouncondphi}
+\varphi&=&c(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((1-\rho(x,y,z))^{3}), 
+\end{eqnarray}
+for arbitrary $f_{\mu\nu}$ and $c$.
 
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
@@ -118,21 +145,24 @@ We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in para
 We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
 The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
-We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.2$.
+We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.15$.
 
 We search for apparent horizons (AH) using a flow method, and use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain.
 At the excision surface, the usual equations of motion are solved using one-sided stencils. 
 Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
 
-We set Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
-The simulations described here are performed in Cartesian coordinates $x,y,z$ in terms of which $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
-For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation.
-
-The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
-Similarly, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
-The evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
+%The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
+The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ by considering the deviations from the pure AdS metric $h_{\mu\nu}=g_{\mu\nu} - \hat{g}_{\mu\nu}$ and stripping these of as many factors of $(1-\rho^2)$ as necessary so that they fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. %their leading order in the near-boundary expansion is $\mathcal{O}(q)$. 
+From the boundary conditions \eref{eq:carbouncondh}, we immediately see that $h_{\mu\nu}=\bar{g}_{\mu\nu}$ in Cartesian coordinates, so $g_{\mu\nu} = \hat{g}_{\mu\nu}+\bar{g}_{\mu\nu}$.
+Similarly, the evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
 $\varphi = (1-\rho^2)^2 \bar{\varphi}$.
-By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
+Following the same argument, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS by $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
+
+%By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{\varphi}$, $\bar{H}_{\mu}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
+For evolved variables defined in this way, the boundary conditions \eref{eq:carbouncond} can be easily imposed as reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$.
+%We set reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
+The only complication comes from the fact that the simulations described here are performed in Cartesian coordinates $x,y,z$ in terms of which $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
+For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation. 
 
 
 
@@ -272,9 +302,7 @@ Finally, for the t-component we choose
 \bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
 \end{equation}
 which makes the leading order of \eref{eqn:ct} vanish trivially.
-This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution.
-
-\textcolor{blue}{Notice that the calculation just outlined would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.}
+This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the value of $H_\mu$ in the bulk.
 
 
 
@@ -294,9 +322,9 @@ In this Section we present the details of a representative run starting from ini
 - Boundary Stress-Energy Tensor .extrapolation technique .expression for components . analytic tracelessness .analytic conservation .convergence . tracelessness .conservation
 
 \subsection{Boundary stress-energy tensor}
-\label{sec:bouset}
+\label{sec:bouset2}
 
-In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We do this in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$ as they are adapted to the AdS boundary. First of all, we define barred metric variables in spherical coordinates with a criterion similar to the one used for the definition of the Cartesian barred metric variables: we require that their leading order in the near-boundary expansion is $\mathcal{O}(q)$.
+In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We do this in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
 We compute this by first computing the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
 \begin{equation}
 ^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \gamma_{\alpha\beta}-\frac{2}{L}\gamma_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
@@ -312,7 +340,8 @@ From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/990
 M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
 \end{equation}
 
-In terms of the evolved metric variables, we obtain
+We display these quantities in terms of the barred metric variables in spherical coordinates $\bar{g}_{\alpha\beta}$, which are defined similarly to the definition of Cartesian barred metric variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:sphbouncondh} and \eref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
+In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, we obtain
 \begin{eqnarray}
 <T_{tt}>_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 <T_{t\theta}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
@@ -320,10 +349,8 @@ In terms of the evolved metric variables, we obtain
 <T_{\theta\theta}>_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 <T_{\theta\phi}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
 <T_{\phi\phi}>_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}) \nonumber \\
-M_{AdS}&=&\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber, \\
+M_{AdS}&=&\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
 \end{eqnarray}
-where the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates can be obtained from the Cartesian ones $\bar{g}_{\mu\nu}$ in the usual way: $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ for all $\alpha,\beta$ appearing in the expressions above \footnote{\textcolor{blue}{Notice that this relation is not true in general for all the barred metric variables $\bar{g}_{\alpha\beta}$ in spherical coordinates, since $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not necessarily components of the same tensor. Instead, they are defined by considering the deviation of the full metric from the pure AdS metric, i.e. the tensor $h=g-\hat{g}$, choosing a set of coordinates, and stripping the components of $h$ of as many factors of $(1-\rho^2)$ as necessary so that the leading order in the expansion around $q=0$ has order 1. The final result in Cartesian coordinates is $h_{\mu\nu}=\bar{g}_{\mu\nu}$ (as we saw in Section~\ref{sec:setup}), while in spherical coordinates we have $h_{\rho\alpha}=(1-\rho^2)\bar{g}_{\rho\alpha}$ if $\alpha\neq\rho$, $h_{\alpha\beta}=\bar{g}_{\alpha\beta}$ otherwise.)
-}}.
 
 One useful quantity to compute is the trace of the stress-energy tensor, $<trT>_{CFT}=\gamma^{ij} <T_{ij}>_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
 \begin{equation}
@@ -334,13 +361,27 @@ Another important test that we performed is conservation of the analytic form of
 
 Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of boundary quantities we use extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
 
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensity/sphereplots_bdyenergydensity_L3_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density at the boundary.
+        }\label{fig:snapshotsenergydensity}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyanisotropy/sphereplots_bdyanisotropy_L3_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary.
+        }\label{fig:snapshotsanisotropy}}
+\end{figure}
+
 \subsection{Collapse and ringdown}\label{sec:results}
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=7.0in,clip=true]{plots/bulkplots/L3/phi1/phi1_L3_snapshots_2.pdf}
+        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3/phi1/phi1_L3_snapshots_2_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of the scalar field on the $z=0$ slice.
-        }\label{fig:snapshotsscalarfield-crop}}
+        }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
 \begin{figure}[h]
@@ -377,6 +418,8 @@ Since the AdS boundary generally does not lie on points of the Cartesian grid, t
 
 
 \section{Discussion}\label{sec:Discussion}
+
+\textcolor{blue}{The calculation just outlined would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.}
 
 \ack
 Simulations were run on the {\bf Apocrita} cluster at Queen Mary University of London.
@@ -438,20 +481,20 @@ If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\De
 \begin{enumerate}
  \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $n^{th}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2),\dots,f_\Delta(p_{n+1})$ (where $p_1,p_2,\dots,p_{n+1}$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,\dots,p_{n_{\Delta}+1}$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})+c_\Delta(p_1,p_2,\dots,p_{n+1})\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2,\dots,p_{n+1}$ are the same for all 3 resolutions involved.
  
- \item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (i.e. points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (i.e. points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (i.e. points between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$.
+ \item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
  \end{enumerate}
 Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=6.0in,clip=true]{plots/lego_circle/Lego_circle.pdf}
-\parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for the lowest resolution, with grid spacing $\Delta$, among the 3 involved in a convergence test ($const.$ is chosen as the $z-$coordinate value of one of the points common to all 3 resolutions). We show a typical example in which common points are 4 grid points away from each other along each direction.
+\parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for the lowest resolution, with grid spacing $\Delta$, among the three involved in a convergence test ($const.$ is chosen as the $z-$coordinate value of one of the points common to all three resolutions). We show a typical example in which common points are 4 grid points away from each other along each direction.
         }\label{fig:lego_circle}}
 \end{figure}
  
 Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circle}), the extrapolation technique proceeds as follows:
  \begin{itemize}
- \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$.
+ \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$. If two coordinates have the same value, then we pick $x$ over $y$ or $z$ and $y$ over $z$.
  \item take the next $n$ points, $p_2,\dots,p_{n+1}$, used for $n^{th}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy (i) ((ii) is trivially satisfied by construction). For the case of first order extrapolation, each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
  \item use $n^{th}-$ order extrapolation on $f_\Delta(p_1),\dots,f_\Delta(p_{n+1})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Fig. ~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
  \item repeat the previous steps until the last suitable point.
@@ -459,7 +502,7 @@ Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circl
 
 CONVERGENCE PLOTS
 
-Notice that the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $<trT>_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
+Finally, notice that the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $<trT>_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
 
 
 
