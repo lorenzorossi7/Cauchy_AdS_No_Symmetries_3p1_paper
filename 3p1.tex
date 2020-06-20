@@ -332,7 +332,7 @@ We compute this by first computing the quasi-local stress-energy tensor $^{(q)}T
 where $\Theta_{\alpha\beta}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$. (Notice the different minus sign in the last term w.r.t. to  [CITE hep-th/9902121] ). We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e. near the boundary.
 Restricting to the 3 coordinates on the AdS boundary at $\rho=1$, i.e. $x^i=(t,\theta,\phi)$, this enables us to compute the boundary stress-energy tensor as
 \begin{equation}
-<T_{ij}>_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ij}.
+\langle T_{ij}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ij}.
 \end{equation}
 
 From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/9902121]. At each time $t$ of evolution, we take a spacelike hypersurface $\Sigma$ in $\partial M_q$, with induced 3-metric $\sigma_{\mu\nu}=\Sigma_{\mu\nu}-u_\mu u_\nu$, where $u^\mu$ is the future pointing unit vector normal to $\Sigma$ in $\partial M_q$, lapse $N$ and shift $N^i$. The AdS mass is
@@ -343,21 +343,21 @@ M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu}
 We display these quantities in terms of the barred metric variables in spherical coordinates $\bar{g}_{\alpha\beta}$, which are defined similarly to the definition of Cartesian barred metric variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:sphbouncondh} and \eref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
 In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, we obtain
 \begin{eqnarray}
-<T_{tt}>_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
-<T_{t\theta}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
-<T_{t\phi}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
-<T_{\theta\theta}>_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
-<T_{\theta\phi}>_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
-<T_{\phi\phi}>_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}) \nonumber \\
+\langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
+\langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
+\langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
+\langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
+\langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
+\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}) \nonumber \\
 M_{AdS}&=&\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
 \end{eqnarray}
 
-One useful quantity to compute is the trace of the stress-energy tensor, $<trT>_{CFT}=\gamma^{ij} <T_{ij}>_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
+One useful quantity to compute is the trace of the stress-energy tensor, $\langle trT\rangle_{CFT}=\gamma^{ij} \langle T_{ij}\rangle_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
 \begin{equation}
-<trT>_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
+\langle trT\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
 \end{equation}
-If we convert the spherical quantities into Cartesian ones (and we evaluate the expression at $\rho=1$), we see that $<trT>_{CFT}$ depends only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$, as for $C_x,C_y,C_z$. This is an important sanity check: the validity of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, as expected for the boundary CFT.
-Another important test that we performed is conservation of the analytic form of $<T_{ij}>_{CFT}$. The proof of this is conceptually straightforward but lenghty, so it is not presented here. We will instead show below that conservation is preserved numerically during evolution. Since this test is computationally expensive, we will do it only for 4 representative time steps.
+If we convert the spherical quantities into Cartesian ones (and we evaluate the expression at $\rho=1$), we see that $\langle trT\rangle_{CFT}$ depends only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$, as for $C_x,C_y,C_z$. This is an important sanity check: the validity of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, as expected for the boundary CFT.
+Another important test that we performed is conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of this is conceptually straightforward but lenghty, so it is not presented here. We will instead show below that conservation is preserved numerically during evolution. Since this test is computationally expensive, we will do it only for 4 representative time steps.
 
 Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of boundary quantities we use extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
 
@@ -370,6 +370,13 @@ Since the AdS boundary generally does not lie on points of the Cartesian grid, t
 
 \begin{figure}[h]
         \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the initial AdS mass $M=0.4109047647294596$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary.
+        }\label{fig:snapshotsenergydensity}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyanisotropy/sphereplots_bdyanisotropy_L3_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary.
         }\label{fig:snapshotsbdyphi}}
@@ -377,7 +384,7 @@ Since the AdS boundary generally does not lie on points of the Cartesian grid, t
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyphi/sphereplots_bdyphi_L3_2by2.png}
+        \includegraphics[width=7.0in,clip=true]{plots/bdyplots/L3/bdyphi/sphereplots_bdyphi_L3_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of scalar field at the boundary.
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
@@ -458,6 +465,8 @@ C_\alpha \right) \nonumber \\
 \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu \nu} \right).
 \end{eqnarray}
 
+\section{Regularized Metric Variables in Cartesian and Spherical coordinates}\label{sec:regmetvarcarsph}
+
 \section{Convergence Tests in the Bulk}\label{sec:convbulk}
 
 Here we display a pair of numerical tests that demonstrate convergence trends for a representative simulation with no mesh refinement.
@@ -482,7 +491,7 @@ Again, with second-order accurate finite difference stencils and with a factor o
 
 \section{Extrapolation Technique and Convergence at AdS Boundary}\label{sec:extrapconvbdy}
 
-As explained in Section~\ref{sec:results}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this Section  we describe how grid points are chosen for extrapolation and we show convergence by computing the factor \eref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points.
+As explained in Section~\ref{sec:results}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this Section we describe how grid points are chosen for extrapolation and we show convergence by computing the factor \eref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is a consequence of bulk convergence (see ~\ref{sec:convbulk}) at the chosen points.
 
 If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
 \begin{enumerate}
@@ -509,7 +518,10 @@ Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circl
 
 CONVERGENCE PLOTS
 
-Finally, notice that the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $<trT>_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
+This extrapolation scheme is validated by Figure [CONVERGENCE], which shows second-order convergence at the boundary for CHOSEN FUNCTION with this extrapolation scheme, as expected from having second-order convergence in the bulk (see ~\ref{sec:convbulk}) at all points used for extrapolation.
+
+Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})$.
+For this reason, the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
 
 
 
