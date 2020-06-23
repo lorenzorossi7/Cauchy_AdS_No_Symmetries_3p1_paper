@@ -109,12 +109,14 @@ This brings the metric of AdS$_4$ into its final form
 &\left. \left. + \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \right] \right),
 \end{eqnarray}
 
-\subsection{Boundary conditions for Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
+\subsection{Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
+
 We will be interested in spacetimes whose asymptotic isometry group is the same as AdS, i.e. $SO(3,2)$. These are called asymptotically AdS spacetimes. In other words, we will require that the metric solution, written in the form $g=\hat{g}+h$, satisfies the asymptotic Killing equation in any set of coordinates, 
 \begin{equation}\label{eqn:asyKilleq}
 (\mathcal{L}_X g)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near the AdS boundary at $\rho=1$},
 \end{equation}
-for any $X$ generator of $SO(3,2)$. \textcolor{blue}{In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates), and to any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_final} as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates).}
+for any $X$ generator of $SO(3,2)$. In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates) and the indices associated with their coordinate basis will be chosen from the first part of the Greek alphabet, $\alpha,\beta,\gamma,\delta,\dots$
+Similarly, we will refer to any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_final} as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates) and the indices associated with their coordinate basis will be chosen from the second part of the Greek alphabet, $\mu,\nu,\rho,\sigma,\dots$
 
 If we consider spherical coordinates, the solution to \eref{eqn:asyKilleq} gives the boundary conditions (see [cite 1201.2132] for the details)
 \begin{eqnarray}
@@ -123,7 +125,7 @@ h_{\rho\alpha}&=f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) 
 h_{\alpha\beta}&=f_{\alpha\beta}(t,\theta,\phi)(1-\rho)+\mathcal{O}((1-\rho)^{2}) \;\; \textrm{ otherwise},
 \end{eqnarray}
 (where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we impose a boundary condition on the massless scalar field $\varphi$ in order to preserve the asymptotics \eref{eq:sphbounconh} during evolution:
-\begin{equation}
+\begin{equation}\label{eq:sphbounconphi}
 \varphi=b(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4)
 \end{equation}
 for arbitrary $b(t,\theta,\phi)$.
@@ -133,9 +135,24 @@ In Cartesian coordinates, these become
 \label{eq:carbouncondh}
 h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))+\mathcal{O}((1-\rho(x,y,z))^{2}), \\
 \label{eq:carbouncondphi}
-\varphi&=&c(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((1-\rho(x,y,z))^{3}), 
+\varphi&=&c(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^3+\mathcal{O}((1-\rho(x,y,z))^{4}), 
 \end{eqnarray}
 for arbitrary $f_{\mu\nu}$ and $c$.
+
+Regarding the source functions in a given set of coordinates, involved in the Generalized Harmonic Formulation employed in this study (CITE), their near-boundary behaviour can be deduced from the behaviour of the full metric $g$ through their definition: $H^\alpha \equiv \Box x^\alpha = \frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\alpha})$ in spherical coordinates and similarly in Cartesian coordinates. Therefore their boundary conditions in spherical coordinates can be obtained from \eref{eq:sphbounconh},
+\begin{eqnarray}\label{eq:sphbouncondsoufunc}
+H_\alpha&=&\hat{H}_\alpha+f_\alpha(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4) \;\; \textrm{ if $\alpha\neq\rho$} \\ \nonumber
+H_\rho&=&\hat{H}_\rho+f_\rho(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3)
+\end{eqnarray}
+for arbitrary $f_\alpha$,
+while their boundary conditions in Cartesian coordinates can be obtained from \eref{eq:carbouncondh},
+\begin{equation}\label{eq:carbouncondsoufunc}
+H_\mu=\hat{H}_\mu+f_\mu(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((1-\rho(x,y,z))^3)
+\end{equation}
+for arbitrary $f_\mu$.
+
+
+
 
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
@@ -151,18 +168,54 @@ We search for apparent horizons (AH) using a flow method, and use the excision m
 At the excision surface, the usual equations of motion are solved using one-sided stencils. 
 Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
 
+\subsection{Evolution variables and boundary conditions}\label{subsec:evvarboucon}
+
+The boundary conditions on asymptotically AdS spacetimes found in Section~\ref{subsec:asyAdS} can easily be imposed as Dirichlet boundary conditions at the boundary $\rho=1$ if we define and evolve a new set of variables from which the full solution $(g_{\mu\nu},\varphi,H_\mu)$ can easily be reconstructed. Even though the code employs Cartesian coordinates, we define these variables also in spherical coordinates for completeness and because they will turn out useful in Section~\ref{sec:bouset2} .The metric evolution variables are defined by (i) considering the deviation from pure AdS tensor $h=g-\hat{g}$, (ii) choosing a set of coordinates for which the boundary conditions on $h$ is known (e.g. spherical or Cartesian), (iii) stripping the components of $h$ in this set of coordinates of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$\footnote{Looking at the boundary conditions \eref{eq:sphbounconh} and \eref{eq:carbouncondh}, it seems natural to factor out $(1-\rho)$ rather than $(1-\rho^2)$. However, the latter is preferred since it preserves the even/odd character of the components of $h$.}. We will denote these variables by $\bar{g}_{\alpha\beta}$ for spherical coordinates and by $\bar{g}_{\mu\nu}$ for Cartesian coordinates. 
+In spherical coordinates, we see from \eref{eq:sphbounconh} that 
+\begin{eqnarray}\label{eq:gbarsph}
+\bar{g}_{\rho\alpha}=\frac{h_{\rho\alpha} }{1-\rho^2}\;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
+\bar{g}_{\alpha\beta}=h_{\alpha\beta}  \;\; \textrm{ otherwise}.
+\end{eqnarray}
+In Cartesian coordinates, we see from \eref{eq:carbouncondh} that 
+\begin{equation}\label{eq:gbarcart}
+\bar{g}_{\mu\nu}=h_{\mu\nu}.
+\end{equation}
+
+Despite the notation, we emphasize that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor (as it should be clear from their definition), therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:gbarsph} and \eref{eq:gbarcart} remembering that $h$ is indeed a tensor: 
+\begin{eqnarray}\label{eq:cartosph}
+\bar{g}_{\rho\alpha}&=&\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}\;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
+\bar{g}_{\alpha\beta}&=&\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}\;\; \textrm{ otherwise}.
+\end{eqnarray}
+
+Similarly, the boundary conditions on the scalar field \eref{eq:sphbounconphi}, \eref{eq:carbouncondphi} suggest that we use the evolution variable
+\begin{equation}
+\bar{\varphi}=\frac{\varphi }{(1-\rho^2)^2}
+\end{equation}
+for both spherical and Cartesian coordinates.
+
+Finally, the boundary conditions \eref{eq:sphbouncondsoufunc} on $H_\alpha$ suggest the use of the evolution variables
+\begin{eqnarray}
+ \bar{H}_\alpha=\frac{H_\alpha-\hat{H}_\alpha}{(1-\rho^2)^2 } \;\; \textrm{ if $\alpha\neq\rho$,} \\ \nonumber
+ \bar{H}_\rho=\frac{H_\rho-\hat{H}_\rho}{1-\rho^2 }
+ \end{eqnarray}
+in spherical coordinates, while the boundary conditions \eref{eq:carbouncondsoufunc} on $H_\mu$ suggest the use of
+\begin{equation}\label{eq:soufunb}
+\bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }
+\end{equation}
+in Cartesian coordinates.
+
 %The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
-The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ by considering the deviations from the pure AdS metric $h_{\mu\nu}=g_{\mu\nu} - \hat{g}_{\mu\nu}$ and stripping these of as many factors of $(1-\rho^2)$ as necessary so that they fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. %their leading order in the near-boundary expansion is $\mathcal{O}(q)$. 
-From the boundary conditions \eref{eq:carbouncondh}, we immediately see that $h_{\mu\nu}=\bar{g}_{\mu\nu}$ in Cartesian coordinates, so $g_{\mu\nu} = \hat{g}_{\mu\nu}+\bar{g}_{\mu\nu}$.
-Similarly, the evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
-$\varphi = (1-\rho^2)^2 \bar{\varphi}$.
-Following the same argument, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS by $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
+%The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ by considering the deviations from the pure AdS metric $h_{\mu\nu}=g_{\mu\nu} - \hat{g}_{\mu\nu}$ and stripping these of as many factors of $(1-\rho^2)$ as necessary so that they fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. %their leading order in the near-boundary expansion is $\mathcal{O}(q)$. 
+%From the boundary conditions \eref{eq:carbouncondh}, we immediately see that $h_{\mu\nu}=\bar{g}_{\mu\nu}$ in Cartesian coordinates, so $g_{\mu\nu} = \hat{g}_{\mu\nu}+\bar{g}_{\mu\nu}$.
+%Similarly, the evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
+%$\varphi = (1-\rho^2)^2 \bar{\varphi}$.
+%Following the same argument, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS by $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
 
 %By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{\varphi}$, $\bar{H}_{\mu}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
-For evolved variables defined in this way, the boundary conditions \eref{eq:carbouncond} can be easily imposed as reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$.
+For evolved variables defined in this way, the boundary conditions \eref{eq:carbouncondh},\eref{eq:carbouncondphi}, \eref{eq:carbouncondsoufun} can be easily imposed as reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$. In the Cartesian case, which is the one relevant for the simulations described here, these conditions read $\bar{g}_{\mu\nu}|_{\rho=1}=0,\bar{\varphi}|_{\rho=1}=0,\bar{H}_\mu|_{\rho=1}=0$.
 %We set reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
-The only complication comes from the fact that the simulations described here are performed in Cartesian coordinates $x,y,z$ in terms of which $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
-For any given evolved variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation. 
+The only complication comes from the fact that in Cartesian coordinates $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
+For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by linear interpolation. 
 
 
 
@@ -170,7 +223,7 @@ For any given evolved variable, we thus take its Dirichlet boundary condition at
 
 Here we sketch the procedure for finding the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution in for asymptotically AdS$_4$ spacetimes.
 For a more detailed discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}. 
-The first step involves expanding the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ in power series about $(1-\rho) \equiv q = 0$
+The first step involves expanding the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ in power series about $(1-\rho) \equiv q = 0$. By definition, they are linear in $q$:
 \begin{eqnarray}\label{eqn:qexp}
 \bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4) \nonumber \\
 \bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) \nonumber \\
@@ -324,8 +377,10 @@ In this Section we present the details of a representative run starting from ini
 \subsection{Boundary stress-energy tensor}
 \label{sec:bouset2}
 
-In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We do this in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
-We compute this by first computing the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
+In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, through the transformation \eref{eq:cartosph}.
+
+%Their expressions are more easily obtained and displayed in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
+The first step is to compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
 \begin{equation}
 ^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \gamma_{\alpha\beta}-\frac{2}{L}\gamma_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
 \end{equation}
@@ -340,8 +395,8 @@ From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/990
 M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
 \end{equation}
 
-We display these quantities in terms of the barred metric variables in spherical coordinates $\bar{g}_{\alpha\beta}$, which are defined similarly to the definition of Cartesian barred metric variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:sphbouncondh} and \eref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
 In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, we obtain
+%variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:sphbouncondh} and \eref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
 \begin{eqnarray}
 \langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 \langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
@@ -440,6 +495,7 @@ Simulations were run on the {\bf Apocrita} cluster at Queen Mary University of L
 
 \appendix
 \section{Generalized Harmonic Formulation}
+\label{sec:GHfor}
 
 The generalized harmonic formulation of the Einstein equations is based on coordinates $x^\mu$ that each satisfies a wave equation $\Box x^{\mu}=H^\mu$ with source functions $H^\mu$.
 As long as the constraint $0=C^\mu \equiv H^\mu-\Box x^\mu$ is satisfied, we can then write the trace-reversed Einstein equations in $d$ dimensions with cosmological constant $\Lambda$
@@ -464,6 +520,8 @@ C_\alpha \right) \nonumber \\
 &=&   \frac{2}{d-2} \Lambda g_{\mu \nu} + 8\pi \left( T_{\mu \nu} - 
 \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu \nu} \right).
 \end{eqnarray}
+
+See. for example, CITE [arXiv:gr-qc/0407110] , [arXiv:1201.2132v3 [hep-th]]  for more details.
 
 \section{Regularized Metric Variables in Cartesian and Spherical coordinates}\label{sec:regmetvarcarsph}
 
