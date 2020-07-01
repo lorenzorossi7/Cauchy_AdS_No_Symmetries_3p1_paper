@@ -87,12 +87,15 @@ R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi
 \begin{equation}\label{eqn:eoms2}
 g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0.
 \end{equation}
+
+We aim to solve this set of equations using the Generalized Harmonic formulation (see~\ref{sec:GHfor} for the form of the evolution equations in this framework and CITE PAPERS for more details about the theoretical aspects of the formulation), whose solution is given (in any set of coordinates) by the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a gauge choice of source functions $H_\alpha$. 
+
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e. $\varphi=0$) solution of \eref{eqn:eoms1},\eref{eqn:eoms2} in four dimensions.
 In terms of global coordinates $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
 \begin{equation}\label{eqn:ads4}
 \hat{g}= \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
 \end{equation}
-with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere.
+with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere. The crucial feature of this spacetime is the presence of a \emph{time-like} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. In other words, any Cauchy problem is an initial-boundary value problem.
 
 First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.
 We hereafter set $\ell=1$ without loss of generality, so that the AdS boundary is $\rho=1$. In this way, we obtain (compactified) spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$.
@@ -111,11 +114,15 @@ This brings the metric of AdS$_4$ into its final form
 
 \subsection{Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
 
-We will be interested in spacetimes whose asymptotic isometry group is the same as AdS$_4$, i.e. $SO(3,2)$. These are called asymptotically AdS spacetimes. In other words, we will require that the metric solution, written in the form $g=\hat{g}+h$, approaches the pure AdS metric $\hat{g}$ near the boundary at a rate that satisfies the asymptotic Killing equation (in an arbitrary set of coordinates), 
+We will be interested in the Cauchy evolution of spacetimes whose asymptotic isometry group is the same as AdS$_4$, i.e. $SO(3,2)$. These are called asymptotically AdS spacetimes. In particular, the boundary of these spacetimes is exactly the same as AdS$_4$, thus we will be dealing with an initial-boundary value problem and boundary conditions on all the fields involved in the Generalized Harmonic formulation will have to be imposed.
+In this Section we present suitable boundary conditions for asymptotically Anti-de Sitter spacetimes.
+
+Requiring an $SO(3,2)$ symmetry near the boundary amounts to imposing that the metric solution, written in the form $g=\hat{g}+h$, approaches the pure AdS metric $\hat{g}$ at a rate that satisfies the asymptotic Killing equation (in an arbitrary set of coordinates), 
 \begin{equation}\label{eqn:asyKilleq}
 (\mathcal{L}_X g)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near the AdS boundary at $\rho=1$},
 \end{equation}
-for any $X$ generator of $SO(3,2)$. In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates) and the indices associated with their coordinate basis will be chosen from the first part of the Greek alphabet, $\alpha,\beta,\gamma,\delta,\dots$
+for any $X$ generator of $SO(3,2)$. 
+In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates) and the indices associated with their coordinate basis will be chosen from the first part of the Greek alphabet, $\alpha,\beta,\gamma,\delta,\dots$
 Similarly, we will refer to any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_final} as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates) and the indices associated with their coordinate basis will be chosen from the second part of the Greek alphabet, $\mu,\nu,\rho,\sigma,\dots$
 
 In spherical coordinates, the solution to \eref{eqn:asyKilleq} gives the boundary conditions (see [cite 1201.2132] for the details)
@@ -124,7 +131,7 @@ In spherical coordinates, the solution to \eref{eqn:asyKilleq} gives the boundar
 h_{\rho\alpha}&=f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) \;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
 h_{\alpha\beta}&=f_{\alpha\beta}(t,\theta,\phi)(1-\rho)+\mathcal{O}((1-\rho)^{2}) \;\; \textrm{ otherwise},
 \end{eqnarray}
-(where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we impose a boundary condition on the massless scalar field $\varphi$ in order to preserve the asymptotics \eref{eq:sphbounconh} during evolution:
+(where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we impose a boundary condition on the massless scalar field $\varphi$ that preserves the asymptotics \eref{eq:sphbounconh} during evolution (as verified in CITE [cite 1201.2132]):
 \begin{equation}\label{eq:sphbounconphi}
 \varphi=b(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4)
 \end{equation}
@@ -208,7 +215,7 @@ For any given evolution variable, we thus take its Dirichlet boundary condition 
 
 \section{Gauge Choice}\label{sec:gauge_choice}
 
-The statement that we use Cartesian coordinates only defines the coordinates at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. Coordinates over the entire spacetime are fully determined only once we specify a gauge choice of source functions $H_\mu$. As we will see, this choice cannot be completely arbitrary if we wish to achieve stable evolution. In this Section we sketch the procedure for finding a possible generalized harmonic gauge choice that has proven to provide stable Cauchy 3+1 evolution.
+The statement that we use Cartesian coordinates completely defines the coordinates only at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. Coordinates over the entire spacetime are fully determined only once we specify a gauge choice of source functions $H_\mu$. As we will see, this choice cannot be completely arbitrary if we wish to achieve stable evolution. In this Section we sketch the procedure for finding a possible generalized harmonic gauge choice that has proven to provide stable Cauchy 3+1 evolution.
 %In this Section we sketch the procedure for finding the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution for asymptotically AdS$_4$ spacetimes.
 For a more detailed discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}. 
 
@@ -330,43 +337,35 @@ C_z=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    &+\mathcal{O}(q^3).
 \end{eqnarray}
 
-In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$. 
-As long as the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are satisfied, a gauge choice that explicitly eliminates all order $q^{-2}$ terms that appear in \eref{eqn:efett}-\eref{eqn:efezz} has leading order coefficients that satisfy
+In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$ for the entire evolution.
+The criterion for our choice is the following: we pick source functions to explicitly eliminate all $q^{-2}$ terms that appear in \eref{eqn:efett}-\eref{eqn:efezz}, provided that the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are satisfied.
+A simple (but clearly not unique) gauge choice satisfying this criterion has leading order coefficients given by
+
+%As long as the generalized harmonic constraints \eref{eqn:ct}-\eref{eqn:cz} are satisfied, a gauge choice that explicitly eliminates all $q^{-2}$ terms that appear in \eref{eqn:efett}-\eref{eqn:efezz} has leading order coefficients that satisfy
 \begin{eqnarray}\label{eqn:target_gauge_xyz}
 \bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}) \nonumber \\
 \bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}) \nonumber \\
 \bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
 \end{eqnarray}
-This can be immediately seen from the fact that the $q^{-2}$ order of $\tilde{\Box}\bar{g}_{(1)t\mu}$ for $\mu\neq t$ is proportional to the leading order of $C_t$ (for any choice of $\bar{H}_\mu$) while, for our particular choice of $\bar{H}_\mu$, the $q^{-2}$ order of the remaining $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ and the leading order of $C_x,C_y,C_z$ depend only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$.
+This can be immediately seen from the fact that the $q^{-2}$ order of $\tilde{\Box}\bar{g}_{(1)t\mu}$ for $\mu\neq t$ is proportional to the leading order of $C_t$ (for any choice of $\bar{H}_\mu$) while, for our particular choice of $\bar{H}_\mu$, the $q^{-2}$ order of the remaining $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ and the leading orders of $C_x,C_y,C_z$ depend only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$.
 
 Finally, for the t-component we choose
 \begin{equation}\label{eqn:target_gauge_t}
 \bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
 \end{equation}
 which makes the leading order of \eref{eqn:ct} vanish trivially.
-This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the value of $H_\mu$ in the bulk, which is still arbitrary. Our choice is made explicit in SOME APPENDIX.
+This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the values of $H_\mu$ in the bulk, which are still arbitrary. Our choice is made explicit in SOME APPENDIX.
 
+It is important to develop an understanding about the reason why the choice of $\bar{H}_\mu$ is not completely free (despite the fact that this is simply a gauge choice in the generalized harmonic formulation) and the criterion above is expected to work. 
+Let us notice that the boundary conditions imply that $\bar{g}_{(1)\mu\nu}$ are order $q^0$, which in turn implies that all $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ are order $q^0$. So, we expect order $q^{-2}$ and $q^{-1}$ of the right hand sides of \eref{eqn:efett}-\eref{eqn:efezz} to vanish for the solution of the full evolution equations, for any choice of source functions. 
+However, for some values of $\bar{H}_\mu$ a solution consistent with the boundary conditions might not exist, EXAMPLE . We see that the imposition of boundary conditions, required by the initial-boundary value problem, is the reason why the gauge choice in asymptotically AdS spacetimes is restricted. We also see that our criterion "helps" evolution to cancel orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, so it is clearly not in contrast with the requirements imposed by the boundary conditions and it allows a solution to be found. This also shows that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice that is not in contrast with the boundary conditions, regardless of whether this choice makes the orders .$q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish or not.
 
+This discussion exposes another interesting point regarding the expected order of convergence near the boundary. As mentioned in the previous paragraph, the solution will, in particular, make the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish. However, this is a statement about the analytic solution, which holds for the numerical one only up to solution error. Denoting by $h$ the grid spacing near the boundary for a certain resolution, the solution error is proportional to $h^n$ for a $n^{th}-$order finite difference scheme. Since the closest point to the boundary has $q=h$, the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ will be proportional to $h^{n-2}$ for the numerical solution of a $n^{th}-$order finite difference scheme. Therefore we would expect convergence at order $n-2$ near the boundary. This is not what we observe: for a second order difference scheme, we obtain second order convergence over the entire grid (as shown in~\ref{sec:convbulk}). Possible reasons for this were suggested in CITE 1201.2132v3: the misleading picture arising from the near-boundary expansion of the evolution equations as opposed to the correct description coming from the complete evolution, or hidden benefits of our gauge choice. However, this point is still lacking a thorough explanation.
 
-\section{Results}\label{sec:results}
-
-- Intro
-. long run 
-. completely asymmetric scalar field initial data
-. convergence of bulk and boundary quantities
-. preliminary conclusions about physical properties
-In this Section we present the details of a representative run starting from initial data with a completely asymmetric massless scalar scalar field. We will focus, separately, on quantities defined on the bulk of the numerical grid and quantities defined on the AdS boundary. We aim to show that these converge to their exact versions as we increase the grid resolution, and to draw some preliminary conclusions about physical properties of the solution, which will be analysed thoroughly in the future.
-
-
-
--Collapse and Ringdown .time-symmetry .scalar field profile (amplitude, eccentricities, delta) . scalar field snapshots .relative Kretschmann approach Schw-AdS with a certain AdS mass .collapse in 0 bounces in a time of order $amp^2$ (consistent with Bizon-Rostorowski prediction for spherical symmetry) .cascade to the UV modes for scalar field but amplitude of scalar field is decreasing, so instability might .grid function convergence .iresall convergence
-
-- Boundary Stress-Energy Tensor .extrapolation technique .expression for components . analytic tracelessness .analytic conservation .convergence . tracelessness .conservation
-
-\subsection{Boundary stress-energy tensor}
+\section{Boundary stress-energy tensor}
 \label{sec:bouset2}
 
-In the code we output the components of the stress-energy tensor of the CFT at the time-like AdS boundary. We obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in ~\ref{sec:sphevvarboucon}, through the transformation \eref{eq:cartosph}.
+In the code we output the components of the stress-energy tensor of the conformal field theory (CFT) at the time-like AdS boundary. In this Section, we obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in ~\ref{sec:sphevvarboucon}, through the transformation \eref{eq:cartosph}.
 
 %Their expressions are more easily obtained and displayed in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
 The first step is to compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
@@ -401,9 +400,31 @@ One useful quantity to compute is the trace of the stress-energy tensor, $\langl
 \langle trT\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
 \end{equation}
 If we convert the spherical quantities into Cartesian ones (and we evaluate the expression at $\rho=1$), we see that $\langle trT\rangle_{CFT}$ depends only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$, as for $C_x,C_y,C_z$. This is an important sanity check: the validity of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, as expected for the boundary CFT.
-Another important test that we performed is conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of this is conceptually straightforward but lenghty, so it is not presented here. We will instead show below that conservation is preserved numerically during evolution. Since this test is computationally expensive, we will do it only for 4 representative time steps.
+Another important test that we performed is conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of this is conceptually straightforward but lenghty, so it is not presented here. We will instead show in Section~\ref{sec:resbouset} that conservation is preserved numerically during evolution. Since this test is computationally expensive, we will do it only for 4 representative time steps.
 
-Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of boundary quantities we use first order extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). %In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
+Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use first order extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented).
+
+\section{Results}\label{sec:results}
+
+- Intro
+. long run 
+. completely asymmetric scalar field initial data
+. convergence of bulk and boundary quantities
+. preliminary conclusions about physical properties
+In this Section we present the details of a representative run starting from initial data with a completely asymmetric massless scalar scalar field. We will focus, separately, on quantities defined on the bulk of the numerical grid and quantities defined on the AdS boundary. We aim to show that these converge to their exact versions as we increase the grid resolution, and to draw some preliminary conclusions about physical properties of the solution, which will be analysed thoroughly in the future.
+
+
+
+-Collapse and Ringdown .time-symmetry .scalar field profile (amplitude, eccentricities, delta) . scalar field snapshots .relative Kretschmann approach Schw-AdS with a certain AdS mass .collapse in 0 bounces in a time of order $amp^2$ (consistent with Bizon-Rostorowski prediction for spherical symmetry) .cascade to the UV modes for scalar field but amplitude of scalar field is decreasing, so instability might .grid function convergence .iresall convergence
+
+- Boundary Stress-Energy Tensor .extrapolation technique .expression for components . analytic tracelessness .analytic conservation .convergence . tracelessness .conservation
+
+\subsection{Boundary stress-energy tensor}
+\label{sec:resbouset}
+
+In this Section we show snapshots for some of the boundary quantities computed in Section~\ref{sec:bouset2}.
+%Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use first order extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). 
+%In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
 
 \begin{figure}[h]
         \centering
@@ -569,15 +590,24 @@ Again, with second-order accurate finite difference stencils and with a factor o
 
 \section{Extrapolation Technique and Convergence at AdS Boundary}\label{sec:extrapconvbdy}
 
-As explained in Section~\ref{sec:results}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this Section we describe how grid points are chosen for extrapolation and we show convergence by computing the factor \eref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is a consequence of bulk convergence (see ~\ref{sec:convbulk}) at the chosen points.
+As explained in Section~\ref{sec:bouset2}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In particular, we use first order extrapolation. In this Section we describe how grid points are chosen for extrapolation and we show convergence for the extrapolation scheme by computing the factor \eref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is expected as a consequence of bulk convergence (see~\ref{sec:convbulk}) at the chosen points.
 
 If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
 \begin{enumerate}
- \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $n^{th}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2),\dots,f_\Delta(p_{n+1})$ (where $p_1,p_2,\dots,p_{n+1}$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,\dots,p_{n_{\Delta}+1}$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})+c_\Delta(p_1,p_2,\dots,p_{n+1})\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2,\dots,p_{n+1}$ are the same for all 3 resolutions involved.
+ \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $1^{st}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2)$ (where $p_1,p_2$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,p_2$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)+c_\Delta(p_1,p_2)\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2$ are the same for all 3 resolutions involved.
  
- \item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
+ 
+\item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
  \end{enumerate}
 Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
+
+%If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
+%\begin{enumerate}
+% \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $n^{th}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2),\dots,f_\Delta(p_{n+1})$ (where $p_1,p_2,\dots,p_{n+1}$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,\dots,p_{n_{\Delta}+1}$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})+c_\Delta(p_1,p_2,\dots,p_{n+1})\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2,\dots,p_{n+1}$ are the same for all 3 resolutions involved.
+ 
+ %\item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
+ %\end{enumerate}
+%Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
 
 \begin{figure}[h]
         \centering
@@ -589,8 +619,8 @@ Furthermore, among the points satisfying (i) and (ii), we want the ones that are
 Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circle}), the extrapolation technique proceeds as follows:
  \begin{itemize}
  \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$. If two coordinates have the same value, then we pick $x$ over $y$ or $z$ and $y$ over $z$.
- \item take the next $n$ points, $p_2,\dots,p_{n+1}$, used for $n^{th}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy (i) ((ii) is trivially satisfied by construction). For the case of first order extrapolation, each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
- \item use $n^{th}-$ order extrapolation on $f_\Delta(p_1),\dots,f_\Delta(p_{n+1})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Fig. ~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
+ \item take the next point, $p_2$, used for $1^{st}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy (i) ((ii) is trivially satisfied by construction). Each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
+ \item use $1^{st}-$ order extrapolation on $f_\Delta(p_1),f_\Delta(p_{2})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Fig. ~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
  \item repeat the previous steps until the last suitable point.
  \end{itemize}
 
@@ -598,8 +628,12 @@ CONVERGENCE PLOTS
 
 This extrapolation scheme is validated by Figure [CONVERGENCE], which shows second-order convergence at the boundary for CHOSEN FUNCTION with this extrapolation scheme, as expected from having second-order convergence in the bulk (see ~\ref{sec:convbulk}) at all points used for extrapolation.
 
-Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})$.
+%Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})$.
+%For this reason, the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
+
+Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)$.
 For this reason, the convergence test \eref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
+
 
 
 
