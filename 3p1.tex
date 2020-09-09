@@ -114,7 +114,16 @@ This brings the metric of AdS$_4$ into its final form
 
 \subsection{Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
 
-We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. Their definition has been given in different ways in the literature, so we will have to state the one relevant for this study. In [CITE Henneaux-Teitelbom], the authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification) with the same conformal structure as spatial infinity of pure AdS, i.e. $\mathbb{R}\times S^2$ topology and conformal boundary metric given by the pure AdS metric $\hat{g}_{\alpha\beta}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
+We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we see how they have been defined in the literature and we find the boundary conditions that such spacetimes must satisfy.
+
+%Their definition has been given in different ways in the literature, so we will have to state the one relevant for this study. 
+%In [CITE Henneaux-Teitelbom], the authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification) with the same topology as the AdS boundary, i.e. $\mathbb{R}\times S^2$.
+
+% topology and conformal boundary metric given by a conformal transformation of the pure AdS metric $\hat{g}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
+
+%spatial infinity of pure AdS, i.e. $\mathbb{R}\times S^2$ topology and conformal boundary metric given by a conformal transformation of the pure AdS metric $\hat{g}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
+
+Let us start from the definition presented in [CITE Henneaux-Teitelbom]. The authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification). Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
 \begin{enumerate}
 \item it is consistent with the asymptotic decay of the Kerr-AdS metric near $\mathcal{I}$ in that set of coordinates;
 \item its fall-off near $\mathcal{I}$ is invariant under the global AdS symmetry group $O(3,2)$ i.e.
@@ -124,13 +133,96 @@ We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. 
 for any $X$ generator of $O(3,2)$;
 \item the surface integral charges associated with the generators of $O(3,2)$ are finite.
 \end{enumerate}
-More precisely, it is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii). Furthermore, \eref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$ and the result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
+More precisely, it is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
+Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e. $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. Moreover, given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we will denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as as spherical coordinates (although they should be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$). Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates).
+Furthermore, \eref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in (asymptotically) $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$ and the result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
+In addition, given that in this work we only look at spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.
 
-A different (more recent????) definition requires an asymptotically AdS spacetime $(M,g)$ to admit a conformal compactification and to satisfy the Einstein equations \eref{eqn:eoms1} (the latter is not a requirement of the previous definition).
+Using the solution of \eref{eqn:asyKilleq} found in [cite 1201.2132], we obtain the boundary conditions in spherical coordinates:
+\begin{eqnarray}
+\label{eq:sphbounconh}
+h_{\rho\alpha}&=f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) \;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
+h_{\alpha\beta}&=f_{\alpha\beta}(t,\theta,\phi)(1-\rho)+\mathcal{O}((1-\rho)^{2}) \;\; \textrm{ otherwise},
+\end{eqnarray}
+(where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we need to impose a boundary condition on the massless scalar field $\varphi$ that preserves the asymptotics \eref{eq:sphbounconh} during evolution (as verified in CITE [cite 1201.2132]):
+\begin{equation}\label{eq:sphbounconphi}
+\varphi=b(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4)
+\end{equation}
+for arbitrary $b(t,\theta,\phi)$.
+
+In Cartesian coordinates, these read
+\begin{eqnarray}
+\label{eq:carbouncondh}
+h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))+\mathcal{O}((1-\rho(x,y,z))^{2}), \\
+\label{eq:carbouncondphi}
+\varphi&=&c(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^3+\mathcal{O}((1-\rho(x,y,z))^{4}), 
+\end{eqnarray}
+for arbitrary $f_{\mu\nu}$ and $c$.
+
+The boundary conditions on the source functions in a given set of coordinates, involved in the Generalized Harmonic Formulation employed in this study (CITE), can be deduced from the near-boundary behaviour of the full metric $g$ through the definition 
+\begin{equation}\label{eq:defsoufunsph}
+H^\alpha \equiv \Box x^\alpha = \frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\alpha})
+\end{equation}
+in spherical coordinates, and similarly in Cartesian coordinates. 
+In spherical coordinates, denoting the pure AdS values by $\hat{H}_\alpha$, \eref{eq:sphbounconh} implies,
+\begin{eqnarray}\label{eq:sphbouncondsoufunc}
+H_\alpha&=&\hat{H}_\alpha+f_\alpha(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4) \;\; \textrm{ if $\alpha\neq\rho$} \\ \nonumber
+H_\rho&=&\hat{H}_\rho+f_\rho(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3)
+\end{eqnarray}
+for arbitrary $f_\alpha$.
+In Cartesian coordinates,  denoting the pure AdS values by $\hat{H}_\mu$, \eref{eq:carbouncondh} implies,
+\begin{equation}\label{eq:carbouncondsoufun}
+H_\mu=\hat{H}_\mu+f_\mu(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((1-\rho(x,y,z))^3)
+\end{equation}
+for arbitrary $f_\mu$.
 
 
-%Recently [CITE C. Fefferman and C. R. Graham, Asterisque pp. 95–116 (1985), ISSN 0303-1179, the mathematical heritage of Elie Cartan (Lyon, 1984)] it was proven that
+%Moreover, given a coordinate system $x^\alpha$ in which the pure AdS metric is known (e.g. $(t,r,\theta,\phi)$), this fact allows us to use the same notation for all coordinate systems in which the full metric approaches $\hat{g}$ in the form given by 
 
+
+%has the same conformal structure of the pure AdS boundary, which is also the conformal structure of the AdS boundary, i.e. $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$. Given these requirements, it is evident 
+%It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii). Furthermore, \eref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$ and the result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
+
+It is now interesting, as well as relevant for what follows, to discuss a second definition of asymptotically AdS spacetimes given in the literature. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The Fefferman-Graham (FG) theorem [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d’aujourdhui
+(Asterisque, 1985) 95] states that for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbour of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
+\begin{equation}
+\label{eqn:FGmetric}
+g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{ij}(\bar{z},\bar{x})d\bar{x}^id\bar{x}^j),
+\end{equation}
+where 
+\begin{equation}
+\label{eqn:FGbdymetric}
+g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{x})+g_{(2)ij}(\bar{x})\bar{z}^2+\mathcal{O}(\bar{z}^3),
+\end{equation}
+in which the near-boundary (i.e. about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$, therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. If we make the further requirement that the topology of the boundary is that of pure AdS, i.e. $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and the definition becomes equivalent to the previous one. The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.
+
+We conclude by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity. Notice that, from  \eref{eq:sphbounconh}, we know all the metric components $g_{\alpha\beta}$ only up to and including $\mathcal{O}(1-\rho)$ so we can expect to find the FG form of the metric only up to the corresponding order in $\bar{z}$.
+Using the definition $z=2\frac{1-\rho}{1+\rho}$ (i.e. the one that brings the pure AdS metric in FG form), the full metric $g$ up to and including $\mathcal{O}(z)$ reads
+
+\begin{eqnarray}
+g=&\frac{1}{z^2}\biggl[ 
+\left(1+f_{\rho\rho}(t,\theta,\phi)z^3+\mathcal{O}(z^4)\right)dz^2 \nonumber \\
+&+\mathcal{O}(z^4) dz dt+\mathcal{O}(z^4) dz d\theta+\mathcal{O}(z^4) dz d\phi \nonumber \\
+&- \left(1+\frac{z^2}{2}+f_{tt}(t,\theta,\phi)z^3 +\mathcal{O}(z^4)\right)dt^2 \nonumber \\
+&+ \left(2 f_{t\theta}(t,\theta,\phi)z^3+\mathcal{O}(z^4)\right)dt d\theta + \left(2 f_{t\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)dt d\phi  \nonumber \\
+&+  \left(1-\frac{z^2}{2}+f_{\theta\theta}(t,\theta,\phi)z^3 +\mathcal{O}(z^4)\right)d\theta^2 \nonumber \\
+&+ \left(2 f_{\theta\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)d\theta d\phi \nonumber\\
+&+  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}(t,\theta,\phi)}{\sin^2\theta} z^3 +\mathcal{O}(z^4)\right)d\phi^2
+\biggr].
+\end{eqnarray}
+Notice that this is not yet in the FG form because the $zz$-component is not $\frac{1}{z^2}$ up to the desired $\mathcal{O}(z)$. Defining $\bar{z}=z\left(1+\frac{1}{6}z^3f_{\rho\rho}(t,\theta,\phi)\right),\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ we finally obtain the metric in FG form up to and including $\mathcal{O}(\bar{z})$
+\begin{eqnarray}
+g=&\frac{1}{\bar{z}^2}\biggl\{ 
+\left(1+\mathcal{O}(\bar{z}^4)\right)d\bar{z}^2 \nonumber \\
+&+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{t}+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{\theta}+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{\phi} \nonumber \\
+&- \left[1+\frac{\bar{z}^2}{2}+\left(f_{tt}(\bar{t},\bar{\theta},\bar{\phi})-\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{t}^2 \nonumber \\
+&+ \left(2 f_{t\theta}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\theta} + \left(2 f_{t\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi}  \nonumber \\
+&+  \left[1-\frac{\bar{z}^2}{2}+\left(f_{\theta\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{\theta}^2 \nonumber \\
+&+ \left(2 f_{\theta\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} \nonumber\\
+&+   \sin^2\bar{\theta} \left[1-\frac{\bar{z}^2}{2}+\left(\frac{f_{\phi\phi}(\bar{t},\bar{\theta},\bar{\phi})}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{\phi}^2
+\biggr\}.
+\end{eqnarray}
+Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}},g_{\bar{\theta}\bar{\theta}},g_{\bar{\phi}\bar{\phi}}$.
 
 
 OLD
@@ -263,7 +355,7 @@ A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q
 \end{equation}
 or, rearranging the terms in order to obtain wave-like equations,
 \begin{equation}
-\tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2)=0.
+\tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2).
 \end{equation}
 
 Here we write these components explicitly including only the leading order term. Operatively, the near-boundary expansion can be obtained easily if we first write the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$ before expanding near $q=0$. We get
@@ -401,7 +493,13 @@ It is important to develop an understanding about the reason why the choice of $
 Let us notice that \eref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $i\neq3$ for a solution of the full evolution equations, for any choice of source functions.
 %
 %So, we expect order $q^{-2}$ and $q^{-1}$ of the right hand sides of \eref{eqn:efett}-\eref{eqn:efezz} to vanish for the solution of the full evolution equations, for any choice of source functions. 
-However, for some values of $\bar{H}_\mu$ a solution consistent with the boundary conditions might not exist, EXAMPLE . We see that the imposition of boundary conditions, required by the initial-boundary value problem, is the reason why the gauge choice in asymptotically AdS spacetimes is restricted. We also see that our criterion "helps" evolution to cancel orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, so it is clearly not in contrast with the requirements imposed by the boundary conditions and it allows a solution to be found. This also shows that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice that is not in contrast with the boundary conditions, regardless of whether this choice makes the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish or not.
+However, for some values of $\bar{H}_\mu$ a solution consistent with the boundary conditions might not exist. To see this explicitly in a simple way, it is more convenient to switch to radial coordinates $(t,\rho,\theta,\phi)$ and look at the near-boundary expansion of the $tt$-component of the Einstein equations:
+\begin{eqnarray}\label{eqn:efettsph}
+\tilde{\Box}\bar{g}_{(1)tt}=&(-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho}q^{-2}+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+Suppose now to choose a gauge that becomes harmonic with respect to pure AdS after some time $t_0$ in the evolution, i.e. $\bar{H}_{\alpha}(t>t_0)=0$ for some $t_0$. \eref{eqn:efettsph} immediately tells us that 
+
+EXAMPLE . We see that the imposition of boundary conditions, required by the initial-boundary value problem, is the reason why the gauge choice in asymptotically AdS spacetimes is restricted. We also see that our criterion "helps" evolution to cancel orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, so it is clearly not in contrast with the requirements imposed by the boundary conditions and it allows a solution to be found. This also shows that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice that is not in contrast with the boundary conditions, regardless of whether this choice makes the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish or not.
 
 This discussion exposes another interesting point regarding the expected order of convergence near the boundary. As mentioned in the previous paragraph, the solution will, in particular, make the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish. However, this is a statement about the analytic solution, which holds for the numerical one only up to solution error. Denoting by $h$ the grid spacing near the boundary for a certain resolution, the solution error is proportional to $h^n$ for a $n^{th}-$order finite difference scheme. Since the closest point to the boundary has $q=h$, the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ will be proportional to $h^{n-2}$ for the numerical solution of a $n^{th}-$order finite difference scheme. Therefore we would expect convergence at order $n-2$ near the boundary. This is not what we observe: for a second order difference scheme, we obtain second order convergence over the entire grid (as shown in~\ref{sec:convbulk}). Possible reasons for this were suggested in CITE 1201.2132v3: the misleading picture arising from the near-boundary expansion of the evolution equations as opposed to the correct description coming from the complete evolution, or hidden benefits of our gauge choice. However, this point is still lacking a thorough explanation.
 
@@ -426,7 +524,7 @@ From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/990
 M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
 \end{equation}
 
-In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, we obtain
+In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, setting $L=1$, for the stress-energy tensor we obtain
 %variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eref{eq:sphbouncondh} and \eref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
 \begin{eqnarray}
 \langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
@@ -434,9 +532,12 @@ In terms of the leading order coefficient of $\bar{g}_{\alpha\beta}$, we obtain
 \langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
 \langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 \langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
-\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}) \nonumber \\
-M_{AdS}&=&\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
+\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}), \nonumber \\
 \end{eqnarray}
+while for the AdS mass
+\begin{equation}
+M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
+\end{equation}
 
 One useful quantity to compute is the trace of the stress-energy tensor, $\langle trT\rangle_{CFT}=\gamma^{ij} \langle T_{ij}\rangle_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
 \begin{equation}
