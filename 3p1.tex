@@ -487,7 +487,7 @@ Finally, for the t-component we choose
 \bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
 \end{equation}
 which makes the leading order of \eref{eqn:ct} vanish trivially.
-This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the values of $H_\mu$ in the bulk, which are still arbitrary. Our choice is made explicit in SOME APPENDIX.
+This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the values of $H_\mu$ in the bulk, which are still arbitrary. Our choice is made explicit in \ref{sec:GCbulk}.
 
 It is important to develop an understanding about the reason why the choice of $\bar{H}_\mu$ is not completely free (despite the fact that this is simply a gauge choice in the generalized harmonic formulation) and the criterion above is expected to work. 
 Let us notice that \eref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $i\neq3$ for a solution of the full evolution equations, for any choice of source functions.
@@ -495,11 +495,11 @@ Let us notice that \eref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $
 %So, we expect order $q^{-2}$ and $q^{-1}$ of the right hand sides of \eref{eqn:efett}-\eref{eqn:efezz} to vanish for the solution of the full evolution equations, for any choice of source functions. 
 However, for some values of $\bar{H}_\mu$ a solution consistent with the boundary conditions might not exist. To see this explicitly in a simple way, it is more convenient to switch to radial coordinates $(t,\rho,\theta,\phi)$ and look at the near-boundary expansion of the $tt$-component of the Einstein equations:
 \begin{eqnarray}\label{eqn:efettsph}
-\tilde{\Box}\bar{g}_{(1)tt}=&(-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho}q^{-2}+\mathcal{O}(q^{-1}).
+\tilde{\Box}\bar{g}_{(1)tt}=&(-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho})q^{-2}+\mathcal{O}(q^{-1}).
 \end{eqnarray}
-Suppose now to choose a gauge that becomes harmonic with respect to pure AdS after some time $t_0$ in the evolution, i.e. $\bar{H}_{\alpha}(t>t_0)=0$ for some $t_0$. \eref{eqn:efettsph} immediately tells us that 
+Suppose now to choose a gauge that becomes harmonic with respect to pure AdS after some time $t_0$ in the evolution, i.e. $\bar{H}_{\alpha}(t>t_0)=0$ for some $t_0$. Since we argued above that the $q^{-2}$ term must vanish, \eref{eqn:efettsph} immediately tells us that we must have $\bar{g}_{(1)\rho\rho}(t>t_0)=0$, i.e. $\bar{g}_{(1)\rho\rho}(t>t_0)=0$ must go to 0 as we approach the boundary faster than what the boundary conditions \eref{eq:sphbounconh} impose. This does not restrict the evolution in any way, as shown in \ref{subsec:asyAdS} by the fact that $\bar{g}_{(1)\rho\rho}(t>t_0)=0$ can be absorbed in a re-definition of the coordinates near the boundary. However, in practice the code would fail to find such a solution since the Dirichlet boundary condition $\bar{g}_{(1)\rho\rho}|_{\rho=1}=0$ would not enforce $\bar{g}_{(1)\rho\rho}=0$ when needed, letting that metric component differ from zero by the solution error.
 
-EXAMPLE . We see that the imposition of boundary conditions, required by the initial-boundary value problem, is the reason why the gauge choice in asymptotically AdS spacetimes is restricted. We also see that our criterion "helps" evolution to cancel orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, so it is clearly not in contrast with the requirements imposed by the boundary conditions and it allows a solution to be found. This also shows that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice that is not in contrast with the boundary conditions, regardless of whether this choice makes the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish or not.
+We see that the imposition of boundary conditions, required by the initial-boundary value problem, is the reason why the gauge choice in asymptotically AdS spacetimes is restricted. We also see that our criterion "helps" evolution to cancel orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, so it is clearly not in contrast with the requirements imposed by the boundary conditions and it allows a solution to be found. This also shows that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice that is not in contrast with the boundary conditions, regardless of whether this choice makes the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish or not.
 
 This discussion exposes another interesting point regarding the expected order of convergence near the boundary. As mentioned in the previous paragraph, the solution will, in particular, make the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish. However, this is a statement about the analytic solution, which holds for the numerical one only up to solution error. Denoting by $h$ the grid spacing near the boundary for a certain resolution, the solution error is proportional to $h^n$ for a $n^{th}-$order finite difference scheme. Since the closest point to the boundary has $q=h$, the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ will be proportional to $h^{n-2}$ for the numerical solution of a $n^{th}-$order finite difference scheme. Therefore we would expect convergence at order $n-2$ near the boundary. This is not what we observe: for a second order difference scheme, we obtain second order convergence over the entire grid (as shown in~\ref{sec:convbulk}). Possible reasons for this were suggested in CITE 1201.2132v3: the misleading picture arising from the near-boundary expansion of the evolution equations as opposed to the correct description coming from the complete evolution, or hidden benefits of our gauge choice. However, this point is still lacking a thorough explanation.
 
@@ -572,29 +572,29 @@ In this Section we show snapshots for some of the boundary quantities computed i
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensity/sphereplots_bdyenergydensity_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density at the boundary.
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensity/sphereplots_bdyenergydensity_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density at the boundary (L3p5 resolution, Nx=487).
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the initial AdS mass $M=0.4109047647294596$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary.
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the AdS mass of T=5.6 $M=0.410594$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary (L3p5 resolution, Nx=487).
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyanisotropy/sphereplots_bdyanisotropy_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary.
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyanisotropy/sphereplots_bdyanisotropy_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary (L3p5 resolution, Nx=487).
         }\label{fig:snapshotsbdyphi}}
 \end{figure}
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyphi/sphereplots_bdyphi_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of scalar field at the boundary.
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyphi/sphereplots_bdyphi_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of scalar field at the boundary (L3p5 resolution, Nx=487).
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
@@ -602,8 +602,8 @@ In this Section we show snapshots for some of the boundary quantities computed i
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3/phi1/phi1_L3_snapshots_2_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of the scalar field on the $z=0$ slice.
+        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3p5/phi1/phi1_L3p5_snapshots_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of the scalar field on the $z=0$ slice (L3p5 resolution, Nx=487). IGNORE THE AH FOR NOW
         }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
@@ -628,14 +628,14 @@ In this Section we show snapshots for some of the boundary quantities computed i
         }\label{fig:L2norm_quasisettrace-crop}}
 \end{figure}
 
-\begin{figure}%
-    \centering
-    \subfloat[x-dependency]{{\includegraphics[width=3.0in]{plots/bulkplots/L2/relkretsch/fullplotxcoordrelkretschL2res-cropped.pdf} }}%
-    \qquad
-    \subfloat[y-dependency]{{\includegraphics[width=3.0in]{plots/bulkplots/L2/relkretsch/fullplotycoordrelkretschL2res-cropped.pdf} }}%
-    \caption{Time evolution of Kretschmann: the Kretschmann scalar of the solution approaches the one for Schwarzschild-AdS}%
-    \label{fig:example}%
-\end{figure}
+%\begin{figure}%
+%    \centering
+%    \subfloat[x-dependency]{{\includegraphics[width=3.0in]{plots/bulkplots/L2/relkretsch/fullplotxcoordrelkretschL2res-cropped.pdf} }}%
+%    \qquad
+%    \subfloat[y-dependency]{{\includegraphics[width=3.0in]{plots/bulkplots/L2/relkretsch/fullplotycoordrelkretschL2res-cropped.pdf} }}%
+%    \caption{Time evolution of Kretschmann: the Kretschmann scalar of the solution approaches the one for Schwarzschild-AdS}%
+%    \label{fig:example}%
+%\end{figure}
 
 
 
