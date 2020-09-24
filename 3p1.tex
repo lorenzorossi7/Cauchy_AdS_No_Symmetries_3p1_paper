@@ -550,12 +550,19 @@ Since the AdS boundary generally does not lie on points of the Cartesian grid, t
 
 \section{Results}\label{sec:results}
 
+In this Section we discuss the predominant features of the long-time evolution of time-symmetric initial data in the presence of a scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
+\begin{eqnarray}
+\bar{\varphi}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
+\tilde{r}(x,y,z)&\equiv&\sqrt{ x^2(1-e_x^2)+ y^2(1-e_y^2)+ z^2(1-e_z^2)}, \nonumber
+\end{eqnarray}
+where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. We evolve this initial data up to about 10 light-crossing times, $t=31$.  We will focus, separately, on quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
+
 - Intro
 . long run 
 . completely asymmetric scalar field initial data
 . convergence of bulk and boundary quantities
 . preliminary conclusions about physical properties
-In this Section we present the details of a representative run starting from initial data with a completely asymmetric massless scalar scalar field. We will focus, separately, on quantities defined on the bulk of the numerical grid and quantities defined on the AdS boundary. We aim to show that these converge to their exact versions as we increase the grid resolution, and to draw some preliminary conclusions about physical properties of the solution, which will be analysed thoroughly in the future.
+%In this Section we present the details of a representative run starting from initial data with a completely asymmetric massless scalar scalar field. We will focus, separately, on quantities defined on the bulk of the numerical grid and quantities defined on the AdS boundary. We aim to show that these converge to their exact versions as we increase the grid resolution, and to draw some preliminary conclusions about physical properties of the solution, which will be analysed thoroughly in the future.
 
 
 
@@ -563,47 +570,14 @@ In this Section we present the details of a representative run starting from ini
 
 - Boundary Stress-Energy Tensor .extrapolation technique .expression for components . analytic tracelessness .analytic conservation .convergence . tracelessness .conservation
 
-\subsection{Boundary stress-energy tensor}
-\label{sec:resbouset}
-
-In this Section we show snapshots for some of the boundary quantities computed in Section~\ref{sec:bouset2}.
-%Since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use first order extrapolation from bulk point values (see~\ref{sec:extrapconvbdy} for the details on how this is implemented). 
-%In particular, we use first order extrapolation as this is the one that gives the best approximation for $<trT>_{CFT}$, as shown in Fig. [$L^2$ norm of trace for first, second and third order extrapolation].
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensity/sphereplots_bdyenergydensity_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density at the boundary (L3p5 resolution, Nx=487).
-        }\label{fig:snapshotsenergydensity}}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the AdS mass of T=5.6 $M=0.410594$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary (L3p5 resolution, Nx=487).
-        }\label{fig:snapshotsenergydensity}}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyanisotropy/sphereplots_bdyanisotropy_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary (L3p5 resolution, Nx=487).
-        }\label{fig:snapshotsbdyphi}}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyphi/sphereplots_bdyphi_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of scalar field at the boundary (L3p5 resolution, Nx=487).
-        }\label{fig:snapshotsenergydensity}}
-\end{figure}
-
 \subsection{Collapse and ringdown}\label{sec:results}
+
+We focus here on the evolution of bulk quantities (DECIDE IF WE INCLUDE THE RIEMANN CUBE-KRETSCHMANN COMPARISON). Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field profile $\bar{\varphi}$ on the equatorial plane $z=0$. At $t=0$, we can see the shape of the initial Gaussian profile. At this time, the asymmetry is too small to be visible. Soon after, the scalar field collapses to form a black hole before bouncing off the AdS boundary, as shown by the formation of an apparent horizon. The approximate spherical symmetry of the spacetime at an early stage is confirmed by the fact that the apparent horizon is found for the first time at $t=0.3$ (FIND THE PRECISE TIME IN THE HIGHEST RESOLUTION RUN), which is of order $\mathcal{O}(A^2)$ as predicted in [CITE Bizon-Rostorowski] for spherically symmetric collapse. However, the asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. Furthermore, we see that the largest part of the scalar field slowly disappears from the exterior spacetime by entering the apparent horizon. At late times (BE MORE SPECIFIC), the value of the scalar field becomes consistent with 0 up to solution error (estimated by comparing $\bar{\varphi}$ at different resolutions) and the spacetime settles down to a Schwarzschild-AdS black hole.
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3p5/phi1/phi1_L3p5_snapshots_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of the scalar field on the $z=0$ slice (L3p5 resolution, Nx=487). IGNORE THE AH FOR NOW
+\parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3p5 resolution, $N_x=N_y=N_z=487$). In each plot, the black square denotes the boundary of the numerical grid. The external boundary of the coloured part is the AdS boundary $\rho=1$, where $\bar{\varphi}=0$ as imposed by the boundary condition. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are obtained reducing the AH ellipse semi-axes by a factor $ex_{rbuf}=0.35$.
         }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
@@ -626,6 +600,39 @@ In this Section we show snapshots for some of the boundary quantities computed i
         \includegraphics[width=4.0in,clip=true]{plots/timeseries/L2norm_quasiset_trace/fullplotL2normtraceL2L3res-cropped.pdf}
 \parbox{5.0in}{\caption{Time evolution for $L^2$ norm of trace of quasi-local energy-momentum tensor of the boundary CFT at different resolutions.
         }\label{fig:L2norm_quasisettrace-crop}}
+\end{figure}
+
+\subsection{Boundary stress-energy tensor}
+\label{sec:resbouset}
+
+In this Section we show snapshots for some of the quantities computed in Section~\ref{sec:bouset2} on the boundary $S^2$, obtained by third order extrapolation.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensity/sphereplots_bdyenergydensity_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsenergydensity}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the AdS mass of T=5.6 $M=0.410594$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsenergydensity}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyanisotropy/sphereplots_bdyanisotropy_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsbdyphi}}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyphi/sphereplots_bdyphi_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of scalar field at the boundary (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
 %\begin{figure}%
