@@ -286,8 +286,7 @@ The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $
 The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
 We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.15$.
 
-We search for apparent horizons (AH) using a flow method, and use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain.
-At the excision surface, the usual equations of motion are solved using one-sided stencils. 
+We search for the position $R(\theta,\phi)$ of the apparent horizons (AH) using a flow method (MORE DETAILS ON THIS?). A $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ grid with resolution $N_\theta\times N_\phi=9\times 17$ is enough to find the AH in the simulation considered in Section \ref{sec:results}. We use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain. At the excision surface, the usual equations of motion are solved using one-sided stencils. 
 Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
 
 \subsection{Cartesian Evolution Variables and Boundary Conditions}\label{subsec:cartevvarboucon}
@@ -503,21 +502,28 @@ We see that the imposition of boundary conditions, required by the initial-bound
 
 This discussion exposes another interesting point regarding the expected order of convergence near the boundary. As mentioned in the previous paragraph, the solution will, in particular, make the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish. However, this is a statement about the analytic solution, which holds for the numerical one only up to solution error. Denoting by $h$ the grid spacing near the boundary for a certain resolution, the solution error is proportional to $h^n$ for a $n^{th}-$order finite difference scheme. Since the closest point to the boundary has $q=h$, the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ will be proportional to $h^{n-2}$ for the numerical solution of a $n^{th}-$order finite difference scheme. Therefore we would expect convergence at order $n-2$ near the boundary. This is not what we observe: for a second order difference scheme, we obtain second order convergence over the entire grid (as shown in~\ref{sec:convbulk}). Possible reasons for this were suggested in CITE 1201.2132v3: the misleading picture arising from the near-boundary expansion of the evolution equations as opposed to the correct description coming from the complete evolution, or hidden benefits of our gauge choice. However, this point is still lacking a thorough explanation.
 
-\section{Boundary stress-energy tensor}
+\section{Boundary scalar field and stress-energy tensor}
 \label{sec:bouset2}
 
-In the code we output the components of the stress-energy tensor of the conformal field theory (CFT) at the time-like AdS boundary. In this Section, we obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in~\ref{sec:sphevvarboucon}, through the transformation \eref{eq:cartosph}.
+In the code we output the scalar field and the components of the stress-energy tensor of the conformal field theory (CFT) at the time-like AdS boundary. In this Section, we obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in~\ref{sec:sphevvarboucon}, through the transformation \eref{eq:cartosph}.
+
+To compute the scalar field of the boundary CFT, $\langle \bar{\varphi}\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have 
+\begin{equation}
+\langle \bar{\varphi}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}\bar{\varphi}.
+\end{equation}
 
 %Their expressions are more easily obtained and displayed in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
-The first step is to compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, following the prescription in  [CITE hep-th/9902121]. We have
+Similarly, to compute the stress-energy tensor of the boundary CFT, $\langle T_{ij}\rangle_{CFT}$, we first compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at $\partial M_q$ as prescribed in  [CITE hep-th/9902121]. We have
 \begin{equation}
+\label{eq:qslocset}
 ^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \gamma_{\alpha\beta}-\frac{2}{L}\gamma_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
 \end{equation}
-where $\Theta_{\alpha\beta}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$. (Notice the different minus sign in the last term w.r.t. to  [CITE hep-th/9902121] ). We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e. near the boundary.
+where $\Theta_{\alpha\beta}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$. (Notice the different sign in the last term of \eref{eq:qslocset} w.r.t. to  [CITE hep-th/9902121] ). We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e. near the boundary.
 Restricting to the 3 coordinates on the AdS boundary at $\rho=1$, i.e. $x^i=(t,\theta,\phi)$, this enables us to compute the boundary stress-energy tensor as
 \begin{equation}
 \langle T_{ij}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ij}.
 \end{equation}
+Indices $i,j,k,\dots$ on the AdS boundary are lowered or raised by the metric of the AdS boundary, $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
 From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/9902121]. At each time $t$ of evolution, we take a spacelike hypersurface $\Sigma$ in $\partial M_q$, with induced 3-metric $\sigma_{\mu\nu}=\Sigma_{\mu\nu}-u_\mu u_\nu$, where $u^\mu$ is the future pointing unit vector normal to $\Sigma$ in $\partial M_q$, lapse $N$ and shift $N^i$. The AdS mass is
 \begin{equation}
@@ -538,8 +544,9 @@ while for the AdS mass
 \begin{equation}
 M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
 \end{equation}
+From the stress-energy tensor, we can solve the eigenvalue problem $\langle T^i_{\;\;j}\rangle_{CFT} v^j=\lambda_v v^i$ at each point of the AdS boundary in order to obtain the energy density of the boundary CFT, $\epsilon_{CFT}$, as the eigenvalue associated with the unique (up to rescaling) time-like vector, and the anisotropy $(\Delta p)_{CFT}\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated, respectively, with the remaining two spacelike eigenvectors.
 
-One useful quantity to compute is the trace of the stress-energy tensor, $\langle trT\rangle_{CFT}=\gamma^{ij} \langle T_{ij}\rangle_{CFT}$, where $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ is the conformal metric at the AdS boundary. We obtain
+One useful quantity to compute is the trace of the stress-energy tensor, $\langle trT\rangle_{CFT}=\gamma^{ij} \langle T_{ij}\rangle_{CFT}$. We obtain
 \begin{equation}
 \langle trT\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
 \end{equation}
@@ -550,12 +557,13 @@ Since the AdS boundary generally does not lie on points of the Cartesian grid, t
 
 \section{Results}\label{sec:results}
 
-In this Section we discuss the predominant features of the long-time evolution of time-symmetric initial data in the presence of a scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
+In this Section we discuss the most evident features of the long-time evolution of time-symmetric initial data in the presence of a scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
 \begin{eqnarray}
+\label{eq:scaGaupro}
 \bar{\varphi}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
 \tilde{r}(x,y,z)&\equiv&\sqrt{ x^2(1-e_x^2)+ y^2(1-e_y^2)+ z^2(1-e_z^2)}, \nonumber
 \end{eqnarray}
-where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. We evolve this initial data up to about 10 light-crossing times, $t=31$.  We will focus, separately, on quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
+where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. We evolve this initial data up to $t=31$ (approximately 10 light crossing times).  We will focus, separately, on quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
 
 - Intro
 . long run 
@@ -570,14 +578,14 @@ where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3,
 
 - Boundary Stress-Energy Tensor .extrapolation technique .expression for components . analytic tracelessness .analytic conservation .convergence . tracelessness .conservation
 
-\subsection{Collapse and ringdown}\label{sec:results}
+\subsection{Collapse and ringdown}\label{sec:rescolring}
 
-We focus here on the evolution of bulk quantities (DECIDE IF WE INCLUDE THE RIEMANN CUBE-KRETSCHMANN COMPARISON). Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field profile $\bar{\varphi}$ on the equatorial plane $z=0$. At $t=0$, we can see the shape of the initial Gaussian profile. At this time, the asymmetry is too small to be visible. Soon after, the scalar field collapses to form a black hole before bouncing off the AdS boundary, as shown by the formation of an apparent horizon. The approximate spherical symmetry of the spacetime at an early stage is confirmed by the fact that the apparent horizon is found for the first time at $t=0.3$ (FIND THE PRECISE TIME IN THE HIGHEST RESOLUTION RUN), which is of order $\mathcal{O}(A^2)$ as predicted in [CITE Bizon-Rostorowski] for spherically symmetric collapse. However, the asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. Furthermore, we see that the largest part of the scalar field slowly disappears from the exterior spacetime by entering the apparent horizon. At late times (BE MORE SPECIFIC), the value of the scalar field becomes consistent with 0 up to solution error (estimated by comparing $\bar{\varphi}$ at different resolutions) and the spacetime settles down to a Schwarzschild-AdS black hole.
+We describe here the evolution of bulk quantities (DECIDE IF WE INCLUDE THE RIEMANN CUBE-KRETSCHMANN COMPARISON). Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field profile $\bar{\varphi}$ on the equatorial plane $z=0$. Notice that, in all of these, $\bar{\varphi}=0$ at the AdS boundary as required by the Dirichlet boundary condition. At $t=0$, we see the shape of the initial Gaussian profile. At this time, the asymmetry is too small to be visible. Soon after, the scalar field collapses to form a black hole, as shown by the formation of an apparent horizon, without ever bouncing off the AdS boundary. The approximate spherical symmetry of the spacetime at an early stage is confirmed by the fact that the apparent horizon is found for the first time at $t=0.3$ (FIND THE PRECISE TIME IN THE HIGHEST RESOLUTION RUN), which is of order $\mathcal{O}(A^2)$ as predicted in [CITE Bizon-Rostorowski] for spherically symmetric collapse. However, the asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. Furthermore, we see that the largest part of the scalar field progressively disappears from the exterior part of the spacetime by entering the apparent horizon, hence the amplitude of the scalar field decreases. At later times (BE MORE SPECIFIC), the value of the scalar field becomes consistent with 0 up to solution error (estimated by comparing $\bar{\varphi}$ at different resolutions) and the spacetime settles down to a Schwarzschild-AdS black hole. (GOOD PLACE TO ATTACH THE RIEMANN CUBE-KRETSCHMANN COMPARISON)
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3p5/phi1/phi1_L3p5_snapshots_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3p5 resolution, $N_x=N_y=N_z=487$). In each plot, the black square denotes the boundary of the numerical grid. The external boundary of the coloured part is the AdS boundary $\rho=1$, where $\bar{\varphi}=0$ as imposed by the boundary condition. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are obtained reducing the AH ellipse semi-axes by a factor $ex_{rbuf}=0.35$.
+\parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3p5 resolution, $N_x=N_y=N_z=487$). In each plot, the black square denotes the boundary of the numerical grid, i.e. $x=\pm 1$ and $y=\pm 1$. The external boundary of the coloured part is the AdS boundary $\rho=1$. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are the AH ellipse semi-axes reduced by a factor $1-ex_{rbuf}=0.65$.
         }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
@@ -602,37 +610,51 @@ We focus here on the evolution of bulk quantities (DECIDE IF WE INCLUDE THE RIEM
         }\label{fig:L2norm_quasisettrace-crop}}
 \end{figure}
 
+
+
+
 \subsection{Boundary stress-energy tensor}
 \label{sec:resbouset}
 
-In this Section we show snapshots for some of the quantities computed in Section~\ref{sec:bouset2} on the boundary $S^2$, obtained by third order extrapolation.
+In this section we look at snapshots at fixed $t$ on the boundary $S^2$ at $\rho=1$ for some of the quantities at the AdS boundary, calculated in Section~\ref{sec:bouset2}. All the plots are obtained from bulk quantities via third order extrapolation. The only exception is the $t=0$ plot of Figure \ref{fig:snapshotsscalarfield}: this is computed analytically from the initial distorted Gaussian profile \eref{eq:scaGaupro}, as extrapolation would give values smaller than the solution error of the function. 
+
+Figure \ref{fig:snapshotsbdyphi} shows the scalar field of the boundary CFT, $\langle \bar{\varphi}\rangle_{CFT}$.
+Unlike the $z=0$ slice snapshots of Figure \ref{fig:snapshotsscalarfield}, these sphere plots show the asymmetry in all three Cartesian direction. In fact, the asymmetry of the initial data is already visible at $t=0$, where the different values of eccentricities along the three Cartesian direction (largest along $x$ and smallest along $y$) are evident in this plot. At this time, the scalar field is overall very small, which is expected since the initial $\bar{\varphi}$, given by \eref{eq:scaGaupro}, is localised near $\rho=0$.
+As noticed in Figure \ref{fig:snapshotsscalarfield}, the asymmetry changes direction during evolution, but interestingly it is always strongest along $x$ and weakest along $y$ or viceversa. Furthermore, a direct comparison with Figure \ref{fig:snapshotsscalarfield} shows that the features present at a certain $t$ at the boundary take approximately $\pi/2\simeq1.6$ to reach the interior of the bulk, i.e. about half light-crossing time, as expected. At later times, similarly to the bulk, the scalar field at the boundary becomes negligible as the spacetime settles down to Schwarzschild-AdS.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyphi/sphereplots_bdyphi_L3p5_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of the scalar field of the boundary CFT, $\langle \bar{\varphi}\rangle_{CFT}$. The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter with threshold frequency $\omega=0.05$ (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsbdyphi}}
+\end{figure}
+
+Figure \ref{fig:snapshotsenergydensity} displays the energy density of the boundary CFT, $\epsilon_{CFT}$. At $t=0$ this is strongly asymmetric along the $x$-direction, as expected from the shape of the initial scalar field \eref{eq:scaGaupro}. After the formation of the apparent horizon, $\epsilon_{CFT}$ quickly becomes approximately uniform, as appropriate for the boundary energy density of Schwarzschild-AdS, and it remains essentially unchanged from $t=3.4$ onwards. Even though the boundary scalar field is non-vanishing in the early stages, it quickly becomes not large enough to affect the value of $\epsilon_{CFT}$.
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensity/sphereplots_bdyenergydensity_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary (L3p5 resolution, $N_x=487$).
+\parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary, obtained by third order extrapolation and smoothened via a low-pass filter with threshold frequency $\omega=0.05$ (L3p5 resolution, $N_x=487$).
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
+
+Figure \ref{fig:snapshotsenergydensityrelativetoSchw} displays the energy density of the boundary CFT relative to the Schwarzschild-AdS value, i.e. $\frac{\epsilon_{CFT}}{\epsilon_{CFT (S-AdS)}}-1$ where $\epsilon_{CFT (S-AdS)}=\frac{M}{4\pi}$ and for $M$ we use the AdS mass $M=0.410594$ of the last time shown, $t=5.6$. This quantity is initially significantly different from $\epsilon_{CFT (S-AdS)}$ but it quickly approaches its Schwarzschild-AdS analog and it remains essentially unchanged from $t=3.4$ onwards.
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyenergydensityrelativetoschw/sphereplots_bdyenergydensityrelativetoschw_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the AdS mass of T=5.6 $M=0.410594$, i.e. $\frac{\epsilon}{\epsilon_{Schw-AdS}}-1$, at the boundary (L3p5 resolution, $N_x=487$).
-        }\label{fig:snapshotsenergydensity}}
+\parbox{5.0in}{\caption{Snapshots of energy density relative to Schwarschild-AdS with the AdS mass of t=5.6, $M=0.410594$ i.e. $\frac{\epsilon_{CFT}}{\epsilon_{CFT (S-AdS)}}-1$, at the boundary (L3p5 resolution, $N_x=487$).
+        }\label{fig:snapshotsenergydensityrelativetoSchw}}
 \end{figure}
+
+Figure \ref{fig:snapshotsbdyanisotropy} displays the anisotropy of the boundary CFT $\Delta p_{CFT}$. This is at all times consistent with the vanishing value of the Schwarzschild-AdS case.
+
 
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyanisotropy/sphereplots_bdyanisotropy_L3p5_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of anisotropy at the boundary (L3p5 resolution, $N_x=487$).
-        }\label{fig:snapshotsbdyphi}}
-\end{figure}
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3p5/bdyphi/sphereplots_bdyphi_L3p5_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of scalar field at the boundary (L3p5 resolution, $N_x=487$).
-        }\label{fig:snapshotsenergydensity}}
+        }\label{fig:snapshotsbdyanisotropy}}
 \end{figure}
 
 %\begin{figure}%
