@@ -2,6 +2,8 @@
 \usepackage{iopams}  
 \usepackage{graphicx}
 \usepackage{subfig}
+%\usepackage{multicol}
+%\usepackage{subcaption}
 \usepackage{xcolor}
 \setlength\parindent{0pt}
 \setlength{\parskip}{13pt} %found this single-line pt value using \the\baselineskip
@@ -14,6 +16,7 @@
   London, \\ Mile End Road, London E1 4NS, United Kingdom}
 \ead{l.rossi@qmul.ac.uk}
 
+\iffalse
 \begin{abstract}
 We present the first proof-of-principle Cauchy evolutions of asymptotically AdS spacetimes with no symmetries.
 We use a numerical scheme that is based on the generalized harmonic form of the Einstein equations expressed in Cartesian coordinates.
@@ -24,10 +27,31 @@ We explicitly write down the gauge choice that achieves this in terms of a speci
 These preliminary results are a direct precursor to important specialized studies of AdS dynamics with no symmetry assumptions, most notably of gravitational collapse, and of the superradiant instability.
 \end{abstract}
 
+\begin{abstract}
+\textcolor{blue}{
+We present the first proof-of-principle Cauchy evolutions of asymptotically AdS spacetimes with no symmetries, employing a numerical scheme based on the generalized harmonic form of the Einstein equations.
+The main difficulty in removing all symmetry restrictions is to find a gauge choice of generalized harmonic source functions that is consistent with the AdS boundary conditions.
+A prescription to obtain an appropriate gauge choice is detailed in the context of 3+1 simulations of four dimensional spacetimes with a negative cosmological constant in global (asymptotically) Cartesian coordinates, with initial data sourced by a massless scalar field.
+For these simulations, we demonstrate stable and convergent Cauchy evolution of horizonless data, as well as data that undergoes gravitational collapse.
+We speculate that the achieved stability in a setting without symmetry requirements suggests that stable numerical evolution in AdS can be obtained through our prescription also in settings with $d\geq 4$ dimensions, various couplings with matter fields, and many types of global or non-global Poincar\'{e} coordinates.
+These results are a direct precursor to important specialized studies of AdS dynamics with no symmetry assumptions.}
+\end{abstract}
+\fi
+
+\begin{abstract}
+\textcolor{blue}{We present the first proof-of-principle Cauchy evolutions of asymptotically AdS spacetimes with no symmetries, employing a numerical scheme based on the generalized harmonic form of the Einstein equations.
+The main difficulty in removing all symmetry restrictions is to find a gauge choice of generalized harmonic source functions that is consistent with the AdS reflective boundary conditions.
+We detail a prescription to obtain an explicit gauge choice that achieves this.
+We suggest that our prescription would lead to stable evolution also in settings with $d\geq 4$ spacetime dimensions, various couplings with matter fields, and many (if not all) types of global or non-global Poincar\'{e} coordinates.
+We apply the prescription to perform the first long-time 3+1 simulations of four dimensional spacetimes with a negative cosmological constant in global (asymptotically) Cartesian coordinates, using initial data sourced by a massless scalar field.
+We demonstrate stable and convergent Cauchy evolution of horizonless data, as well as data that undergoes gravitational collapse.
+These results are a direct precursor to important specialized studies of AdS dynamics with no symmetry assumptions.}
+\end{abstract}
+
 
 \noindent{Keywords}: AdS, generalized harmonic, 3+1, superradiance, gravitational collapse
 
-\textcolor{blue}{This colour is for something we should discuss whether to add or not.}
+\textcolor{red}{This colour is for something we should discuss whether to add or not.}
 
 % Uncomment for Submitted to journal title message
 %\submitto{\JPA}
@@ -61,12 +85,22 @@ Second, the most interesting phenomena involve spacetimes that have very little 
 Third, for many of these phenomena, there is a variety of physical scales that must be adequately resolved to capture the correct physics.
 
 The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions.
-The results presented here are based on a code that solves the Einstein equations for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities. 
-This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
+The results presented here are based on a code that solves the Einstein equations coupled with matter fields for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities. 
+
+%The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions, by employing a code that solves the Einstein equations coupled with matter fields for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities.
+%This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses (asymptotically) Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
+
+\textcolor{blue}{As [complete list of papers using this code] demonstrate, the crucial feature to obtain stable evolution in AdS is a gauge choice of generalized harmonic source functions that is consistent with the conditions imposed at the AdS boundary.
+A gauge choice leading to stable numerical evolution has been found for certain type of coordinates in spacetimes with a certain degree of symmetry. (WE CAN EXPAND THIS WITH MORE DETAILS ABOUT PREVIOUS PAPERS)
+In this work, we detail a prescription that provides this gauge choice in settings with no symmetry assumptions for $d\geq 4$ spacetime dimensions, various couplings with matter fields, and many (if not all) types of global or non-global Poincar\'{e} coordinates, as long as reflective Dirichlet boundary conditions are imposed at the AdS boundary (as explained in Section~\ref{subsec:cartevvarboucon}).
+If we wish to evolve points at the centre of the grid, which is the case when we want to analyze gravitational collapse and black hole formation, global (asymptotically) Cartesian coordinates (defined precisely in Section~\ref{subsec:asyAdS}) are of particular interest as the Courant-Friedrichs-Lewy (CFL) condition does not restrict the size of the time step too severely (unlike, for example, in spherical coordinates), thus allowing reasonably short computing times for the simulations.
+In fact, these are the coordinates used in \cite{Bantilan:2017kok} to study the collapse of a massless scalar field in global $AdS_5$ with axisymmetry.
+In anticipation of similar studies, we choose to write our prescription for the case of global (asymptotically) Cartesian coordinates, in order to obtain the first stable evolution of asymptotically $AdS_4$ spacetimes with no symmetries on a Cartesian grid.
+}
 
 This article is organized as follows. 
-In Section~\ref{sec:setup} we describe the setup, and in Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations.
-In Section~\ref{sec:gauge_choice} we explicitly write down our gauge choice in terms of a specific choice of generalized harmonic source functions that stabilizes these evolutions with no symmetry.
+In Section~\ref{sec:setup} we describe the setup, and in Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations. We start by introducing Anti-de Sitter spacetime, then we discuss definitions and boundary conditions for asymptotically AdS spacetimes.
+In Section~\ref{sec:gauge_choice} we detail our prescription to obtain an explicit gauge choice in terms of a specific choice of generalized harmonic source functions in (asymptotically) Cartesian coordinates that stabilizes evolution with no symmetries.
 Section~\ref{sec:results} contains preliminary results from this new code, and we conclude with a discussion in Section~\ref{sec:Discussion}.
 
 
@@ -114,7 +148,7 @@ This brings the metric of AdS$_4$ into its final form
 
 \subsection{Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
 
-We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we see how they have been defined in the literature and we find the boundary conditions that such spacetimes must satisfy.
+We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we look at two different definitions for such spacetimes that have been provided in the literature, and the relation between them. In doing so, we also write down the boundary conditions that asymptotically AdS spacetimes must satisfy.
 
 %Their definition has been given in different ways in the literature, so we will have to state the one relevant for this study. 
 %In [CITE Henneaux-Teitelbom], the authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification) with the same topology as the AdS boundary, i.e. $\mathbb{R}\times S^2$.
@@ -327,9 +361,10 @@ For any given evolution variable, we thus take its Dirichlet boundary condition 
 
 
 
-\section{Gauge Choice}\label{sec:gauge_choice}
+\section{Gauge Choice Prescription}\label{sec:gauge_choice}
 
-The statement that we use Cartesian coordinates completely defines the coordinates only at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. Coordinates over the entire spacetime are fully determined only once we specify a gauge choice of source functions $H_\mu$. As we will see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. In this Section we sketch the procedure for finding a possible generalized harmonic gauge choice that has proven to provide stable Cauchy 3+1 evolution.
+The statement that we use Cartesian coordinates completely defines the coordinates only at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. Coordinates over the entire spacetime are fully determined only once we specify a gauge choice of source functions $H_\mu$. As we will see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. In this Section we detail the procedure for finding a possible generalized harmonic gauge choice that has proven to provide stable Cauchy 3+1 evolution.
+\textcolor{blue}{We present this using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. However, we believe this procedure can be followed in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields and many (if not all) global or non-global Poincar\'{e} coordinates, in order to obtain stable evolution when using reflective Dirichlet boundary conditions.}
 %In this Section we sketch the procedure for finding the generalized harmonic gauge choice that achieves stable Cauchy 3+1 evolution for asymptotically AdS$_4$ spacetimes.
 For a more detailed discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}. 
 
@@ -503,7 +538,7 @@ As a first example, suppose we choose, instead, $\bar{H}_{(1)\rho}=\frac{3}{2}( 
 As a second example, let us now choose a gauge that becomes constant (possibily vanishing as in the harmonic gauge w.r.t. pure AdS) after some time $t_0$ in the evolution, i.e. $\bar{H}_{\alpha}(t>t_0)=\frac{3}{2}c_{\alpha},c_{\alpha}\in \mathbb{R}$ for some $t_0$. The fact that $A_{(1)tt}$ must vanish implies that $\bar{g}_{(1)\rho\rho}(t>t_0)=c_\rho$. This poses no restriction on the solution\textcolor{red}{, as shown in \ref{subsec:asyAdS} by the fact that $\bar{g}_{\rho\rho}$ can be absorbed by a re-definition of the coordinates near the boundary.} However, in practice, the code would fail to find such a solution (and it would develop infinities near the AdS boundary) since we are imposing no conditions on  $\bar{g}_{(1)\rho\rho}$ (the Dirichlet boundary condition $\bar{g}_{\rho\rho}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)\rho\rho}$, when needed).
 
 In summary, we see that the presence of boundary conditions, necessary in an initial-boundary value problem, is what restricts the gauge choice in the code. We also see that a gauge choice for which the vanishing of $A_{(1)\mu\nu}$ is either impossible or imposes conditions at the boundary not included in the Dirichlet boundary conditions cannot provide stable evolution.
-Our criterion leads to the simplest gauge choice that does not have these issues, thus it is expected to work. These arguments also suggest that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice such that $A_{(1)\mu\nu}=0$ is (i) possible and (ii) it does not  imposes conditions stronger than those given by the Dirichlet boundary conditions. In particular, the requirement that the gauge choice analytically satisfies $A_{(1)\mu\nu}=0$, which is our criterion, is not essential, because this will hold automatically (up to solution error) for any numerical solution; all we need is to be able to find such solution.
+Our criterion leads to the simplest gauge choice that does not have these issues, thus it is expected to work. These arguments also suggest that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice such that $A_{(1)\mu\nu}=0$ is (i) possible and (ii) it does not impose conditions stronger than those given by the Dirichlet boundary conditions. In particular, the requirement that the gauge choice analytically satisfies $A_{(1)\mu\nu}=0$, which is our criterion, is not essential, because this will hold automatically (up to solution error) for any numerical solution; all we need is to be able to find such solution.
 
 %Suppose we now choose, instead, a gauge that becomes harmonic with respect to pure AdS after some time $t_0$ in the evolution, i.e. $\bar{H}_{\alpha}(t>t_0)=0$ for some $t_0$. Since we argued above that the $q^{-2}$ term must vanish, \eref{eqn:efettsph} immediately tells us that we must have $\bar{g}_{(1)\rho\rho}(t>t_0)=0$, i.e. $\bar{g}_{\rho\rho}(t>t_0)$ must go to 0 as we approach the boundary faster than what the boundary conditions \eref{eq:sphbounconh} impose. This poses no restriction on the solution, as shown in \ref{subsec:asyAdS} by the fact that $\bar{g}_{\rho\rho}$ can be absorbed in a re-definition of the coordinates near the boundary. However, in practice, the code would fail to find such a solution (and it would develop infinities near the AdS boundary) since the Dirichlet boundary condition $\bar{g}_{\rho\rho}|_{\rho=1}=0$ does not enforce $\bar{g}_{(1)\rho\rho}=0$ when needed. In summary, we see that the presence of boundary conditions, necessary for an initial-boundary value problem, is what restricts the gauge choice in the code. We also see that a gauge choice for which the vanishing of the leading order of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ is either impossible (e.g. $\bar{H}_{(1)\rho}=\frac{3}{2} \bar{g}_{(1)\rho\rho}+c, where c\neq0$ is constant) or implies a fall-off of the metric components stronger than the one given by the boundary conditions (as in the does not provide stable evolution
 
@@ -601,8 +636,8 @@ We describe here the evolution in the bulk consisting of a short phase, in which
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3p5/phi1/phi1_L3p5_snapshots_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3p5 resolution, $N_x=N_y=N_z=487$). In each plot, the black square denotes the boundary of the numerical grid, i.e. $x=\pm 1$ and $y=\pm 1$. The external boundary of the coloured part is the AdS boundary $\rho=1$. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are the AH ellipse semi-axes reduced by a factor $1-ex_{rbuf}=0.65$.
+        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/L3/phi1/phi1_L3_snapshots_2by2.png}
+\parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3 resolution, $N_x=N_y=N_z=325$). In each plot, the black square denotes the boundary of the numerical grid, i.e. $x=\pm 1$ and $y=\pm 1$. The external boundary of the coloured part is the AdS boundary $\rho=1$. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are the AH ellipse semi-axes reduced by a factor $1-ex_{rbuf}=0.65$.
         }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
@@ -611,6 +646,7 @@ The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scal
 
 This can be seen in Figure [Relative Riemann cube-relative Kretschmann], in which we compare the solution to the Schwarzschild-AdS metric as follows. We compute the Riemann cube scalar $R^3=R_{\mu\nu\rho\sigma}R^{\rho\sigma\gamma\delta}R_{\gamma\delta}^{\;\;\;\;\mu\nu}$, the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ and their corresponding values for pure $AdS_4$, $R^3_{AdS}$ and $K_{AdS}$, in order to show the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the Kretschmann scalar $\frac{K}{K_{AdS}}-1$ along lines at $y=z=0$ and $x=z=0$ for the solution at different resolutions (coloured lines) and for the Schwarzschild-AdS spacetime (black line). The vertical lines denote the value of $\frac{K}{K_{AdS}}-1$ at the apparent horizon (also event horizon for Schwarzschild-AdS). Notice that $\frac{K}{K_{AdS}}-1=0$ at the AdS boundary by construction, so going to larger values of $\frac{K}{K_{AdS}}-1=0$ is equivalent to moving towards the centre of the grid, therefore the vertical lines give an indication of the position of the AH relative to the AdS boundary.
 At a sufficiently late time, the spacetime sufficiently close to the AdS boundary is almost identical to Schwarzschild-AdS and it starts to differ from it as we get close to the AH (this stops to be true, as expected, at some value of $\frac{K}{K_{AdS}}-1$ corresponding to a position very close to the excision surface). However, the higher the resolution the closer we get to Schwarzschild-AdS even inside the AH.
+Finally, we notice that for low resolutions a persistent asymmetry between the $x$ and $y$ axes is visible also at late times both outside and inside the horizon, but this disappears for high enough resolutions.
 
 %\begin{figure}[h]
 %        \centering
@@ -620,7 +656,32 @@ At a sufficiently late time, the spacetime sufficiently close to the AdS boundar
 %
 %\end{figure}
 
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=4.5in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combinedplotrelRieCubeofrelkretschallres.pdf}
+\parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by $M_{AdS}(t=31)$. Top panel: plot obtained using values on the $x$ axis (i.e. $y=z=0$). Bottom panel: plot obtained using values on the $y$ axis (i.e. $x=z=0$).%Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates (L3 resolution, $N_x=N_y=N_z=325$). In each plot, the black square denotes the boundary of the numerical grid, i.e. $x=\pm 1$ and $y=\pm 1$. The external boundary of the coloured part is the AdS boundary $\rho=1$. The black ellipse is the elliptic approximation of the Apparent Horizon (AH) at each time step. The internal boundary of the coloured region is the excision surface: we excise points inside an ellipse whose semi-axes are the AH ellipse semi-axes reduced by a factor $1-ex_{rbuf}=0.65$.
+        }\label{fig:snapshotsscalarfield}}
+\end{figure}
 
+\iffalse
+\begin{figure*}
+ \centering
+\begin{multicols}{2}
+    \includegraphics[width=3.1in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/y00_z00_plotalongxrelRieCubeofrelkretschallres.pdf}\par 
+    \includegraphics[width=3.1in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/x00_z00_plotalongyrelRieCubeofrelkretschallres.pdf}\par 
+    \end{multicols}
+\parbox{5.0in}{\caption{caption here}}
+\end{figure*}
+\fi
+
+\iffalse
+\begin{figure}
+  \centering
+  \subfloat{\includegraphics[width=4.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/y00_z00_plotalongxrelRieCubeofrelkretschallres.pdf} \label{fig:a}} \\
+  \subfloat{\includegraphics[width=4.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/x00_z00_plotalongyrelRieCubeofrelkretschallres.pdf} \label{fig:b}}
+  \caption{a + b} \label{fig:AB}
+\end{figure}
+\fi
 
 
 \subsection{Boundary scalar field and stress-energy tensor}
@@ -630,7 +691,7 @@ In this section we consider the evolution of quantities on the boundary $S^2$ at
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=4.0in,clip=true]{plots/timeseries/AdSmass/fullplotfillregtAdSmassallres.pdf}
+        \includegraphics[width=5.0in,clip=true]{plots/timeseries/AdSmass/fullplotfillregtAdSmassallres.pdf}
 \parbox{5.0in}{\caption{Time evolution of AdS mass for different resolutions.
         }\label{fig:AdSmass-crop}}
 \end{figure}
@@ -685,7 +746,7 @@ Figure \ref{fig:snapshotsenergydensity} displays the energy density of the bound
         }\label{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}}
 \end{figure}
 
-More information about the energy density at the boundary can be deduced from Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}. Here we use the $L^2$ norm of $\langle trT\rangle_{CFT}$ as an error estimate for boundary quantities. We notice that, except at very early times, (i) the difference between maximum and minimum of $\epsilon_{CFT}$ (purple line) is consistent with 0, which shows that the energy density becomes uniform in time; (ii) the $L^2$ norm of the difference between $\epsilon_{CFT}$ and its Schwarzschild-AdS value $\epsilon_{(S-AdS) CFT}=\frac{M}{4\pi}$ (green line), computed using the value of the AdS mass at $t=31$ for the highest resolution, is consistent with 0, which shows that the energy density settles down to $\epsilon_{(S-AdS) CFT}$, as expected. Furthermore, Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf} shows that the $L^2$ norm of $(\Delta p)_{CFT}$ (blue line) is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
+More information about the energy density at the boundary can be deduced from Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}. Here we use the $L^2$ norm of $\langle trT\rangle_{CFT}$ (red line) as an error estimate for boundary quantities. We notice that, except at very early times, (i) the difference between maximum and minimum of $\epsilon_{CFT}$ (blue line) is consistent with 0, which shows that the energy density becomes uniform in time; (ii) the $L^2$ norm of the difference between $\epsilon_{CFT}$ and its Schwarzschild-AdS value $\epsilon_{(S-AdS) CFT}=\frac{M}{4\pi}$ (green line), computed using the value of the AdS mass at $t=31$ for the highest resolution, is consistent with 0 and decreasing in time, which shows that the energy density settles down to $\epsilon_{(S-AdS) CFT}$, as expected. Furthermore, Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf} shows that the $L^2$ norm of $(\Delta p)_{CFT}$ (magenta line) is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
 
 %\begin{figure}%
 %    \centering
@@ -701,12 +762,12 @@ More information about the energy density at the boundary can be deduced from Fi
 
 \section{Discussion}\label{sec:Discussion}
 
-We have presented the first proof-of-principle Cauchy evolution of an asymptotically AdS spacetime governed by the Einstein-Klein-Gordon equations with no symmetry assumptions. Stability of the numerical code is achieved through the gauge choice \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} near the AdS boundary. The reliability of the code has been tested and a brief analysis of the numerical solution for stationary initial data with completely asymmetric Gaussian massless scalar field has been provided.
+We have presented the first proof-of-principle Cauchy evolution of an asymptotically AdS spacetime determined by the Einstein-Klein-Gordon equations with no symmetry assumptions. Stability of the numerical code is achieved through the gauge choice \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} near the AdS boundary. The reliability of the code has been tested and a brief analysis of the numerical solution for stationary initial data with completely asymmetric Gaussian massless scalar field has been provided.
 
 We observe the collapse of the scalar field into a black hole and the ringdown to Schwarzschild-AdS, in both bulk and boundary quantities.
 Deviations from Schwarzschild-AdS at late times are consistent with 0 within estimates of the numerical error, however the dominant spherical harmonic in the decomposition of the spatial profile of the scalar field in the bulk becomes higher and higher during the evolution. These non-spherically symmetric deviations might trigger a non-linear instability (unlike spherically symmetric deviations, under which Schwarzschild-AdS is stable [cite Holzegel, Smulevici]) that can only be revealed by evolving for longer times. More evidence could be found by decomposing the scalar field profile into spherical harmonics and showing that the radial part is non-vanishing near the boundary for a very long time. We leave this for future studies.
 
-\textcolor{blue}{In this work we limited ourselves to $d=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$.}
+In this work we limited ourselves to $d=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study 3+1 Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. Even more interestingly, perhaps, a comparison between \eref{eqn:target_gauge_xyz},\eref{eqn:target_gauge_t} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) ) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$. \textcolor{blue}{Furthermore, we see no obstacles in applying the scheme presented here to cases with different types of matter fields, different types of global coordinates, or even non-global Poincar\'{e} patches.}
 
 We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this code. The most direct application would be the study of gravitational collapse of a massless scalar field with zero angular momentum in $AdS_4$. This has been analyzed in spherical symmetry by [CITE Bizon-Rostworowski] and in axisymmetry by [Bantilan-Figueras-Kunesch], although the two studies probe different ranges for the amplitude of the scalar field, so a direct comparison cannot be made. Solving the evolution equations through our code, the details of the collapse could be analysed even further in full generality.
 
@@ -814,8 +875,8 @@ We use second-order accurate finite difference stencils, and there is a factor o
 Thus, we expect $Q$ to asymptote to $Q=2$ in the limit $\Delta\rightarrow0$.
 
 To show that the solution is converging to a solution of the Einstein equations, we compute an independent residual. 
-This is obtained by taking the numerical solution and substituting it into a discretized version of
-the Einstein equations, a component of which we denote $\Phi_\Delta$. 
+This is obtained by taking the numerical solution, substituting it into a discretized version of
+the Einstein equations, and picking the maximum value of all the components at each grid point, which we denote $\Phi_\Delta$. 
 The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions
 \begin{equation}\label{eq:qires}
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
@@ -824,7 +885,7 @@ Again, with second-order accurate finite difference stencils and with a factor o
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=4.0in,clip=true]{plots/timeseries/L2norm_iresallconvergence/fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
+        \includegraphics[width=5.0in,clip=true]{plots/timeseries/L2norm_iresallconvergence/fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
 \parbox{5.0in}{\caption{Time evolution for $L^2$ norm of convergence factor for independent residual of EFE at different resolutions.
         }\label{fig:L2norm_iresallconvergence-crop}}
 \end{figure}
