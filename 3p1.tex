@@ -70,7 +70,7 @@
 
 \begin{document}
 
-\baselineskip=1.1\baselineskip
+
 
  \begin{titlepage}
 
@@ -746,7 +746,7 @@ The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scal
 
 \begin{figure}[!h]
         \centering
-        \includegraphics[width=4.5in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combinedplotrelRieCubeofrelkretschallres.pdf}
+        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/option2_combinedplotrelRieCubeofrelkretschallres.pdf}
 \parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by the value of $M_{AdS}$ at that time. Top panel: plot obtained using values on the $x$ axis (i.e. $y=z=0$). Bottom panel: plot obtained using values on the $y$ axis (i.e. $x=z=0$).
         }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
 \end{figure}
@@ -980,16 +980,17 @@ Again, with second-order accurate finite difference stencils and with a factor o
 
 \section{Extrapolation Technique and Convergence at AdS Boundary}\label{sec:extrapconvbdy}
 
-As explained in Section~\ref{sec:bouset2}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In particular, we use first order extrapolation. In this Section we describe how grid points are chosen for extrapolation and we show convergence for the extrapolation scheme by computing the factor \eqref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is expected as a consequence of bulk convergence (see~\ref{sec:convbulk}) at the chosen points.
+As explained in Section~\ref{sec:bouset2}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this Section we describe how grid points are chosen for extrapolation%and we show convergence for the extrapolation scheme by computing the factor \eqref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is expected as a consequence of bulk convergence (see~\ref{sec:convbulk}) at the chosen points
+. For simplicity, we consider first order extrapolation (which uses two grid points). The following applies in a straightforward way to higher extrapolation orders.
 
 If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
 \begin{enumerate}
  \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $1^{st}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2)$ (where $p_1,p_2$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,p_2$. Theqrefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)+c_\Delta(p_1,p_2)\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eqref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2$ are the same for all 3 resolutions involved.
  
  
-\item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
+\item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous thin blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}). However, in practice, we see that we need to restrict the choice of suitable points to those satisfying $\rho<1-9\Delta/2$ (inside the thick blue line) and $\max(x,y,z)>1-\frac{17}{2}\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ (outside the black line), where $n_\Delta$ denotes the degree of the three resolutions used for convergence, $n_{9h/4}=0,n_{3h/2}=1,n_{h}=2$ (notice that $\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ is a constant for all three resolutions), in order to avoid unphysical of non-converging values of boundary quantities.
  \end{enumerate}
-Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
+Furthermore, among the points satisfying 1. and 2., we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
 
 %If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
 %\begin{enumerate}
@@ -1001,7 +1002,7 @@ Furthermore, among the points satisfying (i) and (ii), we want the ones that are
 
 \begin{figure}[h]
         \centering
-        \includegraphics[width=6.0in,clip=true]{plots/lego_circle/Lego_circle.pdf}
+        \includegraphics[width=5.0in,clip=true]{plots/lego_circle/Lego_circle_new.pdf}
 \parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for the lowest resolution, with grid spacing $\Delta$, among the three involved in a convergence test ($const.$ is chosen as the $z-$coordinate value of one of the points common to all three resolutions). We show a typical example in which common points are 4 grid points away from each other along each direction.
         }\label{fig:lego_circle}}
 \end{figure}
@@ -1009,7 +1010,7 @@ Furthermore, among the points satisfying (i) and (ii), we want the ones that are
 Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circle}), the extrapolation technique proceeds as follows:
  \begin{itemize}
  \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$. If two coordinates have the same value, then we pick $x$ over $y$ or $z$ and $y$ over $z$.
- \item take the next point, $p_2$, used for $1^{st}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy (i) ((ii) is trivially satisfied by construction). Each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
+ \item take the next point, $p_2$, used for $1^{st}-$order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy 1. (2. is trivially satisfied by construction). Each $p_2$ is represented in yellow in Fig.~\ref{fig:lego_circle}.
  \item use $1^{st}-$ order extrapolation on $f_\Delta(p_1),f_\Delta(p_{2})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Fig. ~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
  \item repeat the previous steps until the last suitable point.
  \end{itemize}
