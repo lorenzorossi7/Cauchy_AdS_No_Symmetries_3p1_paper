@@ -21,6 +21,7 @@
 \usepackage{colortbl}
 \usepackage{cite}
 \usepackage{parskip}
+\usepackage{mathtools}
 
 \usepackage{caption,subcaption,wrapfig}
 \usepackage[colorlinks=true,linktocpage=true,linkcolor=blue,citecolor=blue]{hyperref}
@@ -701,13 +702,13 @@ Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysic
 
 \section{Results}\label{sec:results}
 
-In this Section we discuss the most evident features of the long-time evolution of time-symmetric initial data in the presence of a massless scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
+In this Section we discuss the most evident features of the long-time evolution of time-symmetric initial data in the presence of a massless real scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
 \begin{eqnarray}
 \label{eq:scaGaupro}
 \bar{\varphi}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
 \tilde{r}(x,y,z)&\equiv&\sqrt{ x^2(1-e_x^2)+ y^2(1-e_y^2)+ z^2(1-e_z^2)}, \nonumber
 \end{eqnarray}
-where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. Starting from this matter field source, we obtain initial data for the metric by imposing time-symmetry at $t=0$ (i.e. the vanishing of the extrinsic curvature on the initial spacelike hypersurface, which makes the momentum constraint trivially satisfied) and solving the Hamiltonian constraint. We evolve this initial data up to $t=31$ in units of AdS radius $L=1$ (approximately 10 light crossing times).  We will focus, separately, on the evolution of quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
+where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. Starting from this matter field source, we obtain initial data for the metric by imposing time-symmetry at $t=0$ (i.e. the vanishing of the extrinsic curvature on the initial spacelike hypersurface, which makes the momentum constraint trivially satisfied) and solving the Hamiltonian constraint. See Appendix~\ref{sec:initdata} for more details. We evolve this initial data up to $t=31$ in units of AdS radius $L=1$ (approximately 10 light crossing times).  We will focus, separately, on the evolution of quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
 
 %- Intro
 %. long run 
@@ -736,18 +737,11 @@ We describe here the evolution in the bulk consisting of a short phase, in which
 Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field profile $\bar{\varphi}$ on the equatorial plane $z=0$. Notice that, in all of these, $\bar{\varphi}=0$ at the AdS boundary as required by the Dirichlet boundary condition. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts spreading towards the AdS boundary but, before reaching this, it is attracted towards the centre and forms an apparent horizon at $t=0.331481$ (in the highest resolution run with $N_x=325$ grid points along each cartesian direction). 
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. Furthermore, we see that the largest part of the scalar field progressively disappears from the exterior part of the spacetime by entering the apparent horizon, hence the amplitude of the scalar field decreases. At later times (BE MORE SPECIFIC), the value of the scalar field becomes consistent with 0 up to solution error (estimated by comparing $\bar{\varphi}$ at different resolutions) and the spacetime settles down to a Schwarzschild-AdS black hole.
 
-%\begin{figure}[h]
-%        \centering
-%        \includegraphics[width=4.0in,clip=true]{plots/timeseries/L2norm_quasiset_trace/fullplotL2normtraceL2L3res-cropped.pdf}
-%\parbox{5.0in}{\caption{Time evolution for $L^2$ norm of trace of quasi-local energy-momentum tensor of the boundary CFT at different resolutions.
-%        }\label{fig:L2norm_quasisettrace-crop}}
-%
-%\end{figure}
 
 \begin{figure}[!h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/option2_combinedplotrelRieCubeofrelkretschallres.pdf}
-\parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by the value of $M_{AdS}$ at that time. Top panel: plot obtained using values on the $x$ axis (i.e. $y=z=0$). Bottom panel: plot obtained using values on the $y$ axis (i.e. $x=z=0$).
+        \includegraphics[width=5.5in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combined_withzoom_fullplotrelRieCubeofrelkretschallres.pdf}
+\parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by the value of $M_{AdS}$ at that time. The black vertical line denotes the value of $\frac{K}{K_{AdS}}-1$ at the horizon of Schwarzschild-AdS. Relative Kretschmann increases as we move closer to the centre of the spacetime. Top panel: numerical curves are obtained from grid points on the $x$ axis (i.e. $y=z=0$). Bottom panel: numerical curves are obtained from grid points on the $y$ axis (i.e. $x=z=0$).
         }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
 \end{figure}
 
@@ -771,8 +765,8 @@ The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scal
 \end{figure}
 \fi
 
-This can be seen in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}, in which we compare the solution to the Schwarzschild-AdS metric as follows. We compute the Riemann cube scalar $R^3=R_{\mu\nu\rho\sigma}R^{\rho\sigma\gamma\delta}R_{\gamma\delta}^{\;\;\;\;\mu\nu}$, the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ and their corresponding values for pure $AdS_4$, $R^3_{AdS}$ and $K_{AdS}$, in order to show the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the Kretschmann scalar $\frac{K}{K_{AdS}}-1$ along lines at $y=z=0$ and $x=z=0$ for the solution at different resolutions (coloured lines) and for the Schwarzschild-AdS spacetime (black line). The vertical lines denote the value of $\frac{K}{K_{AdS}}-1$ at the apparent horizon (also event horizon for Schwarzschild-AdS). Notice that $\frac{K}{K_{AdS}}-1=0$ at the AdS boundary by construction, so going to larger values of $\frac{K}{K_{AdS}}-1=0$ is equivalent to moving towards the centre of the grid, theqrefore the vertical lines give an indication of the position of the AH relative to the AdS boundary.
-At a sufficiently late time, the spacetime sufficiently close to the AdS boundary is almost identical to Schwarzschild-AdS and it starts to differ from it as we get close to the AH (this stops to be true, as expected, at some value of $\frac{K}{K_{AdS}}-1$ corresponding to a position very close to the excision surface). However, the higher the resolution the closer we get to Schwarzschild-AdS even inside the AH.
+This can be seen in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}, in which we compare the numerical solution to the Schwarzschild-AdS metric as follows. We compute the Riemann cube scalar $R^3=R_{\mu\nu\rho\sigma}R^{\rho\sigma\gamma\delta}R_{\gamma\delta}^{\;\;\;\;\mu\nu}$, the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ and their corresponding values for pure $AdS_4$, $R^3_{AdS}$ and $K_{AdS}$, in order to show the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the Kretschmann scalar $\frac{K}{K_{AdS}}-1$ for the Schwarzschild-AdS spacetime (black line). We do the same for the numerical solution for different resolutions at grid points along the $x$ axis (i.e. at $y=z=0$, coloured lines of top panel) and the $y$ axis (i.e. at $x=z=0$, coloured lines of bottom panel). The black vertical line denotes the value of $\frac{K}{K_{AdS}}-1$ at the horizon of Schwarzschild-AdS. Notice that $\frac{K}{K_{AdS}}-1=0$ at the AdS boundary by construction, so going to larger values of $\frac{K}{K_{AdS}}-1$ is equivalent to moving towards the centre of the grid, therefore the vertical lines give an indication of the position of the AH relative to the AdS boundary.
+At a sufficiently late time, the plot indicates that, sufficiently close to the AdS boundary, the curvature of the numerical solution is almost identical to Schwarzschild-AdS. For clarity, this is shown using only values of the Riemann cube and Kretschmann scalars along the $x$ and $y$ axes, but we verified it for values from the entire grid. The numerical curvature starts to differ from the Schwarzschild-AdS profile as we get close to the AH (and it diverges strongly at values of $\frac{K}{K_{AdS}}-1$ corresponding to positions very close to the excision surface, as expected but not shown in the Figure). However, the higher the resolution the closer we get to Schwarzschild-AdS even inside the AH.
 Finally, we notice that for low resolutions a persistent asymmetry between the $x$ and $y$ axes is visible also at late times both outside and inside the horizon, but this disappears for high enough resolutions.
 
 
@@ -783,7 +777,7 @@ In this section we consider the evolution of quantities on the boundary $S^2$ at
 
 \begin{figure}[!h]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/timeseries/AdSmass/fullplotfillregtAdSmassallres.pdf}
+        \includegraphics[width=4.8in,clip=true]{plots/timeseries/AdSmass/fullplotfillregtAdSmassallres.pdf}
 \parbox{5.0in}{\caption{Time evolution of AdS mass for different resolutions.
         }\label{fig:AdSmass-crop}}
 \end{figure}
@@ -834,11 +828,11 @@ Figure \ref{fig:snapshotsenergydensity} displays the energy density of the bound
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/L2-norm_trace_anisotropy_energydensityminusschw_maxminusminenergydensity/fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity_L3.pdf}
-\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate from L2-norm of $\langle trT\rangle_{CFT}$. Boundary quantities are computed by third order extrapolation (L3 resolution, $N_x=325$).
+\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate, obtained from the deviation of the  $L^2$-norm of $\langle trT\rangle_{CFT}$ from its analytical zero value. Boundary quantities are computed by third order extrapolation (L3 resolution, $N_x=325$).
         }\label{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}}
 \end{figure}
 
-More information about the energy density at the boundary can be deduced from Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}. Here we use the $L^2$ norm of $\langle trT\rangle_{CFT}$ (red line) as an error estimate for boundary quantities. We notice that, except at very early times, (i) the difference between maximum and minimum of $\epsilon_{CFT}$ (blue line) is consistent with 0, which shows that the energy density becomes uniform in time; (ii) the $L^2$ norm of the difference between $\epsilon_{CFT}$ and its Schwarzschild-AdS value $\epsilon_{(S-AdS) CFT}=\frac{M}{4\pi}$ (green line), computed using the value of the AdS mass at $t=31$ for the highest resolution, is consistent with 0 and decreasing in time, which shows that the energy density settles down to $\epsilon_{(S-AdS) CFT}$, as expected. Furthermore, Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf} shows that the $L^2$ norm of $(\Delta p)_{CFT}$ (magenta line) is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
+More information about the energy density at the boundary can be deduced from Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}. Given that $\langle trT\rangle_{CFT}$ vanishes for a conformal field theory, the $L^2$-norm of the numerical values of $\langle trT\rangle_{CFT}$ (red line) is used as an error estimate for boundary quantities. We see that, except at very early times, (i) the difference between maximum and minimum of $\epsilon_{CFT}$ (blue line) is consistent with 0, which shows that the energy density becomes uniform in time; (ii) the $L^2$ norm of the difference between $\epsilon_{CFT}$ and its Schwarzschild-AdS value $\epsilon_{(S-AdS) CFT}=\frac{M}{4\pi}$ (green line), computed using the value of the AdS mass at $t=31$ for the highest resolution, is consistent with 0 and decreasing in time, which shows that the energy density settles down to $\epsilon_{(S-AdS) CFT}$, as expected. Furthermore, Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf} shows that the $L^2$ norm of $(\Delta p)_{CFT}$ (magenta line) is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
 
 %\begin{figure}%
 %    \centering
@@ -944,10 +938,90 @@ in spherical coordinates.
 
 Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no direct transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g. \eqref{eq:sphbouncondsoufunc} in spherical coordinates.
 
+\section{Initial Data}
+\label{sec:initdata}
+
+In this section we detail our choice of initial data. 
+Particular attention has to be paid in order to make a choice that is consistent with the desired gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} near the AdS boundary. We will denote Cartesian spatial coordinates by $x^m=(x,y,z)$ and the corresponding indices by $m,n$.
+
+Let us recall that we study the case of time-symmetric initial data, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{\mu\nu}|_{t=0}=0$. Given this and the choice of massless real scalar field profile \eqref{eq:scaGaupro}, the spatial components of the metric, $\bar{g}_{mn}|_{t=0}$, are determined by solving the Hamiltonian constraint via the multigrid hierarchy method mentioned in Section~\ref{sec:numerical_scheme}.
+All that remains to be determined is $\partial_t\bar{g}_{t m}|_{t=0}$ and $\bar{g}_{t m}|_{t=0}$.
+
+We have already noticed in the discussion below \ref{eqn:target_gauge_t} that the target gauge, via the generalized harmonic constraints, imposes the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its boundary value, we use the transition function
+  \begin{equation}
+  \label{eq:transfunc}
+    f_0(\rho) =
+    \begin{cases*}
+      1 & if $\rho\geq \rho_{0b}$, \\
+      1-R_0^3(6 R_0^2-15 R_0+10) & if $\rho_{0b} > \rho\geq\rho_{0a}$, \\
+      0        & otherwise,
+    \end{cases*}
+  \end{equation}
+where $R_0=(\rho_{0b}-\rho)/(\rho_{0b}-\rho_{0a})$ and $\rho_{0a},\rho_{0b}$ are the values between which the transition takes place, set to $\rho_{0a}=0.5,\rho_{0b}=0.9$ in our simulations.
+Thus, the condition on $\bar{g}_{(1)tt}|_{t=0}$ reads
+\begin{equation}
+\bar{g}_{tt}|_{t=0}=f_0(\bar{g}_{(1)xx}|_{t=0}+\bar{g}_{(1)yy}|_{t=0}+\bar{g}_{(1)zz}|_{t=0}).
+\end{equation}
+
+To conclude, the remaining initial variables can be chosen in a completely arbitrary way so we make the simplest choice everywhere on the grid:
+\begin{eqnarray}
+\partial_t\bar{g}_{t t}|_{t=0}&=&0 \\
+\partial_t\bar{g}_{t x}|_{t=0}&=&0\\
+\partial_t\bar{g}_{t y}|_{t=0}&=&0\\
+\partial_t\bar{g}_{t z}|_{t=0}&=&0\\
+\bar{g}_{t x}|_{t=0}&=&0 \\
+\bar{g}_{t y}|_{t=0}&=&0 \\
+\bar{g}_{t z}|_{t=0}&=&0.
+\end{eqnarray}
+
 \section{Gauge Choice in the Bulk}
 \label{sec:GCbulk}
 
-In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions near the boundary that provides stable evolution. However the choice in the rest of the computational domain is still arbitrary. In this Section we make this choice explicit.
+In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions to impose near the boundary in order to obtain stable evolution. Furthermore, the gauge at $t=0$, denoted by $\bar{H}_{\mu}^{(0)}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph}. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} on each spatial slice and with the initial values $\bar{H}_{\mu}^{(0)}$ during evolution. In this section we describe how these spatial and time transitions are achieved in our code.
+
+We make the simplest choice of $\bar{H}_\mu$ in the bulk by setting the source functions to zero. We then define the functions interpolating the bulk and boundary values:
+\begin{eqnarray}
+\label{eqn:extend_gauge_txyz}
+\bar{F}_t&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{tx}+y\bar{g}_{ty}+z\bar{g}_{tz}) \nonumber \\
+\bar{F}_x&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xx}+y\bar{g}_{xy}+z\bar{g}_{xz}) \nonumber \\
+\bar{F}_y&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xy}+y\bar{g}_{yy}+z\bar{g}_{yz}) \nonumber \\
+\bar{F}_z&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xz}+y\bar{g}_{yz}+z\bar{g}_{zz}),
+\end{eqnarray}
+where the transition function $f_1(\rho)$ is defined as $f_0(\rho)$ in \eqref{eq:transfunc} but with transition taking place between $\rho_{1 a}=0.0$ and $\rho_{1 b}=0.95$.
+Finally, the complete gauge, including the spatial and time transition to the target gauge, is chosen as
+%\begin{equation}
+%\end{equation}
+
+For the transitions, we employ the transition functions $f_1(\rho)$, defined as $f_0(\rho)$ in \eqref{eq:transfunc} but with transition taking place between $\rho_{1 a}=0.0$ and $\rho_{1 b}=0.95$.
+
+To this end, we define the transition function
+  \begin{equation}
+    h(\rho) =
+    \begin{cases*}
+      1 & if $\rho\geq \rho_d$, \\
+      1-R^3(6 R^2-15 R+10) & if $\rho_d\geq \rho\geq\rho_c$, \\
+      0        & otherwise,
+    \end{cases*}
+  \end{equation}
+where $R=(\rho_d-\rho)/(\rho_d-\rho_c)$ and $\rho_c,\rho_d$ are the values between which the transition takes place. With this, we define the extension of the target gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} in the bulk:
+\begin{eqnarray}\label{eqn:extend_gauge_txyz}
+\bar{F}_t&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{tx}+y\bar{g}_{ty}+z\bar{g}_{tz}) \nonumber \\
+\bar{F}_x&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xx}+y\bar{g}_{xy}+z\bar{g}_{xz}) \nonumber \\
+\bar{F}_y&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xy}+y\bar{g}_{yy}+z\bar{g}_{yz}) \nonumber \\
+\bar{F}_z&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xz}+y\bar{g}_{yz}+z\bar{g}_{zz}).
+\end{eqnarray}
+
+we define the transition function
+  \begin{equation}
+    h(\rho) =
+    \begin{cases*}
+      1 & if $\rho\geq \rho_d$, \\
+      1-R^3(6 R^2-15 R+10) & if $\rho_d\geq \rho\geq\rho_c$, \\
+      0        & otherwise,
+    \end{cases*}
+  \end{equation}
+where $R=(\rho_d-\rho)/(\rho_d-\rho_c)$ and $\rho_c,\rho_d$ are the values between which the transition takes place. We use
+
 
 \section{Convergence Tests in the Bulk}\label{sec:convbulk}
 
@@ -974,9 +1048,11 @@ Again, with second-order accurate finite difference stencils and with a factor o
 \begin{figure}[h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/timeseries/L2norm_iresallconvergence/fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
-\parbox{5.0in}{\caption{Time evolution for $L^2$ norm of convergence factor for independent residual of EFE at different resolutions.
+\parbox{5.0in}{\caption{Time evolution for $L^2$ norm of convergence factor for independent residual of Einstein equations at different resolutions.
         }\label{fig:L2norm_iresallconvergence-crop}}
 \end{figure}
+
+Figure \ref{fig:L2norm_iresallconvergence-crop} shows the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. However, the $L^2$-norm hides the fact that the order of convergence is lower (between 1 and 2) near the AdS boundary due to the use of first order interpolation, through which we impose the Dirichlet boundary conditions (see~\ref{subsec:cartevvarboucon}). More precisely, near-boundary convergence is higher for the lowest pair of resolutions than for the highest one, which shows values closer to 1 (as expected for first order interpolation). This is the reason why the $L^2$-norm of the lowest pair is largest.
 
 \section{Extrapolation Technique and Convergence at AdS Boundary}\label{sec:extrapconvbdy}
 
