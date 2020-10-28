@@ -751,15 +751,13 @@ We describe here the evolution in the bulk consisting of a short phase, in which
 Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field profile $\bar{\varphi}$ on the equatorial plane $z=0$. Notice that, in all of these, $\bar{\varphi}=0$ at the AdS boundary as required by the Dirichlet boundary condition. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts spreading towards the AdS boundary but, before reaching this, it is attracted towards the centre and forms an apparent horizon at $t=0.331481$ (in the highest resolution run with $N_x=325$ grid points along each cartesian direction). 
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. Furthermore, we see that the largest part of the scalar field progressively disappears from the exterior part of the spacetime by entering the apparent horizon, hence the amplitude of the scalar field decreases. At later times (BE MORE SPECIFIC), the value of the scalar field becomes consistent with 0 up to solution error (estimated by comparing $\bar{\varphi}$ at different resolutions) and the spacetime settles down to a Schwarzschild-AdS black hole.
 
-
-<<<<<<< HEAD
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.5in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combined_withzoom_fullplotrelRieCubeofrelkretschallres.pdf}
 \parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by the value of $M_{AdS}$ at that time. The black vertical line denotes the value of $\frac{K}{K_{AdS}}-1$ at the horizon of Schwarzschild-AdS. Relative Kretschmann increases as we move closer to the centre of the spacetime. Top panel: numerical curves are obtained from grid points on the $x$ axis (i.e. $y=z=0$). Bottom panel: numerical curves are obtained from grid points on the $y$ axis (i.e. $x=z=0$).
         }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
 \end{figure}
-=======
+
 %HB: commented out below
 %\begin{figure}[!h]
 %        \centering
@@ -767,7 +765,6 @@ The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scal
 %\parbox{5.0in}{\caption{Riemann cube scalar relative to $AdS_4$, $\frac{R^3}{R^3_{AdS}}-1$, as a function of Kretschmann scalar relative to $AdS_4$, $\frac{K}{K_{AdS}}-1$, for different resolutions at the last time step of the simulations, $t=31$, compared with the Schwarzschild-AdS case with mass given by the value of $M_{AdS}$ at that time. Top panel: plot obtained using values on the $x$ axis (i.e. $y=z=0$). Bottom panel: plot obtained using values on the $y$ axis (i.e. $x=z=0$).
 %        }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
 %\end{figure}
->>>>>>> ca420fea23fa5f79a0d3c90caa3ce45845c0f9b5
 
 \iffalse
 \begin{figure*}
@@ -852,7 +849,7 @@ Figure \ref{fig:snapshotsenergydensity} displays the energy density of the bound
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/L2-norm_trace_anisotropy_energydensityminusschw_maxminusminenergydensity/fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity_L3.pdf}
-\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate, obtained from the deviation of the  $L^2$-norm of $\langle trT\rangle_{CFT}$ from its analytical zero value. Boundary quantities are computed by third order extrapolation (L3 resolution, $N_x=325$).
+\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate given by the deviation of the $L^2$-norm of $\langle trT\rangle_{CFT}$ from its predicted zero value. Boundary quantities are computed by third order extrapolation (L3 resolution, $N_x=325$).
         }\label{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}}
 \end{figure}
 
@@ -966,7 +963,7 @@ Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_
 \label{sec:initdata}
 
 In this section we detail our choice of initial data. 
-Particular attention has to be paid in order to make a choice that is consistent with the desired gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} near the AdS boundary. We will denote Cartesian spatial coordinates by $x^m=(x,y,z)$ and the corresponding indices by $m,n$.
+Particular attention has to be paid in order to make a choice of the initial degrees of freedom that is consistent with the desired gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} near the AdS boundary. We will denote Cartesian spatial coordinates by $x^m=(x,y,z)$ and the corresponding indices by $m,n$.
 
 Let us recall that we study the case of time-symmetric initial data, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{\mu\nu}|_{t=0}=0$. Given this and the choice of massless real scalar field profile \eqref{eq:scaGaupro}, the spatial components of the metric, $\bar{g}_{mn}|_{t=0}$, are determined by solving the Hamiltonian constraint via the multigrid hierarchy method mentioned in Section~\ref{sec:numerical_scheme}.
 All that remains to be determined is $\partial_t\bar{g}_{t m}|_{t=0}$ and $\bar{g}_{t m}|_{t=0}$.
@@ -974,17 +971,17 @@ All that remains to be determined is $\partial_t\bar{g}_{t m}|_{t=0}$ and $\bar{
 We have already noticed in the discussion below \ref{eqn:target_gauge_t} that the target gauge, via the generalized harmonic constraints, imposes the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its boundary value, we use the transition function
   \begin{equation}
   \label{eq:transfunc}
-    f_0(\rho) =
+    f(\rho) =
     \begin{cases*}
-      1 & if $\rho\geq \rho_{0b}$, \\
-      1-R_0^3(6 R_0^2-15 R_0+10) & if $\rho_{0b} > \rho\geq\rho_{0a}$, \\
+      1 & if $\rho\geq \rho_{b}$, \\
+      1-R^3(\rho)(6 R^2(\rho)-15 R(\rho)+10) & if $\rho_{b} > \rho\geq\rho_{a}$, \\
       0        & otherwise,
     \end{cases*}
   \end{equation}
-where $R_0=(\rho_{0b}-\rho)/(\rho_{0b}-\rho_{0a})$ and $\rho_{0a},\rho_{0b}$ are the values between which the transition takes place, set to $\rho_{0a}=0.5,\rho_{0b}=0.9$ in our simulations.
+where $R(\rho)=(\rho_{b}-\rho)/(\rho_{b}-\rho_{a})$ and $\rho_{a},\rho_{b}$ are the values between which the transition takes place, set to $\rho_{a}=0.5,\rho_{b}=0.9$ in our simulations.
 Thus, the condition on $\bar{g}_{(1)tt}|_{t=0}$ reads
 \begin{equation}
-\bar{g}_{tt}|_{t=0}=f_0(\bar{g}_{(1)xx}|_{t=0}+\bar{g}_{(1)yy}|_{t=0}+\bar{g}_{(1)zz}|_{t=0}).
+\bar{g}_{tt}|_{t=0}=f(\bar{g}_{(1)xx}|_{t=0}+\bar{g}_{(1)yy}|_{t=0}+\bar{g}_{(1)zz}|_{t=0}).
 \end{equation}
 
 To conclude, the remaining initial variables can be chosen in a completely arbitrary way so we make the simplest choice everywhere on the grid:
@@ -998,54 +995,32 @@ To conclude, the remaining initial variables can be chosen in a completely arbit
 \bar{g}_{t z}|_{t=0}&=&0.
 \end{eqnarray}
 
-\section{Gauge Choice in the Bulk}
+\section{Complete Gauge Choice}
 \label{sec:GCbulk}
 
-In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions to impose near the boundary in order to obtain stable evolution. Furthermore, the gauge at $t=0$, denoted by $\bar{H}_{\mu}^{(0)}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph}. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} on each spatial slice and with the initial values $\bar{H}_{\mu}^{(0)}$ during evolution. In this section we describe how these spatial and time transitions are achieved in our code.
+In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions that we impose near the boundary in order to obtain stable evolution. Furthermore, the gauge at $t=0$, denoted by $\bar{H}_{\mu}^{(0)}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph}. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} on each spatial slice and with the initial values $\bar{H}_{\mu}^{(0)}$ during evolution. In this section we describe how all this is implemented in our code.
 
-We make the simplest choice of $\bar{H}_\mu$ in the bulk by setting the source functions to zero. We then define the functions interpolating the bulk and boundary values:
+We start by choosing a zero value for $\bar{H}_\mu$ in the bulk, as this is the simplest choice. Therefore, the values of the source functions on each spatial slice, after the time transition from $t=0$, are given by
 \begin{eqnarray}
 \label{eqn:extend_gauge_txyz}
-\bar{F}_t&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{tx}+y\bar{g}_{ty}+z\bar{g}_{tz}) \nonumber \\
-\bar{F}_x&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xx}+y\bar{g}_{xy}+z\bar{g}_{xz}) \nonumber \\
-\bar{F}_y&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xy}+y\bar{g}_{yy}+z\bar{g}_{yz}) \nonumber \\
-\bar{F}_z&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xz}+y\bar{g}_{yz}+z\bar{g}_{zz}),
+F_t&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{tx}+y\bar{g}_{ty}+z\bar{g}_{tz}) \nonumber \\
+F_x&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xx}+y\bar{g}_{xy}+z\bar{g}_{xz}) \nonumber \\
+F_y&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xy}+y\bar{g}_{yy}+z\bar{g}_{yz}) \nonumber \\
+F_z&\equiv&\frac{3f_1}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xz}+y\bar{g}_{yz}+z\bar{g}_{zz}),
 \end{eqnarray}
-where the transition function $f_1(\rho)$ is defined as $f_0(\rho)$ in \eqref{eq:transfunc} but with transition taking place between $\rho_{1 a}=0.0$ and $\rho_{1 b}=0.95$.
-Finally, the complete gauge, including the spatial and time transition to the target gauge, is chosen as
-%\begin{equation}
-%\end{equation}
+where the spatial transition function $f_1(\rho)$ is defined as in \eqref{eq:transfunc} with transition occurring between $\rho_{1a}=0.05$ and $\rho_{1b}=0.95$.
 
-For the transitions, we employ the transition functions $f_1(\rho)$, defined as $f_0(\rho)$ in \eqref{eq:transfunc} but with transition taking place between $\rho_{1 a}=0.0$ and $\rho_{1 b}=0.95$.
+Then, we define the time-transition function
+\begin{equation}
+g(t,\rho)=\frac{t}{(\xi_2 f_0(\rho)+\xi_1(1-f_0(\rho)))},
+\end{equation}
+where $f_0(\rho)$ is defined as in \eqref{eq:transfunc} with transition interval between $\rho_{0a}=0.0$ and $\rho_{0b}=0.95$. Notice that $g(0,\rho)=0$, $g(t,\rho)\gg 1$ for $t\gg\xi_1,\xi_2$ and, in particular, $g(t,\rho)$ takes large values with characteristic time $\xi_1$ in the interior region $\rho<\rho_3$ (i.e. where $f_0=0$) and characteristic time $\xi_2$ in the near-boundary region $\rho\geq\rho_4$ (i.e. where $f_0=1$).
 
-To this end, we define the transition function
-  \begin{equation}
-    h(\rho) =
-    \begin{cases*}
-      1 & if $\rho\geq \rho_d$, \\
-      1-R^3(6 R^2-15 R+10) & if $\rho_d\geq \rho\geq\rho_c$, \\
-      0        & otherwise,
-    \end{cases*}
-  \end{equation}
-where $R=(\rho_d-\rho)/(\rho_d-\rho_c)$ and $\rho_c,\rho_d$ are the values between which the transition takes place. With this, we define the extension of the target gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} in the bulk:
-\begin{eqnarray}\label{eqn:extend_gauge_txyz}
-\bar{F}_t&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{tx}+y\bar{g}_{ty}+z\bar{g}_{tz}) \nonumber \\
-\bar{F}_x&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xx}+y\bar{g}_{xy}+z\bar{g}_{xz}) \nonumber \\
-\bar{F}_y&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xy}+y\bar{g}_{yy}+z\bar{g}_{yz}) \nonumber \\
-\bar{F}_z&\equiv&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{xz}+y\bar{g}_{yz}+z\bar{g}_{zz}).
-\end{eqnarray}
-
-we define the transition function
-  \begin{equation}
-    h(\rho) =
-    \begin{cases*}
-      1 & if $\rho\geq \rho_d$, \\
-      1-R^3(6 R^2-15 R+10) & if $\rho_d\geq \rho\geq\rho_c$, \\
-      0        & otherwise,
-    \end{cases*}
-  \end{equation}
-where $R=(\rho_d-\rho)/(\rho_d-\rho_c)$ and $\rho_c,\rho_d$ are the values between which the transition takes place. We use
-
+With these ingredients, we can finally write the complete gauge choice made in the code
+\begin{equation}
+\bar{H}_\mu=\bar{H}_{\mu}^{(0)}\exp(-g)+F_\mu[1- \exp(-g)].
+\end{equation}
+From the properties of $g(t,\rho)$, we see that $\bar{H}_\mu=\bar{H}_{\mu}^{(0)}$ at $t=0$ and $\bar{H}_\mu=F_\mu$ for $t\gg\xi_1$ in the interior and $t\gg\xi_2$ near the boundary. Since the target gauge is crucial for stability and needs to be reached quickly, $\xi_2$ is typically set to a small value. On the other hand, it is not necessary, and perhaps even troublesome, to deal with a fast transition in the bulk, therefore $\xi_1$ takes a larger value. In our simulations, we set $\rho_{0a}=0.0,\rho_{0b}=0.95,\rho_{1a}=0.05,\rho_{1b}=0.95,\xi_1=0.1,\xi_2=0.0025$.
 
 \section{Convergence Tests in the Bulk}\label{sec:convbulk}
 
