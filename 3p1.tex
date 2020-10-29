@@ -322,25 +322,18 @@ Using the definition $z=2\frac{1-\rho}{1+\rho}$ (i.e. the one that brings the pu
 
 \begin{eqnarray}
 g&=&\frac{1}{z^2}\biggl[ 
-\left(1+f_{\rho\rho}(t,\theta,\phi)z^3+\mathcal{O}(z^4)\right)dz^2 \nonumber \\
-&&+\mathcal{O}(z^4) dz dt+\mathcal{O}(z^4) dz d\theta+\mathcal{O}(z^4) dz d\phi \nonumber \\
-&&- \left(1+\frac{z^2}{2}+f_{tt}(t,\theta,\phi)z^3 +\mathcal{O}(z^4)\right)dt^2 \nonumber \\
-&&+ \left(2 f_{t\theta}(t,\theta,\phi)z^3+\mathcal{O}(z^4)\right)dt d\theta + \left(2 f_{t\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)dt d\phi  \nonumber \\
-&&+  \left(1-\frac{z^2}{2}+f_{\theta\theta}(t,\theta,\phi)z^3 +\mathcal{O}(z^4)\right)d\theta^2 \nonumber \\
-&&+ \left(2 f_{\theta\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)d\theta d\phi \nonumber\\
-&&+  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}(t,\theta,\phi)}{\sin^2\theta} z^3 +\mathcal{O}(z^4)\right)d\phi^2
+\left(1+f_{\rho\rho}(t,\theta,\phi)z^3\right)dz^2 \nonumber \\
+&&- \left(1+\frac{z^2}{2}+f_{tt}(t,\theta,\phi)z^3\right)dt^2+ 2 f_{t\theta}(t,\theta,\phi)z^3dt d\theta + 2 f_{t\phi}(t,\theta,\phi) z^3dt d\phi  \nonumber \\
+&&+  \left(1-\frac{z^2}{2}+f_{\theta\theta}(t,\theta,\phi)z^3 \right)d\theta^2+ 2 f_{\theta\phi}(t,\theta,\phi) z^3d\theta d\phi \nonumber\\
+&&+  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}(t,\theta,\phi)}{\sin^2\theta} z^3 \right)d\phi^2+\mathcal{O}(z^4)
 \biggr].
 \end{eqnarray}
 \textcolor{red}{Notice that this is not yet in the FG form because the $zz$-component is not $\frac{1}{z^2}$ up to the desired $\mathcal{O}(z)$. Defining $\bar{z}=z\left(1+\frac{1}{6}z^3f_{\rho\rho}(t,\theta,\phi)\right),\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ we finally obtain the metric in FG form up to and including $\mathcal{O}(\bar{z})$}
 \begin{eqnarray}
-g&=&\frac{1}{\bar{z}^2}\biggl\{ 
-\left(1+\mathcal{O}(\bar{z}^4)\right)d\bar{z}^2 \nonumber \\
-&&+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{t}+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{\theta}+\mathcal{O}(\bar{z}^4) d\bar{z} d\bar{\phi} \nonumber \\
-&&- \left[1+\frac{\bar{z}^2}{2}+\left(f_{tt}(\bar{t},\bar{\theta},\bar{\phi})-\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{t}^2 \nonumber \\
-&&+ \left(2 f_{t\theta}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\theta} + \left(2 f_{t\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi}  \nonumber \\
-&&+  \left[1-\frac{\bar{z}^2}{2}+\left(f_{\theta\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{\theta}^2 \nonumber \\
-&&+ \left(2 f_{\theta\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} \nonumber\\
-&&+   \sin^2\bar{\theta} \left[1-\frac{\bar{z}^2}{2}+\left(\frac{f_{\phi\phi}(\bar{t},\bar{\theta},\bar{\phi})}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right]d\bar{\phi}^2
+g&=&\frac{1}{\bar{z}^2}\biggl\{ d\bar{z}^2- \left[1+\frac{\bar{z}^2}{2}+\left(f_{tt}(\bar{t},\bar{\theta},\bar{\phi})-\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right]d\bar{t}^2 \nonumber \\
+&&+ 2 f_{t\theta}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^3d\bar{t} d\bar{\theta} + 2 f_{t\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{t} d\bar{\phi}  \nonumber \\
+&&+  \left[1-\frac{\bar{z}^2}{2}+\left(f_{\theta\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right]d\bar{\theta}^2+ 2 f_{\theta\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{\theta} d\bar{\phi} \nonumber\\
+&&+   \sin^2\bar{\theta} \left[1-\frac{\bar{z}^2}{2}+\left(\frac{f_{\phi\phi}(\bar{t},\bar{\theta},\bar{\phi})}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3\right]d\bar{\phi}^2+\mathcal{O}(\bar{z}^4)
 \biggr\}.
 \end{eqnarray}
 \textcolor{red}{Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}},g_{\bar{\theta}\bar{\theta}},g_{\bar{\phi}\bar{\phi}}$.}
