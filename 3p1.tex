@@ -415,7 +415,8 @@ Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysic
 \fi
 
 
-\section{Prescription for Stability}\label{sec:pre_sta}
+%\section{Prescription for Stability}\label{sec:pre_sta}
+\section{Boundary Prescription}\label{sec:pre_sta}
 
 \textcolor{blue}{In this section, we present our prescription to obtain a gauge choice of generalized harmonic source functions that achieves stable evolution.
 We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. However, we believe this procedure can be followed in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields and many (if not all) global or non-global Poincar\'{e} coordinates.
@@ -645,7 +646,8 @@ Our criterion leads to the simplest gauge choice that does not have these issues
 
 This discussion exposes another interesting point regarding the expected order of convergence near the boundary. As mentioned in the previous paragraph, the solution will, in particular, make the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ vanish. However, this is a statement about the analytic solution, which holds for the numerical one only up to solution error. Denoting by $h$ the grid spacing near the boundary for a certain resolution, the solution error is proportional to $h^n$ for a $n^{th}-$order finite difference scheme. Since the closest point to the boundary has $q=h$, the orders $q^{-2}$ of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ will be proportional to $h^{n-2}$ for the numerical solution of a $n^{th}-$order finite difference scheme. Theqrefore we would expect convergence at order $n-2$ near the boundary. This is not what we observe: for a second order difference scheme, we obtain second order convergence over the entire grid (more details in~\ref{sec:convbulk}). Possible reasons for this were suggested in CITE 1201.2132v3: the misleading picture arising from the near-boundary expansion of the evolution equations as opposed to the correct description coming from the complete evolution, or hidden benefits of our gauge choice. However, this point is still lacking a thorough explanation.
 
-\section{Boundary scalar field and stress-energy tensor}
+%\section{Boundary scalar field and stress-energy tensor}
+\section{Boundary Stress Tensor}
 \label{sec:bouset2}
 
 In the code we output the scalar field and the components of the stress-energy tensor of the conformal field theory (CFT) at the time-like AdS boundary. In this Section, we obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by the code into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in~\ref{sec:sphevvarboucon}, through the transformation \eqref{eq:cartosph}.
