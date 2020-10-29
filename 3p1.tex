@@ -236,7 +236,7 @@ This brings the metric of AdS$_4$ into its final form
 
 \subsection{Asymptotically Anti-de Sitter Spacetimes}\label{subsec:asyAdS}
 
-We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we look at two different definitions for such spacetimes that have been provided in the literature, and the relation between them. In doing so, we also write down the boundary conditions that asymptotically AdS spacetimes must satisfy.
+We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we present a review of two different characterizations of such spacetimes and the relation between them. In doing so, we write down the boundary conditions that asymptotically AdS spacetimes must satisfy.
 
 %Their definition has been given in different ways in the literature, so we will have to state the one relevant for this study. 
 %In [CITE Henneaux-Teitelbom], the authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification) with the same topology as the AdS boundary, i.e. $\mathbb{R}\times S^2$.
@@ -245,14 +245,14 @@ We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. 
 
 %spatial infinity of pure AdS, i.e. $\mathbb{R}\times S^2$ topology and conformal boundary metric given by a conformal transformation of the pure AdS metric $\hat{g}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
 
-Let us start from the definition presented in [CITE Henneaux-Teitelbom]. The authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification). Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
+Let us start from [CITE Henneaux-Teitelbom] where the authors characterize an asymptotically AdS spacetime in terms of three conditions on the deviation $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ of the full metric away from pure AdS $\hat{g}_{\alpha\beta}$:
 \begin{enumerate}
-\item it is consistent with the asymptotic decay of the Kerr-AdS metric near $\mathcal{I}$ in that set of coordinates;
-\item its fall-off near $\mathcal{I}$ is invariant under the global AdS symmetry group $O(3,2)$ i.e.
+\item that it is consistent with the asymptotic decay of the Kerr-AdS metric near $\mathcal{I}$ in that set of coordinates;
+\item that its fall-off near $\mathcal{I}$ is invariant under the global AdS symmetry group $O(3,2)$ i.e.
 \begin{equation}\label{eqn:asyKilleq}
 (\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near spatial infinity $\mathcal{I}$},
 \end{equation}
-for any $X$ generator of $O(3,2)$;
+that for any $X$ generator of $O(3,2)$;
 \item the surface integral charges associated with the generators of $O(3,2)$ are finite.
 \end{enumerate}
 More precisely, it is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
@@ -305,8 +305,7 @@ for arbitrary $f_\mu$.
 %has the same conformal structure of the pure AdS boundary, which is also the conformal structure of the AdS boundary, i.e. $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$. Given these requirements, it is evident 
 %It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii). Furthermore, \eqref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$ and the result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
 
-\textcolor{red}{It is now interesting, as well as relevant for what follows, to discuss a second definition of asymptotically AdS spacetimes given in the literature. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The Fefferman-Graham (FG) theorem [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d’aujourdhui
-(Asterisque, 1985) 95] states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbour of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
+An equivalent characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d’aujourdhui (Asterisque, 1985) 95]. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbour of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 \begin{equation}
 \label{eqn:FGmetric}
 g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{ij}(\bar{z},\bar{x})d\bar{x}^id\bar{x}^j),
@@ -316,7 +315,7 @@ where
 \label{eqn:FGbdymetric}
 g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{x})+g_{(2)ij}(\bar{x})\bar{z}^2+\mathcal{O}(\bar{z}^3),
 \end{equation}
-in which the near-boundary (i.e. about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$, therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. If we make the further requirement that the topology of the boundary is that of pure AdS, i.e. $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and the definition becomes equivalent to the previous one. The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.}
+in which the near-boundary (i.e. about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$, therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. If we make the further requirement that the topology of the boundary is that of pure AdS, i.e. $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and the definition becomes equivalent to the previous one. The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.
 
 \textcolor{red}{We conclude by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity. Notice that, from  \eqref{eq:sphbounconh}, we know all the metric components $g_{\alpha\beta}$ only up to and including $\mathcal{O}(1-\rho)$ so we can expect to find the FG form of the metric only up to the corresponding order in $\bar{z}$.
 Using the definition $z=2\frac{1-\rho}{1+\rho}$ (i.e. the one that brings the pure AdS metric in FG form), the full metric $g$ up to and including $\mathcal{O}(z)$ reads}
