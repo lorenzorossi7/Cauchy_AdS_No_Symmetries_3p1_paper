@@ -392,21 +392,6 @@ H_\mu=\hat{H}_\mu+f_\mu(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((
 for arbitrary $f_\mu$.
 \fi
 
-\iffalse
-\section{Numerical Scheme}\label{sec:numerical_scheme}
-
-We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg} with constraint damping, for asymptotically AdS spacetimes~\cite{Bantilan:2012vu} in Cartesian coordinates.
-We discretize the resulting PDEs with second order finite differences, and integrate in $t$ using an iterative Newton-Gauss-Seidel relaxation procedure. 
-We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement support.
-We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
-The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
-The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
-We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.3$.
-
-We search for the position $R(\theta,\phi)$ of the apparent horizons (AH) using a flow method (MORE DETAILS ON THIS?). A $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ grid with resolution $N_\theta\times N_\phi=9\times 17$ is enough to find the AH in the simulations considered in Section~\ref{sec:results}. We use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain. At the excision surface, the usual equations of motion are solved using one-sided stencils. 
-Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
-\fi
-
 
 %\section{Prescription for Stability}\label{sec:pre_sta}
 \section{Boundary Prescription}\label{sec:pre_sta}
