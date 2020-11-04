@@ -415,6 +415,7 @@ We see from \eqref{eq:carbouncondh} that in four dimensions, we have
 
 Similarly, the Cartesian boundary condition on the scalar field \eqref{eq:carbouncondphi} suggests that we use the evolution variable
 \begin{equation}
+\label{eq:phibarcart}
 \bar{\varphi}=\frac{\varphi }{(1-\rho^2)^2}.
 \end{equation}
 
@@ -700,7 +701,7 @@ Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysic
 In this section we discuss the most evident features of the long-time evolution of time-symmetric initial data in the presence of a massless real scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
 \begin{eqnarray}
 \label{eq:scaGaupro}
-\bar{\varphi}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
+\bar{\varphi}|_{t=0}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
 \tilde{r}(x,y,z)&\equiv&\sqrt{ x^2(1-e_x^2)+ y^2(1-e_y^2)+ z^2(1-e_z^2)}, \nonumber
 \end{eqnarray}
 where the amplitude of the profile is $A=0.55$, the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$ (so the largest distortion is on the $(x,y)$-plane), and the width is $\Delta=0.2$. Starting from this matter field source, we obtain initial data for the metric by imposing time-symmetry at $t=0$ (i.e. the vanishing of the extrinsic curvature on the initial spacelike hypersurface, which makes the momentum constraint trivially satisfied) and solving the Hamiltonian constraint. See Appendix~\ref{sec:initdata} for more details. We evolve this initial data up to $t=31$ in units of AdS radius $L=1$ (approximately 10 light crossing times).  We will focus, separately, on the evolution of quantities defined in the bulk of the numerical grid and quantities defined at the AdS boundary.
@@ -783,7 +784,7 @@ In this section we consider the evolution of quantities on the boundary $S^2$ at
         }\label{fig:AdSmass-crop}}
 \end{figure}
 
-We start by looking at the values of the AdS mass, given by \eqref{eq:AdSmasscalc}, with respect to $t$ for different resolutions in Figure \ref{fig:AdSmass-crop}, which shows that the Schwarzschild-AdS spacetime that our deformed black hole settles down to has a mass of around $0.4$ in units of the AdS length scale. In this plot we also notice an unphysical mass loss for low resolutions, although $M_{AdS}$ converges to a constant in time as resolution increases, as desired. In particular, data displays first order convergence instead of the second order of boundary data, inherited from bulk convergence. We believe that this can be understood as follows. As explained in Appendix~\ref{sec:extrapconvbdy}, we can only expect to see second order convergence at the boundary if we consider values extrapolated via the ``fixed points'' scheme requiring criteria 1. and 2.. However, once convergence has been verified, we use more accurate data obtained via the ``free points'' extrapolation scheme that requires 2. but not 1., therefore we can no longer predict second order for this data. It is important to mention that, even if we considered data for the AdS mass density from the ``fixed points'' scheme, Figure \ref{fig:AdSmass-crop} would still show a loss of convergence due to the method used to approximate the integral of equation \eqref{eq:AdSmasscalc} through the Wofram Mathematica software. More precisely, before numerically integrating (via the NIntegrate command with default GlobalAdaptive method), the values for the AdS mass density at boundary points are interpolated (with first order interpolation, as this is the only allowed by the Interpolation command for unstructured grids, such as the ones we have at the boundary) to obtain a function defined over the entire boundary $S^2$. This interpolation does not use points common to all resolutions, hence the argument in point 1. of Appendix~\ref{sec:extrapconvbdy} (applied this time to interpolation) tells us again that we cannot expect second order convergence. Despite all of this, as we increase the bulk grid refinement, all these approximations become more and more accurate and we expect to get closer to the true value of the boundary function. In other words, we expect some order of convergence. Therefore, it is not surprising that Figure \ref{fig:AdSmass-crop} shows the lowest possible convergence order, i.e. the first one.
+We start by looking at the values of the AdS mass, given by \eqref{eq:AdSmasscalc}, with respect to $t$ for different resolutions in Figure \ref{fig:AdSmass-crop}, which shows that the Schwarzschild-AdS spacetime that our deformed black hole settles down to has a mass of around $0.4$ in units of the AdS length scale. In this plot we also notice an unphysical mass loss for low resolutions, although $M_{AdS}$ converges to a constant in time as resolution increases, as desired. In particular, data displays first order convergence instead of the second order of boundary data, inherited from bulk convergence. We believe that this can be understood as follows. As explained in Appendix~\ref{sec:extrapconvbdy}, we can only expect to see second order convergence at the boundary if we consider values extrapolated via the scheme satisfying the common points criterion (see point 1. of Appendix~\ref{sec:extrapconvbdy}) restricted to the convergent range given at point 2. of Appendix~\ref{sec:extrapconvbdy}. However, once convergence has been verified, we use more accurate data obtained via a scheme that no longer requires 1., but it allows the use of any point in the range given at 2.. As a consequence, we can no longer predict second order for this data. In fact, even if we considered data for the AdS mass density extrapolated from common points, we would have a similar issue in Figure \ref{fig:AdSmass-crop} due to the method used to approximate the integral of equation \eqref{eq:AdSmasscalc} through the Wolfram Mathematica software. More precisely, before numerically integrating (via the NIntegrate command with default GlobalAdaptive method), the values for the AdS mass density at boundary points are interpolated (with first order interpolation, as this is the only one allowed by the Interpolation command for unstructured grids, such as the ones we have at the boundary) to obtain an integrand function defined over the entire boundary $S^2$. This interpolation does not use points common to all resolutions, hence the argument at point 1. of Appendix~\ref{sec:extrapconvbdy} (this time applied to interpolation) tells us again that we cannot expect second order convergence. Despite these complications, as we increase the bulk grid refinement, all these approximations become more and more accurate and we expect to get closer to the true value of the boundary function. In other words, we expect some order of convergence at each boundary point. Therefore, it is not surprising that Figure \ref{fig:AdSmass-crop} shows the lowest possible convergence order, i.e. the first one.
 
 %We believe this is due to the method used to approximate the integral of equation \eqref{eq:AdSmasscalc} through the Wofram Mathematica software. Before numerically integrating (via the NIntegrate command with default GlobalAdaptive method), the values for the AdS mass density at boundary points are interpolated to obtain a function defined over the entire boundary $S^2$ (via the Interpolation command). This interpolation can only be performed at first order for data on an unstructured grid, such as the one we have at the boundary.
 
@@ -874,44 +875,45 @@ Simulations were run on the {\bf Apocrita} cluster at Queen Mary University of L
 \section{Generalized Harmonic Formulation}
 \label{sec:GHfor}
 
-The generalized harmonic formulation of the Einstein equations is based on coordinates $x^\mu$ that each satisfies a wave equation $\Box x^{\mu}=H^\mu$ with source functions $H^\mu$.
-As long as the constraint $0=C^\mu \equiv H^\mu-\Box x^\mu$ is satisfied, we can then write the trace-reversed Einstein equations in $d$ dimensions with cosmological constant $\Lambda$
+The generalized harmonic formulation of the Einstein equations is based on coordinates $x^\alpha$ that each satisfies a wave equation $\Box x^{\alpha}=H^\alpha$ with source functions $H^\alpha$.
+As long as the constraint $0=C^\alpha \equiv H^\alpha-\Box x^\alpha$ is satisfied, we can then write the trace-reversed Einstein equations in $d$ dimensions with cosmological constant $\Lambda$
 \begin{equation}
-0=R_{\mu\nu} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} T g_{\mu\nu} \right)
+0=R_{\alpha\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right)
 \end{equation}
 as
 \begin{eqnarray}
 0
-&=& R_{\mu\nu} - \nabla_{(\mu} C_{\nu)} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber \\
-&=& R_{\mu\nu} - \nabla_{(\mu} H_{\nu)} + \nabla_{(\mu} \Box{x}_{\nu)} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber \\
-&=& -\frac{1}{2} g^{\alpha\beta} g_{\mu\nu,\alpha\beta} - g^{\alpha\beta}{}_{,(\mu}g_{\nu)\alpha,\beta} - H_{(\mu,\nu)} + H_\alpha \Gamma^\alpha{}_{\mu\nu} \nonumber \\
-&&- \Gamma^\alpha{}_{\mu\beta}\Gamma^\beta{}_{\alpha\nu} - \frac{2\Lambda}{d-2} g_{\mu\nu} - 8\pi\left( T_{\mu\nu} - \frac{1}{d-2} {T^\alpha}_\alpha g_{\mu\nu} \right) \nonumber,
+&=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right) \nonumber \\
+&=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right) \nonumber \\
+&=& -\frac{1}{2} g^{\gamma\delta} g_{\alpha\beta,\gamma\delta} - g^{\gamma\delta}{}_{,(\alpha}g_{\beta)\gamma,\delta} - H_{(\alpha,\beta)} + H_\gamma \Gamma^\gamma{}_{\alpha\beta} \nonumber \\
+&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right) \nonumber,
 \end{eqnarray}
-where the choice of $H_\mu = g_{\mu\nu} H^\nu$ constitutes a gauge choice ($\Gamma^\mu{}_{\nu\rho}$ are the Christoffel symbols of the metric in the chosen set of coordinates and $T_{\mu\nu}$ is the stress-energy tensor of any matter field coupled to the metric). 
-To suppress constraint-violating solutions that do not satisfy $C_\mu=0$, we supplement with constraint-damping terms as introduced in~\cite{Gundlach:2005eh} and obtain our final form of the Einstein equations
+where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ constitutes a gauge choice ($\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols of the metric in the chosen set of coordinates and $T_{\alpha\beta}$ is the stress-energy tensor of any matter field coupled to the metric). 
+To suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement with constraint-damping terms as introduced in~\cite{Gundlach:2005eh} and obtain our final form of the Einstein equations
 \begin{eqnarray}\label{eqn:efe_gh_modified}
-&-& \frac{1}{2} g^{\alpha \beta} g_{\mu \nu, \alpha \beta} - 
-{g^{\alpha \beta}}_{,(\mu} g_{\nu) \alpha, \beta} - H_{(\mu, \nu)} + H_\alpha {\Gamma^\alpha}_{\mu \nu} \nonumber \\
-&-& {\Gamma^\alpha}_{\beta \mu} {\Gamma^\beta}_{\alpha \nu} - \kappa \left( 2 n_{(\mu} C_{\nu)} - (1+P) g_{\mu \nu} n^\alpha 
-C_\alpha \right) \nonumber \\
-&=&   \frac{2}{d-2} \Lambda g_{\mu \nu} + 8\pi \left( T_{\mu \nu} - 
-\frac{1}{d-2} {T^\alpha}_\alpha g_{\mu \nu} \right).
+&-& \frac{1}{2} g^{\gamma \delta} g_{\alpha\beta, \gamma \delta} - 
+{g^{\gamma\delta}}_{,(\alpha} g_{\beta) \gamma, \delta} - H_{(\alpha, \beta)} + H_\gamma {\Gamma^\gamma}_{\alpha\beta} \nonumber \\
+&-& {\Gamma^\gamma}_{\delta \alpha} {\Gamma^\delta}_{\gamma \beta} - \kappa \left( 2 n_{(\alpha} C_{\beta)} - (1+P) g_{\alpha\beta} n^\gamma 
+C_\gamma \right) \nonumber \\
+&=&   \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
+\frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right).
 \end{eqnarray}
 
-See, for example, CITE [arXiv:gr-qc/0407110] , [arXiv:1201.2132v3 [hep-th]]  for more details.
+See, for example, CITE [arXiv:gr-qc/0407110] , [arXiv:1201.2132v3 [hep-th]] for more details. In our simulations we use the values $\kappa=-10$ and $P=-1$.\footnote{CITE [arXiv:1201.2132v3 [hep-th]] mentions that it is important to use $P$ close to $-1$, while the value of $\kappa$ is not too important to achieve effective constraint damping.}
 
 In this work, we are interested in the case where matter fields are given by a single massless real scalar field $\varphi$, hence the stress-energy tensor reads
 \begin{equation}
-T_{\mu\nu}=\partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi,
+\label{eq:KHmomtens}
+T_{\alpha\beta}=\partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi,
 \end{equation}
-and $\varphi$ is coupled to $g_{\mu\nu}$ through the Klein-Gordon equation \eqref{eqn:eoms2}, which we write here for completeness in terms of partial derivatives w.r.t. the chosen set of coordinates:
+and $\varphi$ is coupled to $g_{\alpha\beta}$ through the Klein-Gordon equation \eqref{eqn:eoms2}, which we write here for completeness in terms of partial derivatives w.r.t. the chosen set of coordinates:
 \begin{equation}\label{eqn:eoms2cart}
-g^{\mu\nu} \partial_{\mu} \partial_{\nu} \varphi -g^{\mu\nu} \Gamma^{\rho}{}_{\nu\mu}\partial_\rho\varphi= 0.
+g^{\alpha\beta} \partial_{\alpha} \partial_{\beta} \varphi -g^{\alpha\beta} \Gamma^{\gamma}{}_{\beta\alpha}\partial_\gamma\varphi= 0.
 \end{equation}
 
 \section{Evolution Variables in Spherical Coordinates}\label{sec:sphevvarboucon}
 
-Here we apply the prescription of Section~\ref{subsec:cartevvarboucon} to the case of asymptotically AdS spacetimes in spherical coordinates, in order to construct the spherical coordinate version of the Cartesian evolution variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$ and how these two sets of variables in different coordinates are related to each other.
+Here we apply the prescription of Section~\ref{subsec:cartevvarboucon} to the case of asymptotically AdS spacetimes in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, in order to construct the spherical coordinate version of the Cartesian evolution variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$. We also write down the transformations between these two sets of variables in different coordinates.
 
 We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as the Cartesian coordinate case, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.
 
@@ -940,18 +942,99 @@ Finally, the boundary conditions \eqref{eq:sphbouncondsoufunc} on $H_\alpha$ sug
  \end{eqnarray}
 in spherical coordinates.
 
-Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no direct transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g. \eqref{eq:sphbouncondsoufunc} in spherical coordinates.
+Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no simple transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g. \eqref{eq:sphbouncondsoufunc} in spherical coordinates.
 
 \section{Initial Data}
 \label{sec:initdata}
 
-In this section we detail our choice of initial data. 
-Particular attention has to be paid in order to make a choice of the initial degrees of freedom that is consistent with the desired gauge \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} near the AdS boundary. We will denote Cartesian spatial coordinates by $x^m=(x,y,z)$ and the corresponding indices by $m,n$.
+In this section we discuss the initial data used in our simulations on a spacelike hypersurface $\Sigma$ at $t=0$ in Cartesian coordinates $x^\mu=(t,x,y,z)$. We denote Cartesian spatial coordinates on $\Sigma$ by $x^m=(x,y,z)$ and the corresponding indices by $m,n$. Setting all the necessary initial values for the generalized harmonic scheme, $\bar{\varphi}|_{t=0},\bar{g}_{mn}|_{t=0},\bar{H}_\mu |_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{mn}|_{t=0},\partial_t\bar{H}_\mu |_{t=0}$, is equivalent to prescribing $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$, since $\bar{H}_\mu|_{t=0}$ and $\partial_t\bar{H}_\mu|_{t=0}$ can be obtained from the latter set by \eqref{eq:defsoufunsph} and its time derivative at $t=0$.
+However, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Moreover, particular attention has to be paid in order to make a choice of the initial degrees of freedom that is consistent with the desired gauge \eqref{eqn:target_gauge_xyz},\eqref{eqn:target_gauge_t} near the AdS boundary. 
 
-Let us recall that we study the case of time-symmetric initial data, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{\mu\nu}|_{t=0}=0$. Given this and the choice of massless real scalar field profile \eqref{eq:scaGaupro}, the spatial components of the metric, $\bar{g}_{mn}|_{t=0}$, are determined by solving the Hamiltonian constraint via the multigrid hierarchy method mentioned in Section~\ref{sec:numerical_scheme}.
-All that remains to be determined is $\partial_t\bar{g}_{t m}|_{t=0}$ and $\bar{g}_{t m}|_{t=0}$.
+\subsection{Constraints}
+\label{sec:constr}
 
-We have already noticed in the discussion below \ref{eqn:target_gauge_t} that the target gauge, via the generalized harmonic constraints, imposes the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its boundary value, we use the transition function
+Here we review the constraints of GR and how they are solved in our code.
+We start by defining the relevant quantities on the initial spacelike hypersurface $\Sigma$. %We will do so using the indices associated with Cartesian coordinates, but the following definitions are tensorial relations that read the same in any basis. 
+The time-like, future-directed unit 1-form normal to $\Sigma$ is given by
+\begin{equation}
+\label{eq:uninormal}
+n_\mu=-\alpha (dt)_\mu,
+\end{equation}
+where $\alpha=1/\sqrt{-g^{\mu\nu}(dt)_\mu (dt)_\nu}$ is the lapse function. 
+The projection operator onto $\Sigma$ is defined by
+\begin{equation}
+\gamma^\mu_\nu=\delta^\mu_\nu+n^\mu n_\nu.
+\end{equation}
+(Notice that $\gamma^\mu_\nu$ is idempotent, i.e. $\gamma^\mu_\rho \gamma^\rho_\nu=\gamma^\mu_\nu$, as appropriate for a projector.)
+This operator can be applied on any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e. $X_{||}^\mu n_\mu=0$. Let us now consider a tensor on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor on the tangent space of $\Sigma$ at $p$, under a natural isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ given by the pull-back (associated with the inclusion map that embeds $\Sigma$ in $M$) on $\Sigma$ of the spacetime metric $g_{\mu\nu}$. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be lowered and raised by $\gamma_{\mu\nu}$ or $g_{\mu\nu}|_\Sigma$, equivalently.
+
+The projection of $\nabla_\mu n_\nu$\footnote{Notice that we can make sense of covariant derivatives of $n_\mu$ by extending its definition on $\Sigma$ \eqref{eq:uninormal} to a 1-form field over a neighbourhood of $\Sigma$, which can be done in an arbitrary way without changing the value of $K_{\mu\nu}$ on $\Sigma$ given by \eqref{eq:extrcurv}.} defines the extrinsic curvature of $\Sigma$:
+\begin{equation}
+\label{eq:extrcurv}
+K_{\mu\nu}=-\gamma^\rho_\mu \gamma^\sigma_\nu \nabla_\rho n_\sigma=-\frac{1}{2}\mathcal{L}_n\gamma_{\mu\nu}.
+\end{equation}
+From the second equality, we can intuitively understand how a choice of $K_{\mu\nu}$ on $\Sigma$ is equivalent to a choice for the time-derivative of the metric components at $t=0$.
+
+As a final ingredient, the covariant derivative on $\Sigma$ of a tensor field invariant under projection onto $\Sigma$ is defined as the projection onto $\Sigma$ of the covariant derivative $\nabla$ of the tensor field, and we denote it by $D$, e.g. $D_\mu X_{||}^\nu=\gamma^\rho_\mu \gamma^\nu_\sigma \nabla_\rho X_{||}^\sigma$. $D$ is the Levi-Civita connection of $\gamma_{\mu\nu}$, i.e. it is torsion-free and $D_\mu\gamma_{\nu\rho}=0$.
+
+We can now write the constraints that initial data on $\Sigma$ must satisfy. The ``normal-normal'' projection (i.e. contraction with $n^\mu n^\nu$) of the Einstein equations gives the Hamiltonian constraint
+\begin{equation}
+\label{eq:hamconstr}
+^{(3)}R-K^{\mu\nu}K_{\mu\nu}+K^2-2\Lambda=16\pi\rho,
+\end{equation}
+where $^{(3)}R$ is the Ricci scalar associated with the connection $D$, $K=\gamma^{\mu\nu}K_{\mu\nu}$ and $\rho=T_{\mu\nu}n^\mu n^\nu$ is the matter energy density measured by an observer with 4-velocity $n^\mu$.
+The ``tangent-normal'' projection (i.e. contraction with $\gamma^{\mu\nu} n^\rho$) of the Einstein equations gives the momentum constraint
+\begin{equation}
+\label{eq:momconstr}
+D_\nu {K^\nu}_\mu-D_\mu K=8\pi j_\mu,
+\end{equation}
+where $j^\mu=-T_{\rho\sigma}n^\rho\gamma^{\sigma\mu}$ is the matter momentum density measured by an observer with 4-velocity $n^\mu$. Notice that the $t$-component of \eqref{eq:momconstr} is trivial, so \eqref{eq:hamconstr} and \eqref{eq:momconstr} provide a number of constraints that is equal to the number of spacetime dimensions.
+
+We now explain how these constraints are solved for massless real scalar matter, whose energy-momentum tensor is \eqref{eq:KHmomtens}, in the simplified case of time-symmetric data, $\partial_t \varphi|_{t=0}=0$ and $\partial_t g_{mn}|_{t=0}=0$. Time-symmetry is equivalent to $j^\mu=0$ and $K_{\mu\nu}=0$, so the momentum constraint is trivially satisfied.
+The Hamiltonian constraint, instead, reduces to
+\begin{equation}
+\label{eq:redhamconstr}
+^{(3)}R-2\Lambda=16\pi\rho.
+\end{equation}
+This can be solved through the conformal approach, initiated in CITE [A. Lichnerowicz : L’int\'{e}gration des \'{e}quations de la gravitation relativiste et le probl\'{e}me des n corps, J. Math. Pures Appl. 23, 37 (1944); reprinted in A. Lichnerowicz : Choix d’œuvres math\'{e}matiques, Hermann, Paris (1982), p. 4.], which assumes that the spatial metric $\gamma_{\mu\nu}$ is conformal to the spatial metric $\hat{\gamma}_{\mu\nu}$ of the $t=0$ slice of pure AdS in Cartesian coordinates:
+\begin{equation}
+\label{eq:confdec}
+\gamma_{\mu\nu}=\zeta^4 \hat{\gamma}_{\mu\nu},
+\end{equation}
+where $\zeta$ is a smooth positive function on $\Sigma$, satisfying the AdS boundary condition $\zeta|_{\rho=1}=1$. Let $\hat{D}$ be the Levi-Civita connection of $\hat{\gamma}_{\mu\nu}$ and $^{(3)}\hat{R}$ the corresponding Ricci scalar. Using  \eqref{eq:confdec} and its inverse, $\gamma^{\mu\nu}=\zeta^{-4} \hat{\gamma}^{\mu\nu}$, we obtain
+\begin{equation}
+\label{eq:confRicci}
+^{(3)}R=\frac{1}{\zeta^4}\left(^{(3)}\hat{R}-\frac{8}{\zeta}\hat{\gamma}^{\mu\nu}\hat{D}_\mu \hat{D}_\nu \zeta\right).
+\end{equation}
+Plugging \eqref{eq:confRicci} into \eqref{eq:redhamconstr} gives
+\begin{equation}
+\label{eq:rehamconstr2}
+^{(3)}\hat{R}\zeta-8\hat{\gamma}^{\mu\nu}\hat{D}_\mu \hat{D}_\nu \zeta-2\Lambda \zeta^5=16\pi\rho \zeta^5
+\end{equation}
+$^{(3)}\hat{R}$ can be computed from the spatial part of the pure AdS metric \eqref{eqn:ads4_final}: $^{(3)}\hat{R}=-6/L^2=2\Lambda$. Thus, equation \eqref{eq:rehamconstr2} can be written as
+\begin{equation}
+\label{eq:rehamconstr3}
+\hat{\gamma}^{\mu\nu}\hat{D}_\mu \hat{D}_\nu \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda+8\pi\rho)\zeta^5=0.
+\end{equation}
+Finally, the version of the Hamiltonian constraint that we are going to solve is obtained by writing the matter energy density $\rho$ in terms of $\zeta$. The time-symmetry requirement $\partial_t \varphi|_{t=0}=0$ gives
+\begin{equation}
+\label{eq:mattendens}
+\rho=\frac{1}{2\zeta^4}\hat{\gamma}^{mn}\partial_m\varphi\partial_n\varphi,
+\end{equation}
+so the Hamiltonian constraint reads
+\begin{equation}
+\label{eq:hamconsfinal}
+\hat{\gamma}^{mn}\hat{D}_m \hat{D}_n \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda\zeta^5+4\pi\zeta\hat{\gamma}^{mn}\partial_m\varphi\partial_n\varphi)=0.
+\end{equation}
+For any given choice of scalar field $\varphi$ on $\Sigma$, \eqref{eq:hamconsfinal} is an elliptic equation that can be solved for $\zeta$ with boundary condition $\zeta|_{\rho=1}=1$. In our simulations we pick the initial scalar field profile $\varphi|_{t=0}=\bar{\varphi}|_{t=0}(1-\rho^2)^2$ with $\bar{\varphi}|_{t=0}$ specified by \eqref{eq:scaGaupro}, and we solve \eqref{eq:hamconsfinal} with a multigrid algorithm, built into the PAMR/AMRD libraries.
+The initial metric variables $\bar{g}_{mn}|_{t=0}$ are then easily reconstructed from \eqref{eq:confdec}, using the fact that $\gamma_{mn}=g_{mn}|_{t=0}=\hat{g}_{mn}|_{t=0}+\bar{g}_{mn}|_{t=0}$.
+
+\subsection{Freely specifiable initial data and consistency at the boundary}
+\label{sec:consistbound}
+
+In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{mn}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{mn}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{t m}|_{t=0}$ and $\partial_t\bar{g}_{t m}|_{t=0}$.
+
+In doing so, the only restriction to consider is the one already noticed in the discussion below \eqref{eqn:target_gauge_t}: the target gauge, via the generalized harmonic constraints, imposes the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of evolution but it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the transition function
   \begin{equation}
   \label{eq:transfunc}
     f(\rho) =
@@ -962,26 +1045,26 @@ We have already noticed in the discussion below \ref{eqn:target_gauge_t} that th
     \end{cases*}
   \end{equation}
 where $R(\rho)=(\rho_{b}-\rho)/(\rho_{b}-\rho_{a})$ and $\rho_{a},\rho_{b}$ are the values between which the transition takes place, set to $\rho_{a}=0.5,\rho_{b}=0.9$ in our simulations.
-Thus, the condition on $\bar{g}_{(1)tt}|_{t=0}$ reads
+Thus, our choice of $\bar{g}_{tt}|_{t=0}$ is
 \begin{equation}
-\bar{g}_{tt}|_{t=0}=f(\bar{g}_{(1)xx}|_{t=0}+\bar{g}_{(1)yy}|_{t=0}+\bar{g}_{(1)zz}|_{t=0}).
+\bar{g}_{tt}|_{t=0}=f(\bar{g}_{xx}|_{t=0}+\bar{g}_{yy}|_{t=0}+\bar{g}_{zz}|_{t=0}).
 \end{equation}
 
 To conclude, the remaining initial variables can be chosen in a completely arbitrary way so we make the simplest choice everywhere on the grid:
 \begin{eqnarray}
+\bar{g}_{t x}|_{t=0}&=&0 \\
+\bar{g}_{t y}|_{t=0}&=&0 \\
+\bar{g}_{t z}|_{t=0}&=&0\\
 \partial_t\bar{g}_{t t}|_{t=0}&=&0 \\
 \partial_t\bar{g}_{t x}|_{t=0}&=&0\\
 \partial_t\bar{g}_{t y}|_{t=0}&=&0\\
-\partial_t\bar{g}_{t z}|_{t=0}&=&0\\
-\bar{g}_{t x}|_{t=0}&=&0 \\
-\bar{g}_{t y}|_{t=0}&=&0 \\
-\bar{g}_{t z}|_{t=0}&=&0.
+\partial_t\bar{g}_{t z}|_{t=0}&=&0.
 \end{eqnarray}
 
 \section{Complete Gauge Choice}
 \label{sec:GCbulk}
 
-In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions that we impose near the boundary in order to obtain stable evolution. Furthermore, the gauge at $t=0$, denoted by $\bar{H}_{\mu}^{(0)}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph}. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \ref{eqn:target_gauge_xyz},\ref{eqn:target_gauge_t} on each spatial slice and with the initial values $\bar{H}_{\mu}^{(0)}$ during evolution. In this section we describe how all this is implemented in our code.
+In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions that we impose near the boundary in order to obtain stable evolution. Furthermore, the gauge at $t=0$, given by $\bar{H}_{\mu}|_{t=0}$, $\partial_t \bar{H}_{\mu}|_{t=0}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph} and its time derivative at $t=0$. In particular, $\partial_t \bar{H}_{\mu}|_{t=0}=0$ for time-symmetric initial data. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \eqref{eqn:target_gauge_xyz},\eqref{eqn:target_gauge_t} on each spatial slice and with the initial values $\bar{H}_{\mu}|_{t=0}$ during evolution. In this section we describe how all this is implemented in our code.
 
 We start by choosing a zero value for $\bar{H}_\mu$ in the bulk, as this is the simplest choice. Therefore, the values of the source functions on each spatial slice, after the time transition from $t=0$, are given by
 \begin{eqnarray}
@@ -1001,7 +1084,7 @@ where $f_0(\rho)$ is defined as in \eqref{eq:transfunc} with transition interval
 
 With these ingredients, we can finally write the complete gauge choice made in the code
 \begin{equation}
-\bar{H}_\mu=\bar{H}_{\mu}^{(0)}\exp(-g)+F_\mu[1- \exp(-g)].
+\bar{H}_\mu=\bar{H}_{\mu}|_{t=0}\exp(-g)+F_\mu[1- \exp(-g)].
 \end{equation}
 From the properties of $g(t,\rho)$, we see that $\bar{H}_\mu=\bar{H}_{\mu}^{(0)}$ at $t=0$ and $\bar{H}_\mu=F_\mu$ for $t\gg\xi_1$ in the interior and $t\gg\xi_2$ near the boundary. Since the target gauge is crucial for stability and needs to be reached quickly, $\xi_2$ is typically set to a small value. On the other hand, it is not necessary, and perhaps even troublesome, to deal with a fast transition in the bulk, therefore $\xi_1$ takes a larger value. In our simulations, we set $\rho_{0a}=0.0,\rho_{0b}=0.95,\rho_{1a}=0.05,\rho_{1b}=0.95,\xi_1=0.1,\xi_2=0.0025$.
 
@@ -1041,9 +1124,9 @@ Figure \ref{fig:L2norm_iresallconvergence-crop} shows the $L^2$-norm of the conv
 As explained in Section~\ref{sec:bouset2}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this section we describe how grid points are chosen for extrapolation%and we show convergence for the extrapolation scheme by computing the factor \eqref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is expected as a consequence of bulk convergence (see~\ref{sec:convbulk}) at the chosen points
 . For simplicity, we consider first order extrapolation, i.e. we extrapolate using two grid points. The following can be generalized to higher extrapolation orders in a straightforward way.
 
-If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
+If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation must be satisfied. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
 \begin{enumerate}
- \item \emph{Fixed points.} Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $1^{st}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2)$ (where $p_1,p_2$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,p_2$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)+c_\Delta(p_1,p_2)\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eqref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2$ are the same for all 3 resolutions involved.
+ \item \emph{Common points.} Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $1^{st}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2)$ (where $p_1,p_2$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,p_2$. Therefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)+c_\Delta(p_1,p_2)\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eqref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2$ are the same for all 3 resolutions involved.
  
 \item \emph{Convergent range.} For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous thin blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}). However, in practice, we see that we need to restrict the choice of suitable points to those satisfying $\rho<1-9\Delta/2$ (inside the thick blue line) and $\max(x,y,z)>1-\frac{17}{2}\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ (outside the black line), where $n_\Delta$ denotes the degree of the three resolutions used for convergence, $n_{9h/4}=0,n_{3h/2}=1,n_{h}=2$ (notice that $\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ is a constant for all three resolutions), in order to avoid unphysical of non-converging values of boundary quantities.
  \end{enumerate}
@@ -1079,7 +1162,8 @@ This extrapolation scheme is validated by Figure [CONVERGENCE], which shows seco
 Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to its approximation $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)$.
 For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
 
-Once convergence shows satisfactory trends for this extrapolation algorithm, we can relax the ``fixed points'' requirement 1., i.e. we can extrapolate from suitable points (selected within the convergent range discussed in 2.) and their neighbours in the direction of the bulk without requiring that all the points used are common to all resolutions. Let us call this a \emph{free points} extrapolation scheme. This is what we use for the boundary plots in Section~\ref{sec:resbouset} as it allows to extrapolate from points closer to the AdS boundary, thus giving a better approximation (i.e. a smaller extrapolation error, $c_{extr}$). Furthermore, for those plots we employ third order extrapolation (which employs four bulk points) since this improves the accuracy of the extrapolated numerical values even more, as we tested by comparing with analytic predictions.
+Once convergence shows satisfactory trends for this extrapolation algorithm, we can relax the ``common points'' requirement 1., i.e. we can extrapolate from suitable points (selected within the convergent range discussed in 2.) and their neighbours in the direction of the bulk without requiring that all the points used are common to all resolutions. %Let us call this a \emph{free points} extrapolation scheme. 
+This is the method we use for the boundary plots in Section~\ref{sec:resbouset} as it allows to extrapolate from points closer to the AdS boundary, thus giving a better approximation (i.e. a smaller extrapolation error, $c_{extr}$). Furthermore, for those plots we employ third order extrapolation (which employs four bulk points) since this improves the accuracy of the extrapolated numerical values even more, as tested by comparing with analytic predictions.
 
 % Bibliography
 %-------------------------------------------------------
