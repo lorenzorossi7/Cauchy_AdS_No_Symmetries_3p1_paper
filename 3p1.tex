@@ -409,7 +409,7 @@ for arbitrary $f_\mu$.
 %\section{Prescription for Stability}\label{sec:pre_sta}
 \section{Boundary Prescription}\label{sec:pre_sta}
 
-\textcolor{blue}{In this section, we present our prescription to obtain a gauge choice of generalized harmonic source functions that achieves stable evolution.
+\textcolor{blue}{In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolutions.
 We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields and many (if not all) global or non-global Poincar\'{e} coordinates.
 The other crucial ingredient is the imposition of the asymptotically AdS boundary conditions \eqref{eq:carbouncondh},\eqref{eq:carbouncondphi},\eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, in the way explained in the next section.
 For the original discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}. }
@@ -418,20 +418,18 @@ For the original discussion in a simpler context with more symmetry, see~\cite{B
 \subsection{Evolution Variables and Boundary Conditions}\label{subsec:cartevvarboucon}
 
 The boundary conditions on asymptotically AdS spacetimes, found in Section~\ref{subsec:asyAdS}, can easily be imposed as Dirichlet boundary conditions at the boundary $\rho=1$ if we appropriately define and evolve a new set of variables, from which the full solution $(g_{\mu\nu},\varphi,H_\mu)$ can subsequently be reconstructed. %Even though the code employs Cartesian coordinates, we define these variables also in spherical coordinates for completeness and because they will turn out to be useful in Section~\ref{sec:bouset2} .
-These variables will be here obtained for Cartesian coordinates, as these are the coordinates employed in the code that we wish to present. However, in Section~\ref{sec:bouset2} we choose to show expressions for quantities at the AdS boundary in spherical coordinates, therefore in~\ref{sec:sphevvarboucon} we construct the spherical version of the evolution variables and make the relation to their Cartesian analog explicit.
+These variables will be obtained here in Cartesian coordinates, as these are the coordinates employed in the code that we wish to present. However, in Section~\ref{sec:bouset2} we choose to show expressions for quantities at the AdS boundary in spherical coordinates, therefore in Appendix~\ref{sec:sphevvarboucon} we construct the spherical version of the evolution variables and make the relation to their Cartesian analog explicit.
 
 %The Cartesian metric evolution variables, $\bar{g}_{\mu\nu}$, are defined by (i) considering the deviation from pure AdS in Cartesian coordinates $h_{\mu\nu}=g_{\mu\nu}-\hat{g}_{\mu\nu}$, (ii) stripping $h_{\mu\nu}$ of as many factors of $(1-\rho^2)$ as needed so that each components falls off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$\footnote{Looking at the boundary conditions \eqref{eq:carbouncondh}, it seems natural to factor out $(1-\rho)$ rather than $(1-\rho^2)$. However, the latter is preferred since it preserves the even/odd character of the components of $h$.}. 
 We see from \eqref{eq:carbouncondh} that in four dimensions, we have 
 \begin{equation}\label{eq:gbarcart}
 \bar{g}_{\mu\nu}=h_{\mu\nu}.
 \end{equation}
-
 Similarly, the Cartesian boundary condition on the scalar field \eqref{eq:carbouncondphi} suggests that we use the evolution variable
 \begin{equation}
 \label{eq:phibarcart}
 \bar{\varphi}=\frac{\varphi }{(1-\rho^2)^2}.
 \end{equation}
-
 Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest the use of
 \begin{equation}\label{eq:soufunb}
 \bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }.
@@ -445,31 +443,34 @@ Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest
 %Following the same argument, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS by $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
 
 %By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{\varphi}$, $\bar{H}_{\mu}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
-For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh},\eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ as $\bar{g}_{\mu\nu}|_{\rho=1}=0,\bar{\varphi}|_{\rho=1}=0,\bar{H}_\mu|_{\rho=1}=0$.
+For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh},\eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary $\rho=1$,
+\begin{equation}
+ \bar{g}_{\mu\nu}|_{\rho=1}=0\,,\quad \bar{\varphi}|_{\rho=1}=0\,,\quad \bar{H}_\mu|_{\rho=1}=0\,.
+ \end{equation}
 %We set reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
 The only complication comes from the fact that in Cartesian coordinates $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
-For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use these to set its value at grid points that are at most one grid point away from $\rho=1$ by first order interpolation.
+For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use those to set its value, by first order interpolation, at grid points that are at most one grid point away from $\rho=1$.
 
 
 \subsection{Gauge Choice for Stability}\label{sec:gauge_choice}
 
 %The statement that we use Cartesian coordinates completely defines the coordinates only at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. 
-Coordinates over the entire spacetime are fully determined only once we specify a gauge choice of source functions $H_\mu$. As we shall see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. A gauge choice of generalized harmonic source functions that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
+Coordinates over the entire spacetime are fully determined only once we specify the gauge source functions $H_\mu$. As we shall see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. A choice of generalized harmonic source functions that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
 
-The first step involves expanding the evolved variables $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ in power series about $(1-\rho(x,y,z)) \equiv q(x,y,z) = 0$. By definition, they are linear in $q$:
+The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho(x,y,z)) \equiv q(x,y,z) = 0$. By definition, they are linear in $q$:
 \begin{eqnarray}\label{eqn:qexp}
 \bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4) \nonumber \\
 \bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) \nonumber \\
 \bar{\varphi} &=& \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4),
 \end{eqnarray}
-where all the coefficients are functions of $(t,x,y,z)$, restricted on the surface $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$). We now plug this into the evolution equations \eqref{eqn:efe_gh_modified} and we expand each component in powers of $q$. The three lowest orders, $q^{-2},q^{-1},q^0$, come from the pure AdS metric $\hat{g}$, which satisfies \eqref{eqn:efe_gh_modified}, so they vanish trivially (while the remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}).
+where all the coefficients are functions of $(t,x,y,z)$, restricted to the surface $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$). We now plug this into the evolution equations \eqref{eqn:efe_gh_modified} and we expand each component in powers of $q$. The three lowest orders, $q^{-2},q^{-1},q^0$, come from the pure AdS metric $\hat{g}$, which satisfies \eqref{eqn:efe_gh_modified}, so they vanish trivially. The remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}.
 
 We are now interested in identifying the order of $q$ at which the second derivatives of $ \bar{g}_{(1) \mu \nu}$ w.r.t. $(t,x,y,z)$ evaluated on $\rho(x,y,z)=1$ appear.
-For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, i.e. 
+For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, i.e., 
 \begin{equation}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu},
 \end{equation}
-for some functions $c^t_{\mu\nu},c^x_{\mu\nu},c^y_{\mu\nu},c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$ (clearly none of these coefficients are tensors, despite the notation, and there is no sum over repeated indices).
+for some functions $c^t_{\mu\nu},c^x_{\mu\nu},c^y_{\mu\nu},c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{Clearly none of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}
 These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, $-\frac{1}{2}g^{\rho \sigma} g_{\mu \nu, \rho \sigma}$, more precisely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$.
 Theqrefore we can easily find their order by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and that $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see the first of \eqref{eqn:qexp}). Theqrefore $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
 
