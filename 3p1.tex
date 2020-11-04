@@ -69,6 +69,9 @@
 \def\r{\rho}
 \def\cO{{\cal O}}
 
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+
 \begin{document}
 
 
@@ -77,9 +80,11 @@
 
 \thispagestyle{empty}
 
-\begin{flushright}
-\hfill{ICCUB-19-015}
-\end{flushright}
+$\,$
+
+%\begin{flushright}
+%\hfill{ICCUB-19-015}
+%\end{flushright}
 
 \vspace{40pt}  
 	 
@@ -89,14 +94,17 @@
 
 \vspace{30pt}
 		
-{\large \bf Hans Bantilan,$^{1}$ Pau Figueras,$^{1}$  Lorenzo Rossi,$^{1}$}
+{\large \bf Hans Bantilan, Pau Figueras,  Lorenzo Rossi}
 		
 
 \vspace{25pt}
 
 
 {\normalsize  
-{ $^{1}$School of Mathematical Sciences, Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom}}
+School of Mathematical Sciences, Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom}
+
+\vspace{10pt}
+\texttt{h.bantilan@qmul.ac.uk}, \texttt{p.figueras@qmul.ac.uk}, \texttt{l.rossi@qmul.ac.uk}
 
 
 \vspace{40pt}
@@ -144,23 +152,23 @@ These results are a direct precursor to important specialized studies of AdS dyn
 Anti-de Sitter (AdS) space has in recent years proven to be a particularly exciting theoretical laboratory for studying the strong-field regime of General Relativity (GR).
 AdS with reflective boundary conditions plays the role of a box that naturally keeps propagating waves confined to its interior, where they are perpetually interacting.
 Thus, even the smallest perturbations in AdS can enter the strong-field regime, where qualitatively new behavior emerges.
-One of the most important of these is gravitational collapse -- the growth of curvatures that eventually leads to the formation of a singularity in spacetime associated with a black hole.
+One of the most important of these is gravitational collapse -- the growth of curvatures that eventually leads to the formation of a singularity in spacetime potentially associated with a black hole.
 Obtaining the details of this fundamental process in full generality in AdS is an open problem. 
 Although it has not yet been proven mathematically, this process of black hole formation is expected to generically result in a rotating black hole that is characterized by two conserved numbers: total mass and total angular momentum.
 Small, rapidly rotating black holes in AdS are unstable due to a process known as superradiance -- the amplification of waves that scatter off a rotating object.
 Along with the box-like nature of AdS, this amplification leads to a runaway process whose endpoint is unknown.
 Finding this endpoint and the pathway by which it is reached is, again, an open problem.
 
-In an unprecedented way, the simulation of asymptotically AdS spacetimes has also opened up the field of numerical relativity to the study of phenomena in areas beyond GR. 
+In an unprecedented way, the simulation of asymptotically AdS spacetimes has also opened up the field of numerical relativity to the study of phenomena in areas beyond the traditional astrophysical setting. 
 At the heart of this push to understand AdS is a deep connection between gravity in AdS to certain conformal field theories (CFT), now known as the AdS/CFT correspondence~\cite{Maldacena:1997re,Gubser:1998bc,Witten:1998qj}. 
-Through this connection, the study of AdS spacetimes has become immediately relevant to fundamental questions in many areas in physics, such as fluid dynamics [cite], relativistic heavy ion collisions [cite], and superconductivity [cite].
+Through this connection, the study of AdS spacetimes has become immediately relevant to fundamental questions in many areas in physics, such as fluid dynamics [cite], relativistic heavy ion collisions [cite], and superconductivity [cite] just to mention a few.
 See, for example, [cite] for excellent reviews. 
-The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important --and in most cases the only-- window into the real-time dynamics of quantum field theories far from equilibrium. 
+The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important -- and in most cases the only -- window into the real-time dynamics of strongly interacting quantum field theories far from equilibrium. 
 The dynamical far-from-equilibrium regime is precisely the one that is least explored and understood, and the one that has the best chance of making contact with experiment.
 Within GR, the dynamics of AdS provides a detailed look at how the Einstein equations behave in the fully non-linear regime and with non-trivial boundary conditions.
-This has led to important progress in our understanding fundamental phenomena in gravity, including gravitational collapse and superradiance. 
+This has led to important efforts to understand fundamental phenomena in gravity in this new setting.%, including gravitational collapse and superradiance. 
 
-Our current understanding of AdS, however, remains limited. 
+Our current understanding of gravity in AdS, however, remains limited. 
 This is due to several reasons.
 First, evolution in AdS is notoriously hard, in part because it is an initial boundary value problem whose systematic study is still in its infancy. 
 Cauchy evolution in AdS requires data to be prescribed not only at an initial space-like hypersurface, but also at spatial and null infinity which constitute the time-like boundary of an asymptotically AdS spacetime.
@@ -177,7 +185,7 @@ As [cite] demonstrate, the crucial feature to obtain stable evolution in AdS is 
 In most cases, a gauge choice leading to stable numerical evolution is typically found in spacetimes with a certain degree of symmetry.
 In this work, we detail a prescription that provides this gauge choice in a setting with no symmetry assumptions for $d=4$ spacetime dimensions. 
 %various couplings with matter fields, and many (if not all) types of global or non-global Poincar\'{e} coordinates, as long as reflective Dirichlet boundary conditions are imposed at the AdS boundary (as explained in Section~\ref{subsec:cartevvarboucon}).
-If we wish to evolve points at the centre of the grid, which is the case when we want to analyze gravitational collapse and black hole formation, global (asymptotically) Cartesian coordinates (defined precisely in Section~\ref{subsec:asyAdS}) are of particular interest as the Courant-Friedrichs-Lewy (CFL) condition does not restrict the size of the time step too severely (unlike, for example, in spherical coordinates), thus allowing reasonably short computing times for the simulations.
+If we wish to evolve points at the centre of the grid, which is the case when we want to analyze gravitational collapse and black hole formation, global (asymptotically) Cartesian coordinates (defined precisely in Section~\ref{subsec:asyAdS}) are of particular interest as the Courant-Friedrichs-Lewy (CFL) condition does not restrict the size of the time step too severely (unlike, for example, in spherical coordinates), thus allowing reasonably affordable computing times for the simulations.
 In fact, these are the coordinates used in \cite{Bantilan:2017kok} to study the collapse of a massless scalar field in global $AdS_5$ with axisymmetry.
 In anticipation of similar studies, we choose to write our prescription for the case of global (asymptotically) Cartesian coordinates, in order to obtain the first stable evolution of asymptotically $AdS_4$ spacetimes with no symmetries on a Cartesian grid.
 The simulations are based on a code employing second order finite difference derivative stencils to discretize the initial constraints and evolution equations.
@@ -187,7 +195,7 @@ In Section~\ref{sec:setup} we describe the setup. We start with a short review o
 In Section~\ref{sec:pre_sta} we detail our prescription to obtain stable Cauchy evolution with no symmetries in (asymptotically) Cartesian coordinates. The crucial ingredients are reflective Dirichlet boundary conditions imposed on appropriate evolution variables, and a specific choice of generalized harmonic source functions.
 In Section~\ref{sec:bouset2} we define several boundary quantities, whose evolution describes the physics at the AdS boundary.
 In Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations. 
-Section~\ref{sec:results} contains preliminary results from this new code, and we conclude with a discussion in Section~\ref{sec:Discussion}.
+Section~\ref{sec:results} contains results of simulations of gravitational collapse without symmetry assumptions obtained with this new code. We conclude with a discussion in Section~\ref{sec:Discussion}.
 
 \section{Setup}\label{sec:setup}
 
@@ -209,16 +217,16 @@ The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$
 We aim to solve this set of equations using the Generalized Harmonic formulation (see Appendix~\ref{sec:GHfor}
 %for the form of the evolution equations \eqref{eqn:eoms1},\eqref{eqn:eoms2} in this framework 
 and [CITE PAPERS for more details about the theoretical aspects of the formulation]), 
-whose solution is given (in any set of coordinates) by the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a gauge choice of source functions $H_\alpha$. 
+whose solution is given (in any set of coordinates) by the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a  choice of gauge source functions $H_\alpha$. 
 
-The metric of AdS$_4$ is the maximally symmetric vacuum (i.e. $\varphi=0$) solution of \eqref{eqn:eoms1},\eqref{eqn:eoms2} in four dimensions.
+The metric of AdS$_4$ is the maximally symmetric vacuum (i.e., $\varphi=0$) solution of \eqref{eqn:eoms1},\eqref{eqn:eoms2} in four dimensions.
 In terms of global coordinates $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$ that cover the whole spacetime, the metric of AdS$_4$ can be expressed as
 \begin{equation}\label{eqn:ads4}
-\hat{g}= \left( -(1+r^2/L^2) dt^2 + (1+r^2/L^2)^{-1} dr^2 +r^2 d{\Omega_2}^2 \right), \nonumber
+\hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 , \nonumber
 \end{equation}
 with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round 2-sphere. The crucial feature of this spacetime is the presence of a \emph{time-like} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. In other words, any Cauchy problem is an initial-boundary value problem.
 
-First, we compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.
+To proceed, first we compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.
 We hereafter set $\ell=1$ without loss of generality, so that the AdS boundary is $\rho=1$. In this way, we obtain (compactified) spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$.
 Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the metric of AdS$_4$ in this set of coordinates reads
 \begin{equation}\label{eqn:ads4_compact}
@@ -226,7 +234,7 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 \end{equation}
 
 Second, we define Cartesian coordinates $x^\mu=(t,x,y,z)$ by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
-This brings the metric of AdS$_4$ into its final form
+This brings the metric of AdS$_4$ into its final form, suitable for our simulations
 \begin{eqnarray}\label{eqn:ads4_final}
 \hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
 &+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
@@ -305,7 +313,7 @@ for arbitrary $f_\mu$.
 %has the same conformal structure of the pure AdS boundary, which is also the conformal structure of the AdS boundary, i.e. $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$. Given these requirements, it is evident 
 %It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii). Furthermore, \eqref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$ and the result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
 
-An equivalent characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d’aujourdhui (Asterisque, 1985) 95]. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbour of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
+An equivalent characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d'??aujourdhui (Asterisque, 1985) 95]. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbour of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 \begin{equation}
 \label{eqn:FGmetric}
 g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{ij}(\bar{z},\bar{x})d\bar{x}^id\bar{x}^j),
@@ -867,7 +875,8 @@ Other possible applications, requiring only minor additions to the capabilities 
 
 
 \section*{Acknowledgements}
-Simulations were run on the {\bf Apocrita} cluster at Queen Mary University of London. MENTION ATHENA
+HB and PF are supported by the European Research Council Grant No. ERC-2014-StG 639022-NewNGR. PF is also supported by a Royal Society University Research Fellowship (Grant No. UF140319 and URF\textbackslash R\textbackslash 201026) and by a Royal Society Enhancement Award (Grant No. RGF\textbackslash EA\textbackslash 180260).  LR is supported by a QMUL PhD scholarship. We acknowledge the use of Athena at HPC Midlands+, which was funded by the EPSRC on 
+grant EP/P020232/1, in this research, as part of the HPC Midlands+ consortium. This research also utilised Queen Mary's Apocrita HPC facility, supported by QMUL Research-IT. http://doi.org/10.5281/zenodo.438045.
 
 \appendix
 \setcounter{tocdepth}{1}

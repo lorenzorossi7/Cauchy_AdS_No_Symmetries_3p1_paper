@@ -7,3 +7,5 @@
 *.out
 *.toc
 3p1.pdf
+*.fdb_latexmk
+*.fls
