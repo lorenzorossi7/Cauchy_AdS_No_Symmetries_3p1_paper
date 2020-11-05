@@ -962,13 +962,14 @@ Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_
 \section{Initial Data}
 \label{sec:initdata}
 
-In this section we discuss the initial data used in our simulations on a spacelike hypersurface $\Sigma$ at $t=0$ in Cartesian coordinates $x^\mu=(t,x,y,z)$. We denote Cartesian spatial coordinates on $\Sigma$ by $x^m=(x,y,z)$ and the corresponding indices by $m,n$. Setting all the necessary initial values for the generalized harmonic scheme, $\bar{\varphi}|_{t=0},\bar{g}_{mn}|_{t=0},\bar{H}_\mu |_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{mn}|_{t=0},\partial_t\bar{H}_\mu |_{t=0}$, is equivalent to prescribing $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$, since $\bar{H}_\mu|_{t=0}$ and $\partial_t\bar{H}_\mu|_{t=0}$ can be obtained from the latter set by \eqref{eq:defsoufunsph} and its time derivative at $t=0$.
-However, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Moreover, particular attention has to be paid in order to make a choice of the initial degrees of freedom that is consistent with the desired gauge \eqref{eqn:target_gauge_xyz},\eqref{eqn:target_gauge_t} near the AdS boundary. 
+The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^l=(x,y,z)$, and the corresponding indices by $l,m,n$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
+With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{mn}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{mn}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
+In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_xyz},\eqref{eqn:target_gauge_t} near the AdS boundary. 
 
 \subsection{Constraints}
 \label{sec:constr}
 
-Here we review the constraints of GR and how they are solved in our code.
+Here we review the constraints of GR and how they are solved in our numerical scheme.
 We start by defining the relevant quantities on the initial spacelike hypersurface $\Sigma$. %We will do so using the indices associated with Cartesian coordinates, but the following definitions are tensorial relations that read the same in any basis. 
 The time-like, future-directed unit 1-form normal to $\Sigma$ is given by
 \begin{equation}
@@ -988,7 +989,8 @@ The projection of $\nabla_\mu n_\nu$\footnote{Notice that we can make sense of c
 \label{eq:extrcurv}
 K_{\mu\nu}=-\gamma^\rho_\mu \gamma^\sigma_\nu \nabla_\rho n_\sigma=-\frac{1}{2}\mathcal{L}_n\gamma_{\mu\nu}.
 \end{equation}
-From the second equality, we can intuitively understand how a choice of $K_{\mu\nu}$ on $\Sigma$ is equivalent to a choice for the time-derivative of the metric components at $t=0$.
+The Lie derivative along the normal direction in the second equality intuitively suggests that a choice of $K_{\mu\nu}$ on $\Sigma$ is ``morally'' equivalent to a choice for the time-derivative of the metric components at $t=0$.
+%From the second equality, we can intuitively understand how a choice of $K_{\mu\nu}$ on $\Sigma$ is equivalent to a choice for the time-derivative of the metric components at $t=0$.
 
 As a final ingredient, the covariant derivative on $\Sigma$ of a tensor field invariant under projection onto $\Sigma$ is defined as the projection onto $\Sigma$ of the covariant derivative $\nabla$ of the tensor field, and we denote it by $D$, e.g. $D_\mu X_{||}^\nu=\gamma^\rho_\mu \gamma^\nu_\sigma \nabla_\rho X_{||}^\sigma$. $D$ is the Levi-Civita connection of $\gamma_{\mu\nu}$, i.e. it is torsion-free and $D_\mu\gamma_{\nu\rho}=0$.
 
