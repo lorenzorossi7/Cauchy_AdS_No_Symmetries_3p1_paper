@@ -174,8 +174,8 @@ Through this connection, the study of AdS spacetimes has become immediately rele
 See, for example, [cite] for excellent reviews. 
 The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important -- and in most cases the only -- window into the real-time dynamics of strongly interacting quantum field theories far from equilibrium. 
 The dynamical far-from-equilibrium regime is precisely the one that is least explored and understood, and the one that has the best chance of making contact with experiment.
-Within GR, the dynamics of AdS provides a detailed look at how the Einstein equations behave in the fully non-linear regime and with non-trivial boundary conditions.
-This has led to important efforts to understand fundamental phenomena in gravity in this new setting.%, including gravitational collapse and superradiance. 
+%Within GR, the dynamics of AdS provides a detailed look at how the Einstein equations behave in the fully non-linear regime and with non-trivial boundary conditions.
+%This has led to important efforts to understand fundamental phenomena in gravity in this new setting.%, including gravitational collapse and superradiance. 
 
 Our current understanding of gravity in AdS, however, remains limited. 
 This is due to several reasons.
@@ -190,7 +190,7 @@ The results presented here are based on a code that solves the Einstein equation
 %The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions, by employing a code that solves the Einstein equations coupled with matter fields for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities.
 %This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses (asymptotically) Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
 
-As [cite] demonstrate, the crucial feature to obtain stable evolution in AdS is a gauge choice of generalized harmonic source functions that is consistent with the conditions imposed at the AdS boundary.
+As [cite] demonstrate, a crucial requirement for obtaining stable evolution in AdS is a gauge choice of generalized harmonic source functions that is consistent with the conditions imposed at the AdS boundary.
 In most cases, a gauge choice leading to stable numerical evolution is typically found in spacetimes with a certain degree of symmetry.
 In this work, we detail a prescription that provides this gauge choice in a setting with no symmetry assumptions for $d=4$ spacetime dimensions. 
 %various couplings with matter fields, and many (if not all) types of global or non-global Poincar\'{e} coordinates, as long as reflective Dirichlet boundary conditions are imposed at the AdS boundary (as explained in Section~\ref{subsec:cartevvarboucon}).
@@ -200,7 +200,7 @@ In anticipation of similar studies, we choose to write our prescription for the 
 The simulations are based on a code employing second order finite difference derivative stencils to discretize the initial constraints and evolution equations.
 
 This article is organized as follows. 
-In Section~\ref{sec:setup} we describe the setup. We start with a short review of Anti-de Sitter spacetime, then we discuss two definitions of asymptotically AdS spacetimes given in the literature, and the resulting AdS boundary conditions.
+In Section~\ref{sec:setup} we describe the setup. We start with a short review of Anti-de Sitter spacetime, and discuss two characterizations of asymptotically AdS boundary conditions.
 In Section~\ref{sec:pre_sta} we detail our prescription to obtain stable Cauchy evolution with no symmetries in (asymptotically) Cartesian coordinates. The crucial ingredients are reflective Dirichlet boundary conditions imposed on appropriate evolution variables, and a specific choice of generalized harmonic source functions.
 In Section~\ref{sec:bouset2} we define several boundary quantities, whose evolution describes the physics at the AdS boundary.
 In Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations. 
