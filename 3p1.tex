@@ -332,79 +332,48 @@ g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{x})+g_{(2)ij}(\bar{x})\bar{z}^2+\mathcal{
 \end{equation}
 Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$. Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. If we make the further requirement that the topology of the boundary is that of pure AdS, i.e., $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and the definition becomes equivalent to the previous one. The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.
 
-We conclude by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity. Notice that, from  \eqref{eq:sphbounconh}, we know all the metric components $g_{\alpha\beta}$ only up to and including $\mathcal{O}(1-\rho)$ so we can expect to find the FG form of the metric only up to the corresponding order in $\bar{z}$.
-Using the definition $z=2\frac{1-\rho}{1+\rho}$ (i.e., the one that brings the pure AdS metric in FG form), the full metric $g$ up to and including $\mathcal{O}(z)$ reads
+We conclude by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity.
+We start from the general form for the asymptotically AdS metric in spherical coordinates $x^\alpha$, given by $g_{\alpha\beta}=\hat{g}_{\alpha\beta}+h_{\alpha\beta}$, where the deviations from pure AdS are given by the asymptotically AdS boundary conditions \eqref{eq:sphbounconh}.
+Let us define $z=2\frac{1-\rho}{1+\rho}$ (i.e., the coordinate that brings the pure AdS metric in FG form). 
+Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can obtain the metric components in $(t,z,\theta,\phi)$ coordinates only up to an order of $z$ equal to the order of $1-\rho$ given for spherical $x^\alpha$ coordinates by  \eqref{eq:sphbounconh}.
+The metric in these coordinates reads\footnote{In an attempt to streamline the form of metric \eqref{eq:metnewcoords} with a hopefully intuitive notation, we use the short form $\{\text{metric components in tensor product form}+\mathcal{O}(z^n)\}$ to denote metric components, each of which has additional terms of order $z^n$. We specifically use curly brackets to include all the metric components to which the symbol $\mathcal{O}(z^n)$ refers. For example, $\{3z^3dt^2+z^3dtd\theta+\mathcal{O}(z^4)\}+\{z^4dtdz+\mathcal{O}(z^5)\}$ denotes $(3z^3+\mathcal{O}(z^4))dt^2+(z^3+\mathcal{O}(z^4))dtd\theta+(z^4+\mathcal{O}(z^5))dtdz$.} 
 \begin{eqnarray}
-g&=&\frac{1}{z^2}\biggl[ 
+\label{eq:metnewcoords}
+g&=&\frac{1}{z^2}\biggl[ \biggl\{
 \left(1+f_{\rho\rho}(t,\theta,\phi)z^3\right)dz^2 \nonumber \\
 &&- \left(1+\frac{z^2}{2}+f_{tt}(t,\theta,\phi)z^3\right)dt^2+ 2 f_{t\theta}(t,\theta,\phi)z^3dt d\theta + 2 f_{t\phi}(t,\theta,\phi) z^3dt d\phi  \nonumber \\
 &&+  \left(1-\frac{z^2}{2}+f_{\theta\theta}(t,\theta,\phi)z^3 \right)d\theta^2+ 2 f_{\theta\phi}(t,\theta,\phi) z^3d\theta d\phi \nonumber\\
-&&+  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}(t,\theta,\phi)}{\sin^2\theta} z^3 \right)d\phi^2+\mathcal{O}(z^4)
+&&+  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}(t,\theta,\phi)}{\sin^2\theta} z^3 \right)d\phi^2+\mathcal{O}(z^4) \biggr\}+\bigl\{-2f_{t\rho}(t,\theta,\phi)z^4dtdz\nonumber\\
+&&-2f_{\rho\theta}(t,\theta,\phi)z^4dzd\theta-2f_{\rho\phi}(t,\theta,\phi)z^4dzd\phi+\mathcal{O}(z^5)\bigr\}\biggr].
+\end{eqnarray}
+Notice that this is not yet in the FG form because the $zz$-component is not $\frac{1}{z^2}$ up to the desired $\mathcal{O}(z)$ and $tz,z\theta,z\phi$-components are not zero up to $\mathcal{O}(z^2)$.
+Defining 
+\begin{eqnarray}
+\label{eqn:FGcoords}
+\bar{t}&=&t\left(1+\frac{z^5 \left(2 f_{t\rho}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,t}(t,\theta,\phi)\right)}{10 t}+\mathcal{O}(z^6)\right)\\
+\bar{z}&=&z\left(1+\frac{1}{6}z^3f_{\rho\rho}(t,\theta,\phi)+\mathcal{O}(z^4)\right)\\
+\bar{\theta}&=&\theta\left(1-\frac{z^5 \left(2 f_{\rho\theta}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\theta}(t,\theta,\phi)\right)}{10 \theta}+\mathcal{O}(z^6)\right)\\
+\bar{\phi}&=&\phi\left(1-\frac{z^5 \left(2 f_{\rho\phi}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\phi}(t,\theta,\phi)\right)}{10 \phi}+\mathcal{O}(z^6)\right),
+\end{eqnarray}
+which can be inverted near the boundary as
+\begin{eqnarray}
+\label{eqn:invertFGcoords}
+t&=&\bar{t}\left(1-\frac{\bar{z}^5 \left(2 f_{t\rho}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{t}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10 \bar{t}}+\mathcal{O}(\bar{z}^6)\right)\\
+z&=&\bar{z}\left(1-\frac{1}{6}\bar{z}^3f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})+\mathcal{O}(\bar{z}^4)\right)\\
+\theta&=&\bar{\theta}\left(1+\frac{\bar{z}^5 \left(2 f_{\rho\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\theta}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10 \bar{\theta}}+\mathcal{O}(\bar{z}^6)\right)\\
+\phi&=&\bar{\phi}\left(1+\frac{\bar{z}^5 \left(2 f_{\rho\phi}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\phi}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10 \bar{\phi}}+\mathcal{O}(\bar{z}^6)\right),
+\end{eqnarray}
+we finally obtain the metric in FG form\footnote{See the footnote for equation \eqref{eq:metnewcoords} regarding the meaning of the notation $\{\text{metric components in tensor product form}+\mathcal{O}(z^n)\}$.}
+\begin{eqnarray}
+g&=&\frac{1}{\bar{z}^2}\biggl[\biggl\{ d\bar{z}^2- \left(1+\frac{\bar{z}^2}{2}+\left(f_{tt}(\bar{t},\bar{\theta},\bar{\phi})-\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right)d\bar{t}^2 \nonumber \\
+&&+ 2 f_{t\theta}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^3d\bar{t} d\bar{\theta} + 2 f_{t\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{t} d\bar{\phi}  \nonumber \\
+&&+  \left(1-\frac{\bar{z}^2}{2}+\left(f_{\theta\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right)d\bar{\theta}^2+ 2 f_{\theta\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{\theta} d\bar{\phi} \nonumber\\
+&&+   \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\frac{f_{\phi\phi}(\bar{t},\bar{\theta},\bar{\phi})}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3\right)d\bar{\phi}^2+\mathcal{O}(\bar{z}^4)\biggr\}\nonumber\\
+&&+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
 \biggr].
 \end{eqnarray}
-Notice that this is not yet in the FG form because the $zz$-component is not $\frac{1}{z^2}$ up to the desired $\mathcal{O}(z)$. Defining $\bar{z}=z\left(1+\frac{1}{6}z^3f_{\rho\rho}(t,\theta,\phi)\right),\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ we finally obtain the metric in FG form up to and including $\mathcal{O}(\bar{z})$
-\begin{eqnarray}
-g&=&\frac{1}{\bar{z}^2}\biggl\{ d\bar{z}^2- \left[1+\frac{\bar{z}^2}{2}+\left(f_{tt}(\bar{t},\bar{\theta},\bar{\phi})-\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right]d\bar{t}^2 \nonumber \\
-&&+ 2 f_{t\theta}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^3d\bar{t} d\bar{\theta} + 2 f_{t\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{t} d\bar{\phi}  \nonumber \\
-&&+  \left[1-\frac{\bar{z}^2}{2}+\left(f_{\theta\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3 \right]d\bar{\theta}^2+ 2 f_{\theta\phi}(\bar{t},\bar{\theta},\bar{\phi}) \bar{z}^3d\bar{\theta} d\bar{\phi} \nonumber\\
-&&+   \sin^2\bar{\theta} \left[1-\frac{\bar{z}^2}{2}+\left(\frac{f_{\phi\phi}(\bar{t},\bar{\theta},\bar{\phi})}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^3\right]d\bar{\phi}^2+\mathcal{O}(\bar{z}^4)
-\biggr\}.
-\end{eqnarray}
-Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}},g_{\bar{\theta}\bar{\theta}},g_{\bar{\phi}\bar{\phi}}$.
+Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\theta}\bar{\theta}}, g_{\bar{\phi}\bar{\phi}}$.
 
-
-\iffalse
-OLD
-
-We will be interested in the Cauchy evolution of spacetimes whose asymptotic isometry group is the same as AdS$_4$, i.e. $SO(3,2)$. These are called asymptotically AdS spacetimes. In particular, the boundary of these spacetimes is exactly the same as AdS$_4$, thus we will be dealing with an initial-boundary value problem and boundary conditions on all the fields involved in the Generalized Harmonic formulation will have to be imposed.
-In this Section we present suitable boundary conditions for asymptotically Anti-de Sitter spacetimes.
-
-Requiring an $SO(3,2)$ symmetry near the boundary amounts to imposing that the metric solution, written in the form $g=\hat{g}+h$, approaches the pure AdS metric $\hat{g}$ at a rate that satisfies the asymptotic Killing equation (in an arbitrary set of coordinates), 
-%\begin{equation}\label{eqn:asyKilleq}
-%(\mathcal{L}_X g)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near the AdS boundary at $\rho=1$},
-%\end{equation}
-for any $X$ generator of $SO(3,2)$. 
-In the following, we will refer to any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} as spherical coordinates (although they should be regarded as asymptotically spherical coordinates) and the indices associated with their coordinate basis will be chosen from the first part of the Greek alphabet, $\alpha,\beta,\gamma,\delta,\dots$
-Similarly, we will refer to any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} as Cartesian coordinates (although they should be regarded as asymptotically Cartesian coordinates) and the indices associated with their coordinate basis will be chosen from the second part of the Greek alphabet, $\mu,\nu,\rho,\sigma,\dots$
-
-In spherical coordinates, the solution to \eqref{eqn:asyKilleq} gives the boundary conditions (see [cite 1201.2132] for the details)
-\begin{eqnarray}
-\label{eq:sphbounconh}
-h_{\rho\alpha}&=f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) \;\; \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
-h_{\alpha\beta}&=f_{\alpha\beta}(t,\theta,\phi)(1-\rho)+\mathcal{O}((1-\rho)^{2}) \;\; \textrm{ otherwise},
-\end{eqnarray}
-(where $m,n=t,\theta,\phi$) for arbitrary functions $f_{\alpha\beta}(t,\theta,\phi)$. Furthermore, we impose a boundary condition on the massless scalar field $\varphi$ that preserves the asymptotics \eqref{eq:sphbounconh} during evolution (as verified in CITE [cite 1201.2132]):
-\begin{equation}\label{eq:sphbounconphi}
-\varphi=b(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4)
-\end{equation}
-for arbitrary $b(t,\theta,\phi)$.
-
-In Cartesian coordinates, these read
-\begin{eqnarray}
-\label{eq:carbouncondh}
-h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))+\mathcal{O}((1-\rho(x,y,z))^{2}), \\
-\label{eq:carbouncondphi}
-\varphi&=&c(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^3+\mathcal{O}((1-\rho(x,y,z))^{4}), 
-\end{eqnarray}
-for arbitrary $f_{\mu\nu}$ and $c$.
-
-Regarding the source functions in a given set of coordinates, involved in the Generalized Harmonic Formulation employed in this study (CITE), their near-boundary behaviour can be deduced from the behaviour of the full metric $g$ through the definition 
-\begin{equation}\label{eq:defsoufunsph}
-H^\alpha \equiv \Box x^\alpha = \frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\alpha})
-\end{equation}
-in spherical coordinates, and similarly in Cartesian coordinates. 
-In spherical coordinates, denoting the pure AdS values by $\hat{H}_\alpha$, \eqref{eq:sphbounconh} implies,
-\begin{eqnarray}\label{eq:sphbouncondsoufunc}
-H_\alpha&=&\hat{H}_\alpha+f_\alpha(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4) \;\; \textrm{ if $\alpha\neq\rho$} \\ \nonumber
-H_\rho&=&\hat{H}_\rho+f_\rho(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3)
-\end{eqnarray}
-for arbitrary $f_\alpha$.
-In Cartesian coordinates,  denoting the pure AdS values by $\hat{H}_\mu$, \eqref{eq:carbouncondh} implies,
-\begin{equation}\label{eq:carbouncondsoufun}
-H_\mu=\hat{H}_\mu+f_\mu(t,x,y,z)|_{\rho(x,y,z)=1}(1-\rho(x,y,z))^2+\mathcal{O}((1-\rho(x,y,z))^3)
-\end{equation}
-for arbitrary $f_\mu$.
-\fi
 
 %\section{Prescription for Stability}\label{sec:pre_sta}
 \section{Boundary Prescription}\label{sec:pre_sta}
