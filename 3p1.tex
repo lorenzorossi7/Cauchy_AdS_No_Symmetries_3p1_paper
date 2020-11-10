@@ -414,6 +414,7 @@ Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest
 %By construction, the evolved variables $\bar{g}_{\mu \nu}$, $\bar{\varphi}$, $\bar{H}_{\mu}$ all fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. 
 For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary $\rho=1$,
 \begin{equation}
+\label{eq:dirbc}
  \bar{g}_{\mu\nu}|_{\rho=1}=0\,,\quad \bar{\varphi}|_{\rho=1}=0\,,\quad \bar{H}_\mu|_{\rho=1}=0\,.
  \end{equation}
 %We set reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
@@ -451,6 +452,7 @@ A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q
 %Notice that this expansion is valid, with the displayed orders, in any set of coordinates, as it only depends on the fact that the evolution variables are linear in $q$ at leading order.
 or, rearranging the terms in order to obtain wave-like equations,
 \begin{equation}
+\label{eq:waveEFE}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2).
 \end{equation}
 
@@ -532,7 +534,8 @@ zz}) \nonumber \\
 &&+\mathcal{O}(q^{-1}).
 \end{eqnarray}
 All that remains is to write down the generalized harmonic constraints $0=C_\mu \equiv H_\mu-\Box x_\mu$ at leading order in the same near-boundary expansion
-\begin{eqnarray}\label{eqn:ct}
+\begin{eqnarray}
+\label{eqn:ct}
 C_t&=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
    \bar{H}_{(1) t}) \nonumber \\
    &&+\mathcal{O}(q^3),\\
@@ -563,10 +566,10 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 \end{eqnarray}
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$.
 
-In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $H_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed, it was noticed for the first time in ~\cite{Bantilan:2012vu} that several others do not provide stable evolution. We now present a procedure that provides the stable gauge in our Cartesian simulations and that, we believe, would provide a stable gauge in many different settings with higher spacetime dimensions, various coupling with matter fields, different types of global coordinates, or non-global Poincar\'{e} patches, thus making numerical Cauchy evolution in AdS possible in full generality, that is with no need for symmetry assumptions.
-The steps that lead to our stable gauge, in a form that can be applied to all previously mentioned cases, are the following. 
+In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not provide stable evolution. We now present a procedure that provides the stable gauge in our Cartesian simulations and that, we believe, would provide a stable gauge in many different settings with higher spacetime dimensions, various coupling with matter fields, different types of global coordinates or non-global Poincar\'{e} patches, thus making numerical Cauchy evolution in AdS possible in full generality, that is with no need for symmetry assumptions.
+The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following. 
 \begin{enumerate}
-\item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for the source functions, $\bar{H}_\mu$. In the Cartesian case, this gives
+\item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for $\bar{H}_{(1)\mu}$. In the Cartesian case, this gives
 \begin{eqnarray}\label{eqn:target_gauge_txyz_step1}
 \bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}) \nonumber\\
 \bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}) \nonumber \\
@@ -581,7 +584,7 @@ In the Cartesian case, $N_{low}=-2$ and there is only one independent equation g
 \bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}=0.
 \end{equation}
 \item Plug the equations obtained in step 2 in the gauge obtained in step 1.
-In Cartesian coordinates, we have
+In Cartesian coordinates, using \eqref{eq:cart_tracelessness} to eliminate $\bar{g}_{(1)tt}$ from \eqref{eqn:target_gauge_txyz_step1}, we have
 \begin{eqnarray}\label{eqn:target_gauge_txyz}
 \bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),\nonumber\\
 \bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}) \nonumber \\
@@ -603,12 +606,24 @@ In Cartesian coordinates, we have
 %\bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
 %\end{equation}
 %which makes the leading order of \eqref{eqn:ct} vanish trivially.
-This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. Notice that this choice does not fix the values of $\bar{H}_\mu$ in the bulk, which are still arbitrary. Our bulk choice is made explicit in Appendix \ref{sec:GCbulk}.
+This is the asymptotic gauge condition that we have empirically verified to lead to stable 3+1 evolution. However, other gauge choices might work equally. Notice that this choice does not fix the values of $\bar{H}_\mu$ in the bulk, which are still arbitrary. Our bulk choice is made explicit in Appendix \ref{sec:GCbulk}.
 
-It is important to develop an understanding of the reason why the choice of $\bar{H}_\mu$ is not completely free (despite the fact that this is simply a gauge choice in generalized harmonic coordinates) and the criterion above is expected to work. 
-Notice that \eqref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $i\neq3$ for a solution of the full evolution equations, for any choice of source functions.
+Let us explain the rationale for our procedure.
+We start by recalling that, if the generalized harmonic constraints are satisfied at $t=0$\footnote{This condition is satisfied by our initial data, detailed in Appendix~\ref{sec:initdata}.}, then they are satisfied at all times during evolution due to the properties of the generalized harmonic scheme. Then, we notice that the form \eqref{eq:efefullexp} of the Einstein equations implies that the task of our scheme is to find a solution such that $A_{(i)\mu\nu}=0$ for all $i\neq3$, for any choice of source functions. This is what motivates the steps above: we want to find a gauge that, provided that the $C_\mu$ vanish, ``eases'' the job of the numerical scheme, in the sense that it makes the lowest order of the Einstein equations, $A_{(1)\mu\nu}$, vanish. This explains why we do not stop at the gauge obtained in step 1, \eqref{eqn:target_gauge_txyz_step1}: it does not satisfy $A_{(1)\mu\nu}=0$ thus, from experience, we do not expect it to be stable.
+
+It is also important to develop an understanding of the reasons why the choice of $\bar{H}_\mu$ is not completely free. 
+Two reasons are clear to us. The first one is the ``theoretical'' issue that a choice of source functions $H_\mu$ is only allowed if $\Box x^\mu=H^\mu$, or equivalently $C_\mu=0$, has a solution for $x^\mu$. If this is not the case, then a solution in that gauge simply does not exist. For example, we clearly see that, for the choice $\bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz})+a_t$, where $a_t$ is constant and $a_t\ne0$, a solution of the leading order of $C_t=0$ does not exist, so this gauge choice would not lead to stable numerical evolution.
+The second reason is ``practical'' and it can be understood with the following example. Consider a gauge in which $\bar{H}_{(1)t}$ takes the value $\bar{H}_{(1)t}(t>t_0)=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z b_t)$, where $b_t\in \mathbb{R}$ is a possibly vanishing constant, after some time $t_0$ in the evolution. The vanishing of $C_t$ now implies $\bar{g}_{(1)tz}(t>t_0)=b_t$. Although this condition does not violate any of the requirements above, it is an additional Dirichlet boundary condition\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.} that must be imposed for $t>t_0$ if we hope to find a solution for this example. Since using boundary conditions that change with time is neither practical nor relevant for the physics of a numerical solution, our scheme does not take these cases into consideration.
+%Although this condition does not violate any of the requirements above\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}, our numerical scheme would fail to find such a solution and it would develop infinities near the AdS boundary. To avoid this, one would have to impose the additional Dirichlet boundary condition $\bar{g}_{(1)tz}=b_t$ for $t>t_0$.
+
+%are imposing no conditions on  $\bar{g}_{(1)tz}$.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}
+
+
+\iffalse
 %
 %So, we expect order $q^{-2}$ and $q^{-1}$ of the right hand sides of \eqref{eqn:efett}-\eqref{eqn:efezz} to vanish for the solution of the full evolution equations, for any choice of source functions. 
+It is also important to develop an understanding of the reason why the choice of $\bar{H}_\mu$ is not completely free (despite the fact that this is simply a gauge choice in generalized harmonic coordinates).
+Notice that \eqref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $i\neq3$ for a solution of the full evolution equations, for any choice of source functions.
 However, for some values of $\bar{H}_\mu$ a solution might not exist or it might not be possible for the numerical scheme to find it. To see this explicitly in a simple way, it is more convenient to switch to spherical coordinates $(t,\rho,\theta,\phi)$ and look at the near-boundary expansion of the $tt$-component of the Einstein equations:
 \begin{equation}\label{eqn:efettsph}
 \tilde{\Box}\bar{g}_{(1)tt}=(-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho})q^{-2}+\mathcal{O}(q^{-1}).
@@ -616,6 +631,7 @@ However, for some values of $\bar{H}_\mu$ a solution might not exist or it might
 We see that $A_{(1)tt}=-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho}$ and our criterion would lead to the choice $\bar{H}_{(1)\rho}=\frac{3}{2} \bar{g}_{(1)\rho\rho}$, which cancels the order $q^{-2}$ in $\tilde{\Box}\bar{g}_{(1)tt}$.
 As a first example, suppose we choose, instead, $\bar{H}_{(1)\rho}=\frac{3}{2}( \bar{g}_{(1)\rho\rho}+c_\rho)$, where $c_\rho$ is constant, $c_\rho\ne0$. In this case, $A_{(1)tt}$ cannot vanish so this is an example of a gauge choice for which a solution does not exist.
 As a second example, let us now choose a gauge that becomes constant (possibily vanishing as in the harmonic gauge w.r.t. pure AdS) after some time $t_0$ in the evolution, i.e., $\bar{H}_{\alpha}(t>t_0)=\frac{3}{2}c_{\alpha},c_{\alpha}\in \mathbb{R}$. The fact that $A_{(1)tt}$ must vanish implies that $\bar{g}_{(1)\rho\rho}(t>t_0)=c_\rho$. This poses no restriction on the solution. However, in practice, our  would fail to find such a solution (and it would develop infinities near the AdS boundary) since we are imposing no conditions on  $\bar{g}_{(1)\rho\rho}$.\footnote{The Dirichlet boundary condition $\bar{g}_{\rho\rho}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)\rho\rho}$.}
+\fi
 
 In summary, we see that the presence of boundary conditions, necessary in an initial-boundary value problem, and the \textcolor{blue}{asymptotic behaviour of the dynamical fields near this boundary} is what restricts the gauge choice. We also see that a gauge choice for which the vanishing of $A_{(1)\mu\nu}$ is either impossible or imposes conditions at the boundary not included in the Dirichlet boundary conditions cannot result in a stable evolution.
 Our criterion leads to the simplest gauge choice that does not have any of these issues, thus it is expected to work. These arguments also suggest that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice such that $A_{(1)\mu\nu}=0$ is (i) possible and (ii) it does not impose conditions stronger than those already imposed by the Dirichlet boundary conditions. In particular, the requirement that the gauge choice analytically satisfies $A_{(1)\mu\nu}=0$, which is our criterion, is not essential, because this will hold automatically (up to solution error) for any numerical solution; all we need is to be able to find such solution. \textcolor{blue}{\bf PF: I don't understand what you want to say by ``all we need is to be able to find such solution". Isn't this the whole purpose of what we are doing?}
