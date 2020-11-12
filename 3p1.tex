@@ -349,9 +349,10 @@ for arbitrary $f_\mu$.
 %HB
 %An equivalent characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d'aujourdhui (Asterisque, 1985) 95]. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 
-The boundary conditions can also be determined by solving the field equations asymptotically, and thus find the most general fall-off conditions that can appear in solutions of the field equations. 
-A different characterization of asymptotically AdS spacetimes can thus be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d'aujourdhui (Asterisque, 1985) 95]. 
-In this approach, one starts by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
+A different characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d'aujourdhui (Asterisque, 1985) 95]. 
+In this approach, one starts with the notion of a spacetime $(M,g)$ that is locally asymptotically AdS, which admits a conformal compactification (allowing one to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}.
+This allows asymptotically AdS spacetimes to be defined without making any assumption, for example, on the topology of the boundary. 
+The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 \begin{equation}
 \label{eqn:FGmetric}
 g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{ij}(\bar{z},\bar{x})d\bar{x}^id\bar{x}^j),
@@ -361,13 +362,17 @@ where
 \label{eqn:FGbdymetric}
 g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{x})+g_{(2)ij}(\bar{x})\bar{z}^2+\mathcal{O}(\bar{z}^3).
 \end{equation}
-Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$. Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. If we make the further requirement that the topology of the boundary is that of pure AdS, i.e., $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and the definition becomes equivalent to the previous one. The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.
+Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$. 
+Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. 
+If we make the further requirement that the topology of the boundary is that of pure AdS, i.e., $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and this characterization becomes equivalent to the previous one obtained from the original arguments in \cite{Henneaux:1985tv}. 
+The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial''-``radial'' component of any asymptotically AdS metric is 1 and ``radial''-``non-radial'' components are 0 in a neighbourhood of the AdS boundary.
 
-We conclude by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity.
+We conclude this section by showing an explicit example of how FG coordinates can be found in the case of $AdS_4$, setting $L=1$ for simplicity.
 We start from the general form for the asymptotically AdS metric in spherical coordinates $x^\alpha$, given by $g_{\alpha\beta}=\hat{g}_{\alpha\beta}+h_{\alpha\beta}$, where the deviations from pure AdS are given by the asymptotically AdS boundary conditions \eqref{eq:sphbounconh}.
-Let us define $z=2\frac{1-\rho}{1+\rho}$ (i.e., the coordinate that brings the pure AdS metric in FG form). 
-Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can obtain the metric components in $(t,z,\theta,\phi)$ coordinates only up to an order of $z$ equal to the order of $1-\rho$ given for spherical $x^\alpha$ coordinates by  \eqref{eq:sphbounconh}.
-The metric in these coordinates reads\footnote{In an attempt to streamline the form of metric \eqref{eq:metnewcoords} with a hopefully intuitive notation, we use the short form $\{\text{metric components in tensor product form}+\mathcal{O}(z^n)\}$ to denote metric components, each of which has additional terms of order $z^n$. We specifically use curly brackets to include all the metric components to which the symbol $\mathcal{O}(z^n)$ refers. For example, $\{3z^3dt^2+z^3dtd\theta+\mathcal{O}(z^4)\}+\{z^4dtdz+\mathcal{O}(z^5)\}$ denotes $(3z^3+\mathcal{O}(z^4))dt^2+(z^3+\mathcal{O}(z^4))dtd\theta+(z^4+\mathcal{O}(z^5))dtdz$.} 
+Let us define $z=2(1-\rho)/(1+\rho)$, i.e., the coordinate that brings the pure AdS metric in FG form. 
+%Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can obtain the metric components in $(t,z,\theta,\phi)$ coordinates only up to an order of $z$ equal to the order of $1-\rho$ given for spherical $x^\alpha$ coordinates by  \eqref{eq:sphbounconh}.
+Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can use \eqref{eq:sphbounconh} to immediately write down metric falloffs in terms of $z$.
+The metric in these coordinates reads\footnote{ {\bf HB: consider removing this footnote}\\ In an attempt to streamline the form of metric \eqref{eq:metnewcoords} with intuitive notation, we use the short form $\{\text{metric components in tensor product form}+\mathcal{O}(z^n)\}$ to denote metric components, each of which has additional terms of order $z^n$. We specifically use curly brackets to include all the metric components to which the symbol $\mathcal{O}(z^n)$ refers. For example, $\{3z^3dt^2+z^3dtd\theta+\mathcal{O}(z^4)\}+\{z^4dtdz+\mathcal{O}(z^5)\}$ denotes $(3z^3+\mathcal{O}(z^4))dt^2+(z^3+\mathcal{O}(z^4))dtd\theta+(z^4+\mathcal{O}(z^5))dtdz$.} 
 \begin{eqnarray}
 \label{eq:metnewcoords}
 g&=&\frac{1}{z^2}\biggl[ \biggl\{
@@ -410,9 +415,9 @@ Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\
 \section{Boundary Prescription}\label{sec:pre_sta}
 
 In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolutions.
-We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields and many (if not all) global or non-global Poincar\'{e} coordinates.
+We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates in global AdS or a Poincar\'{e} patch.
 The other crucial ingredient is the imposition of the asymptotically AdS boundary conditions \eqref{eq:carbouncondh},\eqref{eq:carbouncondphi},\eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, in the way explained in the next section.
-For the original discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}.
+For a discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}.
 
 %In this work, we present the results obtained for the four dimensional case with Klein-Gordon coupling in global Cartesian coordinates.
 \subsection{Evolution Variables and Boundary Conditions}\label{subsec:cartevvarboucon}
