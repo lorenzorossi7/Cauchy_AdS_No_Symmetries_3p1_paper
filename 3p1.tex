@@ -418,8 +418,10 @@ For evolved variables defined in this way, the boundary conditions \eqref{eq:car
  \bar{g}_{\mu\nu}|_{\rho=1}=0\,,\quad \bar{\varphi}|_{\rho=1}=0\,,\quad \bar{H}_\mu|_{\rho=1}=0\,.
  \end{equation}
 %We set reflective Dirichlet boundary conditions at the AdS boundary $\rho=1$ for all evolved variables. 
-The only complication comes from the fact that in Cartesian coordinates $\rho^2=x^2+y^2+z^2$, so the AdS boundary generally does not lie on a Cartesian grid point. 
-For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$, and use those to set its value, by first order interpolation, at grid points that are at most one grid point away from $\rho=1$.
+The only complication comes from the fact that in Cartesian coordinates $\rho^2=x^2+y^2+z^2$, so the AdS boundary $\rho=1$ generally does not lie on a Cartesian grid point. We thus implement Dirichlet conditions as follows.
+For any given evolution variable, we set its value at grid points that are at most one grid point away from $\rho=1$ by first order interpolation between the Dirichlet boundary value and the value at the closest point further into the interior $\rho<1$, along the Cartesian direction corresponding to the coordinate with largest absolute value.
+
+%For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$ and use those to set its value, by first order interpolation, at grid points that are at most one grid point away from $\rho=1$.
 
 
 \subsection{Gauge Choice for Stability}\label{sec:gauge_choice}
@@ -694,22 +696,54 @@ We saw in \eqref{eq:cart_tracelessness} that this factor vanishes.
 This is an important sanity check: we see that tracelessness of the stress-energy tensor, expected for a CFT in 2+1 dimensions, is ensured by the lowest order of the Einstein equations, provided that the generalized harmonic constraints are satisfied.
 %given our boundary conditions, the vanishing of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, expected for a CFT in 2+1 dimensions.
 In practice, we monitor $\langle \text{tr}T\rangle_{CFT}$ to estimate the truncation errors.
-Another important check that we performed is the conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.% We will instead show in Section~\ref{sec:resbouset} that the conservation is satisfied numerically during the evolution. Since this test is computationally expensive, we will only do it  for 4 representative time steps.
+Another important check that we performed is the conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.
+%We will instead show in Section~\ref{sec:resbouset} that the conservation is satisfied numerically during the evolution. Since this test is computationally expensive, we will only do it  for 4 representative time steps.
 
 Finally we note that since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use third order extrapolation from their bulk point values (see Appendix~\ref{sec:extrapconvbdy} for the details of the implementation).
 
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
-We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg} with constraint damping, for asymptotically AdS spacetimes~\cite{Bantilan:2012vu} in Cartesian coordinates.
-We discretize the resulting PDEs with second order finite differences, and integrate in $t$ using an iterative Newton-Gauss-Seidel relaxation procedure. 
-We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters and for adaptive mesh refinement support.
-We obtain initial data using a multigrid algorithm built into the PAMR/AMRD libraries.
-The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1], z \in [-1,1]$.
-The typical grid resolution gives $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
-We use a typical Courant factor of $\delta \equiv \Delta t / \Delta x = 0.3$.
+In this section we consider the core elements of the numerical scheme used in this study. Some of them are presented in detail in other parts of this article. We start by discussing the numerical features on which our way of solving the initial-boundary value problem relies. Then, we describe the apparent horizon finder and the excision method.
+%All the PDEs that we mention are discretized with second order finite difference derivative stencils.
 
-We search for the position $R(\theta,\phi)$ of the apparent horizons (AH) using a flow method (MORE DETAILS ON THIS?). A $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ grid with resolution $N_\theta\times N_\phi=9\times 17$ is enough to find the AH in the simulations considered in Section~\ref{sec:results}. We use the excision method to evolve black hole spacetimes, thereby removing geometric singularities from the computational domain. At the excision surface, the usual equations of motion are solved using one-sided stencils. 
-Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at such grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
+\subsection{Numerics of the Initial-Boundary Value Problem}
+\label{sec:numcauprob}
+%We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg} with constraint damping, for asymptotically AdS spacetimes~\cite{Bantilan:2012vu}.
+We solve the Einstein equations with constraint damping in generalized harmonic form \eqref{eqn:efe_gh_modified}, coupled with the massless Klein-Gordon equation \eqref{eqn:eoms2cart}, for asymptotically AdS spacetimes in Cartesian coordinates $x^\mu=(t,x,y,z)$. The solution is determined in terms of the metric, scalar field and source function variables, $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$. We substitute the definitions of these variables, \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}, in the equations of motion and analytically remove all the purely AdS terms.
+The resulting PDEs are discretized with second order finite difference derivative stencils, and then integrated in $t$ using an iterative Newton-Gauss-Seidel relaxation procedure with a three time level hierarchy, in order to obtain $(\bar{g}_{\mu\nu},\bar{\varphi})$. 
+$\bar{H}_\mu$ are instead determined by the gauge choice presented in full in Appendix~\ref{sec:GCbulk}. See also Section~\ref{sec:gauge_choice} for the discussion of the crucial gauge choice near the AdS boundary.
+
+We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters.
+Although these libraries have adaptive mesh refinement capabilities, numerical evolution is performed on a grid with fixed refinement.
+The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1]$, $z \in [-1,1]$.
+The typical grid resolution uses $N_x=N_y=N_z=217$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$.
+The time step of evolution is determined by $\Delta t=\lambda \Delta$.
+Although we do not perform a detailed analysis of the stability of our finite difference scheme, we expect the Courant-Friedrichs-Lewy (CFL) condition for stability to be satisfied if we set the CFL factor $\lambda$ to a value well below 1. Thus, we use $\lambda=0.3$. Notice that the most remarkable advantage of using Cartesian coordinates is that the CFL condition does not restrict the CFL factor too severely, hence allowing simulations to reach large evolution times $t$ in affordable running times. This is in contrast with the case of a grid in spherical coordinates $(t,\rho,\theta,\phi)$ with fixed resolution $\Delta\rho,\Delta\theta,\Delta\phi$.  For such grid, a sufficient condition for the CFL condition on $\lambda\equiv\Delta t/\min(\Delta\rho,\Delta\theta,\Delta\phi)$ to be satisfied is $\lambda<\rho_{min}$, where $\rho_{min}$ is the smallest value that the $\rho$ coordinate takes over the evolved portion of the grid. At points next to the origin, which must be evolved in studies of gravitational collapse and black hole formation, $\rho$ takes its smallest value $\Delta\rho$, so $\rho_{min}=\Delta\rho$. Hence, $\Delta t$ becomes prohibitively small for high resolutions (i.e., small $\Delta\rho$).
+
+The following components play a fundamental role in the numerical implementation of the initial-boundary value problem.
+Reflective Dirichlet boundary conditions \eqref{eq:dirbc} are imposed at the AdS boundary $\rho(x,y,z)=1$. In general the AdS boundary does not lie on Cartesian grid points, we thus need a slightly more elaborated way to impose these conditions. For each variable, consider the points at most one grid point away from the boundary in the interior (i.e., $\rho(x,y,z)<1$). The value at each of them is set by first order interpolation between the Dirichlet value at the boundary and the value at the closest point further into the interior, along the Cartesian direction corresponding to the coordinate with largest absolute value.
+Points with $\rho(x,y,z)\geq1-\Delta/2$ are excised to avoid issues with quantities that would diverge (also analytically) at $\rho(x,y,z)=1$.
+Time-symmetric initial data, sourced by a massless real scalar field, are obtained by solving the conformal decomposition of the Hamiltonian constraint \eqref{eq:hamconsfinal}. 
+The solution to \eqref{eq:hamconsfinal} is computed, after second order finite discretization, through a full approximation storage (FAS) multigrid algorithm with v-cycling and Newton-Gauss-Seidel relaxation, built into the PAMR/AMRD libraries. We ensure that initial data satisfies the generalized harmonic constraints. See Appendix~\ref{sec:initdata} for more details and the complete choice of initial data.
+
+\subsection{Apparent Horizon Finder and Excision}
+\label{sec:AH_exc}
+
+Once the solution is obtained at a certain time $t$, we can search for the position $R(\theta,\phi)$ of an apparent horizon (AH) at $t$, using the following flow method in spherical coordinates $(\rho,\theta,\phi)$ obtained in the usual way from the Cartesian coordinates of the solution. We consider $n$ two-dimensional surfaces at constant, equally spaced, values of $\rho$ within a user-specified range (between 0 and 1), and we pick the one with smallest $L^2$-norm of the outward null expansion. Let $\rho_0$ be the $\rho$ coordinate on this surface. 
+Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ we find the solution to the equation
+\begin{equation}
+\label{eq:floweq}
+\frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)},
+\end{equation}
+where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the true position of the AH, $R(\theta,\phi)$ is expected to become closer to the AH after each iteration. The process stops when either the $L^2$-norm of $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is below some specified tolerance, i.e., $R(\theta,\phi)$ is sufficiently close to the AH, or the user-specified maximum number of iterations has been reached, i.e., either there is no AH at time $t$ or this method was not able to find it. The latter typically occurs if we start from a range of values not sufficiently close to the AH.
+
+This AH finder is based on a $(\theta,\phi)$ grid\footnote{The grid on which the AH finder is executed is completely independent of the specifics of the Cartesian evolution grid given in Section~\ref{sec:numcauprob}.} with equal grid spacings $\Delta \theta=\Delta\phi=\Delta_{AH}$. The outward null expansion at grid points $(\theta,\phi)$ is obtained by first order interpolation in three dimensions from the values of the expansion at Cartesian grid points that surround $(\theta,\phi)$. These values are calculated from the definition of outward null expansion once the spacetime metric at time $t$ is known.
+We observe that a $N_\theta\times N_\phi=9\times 17$ resolution is enough to find the AH in the simulations considered in Section~\ref{sec:results} in less than $10^{4}$ iterations. Since \eqref{eq:floweq} is a parabolic equation, the ``time'' step $\Delta s$ must be at least of order $\mathcal{O}(\Delta_{AH}^2)$ for stability. When using $n=10$ and an initial range for $\rho$ values between 0.1 and 0.5, as we do in our simulations, we find that the AH finder works effectively if $\Delta s$ takes much smaller values. Specifically, we set $\Delta s=10^{-4}$.
+
+When an AH is found, we excise the Cartesian grid points in a region included in the AH and centred at the centre of the AH, in order to avoid the formation of geometric singularities in the computational domain.\footnote{This method is effective in removing singularities if the following common assumptions are valid on the spacetimes that we consider: (i) weak cosmic censorship is not violated (i.e., geometric singularities are contained inside a black hole event horizon), (ii) the AH at any time $t$ is contained in $t$-constant slices of the event horizon, (iii) the AH at any $t$ provides a sufficiently accurate approximation for $t$-constant slices of the event horizon.}
+More specifically, we excise points inside an ellipse with Cartesian semi-axes, $a_x^{ex},a_y^{ex},a_z^{ex}$, determined by $a_x^{ex}=x_{AH}(1-\delta_{ex})$, where $x_{AH}$ is the $x$-coordinate value of the intersection between the AH and the $x$-axis, and similarly for $a_y^{ex}$ and $a_z^{ex}$. We set the excision buffer to $\delta_{ex}=0.4$. 
+In our simulations, we assume that the characteristics of the equations of motion in the AH region flow towards the origin, although we do not compute the characteristics explicitly.\footnote{This is a reasonable assumption given the causal properties of a black hole. In fact, if this assumption were not true, we would see clear signs that our scheme has issues near the excision surface.} As a consequence, the solution at points inside the AH only evolves to affect points, at later times, that are further inside the AH. In other words, the information needed to solve the equations of motion on and outside the excision surface at a certain time is entirely contained in the numerical domain at previous times. This allows us to solve the equations of motion at the excision surface by employing one-sided stencils (i.e., stencils that do not use points inside the excised region), with no need to impose conditions at the excision boundary. By construction, the excised surface is the same for all three time levels involved in the Newton-Gauss-Seidel relaxation for evolution variables at time $t$. Therefore, we only need to use the one-sided version of spatial stencils. It commonly occurs that the excised surface moves during evolution and previously excised points become unexcised. In this case, we initialize the value of ``newly unexcised'' points closest to the previous surface (in its interior) with the mean of fourth order extrapolated values from adjacent exterior points along each Cartesian direction. We do so for any variable and at all three time levels of the hierarchy.
+Finally, Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at excision grid boundaries, and we use a typical dissipation parameter of $\epsilon=0.35$.
 
 \medskip\hrule height 2pt %HB
 
@@ -881,7 +915,8 @@ as
 \end{eqnarray}
 where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ constitutes a gauge choice ($\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols of the metric in the chosen set of coordinates and $T_{\alpha\beta}$ is the stress-energy tensor of any matter field coupled to the metric). 
 To suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement with constraint-damping terms as introduced in~\cite{Gundlach:2005eh} and obtain our final form of the Einstein equations
-\begin{eqnarray}\label{eqn:efe_gh_modified}
+\begin{eqnarray}
+\label{eqn:efe_gh_modified}
 &-& \frac{1}{2} g^{\gamma \delta} g_{\alpha\beta, \gamma \delta} - 
 {g^{\gamma\delta}}_{,(\alpha} g_{\beta) \gamma, \delta} - H_{(\alpha, \beta)} + H_\gamma {\Gamma^\gamma}_{\alpha\beta} \nonumber \\
 &-& {\Gamma^\gamma}_{\delta \alpha} {\Gamma^\delta}_{\gamma \beta} - \kappa \left( 2 n_{(\alpha} C_{\beta)} - (1+P) g_{\alpha\beta} n^\gamma 
