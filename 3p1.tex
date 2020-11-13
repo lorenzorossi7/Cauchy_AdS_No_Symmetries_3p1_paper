@@ -1034,8 +1034,8 @@ Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_
 \section{Initial Data}
 \label{sec:initdata}
 
-The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^l=(x,y,z)$, and the corresponding indices by $l,m,n$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
-With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{mn}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{mn}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
+The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\cdots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
+With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{ij}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{ij}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
 In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
 
 \subsection{Constraints}
@@ -1054,74 +1054,89 @@ The projection operator onto $\Sigma$ is defined by
 \gamma^\mu_\nu=\delta^\mu_\nu+n^\mu n_\nu.
 \end{equation}
 (Notice that $\gamma^\mu_\nu$ is idempotent, i.e., $\gamma^\mu_\rho \gamma^\rho_\nu=\gamma^\mu_\nu$, as appropriate for a projector.)
-This operator can be applied on any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. Let us now consider a tensor defined on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor defined on the tangent space of $\Sigma$ at $p$, under a natural (i.e., basis-independent) isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{mn}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices $i,j,k,\dots$ of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{mn}$.
+This operator can be applied on any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. Let us now consider a tensor defined on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor defined on the tangent space of $\Sigma$ at $p$, under a natural (i.e., basis-independent) isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{ij}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices $i,j,k,\dots$ of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{ij}$.
 
 The projection of $\nabla_\mu n_\nu$\footnote{We can make sense of covariant derivatives of $n_\mu$ by extending its definition on $\Sigma$ \eqref{eq:uninormal} to a 1-form field over a neighbourhood of $\Sigma$, which can be done in an arbitrary way without changing the value of $K_{\mu\nu}$ on $\Sigma$ given by \eqref{eq:extrcurv}.} defines the extrinsic curvature of $\Sigma$:
 \begin{equation}
 \label{eq:extrcurv}
 K_{\mu\nu}=-\gamma^\rho_\mu \gamma^\sigma_\nu \nabla_\rho n_\sigma=-\frac{1}{2}\mathcal{L}_n\gamma_{\mu\nu}.
 \end{equation}
-The Lie derivative along the normal direction in the second equality suggests that a choice of $K_{\mu\nu}$ on $\Sigma$ is ``morally'' equivalent to a choice for the time-derivative of the metric components at $t=0$. $K_{\mu\nu}$ is identified with the tensor on the tangent space of $\Sigma$, given by $K_{mn}$.
+The Lie derivative along the normal direction in the second equality suggests that a choice of $K_{\mu\nu}$ on $\Sigma$ is ``morally'' equivalent to a choice for the time-derivative of the metric components at $t=0$. $K_{\mu\nu}$ is identified with the tensor on the tangent space of $\Sigma$, given by $K_{ij}$.
 %From the second equality, we can intuitively understand how a choice of $K_{\mu\nu}$ on $\Sigma$ is equivalent to a choice for the time-derivative of the metric components at $t=0$.
 
-As a final ingredient, the covariant derivative on $\Sigma$ of a tensor field invariant under projection onto $\Sigma$ is defined as the projection onto $\Sigma$ of the covariant derivative $\nabla$ of the tensor field, and we denote it by $D$. For instance, $D_\mu X_{||}^\nu=\gamma^\rho_\mu \gamma^\nu_\sigma \nabla_\rho X_{||}^\sigma$ and $D_\mu X_{||}^\nu$ is identified with the tensor on the tangent space of $\Sigma$ given by $D_m X_{||}^n=\gamma^\rho_m \gamma^n_\sigma \nabla_\rho X_{||}^\sigma$. $D$ is the Levi-Civita connection of $\gamma_{mn}$, i.e., it is torsion-free and $D_l\gamma_{mn}=0$.
+As a final ingredient, the covariant derivative on $\Sigma$ of a tensor field invariant under projection onto $\Sigma$ is defined as the projection onto $\Sigma$ of the covariant derivative $\nabla$ of the tensor field, and we denote it by $D$. For instance, $D_\mu X_{||}^\nu=\gamma^\rho_\mu \gamma^\nu_\sigma \nabla_\rho X_{||}^\sigma$ and $D_\mu X_{||}^\nu$ is identified with the tensor on the tangent space of $\Sigma$ given by $D_i X_{||}^j=\gamma^\rho_i \gamma^j_\sigma \nabla_\rho X_{||}^\sigma$. $D$ is the Levi-Civita connection of $\gamma_{ij}$, i.e., it is torsion-free and $D_i\gamma_{jk}=0$.
 
 We can now write the constraints that initial data on $\Sigma$ must satisfy. The ``normal-normal'' projection (i.e., contraction with $n^\mu n^\nu$) of the Einstein equations gives the Hamiltonian constraint
 \begin{equation}
 \label{eq:hamconstr}
-^{(3)}R-K^{mn}K_{mn}+K^2-2\Lambda=16\pi\rho,
+^{(3)}R-K^{ij}K_{ij}+K^2-2\Lambda=16\pi\rho,
 \end{equation}
-where $^{(3)}R$ is the Ricci scalar associated with the connection $D$, $K=\gamma^{\mu\nu}K_{\mu\nu}$ and $\rho=T_{\mu\nu}n^\mu n^\nu$ is the matter energy density measured by an observer with 4-velocity $n^\mu$.
+where $^{(3)}R$ is the Ricci scalar associated with the connection $D$, $K=\gamma^{ij}K_{ij}$ and $\rho=T_{\mu\nu}n^\mu n^\nu$ is the matter energy density measured by an observer with 4-velocity $n^\mu$.
 The ``tangent-normal'' projection (i.e., contraction with $\gamma^{\mu\nu} n^\rho$) of the Einstein equations gives the momentum constraint
 \begin{equation}
 \label{eq:momconstr}
-D_n {K^n}_m-D_m K=8\pi j_m,
+D_j {K^j}_i-D_i K=8\pi j_i,
 \end{equation}
-where $j^m=-T_{\rho\sigma}n^\rho\gamma^{\sigma m}$ is the matter momentum density measured by an observer with 4-velocity $n^\mu$. %Notice that the $t$-component of \eqref{eq:momconstr} is trivial, so \eqref{eq:hamconstr} and \eqref{eq:momconstr} provide a number of constraints that is equal to the number of spacetime dimensions.
+where $j^i=-T_{\rho\sigma}n^\rho\gamma^{\sigma i}$ is the matter momentum density measured by an observer with 4-velocity $n^\mu$. %Notice that the $t$-component of \eqref{eq:momconstr} is trivial, so \eqref{eq:hamconstr} and \eqref{eq:momconstr} provide a number of constraints that is equal to the number of spacetime dimensions.
 
-We now explain how these constraints are solved for massless real scalar matter, whose energy-momentum tensor is \eqref{eq:KHmomtens}, in the simplified case of time-symmetric data. Time symmetry in the scalar sector, $\partial_t \bar{\varphi}|_{t=0}=0$, implies $j^m=0$. Time symmetry in the gravitational sector, $\partial_t \bar{g}_{mn}|_{t=0}=0$, together with the initial gauge choice $\bar{g}_{tm}|_{t=0}=0$, implies $K_{mn}=0$. Thus, we see that the momentum constraint is trivially satisfied.
+We now explain how these constraints are solved for massless real scalar matter, whose energy-momentum tensor is \eqref{eq:KHmomtens}, in the simplified case of time-symmetric data. Time symmetry in the scalar sector,
+\begin{equation}
+\partial_t \bar{\varphi}|_{t=0}=0,
+\end{equation}
+implies $j^i=0$. Time symmetry in the gravitational sector,
+\begin{equation}
+\partial_t \bar{g}_{ij}|_{t=0}=0,
+\end{equation}
+together with the initial gauge choice
+\begin{equation}
+\bar{g}_{ti}|_{t=0}=0,
+\end{equation}
+implies $K_{ij}=0$. Thus, we see that the momentum constraint is trivially satisfied.
 The Hamiltonian constraint, instead, reduces to
 \begin{equation}
 \label{eq:redhamconstr}
 ^{(3)}R-2\Lambda=16\pi\rho.
 \end{equation}
-This can be solved through the conformal approach, initiated in CITE [A. Lichnerowicz : L'int\'{e}gration des \'{e}quations de la gravitation relativiste et le probl\'{e}me des n corps, J. Math. Pures Appl. 23, 37 (1994); reprinted in A. Lichnerowicz : Choix d'{\oe}uvres math\'{e}matiques, Hermann, Paris (1982), p.4.], which assumes that the spatial metric $\gamma_{mn}$ is conformal to the spatial metric $\hat{\gamma}_{mn}$ of the $t=0$ slice of pure AdS in Cartesian coordinates:
+This can be solved through the conformal approach, initiated in CITE [A. Lichnerowicz : L'int\'{e}gration des \'{e}quations de la gravitation relativiste et le probl\'{e}me des n corps, J. Math. Pures Appl. 23, 37 (1994); reprinted in A. Lichnerowicz : Choix d'{\oe}uvres math\'{e}matiques, Hermann, Paris (1982), p.4.], which assumes that the spatial metric $\gamma_{ij}$ is conformal to the spatial metric $\hat{\gamma}_{ij}$ of the $t=0$ slice of pure AdS in Cartesian coordinates:
 \begin{equation}
 \label{eq:confdec}
-\gamma_{mn}=\zeta^4 \hat{\gamma}_{mn},
+\gamma_{ij}=\zeta^4 \hat{\gamma}_{ij},
 \end{equation}
-where $\zeta$ is a smooth positive function on $\Sigma$, satisfying the AdS boundary condition $\zeta|_{\rho=1}=1$. Let $\hat{D}$ be the Levi-Civita connection of $\hat{\gamma}_{mn}$ and $^{(3)}\hat{R}$ the corresponding Ricci scalar. Using  \eqref{eq:confdec} and its inverse, $\gamma^{mn}=\zeta^{-4} \hat{\gamma}^{mn}$, we obtain
+where $\zeta$ is a smooth positive function on $\Sigma$, satisfying the AdS boundary condition $\zeta|_{\rho=1}=1$. Let $\hat{D}$ be the Levi-Civita connection of $\hat{\gamma}_{ij}$ and $^{(3)}\hat{R}$ the corresponding Ricci scalar. Using  \eqref{eq:confdec} and its inverse, $\gamma^{ij}=\zeta^{-4} \hat{\gamma}^{ij}$, we obtain
 \begin{equation}
 \label{eq:confRicci}
-^{(3)}R=\frac{1}{\zeta^4}\left(^{(3)}\hat{R}-\frac{8}{\zeta}\hat{\gamma}^{mn}\hat{D}_m \hat{D}_n \zeta\right).
+^{(3)}R=\frac{1}{\zeta^4}\left(^{(3)}\hat{R}-\frac{8}{\zeta}\hat{\gamma}^{ij}\hat{D}_i \hat{D}_j \zeta\right).
 \end{equation}
 Plugging \eqref{eq:confRicci} into \eqref{eq:redhamconstr} gives
 \begin{equation}
 \label{eq:rehamconstr2}
-^{(3)}\hat{R}\zeta-8\hat{\gamma}^{mn}\hat{D}_m \hat{D}_n \zeta-2\Lambda \zeta^5=16\pi\rho \zeta^5
+^{(3)}\hat{R}\zeta-8\hat{\gamma}^{ij}\hat{D}_i \hat{D}_j \zeta-2\Lambda \zeta^5=16\pi\rho \zeta^5
 \end{equation}
 $^{(3)}\hat{R}$ can be computed from the spatial part of the pure AdS metric \eqref{eqn:ads4_final}: $^{(3)}\hat{R}=-6/L^2=2\Lambda$. Thus, equation \eqref{eq:rehamconstr2} can be written as
 \begin{equation}
 \label{eq:rehamconstr3}
-\hat{\gamma}^{mn}\hat{D}_m \hat{D}_n \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda+8\pi\rho)\zeta^5=0.
+\hat{\gamma}^{ij}\hat{D}_i \hat{D}_j \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda+8\pi\rho)\zeta^5=0.
 \end{equation}
 Finally, the version of the Hamiltonian constraint that we are going to solve is obtained by writing the matter energy density $\rho$ in terms of $\zeta$. The time-symmetry requirement $\partial_t \varphi|_{t=0}=0$ gives
 \begin{equation}
 \label{eq:mattendens}
-\rho=\frac{1}{2\zeta^4}\hat{\gamma}^{mn}\partial_m\varphi\partial_n\varphi,
+\rho=\frac{1}{2\zeta^4}\hat{\gamma}^{ij}\partial_i\varphi\partial_j\varphi,
 \end{equation}
 so the Hamiltonian constraint reads
 \begin{equation}
 \label{eq:hamconsfinal}
-\hat{\gamma}^{mn}\hat{D}_m \hat{D}_n \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda\zeta^5+4\pi\zeta\hat{\gamma}^{mn}\partial_m\varphi\partial_n\varphi)=0.
+\hat{\gamma}^{ij}\hat{D}_i \hat{D}_j \zeta-\frac{1}{4}\Lambda\zeta+\frac{1}{4}(\Lambda\zeta^5+4\pi\zeta\hat{\gamma}^{ij}\partial_i\varphi\partial_j\varphi)=0.
 \end{equation}
 For any given choice of scalar field $\varphi$ on $\Sigma$, \eqref{eq:hamconsfinal} is an elliptic equation that can be solved for $\zeta$ with boundary condition $\zeta|_{\rho=1}=1$. In our simulations we pick the initial scalar field profile $\varphi|_{t=0}=\bar{\varphi}|_{t=0}(1-\rho^2)^2$ with $\bar{\varphi}|_{t=0}$ specified by \eqref{eq:scaGaupro}, and we solve \eqref{eq:hamconsfinal} with a multigrid algorithm, built into the PAMR/AMRD libraries.
-The initial metric variables $\bar{g}_{mn}|_{t=0}$ are then easily reconstructed from \eqref{eq:confdec}, using the fact that $\gamma_{mn}=g_{mn}|_{t=0}=\hat{g}_{mn}|_{t=0}+\bar{g}_{mn}|_{t=0}$.
+The initial metric variables $\bar{g}_{ij}|_{t=0}$ are then easily reconstructed from \eqref{eq:confdec} and $\gamma_{ij}=g_{ij}|_{t=0}=\hat{g}_{ij}|_{t=0}+\bar{g}_{ij}|_{t=0}$, i.e.,
+\begin{equation}
+\bar{g}_{ij}|_{t=0}=\zeta^4\hat{\gamma}_{ij}-\hat{g}_{ij}|_{t=0}.
+\end{equation}
 
 \subsection{Consistency at the boundary}
 \label{sec:consistbound}
 
-In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{mn}|_{t=0}=0$; (ii) we make the initial gauge choice $\bar{g}_{tm}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{mn}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{tt}|_{t=0}$ and $\partial_t\bar{g}_{t \mu}|_{t=0}$.
+In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{ij}|_{t=0}=0$; (ii) we make the initial gauge choice $\bar{g}_{ti}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{ij}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{tt}|_{t=0}$ and $\partial_t\bar{g}_{t \mu}|_{t=0}$.
 
 In doing so, the only restriction to consider is the one already obtained in step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of evolution but it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the transition function
   \begin{equation}
@@ -1140,12 +1155,9 @@ Thus, our choice of $\bar{g}_{tt}|_{t=0}$ is
 \end{equation}
 
 To conclude, the remaining initial variables can be chosen in a completely arbitrary way so we make the simplest choice everywhere on the grid:
-\begin{eqnarray}
-\partial_t\bar{g}_{t t}|_{t=0}&=&0, \\
-\partial_t\bar{g}_{t x}|_{t=0}&=&0,\\
-\partial_t\bar{g}_{t y}|_{t=0}&=&0,\\
-\partial_t\bar{g}_{t z}|_{t=0}&=&0.
-\end{eqnarray}
+\begin{equation}
+\partial_t\bar{g}_{t \mu}|_{t=0}=0.
+\end{equation}
 
 \section{Complete Gauge Choice}
 \label{sec:GCbulk}
