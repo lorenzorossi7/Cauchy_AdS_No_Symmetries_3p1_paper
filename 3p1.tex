@@ -23,6 +23,7 @@
 \usepackage{cite}
 \usepackage{parskip}
 \usepackage{mathtools}
+\usepackage{upgreek}
 
 \usepackage{caption,subcaption,wrapfig}
 \usepackage[colorlinks=true,linktocpage=true,linkcolor=blue,citecolor=blue]{hyperref}
@@ -687,52 +688,57 @@ Our criterion leads to the simplest gauge choice that does not have any of these
 \label{sec:bouset2}
 
 In the simulations we output the vacuum expectation value of the operator dual to the scalar field  and the components of the holographic stress-energy tensor of the dual conformal field theory (CFT). In this Section, we obtain the analytic expression of these quantities in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary. Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$, provided by our numerical scheme, into their spherical coordinate version $\bar{g}_{\alpha\beta}$, defined in Appendix~\ref{sec:sphevvarboucon}, through the transformation \eqref{eq:cartosph}.
+%We also use the notation $x^a=(t,\theta,\phi)$ to denote the coordinates on the AdS boundary at $\rho=1$. 
+%The indices $a,b,c,\dots$ of tensors defined on the tangent space of the AdS boundary are raised and lowered by the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
 To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \bar{\varphi}\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have 
 \begin{equation}
 \langle \bar{\varphi}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}\bar{\varphi}=\bar{\varphi}_{(1)}.
 \end{equation}
 
+Let us denote the coordinates on timelike hypersurfaces at fixed $\rho$, such as $\partial M_q$ and the AdS boundary, by $x^a=(t,\theta,\phi)$.
 %Their expressions are more easily obtained and displayed in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
-Similarly, to compute the holographic stress-energy tensor of the boundary CFT, $\langle T_{ij}\rangle_{CFT}$, we first compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at $\partial M_q$ as prescribed in  [CITE hep-th/9902121]. We have
+In analogy with $\langle \bar{\varphi}\rangle_{CFT}$, to compute the holographic stress-energy tensor of the boundary CFT, $\langle T_{ab}\rangle_{CFT}$, we first compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at $\partial M_q$ as prescribed in  [CITE hep-th/9902121]. We have
 \begin{equation}
 \label{eq:qslocset}
-^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \gamma_{\alpha\beta}-\frac{2}{L}\gamma_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
+^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \omega_{\alpha\beta}-\frac{2}{L}\omega_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
 \end{equation}
-where $\Theta_{\alpha\beta}=-\gamma^\alpha_{\mu}\gamma^\beta_\nu\nabla_{(\alpha}S_{\beta)}$ is the extrinsic curvature of $\partial M_q$, $\gamma_{\mu\nu}=g_{\mu\nu}-S_\mu S_\nu$ is the induced metric on $\partial M_q$, $S^\mu$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\mu\nu}$ is the Einstein tensor defined on $\partial M_q$.\footnote{Notice the different sign in the last term of \eqref{eq:qslocset} w.r.t. to  [CITE hep-th/9902121].} We will be interested in the value of $^{(q)}T_{\mu\nu}$ for $q$ close to 0, i.e., near the AdS boundary.
-Restricting to the 3 coordinates on the AdS boundary at $\rho=1$, i.e., $x^i=(t,\theta,\phi)$, this enables us to compute the boundary stress-energy tensor as
+where $\Theta_{\alpha\beta}=-\omega^\gamma_{\alpha}\omega^\delta_\beta\nabla_{(\gamma}S_{\delta)}$ is the extrinsic curvature of $\partial M_q$, $\omega_{\alpha\beta}=g_{\alpha\beta}-S_\alpha S_\beta$ is the induced metric at $\partial M_q$ (in four-dimensional form), $S^\alpha$ is the spacelike, outward pointing unit vector normal to $\partial M_q$ and $G_{\alpha\beta}$ is the Einstein tensor of $\partial M_q$.\footnote{Notice the different sign in the last term of \eqref{eq:qslocset} w.r.t. to  [CITE hep-th/9902121].}$^{,}$\footnote{All these tensors, although defined on the tangent space of the spacetime manifold $M$, are invariant under projection $\omega^\alpha_{\beta}=\delta^\alpha_{\beta}-S^\alpha S_\beta$ onto $\partial M_q$. Therefore, they can be identified, under a natural (i.e., basis-independent) isomorphism, with tensors defined on the tangent space of $\partial M_q$. The components of tensors on $\partial M_q$ in coordinates $x^a$ is simply given by taking the the components of tensors on $M$ in coordinates $x^\alpha$ and disregarding the indices corresponding to the $\rho$ coordinate. See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details on this correspondence.} We will be interested in the value of $^{(q)}T_{\alpha\beta}$ for $q$ close to 0, i.e., near the AdS boundary.
+%Restricting to the 3 coordinates on the AdS boundary at $\rho=1$, i.e., $x^a=(t,\theta,\phi)$, this enables us to compute the boundary stress-energy tensor as
+Restricting this to the indices corresponding to the coordinates $x^a$, we can compute the boundary stress-energy tensor as
+%This enables us to compute the boundary stress-energy tensor as
 \begin{equation}
-\langle T_{ij}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ij}.
+\langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ab}.
 \end{equation}
-The indices $i,j,k,\dots$ along the AdS boundary are lowered or raised by the metric of the AdS boundary, $\gamma=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
+%The indices $a,b,c,\dots$ along the AdS boundary are lowered or raised by the metric of the AdS boundary, $\gamma_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
-From $^{(q)}T_{\mu\nu}$ we also compute the AdS mass as follows [CITE hep-th/9902121]. At each time $t$ of evolution, we take a spacelike hypersurface $\Sigma$ in $\partial M_q$, with induced 3-metric $\sigma_{\mu\nu}=\Sigma_{\mu\nu}-u_\mu u_\nu$, where $u^\mu$ is the future pointing unit vector normal to $\Sigma$ in $\partial M_q$, lapse $N$ and shift $N^i$. The AdS mass is then given by
+From $^{(q)}T_{\alpha\beta}$ we also compute the AdS mass as follows [CITE hep-th/9902121]. At each time $t$ of evolution, we take a spacelike two-dimensional surface $\mathcal{S}$ in $\partial M_q$, with induced metric $\sigma_{ab}=\omega_{ab}+u_a u_b$, where $u^a$ is the future pointing unit vector normal to $\mathcal{S}$ in $\partial M_q$, lapse $N$ and shift $N^a$. The AdS mass is then given by
 \begin{equation}
-M_{AdS}=\lim_{q\to0}\int_\Sigma d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{\mu\nu} u^\mu u^\nu).
+M_{AdS}=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{ab} u^a u^b).
 \end{equation}
 
-The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find, % setting $L=1$, for the stress-energy tensor we obtain
-%variables $\bar{g}_{\mu\nu}$ in Section~\ref{sec:numerical_scheme}: we consider the deviation from pure AdS in spherical coordinates, $h_{\alpha\beta}=g_{\alpha\beta}-\bar{g}_{\alpha\beta}$, stripped of as many factors of $(1-\rho^2)$ as necessary to make their fall off near the boundary linear in $q$. Notice that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor, therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eqref{eq:sphbouncondh} and \eqref{eq:carbouncondh}: $\bar{g}_{\rho\alpha}=\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}$ if $\alpha\neq\rho$, $\bar{g}_{\alpha\beta}=\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}$ otherwise.
+The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find,
 \begin{eqnarray}
 \langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 \langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
 \langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
 \langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 \langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
-\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}), \nonumber \\
+\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
 \end{eqnarray}
 where we have set $L=1$. Likewise,  for the AdS mass we find
 \begin{equation}
 \label{eq:AdSmasscalc}
-M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber. \\
+M_{AdS}=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
 \end{equation}
 
-Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle T^i_{\;\;j}\rangle_{CFT} v^j=\lambda_v v^i$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
+We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and  solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
+%Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 
-One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\gamma^{ij} \langle T_{ij}\rangle_{CFT}$. We obtain
+One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab} \langle T_{ab}\rangle_{CFT}$. We obtain
 \begin{equation}
 \label{eq:tracecalc}
-\langle \text{tr}T\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr)
+\langle \text{tr}T\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
 \end{equation}
 If we convert the spherical quantities into Cartesian ones (and we evaluate the expression at $\rho=1$), we see that $\langle \text{tr}T\rangle_{CFT}$ depends only on the factor $\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$. %As anticipated in step 2 of Section~\ref{sec:gauge_choice}, we see that tracelessness is 
 % We previously noticed that this is also the proportionality factor of $C_x,C_y,C_z$, once the gauge choice \eqref{eqn:target_gauge_txyz} has been made.
@@ -740,7 +746,7 @@ We saw in \eqref{eq:cart_tracelessness} that this factor vanishes.
 This is an important sanity check: we see that tracelessness of the stress-energy tensor, expected for a CFT in 2+1 dimensions, is ensured by the lowest order of the Einstein equations, provided that the generalized harmonic constraints are satisfied.
 %given our boundary conditions, the vanishing of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, expected for a CFT in 2+1 dimensions.
 In practice, we monitor $\langle \text{tr}T\rangle_{CFT}$ to estimate the truncation errors.
-Another important check that we performed is the conservation of the analytic form of $\langle T_{ij}\rangle_{CFT}$. The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.
+Another important check that we performed is the conservation of the analytic form of $\langle T_{ab}\rangle_{CFT}$. The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.
 %We will instead show in Section~\ref{sec:resbouset} that the conservation is satisfied numerically during the evolution. Since this test is computationally expensive, we will only do it  for 4 representative time steps.
 
 Finally we note that since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use third order extrapolation from their bulk point values (see Appendix~\ref{sec:extrapconvbdy} for the details of the implementation).
@@ -1039,7 +1045,7 @@ The projection operator onto $\Sigma$ is defined by
 \gamma^\mu_\nu=\delta^\mu_\nu+n^\mu n_\nu.
 \end{equation}
 (Notice that $\gamma^\mu_\nu$ is idempotent, i.e., $\gamma^\mu_\rho \gamma^\rho_\nu=\gamma^\mu_\nu$, as appropriate for a projector.)
-This operator can be applied on any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. Let us now consider a tensor on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor on the tangent space of $\Sigma$ at $p$, under a natural isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{mn}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{mn}$.
+This operator can be applied on any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. Let us now consider a tensor defined on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor defined on the tangent space of $\Sigma$ at $p$, under a natural (i.e., basis-independent) isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{mn}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices $i,j,k,\dots$ of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{mn}$.
 
 The projection of $\nabla_\mu n_\nu$\footnote{We can make sense of covariant derivatives of $n_\mu$ by extending its definition on $\Sigma$ \eqref{eq:uninormal} to a 1-form field over a neighbourhood of $\Sigma$, which can be done in an arbitrary way without changing the value of $K_{\mu\nu}$ on $\Sigma$ given by \eqref{eq:extrcurv}.} defines the extrinsic curvature of $\Sigma$:
 \begin{equation}
