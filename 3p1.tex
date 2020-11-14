@@ -624,8 +624,8 @@ The steps that lead to our stable gauge, in a form that can be easily applied to
 \bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})). \nonumber \\
 \end{eqnarray}
 
-\item Let $N_{low}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{low}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
-In the Cartesian case, $N_{low}=-2$ and there is only one independent equation given by
+\item Let $N_{(1)ow}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)ow}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
+In the Cartesian case, $N_{(1)ow}=-2$ and there is only one independent equation given by
 \begin{equation}
 \label{eq:cart_tracelessness}
 \bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}=0.
@@ -722,6 +722,7 @@ M_{AdS}=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{
 
 The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find,
 \begin{eqnarray}
+\label{eq:set_explicit}
 \langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
 \langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
 \langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
@@ -1047,11 +1048,15 @@ g^{\alpha\beta} \partial_{\alpha} \partial_{\beta} \varphi -g^{\alpha\beta} \Gam
 
 
 
-\section{Evolution Variables in Spherical Coordinates}\label{sec:sphevvarboucon}
+\section{Boundary Prescription in Spherical Coordinates}\label{sec:sphevvarboucon}
 
-Section~\ref{sec:pre_sta}
+Although spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$ are not suitable for numerically evolving points near the origin (see discussion in Section~\ref{sec:numcauprob}), they are convenient to study features of the CFT at the AdS boundary $\rho=1$, since they are adapted to the boundary topology $\mathbb{R}\times S^2$.
+In this section we apply the prescription outlined in Section~\ref{sec:pre_sta} to the case of asymptotically AdS spacetimes in 4 dimensions with spherical coordinates. Similarly to the Cartesian case, we first define the spherical coordinate version of the evolution variables $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$. We also write down the transformations between these variables and their Cartesian version, \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}. Then, we obtain the stable gauge in spherical coordinates by following the steps introduced in Section~\ref{sec:gauge_choice}. We compare this with a different potentially stable gauge that can be inferred from the one used in~\cite{Bantilan:2012vu}. Finally, we show that tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}, is a consequence of the lowest order of the Einstein equations, provided that the leading order of the generalized harmonic constraints is satisfied.\footnote{In fact, tracelessness was already proved in Section~\ref{sec:bouset2} by converting Cartesian variables into spherical ones. We prove it again in this section employing only spherical coordinates.}
 
-Here we apply the prescription of Section~\ref{subsec:cartevvarboucon} to the case of asymptotically AdS spacetimes in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, in order to construct the spherical coordinate version of the Cartesian evolution variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$. We also write down the transformations between these two sets of variables in different coordinates.
+
+%Here we apply the prescription of Section~\ref{subsec:cartevvarboucon} to the case of asymptotically AdS spacetimes in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, in order to construct the spherical coordinate version of the Cartesian evolution variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$. We also write down the transformations between these two sets of variables in different coordinates.
+
+\subsection{Evolution Variables and Boundary conditions}
 
 We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as the Cartesian coordinate case, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.
 
@@ -1082,10 +1087,196 @@ in spherical coordinates.
 
 Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no simple transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g. \eqref{eq:sphbouncondsoufunc} in spherical coordinates.
 
+In a numerical scheme in spherical coordinates employing the framework presented in this article, reflective Dirichlet boundary conditions could be easily imposed as
+\begin{equation}
+\label{eq:dirbc_sphcoords}
+ \bar{g}_{\alpha\beta}|_{\rho=1}=0\,,\quad \bar{\varphi}|_{\rho=1}=0\,,\quad \bar{H}_\alpha|_{\rho=1}=0\,.
+ \end{equation}
+
+\subsection{Gauge Choice for Stability}
+
+Since the evolution variables in spherical coordinates, $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$, are linear in $q=1-\rho$ by construction, we can repeat the near-boundary expansions \eqref{eqn:qexpg}, \eqref{eqn:qexpH}, \eqref{eqn:qexpphi}. We now plug them into into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. Rewriting the resulting equations in the wave-like form \eqref{eq:waveEFE}, we obtain
+\begin{eqnarray}\label{eqn:efett_3p1}
+\tilde{\Box}\bar{g}_{(1)tt}&=&q^{-2} \left(2 \bar{H}_{(1) \rho }-3 \bar{g}_{(1) \rho \rho }\right)+O\left(q^{-1}\right)\\
+%
+\label{eqn:efetrho_3p1}
+\tilde{\Box}\bar{g}_{(1)t\rho}&=&\frac{1}{2}q^{-2} (-\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}-\bar{g}_{(1)
+   \text{$tt$},t}+\csc ^2\theta \left(2 \bar{g}_{(1) \text{$t$$\phi $},\phi }-\bar{g}_{(1)
+   \phi \phi ,t}\right) \nonumber\\
+   &&+2 \bar{g}_{(1) \text{$t$$\theta $},\theta }-2 \bar{H}_{(1) \rho ,t}-3
+   \cot \theta  \bar{g}_{(1) \text{$t$$\theta $}}-40 \bar{g}_{(1) \text{$t$$\rho $}}+20
+   \bar{H}_{(1) t}) +\mathcal{O}(q^{-1}),\\
+%
+\label{eqn:efettheta_3p1}
+\tilde{\Box}\bar{g}_{(1)t\theta}&=&\mathcal{O}(q^{-1})\\
+%
+\label{eqn:efetphi_3p1}
+\tilde{\Box}\bar{g}_{(1)t\phi}&=&\mathcal{O}(q^{-1})\\
+%
+\label{eqn:eferhorho_3p1}
+\tilde{\Box}\bar{g}_{(1)\rho\rho}&=&3q^{-2} \left(\csc ^2\theta \bar{g}_{(1) \phi \phi }+\bar{g}_{(1)\theta \theta}-2 \bar{g}_{(1)
+   \rho \rho }-\bar{g}_{(1) \text{$tt$}}+2 \bar{H}_{(1) \rho }\right)+\mathcal{O}(q^{-1}),\\
+% 
+\label{eqn:eferhotheta_3p1}
+\tilde{\Box}\bar{g}_{(1)\rho\theta}&=&\frac{1}{2} q^{-2}(\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta \left(-\bar{g}_{(1)
+   \phi \phi ,\theta }+2 \bar{g}_{(1)\theta \phi,\phi }+5 \cot \theta  \bar{g}_{(1) \phi
+   \phi }\right)+\bar{g}_{(1) \rho \rho ,\theta }\nonumber\\
+   &&-2 \bar{g}_{(1) \text{$t$$\theta
+   $},t}+\bar{g}_{(1) \text{$tt$},\theta }-2 \bar{H}_{(1) \rho ,\theta }-3 \cot \theta 
+   \bar{g}_{(1)\theta \theta}-40 \bar{g}_{(1) \rho \theta }+20 \bar{H}_{(1)\theta})\nonumber\\
+   &&+\mathcal{O}(q^{-1})\\
+% 
+\label{eqn:eferhophi_3p1}
+\tilde{\Box}\bar{g}_{(1)\rho\phi}&=&\frac{1}{2} q^{-2}(2 \bar{g}_{(1)\theta \phi,\theta }+\csc ^2\theta \bar{g}_{(1) \phi
+   \phi ,\phi }-\bar{g}_{(1)\theta \theta,\phi }+\bar{g}_{(1) \rho \rho ,\phi }-2
+   \bar{g}_{(1) \text{$t$$\phi $},t}\nonumber\\
+   &&+\bar{g}_{(1) \text{$tt$},\phi }-2 \bar{H}_{(1) \rho ,\phi }-13
+   \cot \theta  \bar{g}_{(1)\theta \phi}-40 \bar{g}_{(1) \rho \phi }+20 \bar{H}_{(1) \phi
+   })+\mathcal{O}(q^{-1})\\
+%
+\label{eqn:efethetatheta_3p1}
+\tilde{\Box}\bar{g}_{(1)\theta\theta}&=&q^{-2}  \left(3 \bar{g}_{(1) \rho \rho }-2 \bar{H}_{(1) \rho }\right)+\mathcal{O}(q^{-1}),\\
+%
+\label{eqn:efethetaphi_3p1}
+\tilde{\Box}\bar{g}_{(1)\theta\phi}&=&\mathcal{O}(q^{-1})\\
+%
+\label{eqn:efephiphi_3p1}
+\tilde{\Box}\bar{g}_{(1)\phi\phi}&=&q^{-2}  \sin^2\theta\left(3 \bar{g}_{(1) \rho \rho }-2 \bar{H}_{(1) \rho }\right)+\mathcal{O}(q^{-1}).
+\end{eqnarray}
+Doing the same for the generalized harmonic constraints $0=C_\alpha\equiv H_\alpha-\Box x_\alpha$, we have
+\begin{eqnarray}
+\label{eqn:ct_3p1}
+C_t&=&\frac{1}{2} q^3 (-\bar{g}_{(1)\theta \theta,t}-\bar{g}_{(1) \rho \rho ,t}-\bar{g}_{(1)
+   \text{$tt$},t}+\csc ^2\theta \left(2 \bar{g}_{(1) \text{$t$$\phi $},\phi }-\bar{g}_{(1)
+   \phi \phi ,t}\right)\nonumber\\
+   &&+2 \bar{g}_{(1) \text{$t$$\theta $},\theta }-16 \bar{g}_{(1)
+   \text{$t$$\rho $}}+8 \bar{H}_{(1) t})+\mathcal{O}(q^4),\\
+%
+\label{eqn:crho_3p1}
+C_\rho&=&q^2 \left(2 \bar{H}_{(1) \rho }-\frac{3}{2} \left(\csc^2\theta \left(-\bar{g}_{(1) \phi
+   \phi }\right)-\bar{g}_{(1)\theta \theta}+\bar{g}_{(1) \rho \rho }+\bar{g}_{(1)
+   \text{$tt$}}\right)\right)+\mathcal{O}(q^3),\\
+%
+\label{eqn:ctheta_3p1}
+C_\theta&=&\frac{1}{2} q^3 (\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta
+   \left(-\bar{g}_{(1) \phi \phi ,\theta }+2 \bar{g}_{(1)\theta \phi,\phi }+2 \cot \theta
+    \bar{g}_{(1) \phi \phi }\right)\nonumber\\
+   &&-\bar{g}_{(1) \rho \rho ,\theta }-2 \bar{g}_{(1)
+   \text{$t$$\theta $},t}+\bar{g}_{(1) \text{$tt$},\theta }-16 \bar{g}_{(1) \rho \theta }+8
+   \bar{H}_{(1)\theta})+\mathcal{O}(q^4),\\
+%
+\label{eqn:cphi_3p1}
+C_\phi&=&\frac{1}{2} q^3 (\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta
+   \left(-\bar{g}_{(1) \phi \phi ,\theta }+2 \bar{g}_{(1)\theta \phi,\phi }+2 \cot \theta
+    \bar{g}_{(1) \phi \phi }\right)\nonumber\\
+   &&-\bar{g}_{(1) \rho \rho ,\theta }-2 \bar{g}_{(1)
+   \text{$t$$\theta $},t}+\bar{g}_{(1) \text{$tt$},\theta }-16 \bar{g}_{(1) \rho \theta }+8
+   \bar{H}_{(1)\theta})+\mathcal{O}(q^4).
+\end{eqnarray}
+
+We now follow the three steps of Section~\ref{sec:gauge_choice} to obtain the stable gauge choice.
+\begin{enumerate}
+\item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct_3p1}--\eqref{eqn:cphi_3p1}, for $\bar{H}_{(1)\alpha}$. We obtain
+\begin{eqnarray}\label{eqn:target_gauge_trhothetaphi_step1}
+\bar{H}_{(1)t}&=&\frac{1}{8} (\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}+\bar{g}_{(1)
+   \text{$tt$},t}+\csc ^2\theta \left(\bar{g}_{(1) \phi \phi ,t}-2 \bar{g}_{(1) \text{$t$$\phi
+   $},\phi }\right)\nonumber\\
+   &&-2 \bar{g}_{(1) \text{$t$$\theta $},\theta }+16 \bar{g}_{(1) \text{$t$$\rho
+   $}})\nonumber \\
+\bar{H}_{(1)\rho}&=&\frac{3}{4} \left(-\csc ^2\theta \bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta}+\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}\right)\nonumber\\
+\bar{H}_{(1)\theta}&=&\frac{1}{8} (-\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta \left(\bar{g}_{(1)
+   \phi \phi ,\theta }-2 \left(\bar{g}_{(1)\theta \phi,\phi }+\cot \theta  \bar{g}_{(1)
+   \phi \phi }\right)\right)\nonumber\\
+   &&+\bar{g}_{(1) \rho \rho ,\theta }+2 \bar{g}_{(1) \text{$t$$\theta
+   $},t}-\bar{g}_{(1) \text{$tt$},\theta }+16 \bar{g}_{(1) \rho \theta })\nonumber\\
+\bar{H}_{(1)\phi}&=&\frac{1}{8} (-2 \bar{g}_{(1)\theta \phi,\theta }+\csc ^2\theta \left(-\bar{g}_{(1)
+   \phi \phi ,\phi }\right)+\bar{g}_{(1)\theta \theta,\phi }+\bar{g}_{(1) \rho \rho ,\phi
+   }\nonumber\\
+   &&+2 \bar{g}_{(1) \text{$t$$\phi $},t}-\bar{g}_{(1) \text{$tt$},\phi }+4 \cot \theta 
+   \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi }).
+\end{eqnarray}
+
+\item Plug \eqref{eqn:target_gauge_trhothetaphi_step1} into the $q^{-2}$ terms of \eqref{eqn:efett_3p1}--\eqref{eqn:efephiphi_3p1}. This gives 4 independent equations
+\begin{eqnarray}
+\label{eq:indeq1_3p1}
+&&-\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}=0,\\
+\label{eq:indeq2_3p1}
+&&\csc ^2\theta \left(-\bar{g}_{(1) \phi \phi ,\theta }+\bar{g}_{(1)\theta \phi,\phi
+   }+\cot \theta  \bar{g}_{(1) \phi \phi }\right)\nonumber\\
+   &&-\frac{2}{3} \bar{g}_{(1) \rho \rho
+   ,\theta }+\bar{g}_{(1) \text{$tt$},\theta }+\cot \theta  \bar{g}_{(1)\theta \theta}=0\\
+   \label{eq:indeq3_3p1}
+&&\bar{g}_{(1)\theta \theta,t}+\frac{2}{3} \bar{g}_{(1) \rho \rho ,t}+\csc ^2\theta 
+   \left(\bar{g}_{(1) \phi \phi ,t}-\bar{g}_{(1) \text{$t$$\phi $},\phi }\right)-\cot \theta
+   \bar{g}_{(1) \text{$t$$\theta $}}=0\\
+      \label{eq:indeq4_3p1}
+&&\bar{g}_{(1)\theta \phi,\theta }-\bar{g}_{(1)\theta \theta,\phi }-\frac{2}{3} \bar{g}_{(1)
+   \rho \rho ,\phi }+\bar{g}_{(1) \text{$tt$},\phi }+\cot \theta \bar{g}_{(1)\theta \phi}=0.
+\end{eqnarray}
+We prove below that these equations ensure tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}.
+
+\item Use \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1} to eliminate $\bar{g}_{(1)tt},\bar{g}_{(1)t\theta,t},\bar{g}_{(1)t\theta,\theta},\bar{g}_{(1)t\phi,t}$ from \eqref{eqn:target_gauge_trhothetaphi_step1}.
+In this way we obtain the stable gauge in spherical coordinates
+\begin{eqnarray}\label{eqn:target_gauge_trhothetaphi}
+\bar{H}_{(1)t}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,t}+3 \cot \theta  \bar{g}_{(1) \text{$t$$\theta
+   $}}+24 \bar{g}_{(1) \text{$t$$\rho $}}\right), \nonumber\\
+\bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\nonumber\\
+\bar{H}_{(1)\theta}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,\theta }+3 \cot \theta  \left(\bar{g}_{(1)\theta\theta}-\csc ^2\theta \bar{g}_{(1) \phi \phi }\right)+24 \bar{g}_{(1) \rho \theta }\right)\nonumber\\
+\bar{H}_{(1)\phi}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,\phi }+9 \cot \theta  \bar{g}_{(1)\theta \phi}+24 \bar{g}_{(1) \rho \phi }\right).
+\end{eqnarray}
+\end{enumerate}
+By looking at the gauge choice made in~\cite{Bantilan:2012vu} (see eq. (74)) to obtain stability in simulations of 5-dimensional, axisymmetric, asymptotically AdS spacetimes, and choosing numerical factors consistent with \eqref{eqn:target_gauge_trhothetaphi}, we can infer the following potentially stable gauge for the 4-dimensional case with no symmetry assumptions:%\footnote{More precisely, the numerical factors in \eqref{eq:hbold_3p1} were guessed by looking at \eqref{eqn:target_gauge_trhothetaphi}.}:
+\begin{eqnarray}
+\label{eq:hbold_3p1}
+\bar{H}_{(1)t}&=&2 \bar{g}_{(1)\text{$t$$\rho $}} \nonumber\\
+\bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\nonumber\\
+\bar{H}_{(1)\theta}&=&2 \bar{g}_{(1) \rho \theta }\nonumber\\
+\bar{H}_{(1)\phi}&=&2 \bar{g}_{(1) \rho \phi }.
+\end{eqnarray}
+\eqref{eq:hbold_3p1} cannot be made equivalent to \eqref{eqn:target_gauge_trhothetaphi} by any of the equations found above. Thus, it is likely that we have found two, inequivalent, gauge choices, both of which would work well to give stability to a generalized harmonic numerical scheme in spherical coordinates with no symmetry assumptions. This could be confirmed by alternate use of the two gauges in numerical simulations.
+
+\subsection{Tracelessness and Conservation of Boundary Stress Tensor}
+
+We conclude this section by showing that tracelessness and conservation of $\langle T_{ab}\rangle_{CFT}$ follow from \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1}, i.e., from the lowest order of the Einstein equations, provided that the leading order of the generalized harmonic constraints is satisfied. 
+
+With the notation of Section~\ref{sec:bouset2}, let $x^a=(t,\theta,\phi)$ be the coordinates along the AdS boundary $\rho=1$, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ be the metric of the AdS boundary, and $\mathcal{D}$ be the Levi-Civita connection of $\lambda_{ab}$, i.e., $\mathcal{D}$ is torsion-free and $\mathcal{D}_a\lambda_{bc}=0$. Then, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab}\langle T_{ab}\rangle_{CFT}$ is the trace of the boundary-stress tensor and $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=\lambda^{ac}\mathcal{D}_c \langle T_{ab}\rangle_{CFT}$ is its divergence. 
+We want to prove that $\langle \text{tr}T\rangle_{CFT}=0$ and $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=0$. 
+The expression of $\langle \text{tr}T\rangle_{CFT}$ in terms of the leading order of the metric variables in spherical coordinates was already written in \eqref{eq:tracecalc}. We repeat it here for completeness:
+\begin{equation}
+\label{eq:tracecalc2}
+\langle \text{tr}T\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\csc ^2\theta \bar{g}_{(1)\phi\phi}\biggr).
+\end{equation}
+The divergence of the boundary stress tensor is given by
+\begin{eqnarray}
+\label{eq:divergence_t}
+\mathcal{D}^a \langle T_{at}\rangle_{CFT}&=&\frac{1}{16\pi}(-3 \csc ^2\theta  \bar{g}_{(1) \phi \phi ,t}-3 \bar{g}_{(1)\theta \theta ,t}-2 \bar{g}_{(1) \rho \rho ,t}+3 \bar{g}_{(1) \text{$t$$\theta $},\theta }\nonumber\\
+&&+3 \csc^2\theta \bar{g}_{(1) \text{$t$$\phi $},\phi }+3 \cot \theta  \bar{g}_{(1)\text{$t$$\theta $}}) \\
+\label{eq:divergence_theta}
+\mathcal{D}^a \langle T_{a\theta}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \csc ^2\theta  \bar{g}_{(1)\theta \phi ,\phi }-2 \bar{g}_{(1) \rho \rho ,\theta }-3 \csc
+   ^2\theta \bar{g}_{(1) \phi \phi ,\theta }-3 \bar{g}_{(1) \text{$t$$\theta $},t}\nonumber\\
+   &&+3
+   \bar{g}_{(1) \text{$tt$},\theta }+3 \cot \theta  \bar{g}_{(1)\theta \theta }+3 \cot
+   \theta \csc ^2\theta  \bar{g}_{(1) \phi \phi })\\
+\label{eq:divergence_phi}
+\mathcal{D}^a \langle T_{a\phi}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \bar{g}_{(1)\theta \phi ,\theta }-3 \bar{g}_{(1)\theta \theta ,\phi }-2 \bar{g}_{(1) \rho
+   \rho ,\phi }-3 \bar{g}_{(1) \text{$t$$\phi $},t}\nonumber\\
+   &&+3 \bar{g}_{(1) \text{$tt$},\phi }+3 \cot\theta \bar{g}_{(1)\theta \phi }).
+\end{eqnarray}
+We immediately see that $\langle \text{tr}T\rangle_{CFT}=0$ as a consequence of \eqref{eq:indeq1_3p1}.
+%\eqref{eq:indeq1_3p1} clearly implies that \eqref{eq:tracecalc2} vanishes. 
+Moreover, by solving the system of 6 equations given by the first derivatives of \eqref{eq:indeq1_3p1} w.r.t. $t,\theta,\phi$ and \eqref{eq:indeq2_3p1}, \eqref{eq:indeq3_3p1}, \eqref{eq:indeq4_3p1} for $\bar{g}_{(1) \text{$tt$},t},\bar{g}_{(1) \text{$tt$},\theta},\bar{g}_{(1) \text{$tt$},\phi },\bar{g}_{(1) \text{$t$$\theta $},t}$,$\bar{g}_{(1)\text{$t$$\theta $},\theta },\bar{g}_{(1) \text{$t$$\phi $},t}$, and plugging the solution into the right hand side of \eqref{eq:divergence_t}--\eqref{eq:divergence_phi}, we see that $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=0$.
+
+
+
+
+
+
+
+
 \section{Initial Data}
 \label{sec:initdata}
 
-The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\cdots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
+The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\dots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
 With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{ij}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{ij}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
 In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
 
