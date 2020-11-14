@@ -278,6 +278,16 @@ Let us start from the original arguments presented in [CITE Henneaux-Teitelbom].
 that for any $X$ generator of $O(3,2)$;
 \item[(iii)] The surface integral charges associated with the generators of $O(3,2)$ are finite.
 \end{enumerate}
+\textcolor{red}{LR: Hans pointed out that there was a bit in the previous version of the following paragraph (which is commented out in the .tex file) that seemed out of context and interrupted the flow of the discussion. Although I agree with this, I also think that it is important to clearly state what we mean by ``spherical'' and ``Cartesian'' coordinates. I think we could try this way to reduce the feeling of interruption and make it sound less out of context. See if you agree.} 
+It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
+Furthermore, \eqref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] for any spacetime dimensions. In the 4-dimensional case, the result of [CITE [1201.2132]] is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
+In addition, given that in this work we only consider spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.
+
+Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
+Another important consequence is that we can define certain classes of coordinates as follows.
+Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+
+\iffalse
 It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
 Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. 
 
@@ -285,7 +295,8 @@ Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the p
 %e.g. if you decide to trim down, can immediately remove the last three sentences starting from "Furthermore..." and ending in "...  that satisfy the Einstein equations" as they are unnecessary and can be completely removed.}\\
 %{\em Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we will denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
 %Furthermore, \eqref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in (asymptotically) $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$. The result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
-%In addition, given that in this work we only consider at spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.}
+%In addition, given that in this work we only consider spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.}
+\fi
 
 %HB
 %Using the solution of \eqref{eqn:asyKilleq} found in [cite 1201.2132], we obtain the boundary conditions in spherical coordinates:
@@ -307,7 +318,8 @@ Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the p
 %\end{eqnarray}
 %for arbitrary $f_{\mu\nu}$ and $c$.
 
-The boundary conditions for the metric consistent with this framework are given in \cite{Henneaux:1985tv, Henneaux:1985ey,Brown:1986nw}:
+The boundary conditions for the metric consistent with the framework of [CITE Henneaux-Teitelbom] are given in \cite{Henneaux:1985tv, Henneaux:1985ey,Brown:1986nw}:
+%The boundary conditions for the metric consistent with this framework are given in \cite{Henneaux:1985tv, Henneaux:1985ey,Brown:1986nw}:
 \begin{eqnarray}
 \label{eq:sphbounconh}
 h_{\rho\alpha}&=&f_{\rho\alpha}(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3) \qquad \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
@@ -326,7 +338,7 @@ h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho=1}(1-\rho)+\mathcal{O}((1-\rho)^{2}), \\
 \end{eqnarray}
 for arbitrary $f_{\mu\nu}$ and $c$, and where $\rho = \rho(x,y,z)$.
 
-The boundary conditions on the source functions in a given set of coordinates, involved in the Generalized Harmonic Formulation employed in this study (CITE), can be deduced from the near-boundary behaviour of the full metric $g$ through the definition 
+The boundary conditions on the source functions, involved in the Generalized Harmonic Formulation employed in this study (CITE), can be deduced from the near-boundary behaviour of the full metric $g$ through the definition 
 \begin{equation}\label{eq:defsoufunsph}
 H^\alpha \equiv \Box x^\alpha = \frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\alpha})
 \end{equation}
@@ -470,8 +482,12 @@ For any given evolution variable, we set its value at grid points that are at mo
 
 \subsection{Gauge Choice for Stability}\label{sec:gauge_choice}
 
-%The statement that we use Cartesian coordinates completely defines the coordinates only at the AdS boundary, as emphasized in Section~\ref{subsec:asyAdS}. 
-Coordinates over the entire spacetime are fully determined only once we specify the gauge source functions $H_\mu$. As we shall see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. A choice of generalized harmonic source functions that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
+\textcolor{red}{LR: I think I like this more quantitive version better than the previous one in which we did not explain to which order the source functions are already determined. See if you agree.}
+Coordinates over the entire spacetime are fully determined only once we choose the gauge source functions $H_\mu$. 
+For the class of Cartesian coordinates, $H_\mu$ are specified up to order $1-\rho(x,y,z)$ in the expansion near the AdS boundary at $\rho=1$, as it can be seen from \eqref{eq:carbouncondsoufun}.
+As we shall see, the choice of $H_\mu$ at the next order, $(1-\rho(x,y,z))^2$, cannot be completely arbitrary if we wish to achieve stable evolution.
+A specification of generalized harmonic source functions at order $(1-\rho(x,y,z))^2$ that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
+%As we shall see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. 
 
 The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho(x,y,z)) \equiv q(x,y,z) = 0$. By definition, they are linear in $q$ at leading order:
 \begin{eqnarray}\label{eqn:qexp}
