@@ -484,12 +484,12 @@ For any given evolution variable, we set its value at grid points that are at mo
 
 \textcolor{red}{LR: I think I like this more quantitive version better than the previous one in which we did not explain to which order the source functions are already determined. See if you agree.}
 Coordinates over the entire spacetime are fully determined only once we choose the gauge source functions $H_\mu$. 
-For the class of Cartesian coordinates, $H_\mu$ are specified up to order $1-\rho(x,y,z)$ in the expansion near the AdS boundary at $\rho=1$, as it can be seen from \eqref{eq:carbouncondsoufun}.
-As we shall see, the choice of $H_\mu$ at the next order, $(1-\rho(x,y,z))^2$, cannot be completely arbitrary if we wish to achieve stable evolution.
-A specification of generalized harmonic source functions at order $(1-\rho(x,y,z))^2$ that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
+For the class of Cartesian coordinates, $H_\mu$ are specified up to order $1-\rho$ in the expansion near the AdS boundary at $\rho=1$, as it can be seen from \eqref{eq:carbouncondsoufun}.
+As we shall see, the choice of $H_\mu$ at the next order, $(1-\rho)^2$, cannot be completely arbitrary if we wish to achieve stable evolution.
+A specification of generalized harmonic source functions at order $(1-\rho)^2$ that provides stable Cauchy evolution can be obtained following the procedure detailed in this section.
 %As we shall see, this choice cannot be completely arbitrary near the boundary if we wish to achieve stable evolution. 
 
-The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho(x,y,z)) \equiv q(x,y,z) = 0$. By definition, they are linear in $q$ at leading order:
+The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho) \equiv q = 0$. By definition, they are linear in $q$ at leading order:
 \begin{eqnarray}\label{eqn:qexp}
 \bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4) \label{eqn:qexpg} \\
 \bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4)  \label{eqn:qexpH}\\
@@ -497,13 +497,13 @@ The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\
 \end{eqnarray}
 where all the coefficients are functions of $(t,x,y,z)$, restricted to the surface $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$). We now plug this into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. The three lowest orders, $q^{-2},q^{-1},q^0$, come from the pure AdS metric $\hat{g}$, which satisfies \eqref{eqn:efe_gh_modified}, so they vanish trivially. The remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}.
 
-We are now interested in identifying the order of $q$ at which the second derivatives of $ \bar{g}_{(1) \mu \nu}$ w.r.t. $(t,x,y,z)$ evaluated on $\rho(x,y,z)=1$ appear.
+We are now interested in identifying the order of $q$ at which the second derivatives of $ \bar{g}_{(1) \mu \nu}$ w.r.t. $(t,x,y,z)$ evaluated on $\rho=1$ appear.
 For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, i.e., 
 \begin{equation}
 \label{eq:tildeboxbarg}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu},
 \end{equation}
-for some functions $c^t_{\mu\nu},c^x_{\mu\nu},c^y_{\mu\nu},c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{Clearly none of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}
+for some functions $c^t_{\mu\nu},c^x_{\mu\nu},c^y_{\mu\nu},c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho=1$.\footnote{Clearly none of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}
 These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified},  namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$.
 We can easily find their order by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and that $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Therefore, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.\footnote{Notice that the arguments used to draw this conclusion are independent of the number of spacetime dimensions but they rely on the assumption that we are using Cartesian coordinates. For an arbitrary set of coordinates, the power of $q$ at which the second derivatives of the operator \eqref{eq:tildeboxbarg} appear is different, and it depends in general on the specific component of \eqref{eqn:efe_gh_modified} under consideration. See~\cite{Bantilan:2012vu} for an example in spherical coordinates.}
 
@@ -629,7 +629,7 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 \end{eqnarray}
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$.
 
-In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not provide stable evolution. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription should provide a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it should make numerical Cauchy evolution in AdS  in full generality possible, that is with no need for symmetry assumptions.
+In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rist stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription should provide a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it should make numerical Cauchy evolution in AdS  in full generality possible, that is with no need for symmetry assumptions.
 The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following. 
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for $\bar{H}_{(1)\mu}$. In the Cartesian case, this gives
@@ -640,7 +640,7 @@ The steps that lead to our stable gauge, in a form that can be easily applied to
 \bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})). \nonumber \\
 \end{eqnarray}
 
-\item Let $N_{(1)ow}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)ow}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
+\item \textcolor{blue}{{\bf PF:} I would remove the subscript $\,_{ow}$ in $N_{(1)ow}$. It doesn't add anything and it makes the notation more cluttered.} Let $N_{(1)ow}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)ow}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
 In the Cartesian case, $N_{(1)ow}=-2$ and there is only one independent equation given by
 \begin{equation}
 \label{eq:cart_tracelessness}
