@@ -499,6 +499,13 @@ For any given evolution variable, we set its value at grid points that are at mo
 
 %For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$ and use those to set its value, by first order interpolation, at grid points that are at most one grid point away from $\rho=1$.
 
+\begin{figure}[h!]
+        \centering
+        \includegraphics[width=6.0in,clip=true]{plots/lego_circle/Dirichlet_conditions.pdf}
+\parbox{5.0in}{\caption{Visual description of implementation of Dirichlet boundary conditions through first order interpolation in a portion of a $z=const.$ surface for a grid with spatial refinement $\Delta$.
+        }\label{fig:lego_circle_dirbc}}
+\end{figure}
+
 
 \subsection{Gauge Choice for Stability}\label{sec:gauge_choice}
 
@@ -1522,9 +1529,9 @@ Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the c
 
 As explained in Section~\ref{sec:bouset2}, since the AdS boundary generally does not lie on points of the Cartesian grid, we can only obtain the approximated value of any boundary quantity $f$ through extrapolation from the numerical values of $f$ on grid points near the boundary. In this section we describe how extrapolation is implemented in our scheme with the help of Figure~\ref{fig:lego_circle}. For simplicity, we consider first order extrapolation, i.e., extrapolation from two grid points. The following can be generalized to higher extrapolation orders in a straightforward way. In particular, third order extrapolation was used for the plots in Section~\ref{sec:resbouset}, since this improves the accuracy of the extrapolated numerical values.\footnote{This fact was tested by comparing values obtained with increasing extrapolation order with analytic values, in cases where the latter are known, e.g. boundary scalar field values at $t=0$.}
 
-\begin{figure}[h]
+\begin{figure}[h!]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/lego_circle/Lego_circle_new.pdf}
+        \includegraphics[width=6.1in,clip=true]{plots/lego_circle/Lego_circle_new_noconvergence.pdf}
 \parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for a grid with spatial refinement $\Delta$.
         }\label{fig:lego_circle}}
 \end{figure}
