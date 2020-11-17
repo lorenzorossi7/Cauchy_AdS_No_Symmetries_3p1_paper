@@ -446,7 +446,24 @@ g&=&\frac{1}{\bar{z}^2}\biggl[\biggl\{ d\bar{z}^2- \left(1+\frac{\bar{z}^2}{2}+\
 \label{eq:asyFG}
 \end{eqnarray}
 Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\theta}\bar{\theta}}, g_{\bar{\phi}\bar{\phi}}$.
-We will use the holographic renormalization prescription of \cite{Balasubramanian:1999re} to read off the boundary CFT stress tensor from \eqref{eq:asyFG}.  We will come back to this point in Section~\ref{sec:bouset2}.
+
+\textcolor{red}{We can use the holographic renormalization prescription of \cite{Balasubramanian:1999re} to read off the boundary CFT stress tensor from \eqref{eq:asyFG} in FG coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary $\bar{z}=0$:
+\begin{equation}
+\label{eq:bdysetFGform}
+\langle T_{\bar{a}\bar{b}}\rangle_{CFT}=\frac{3}{16\pi}g^{(3)}_{\bar{a}\bar{b}},
+\end{equation}
+where $g^{(3)}_{\bar{a}\bar{b}}$ are the $z^3$ terms of the metric components in FG form, $g_{\bar{a}\bar{b}}$.
+\eqref{eq:bdysetFGform} can be written explicitly as
+\begin{eqnarray}
+\label{eq:set_explicit_2}
+\langle T_{\bar{t}\bar{t}}\rangle_{CFT}&=&\frac{1}{16\pi}(3f_{tt}-f_{\rho\rho}) \nonumber \\
+\langle T_{\bar{t}\bar{\theta}}\rangle_{CFT}&=&\frac{3}{16\pi}f_{t\theta} \nonumber \\
+\langle T_{\bar{t}\bar{\phi}}\rangle_{CFT}&=&\frac{3}{16\pi}f_{t\phi} \nonumber \\
+\langle T_{\bar{\theta}\bar{\theta}}\rangle_{CFT}&=&\frac{1}{16\pi} (3f_{\theta\theta}+f_{\rho\rho}) \nonumber \\
+\langle T_{\bar{\theta}\bar{\phi}}\rangle_{CFT}&=&\frac{3}{16\pi}f_{\theta\phi} \nonumber \\
+\langle T_{\bar{\phi}\bar{\phi}}\rangle_{CFT}&=&\frac{\sin^2\bar{\theta}}{16\pi} \biggl(\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}\biggr),
+\end{eqnarray}
+We will come back to this point in Section~\ref{sec:bouset2}, where we compute the boundary stress-energy tensor in $(t,\theta,\phi)$ coordinates.}
 
 
 %\section{Prescription for Stability}\label{sec:pre_sta}
@@ -774,7 +791,9 @@ The holographic stress-energy tensor can be expressed in terms of the leading or
 \langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
 \langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
 \end{eqnarray}
-where we have set $L=1$. Likewise,  for the total mass in AdS we find
+where we have set $L=1$. \textcolor{red}{Notice that, in order to obtain these expressions, we have not imposed that the metric components satisfy the Einstein equations. On the contrary, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. As a matter of fact, it is straightforward to verify that, if we start from \eqref{eq:set_explicit}, we impose the lowest order of the Einstein equations given in Appendix~\ref{sec:sphevvarboucon} (in particular, we only need \eqref{eq:indeq1_3p1}) and we use the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ and $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$ at the boundary $\rho=1$\footnote{$\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) can be trivially seen from \eqref{eqn:invertFGcoords}. $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$ at $\rho=1$ can be seen by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph}}, we find precisely the expressions \eqref{eq:set_explicit_2}.}
+
+Likewise,  for the total mass in AdS we find
 \begin{equation}
 \label{eq:AdSmasscalc}
 M=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
