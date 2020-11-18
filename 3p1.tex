@@ -852,33 +852,45 @@ Finally we note that since the AdS boundary generally does not lie on points of 
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
 In this section we consider the core elements of the numerical scheme used in this study. %Some of them are presented in detail in other parts of this article. 
-We start by discussing the numerical features on which our way of solving the initial-boundary value problem relies. Then, we describe the apparent horizon finder and the excision method.
+We start by discussing the numerical features on which this scheme relies for solving the initial-boundary value problem. 
+We then describe our apparent horizon finder and excision method.
 %All the PDEs that we mention are discretized with second order finite difference derivative stencils.
 
 \subsection{Numerics of the Initial-Boundary Value Problem}
 \label{sec:numcauprob}
 %We solve the Einstein equations in generalized harmonic form~\cite{Pretorius:2004jg} with constraint damping, for asymptotically AdS spacetimes~\cite{Bantilan:2012vu}.
-We solve the Einstein equations with constraint damping in generalized harmonic form \eqref{eqn:efe_gh_modified}, coupled with the massless Klein-Gordon equation \eqref{eqn:eoms2cart}, for asymptotically AdS spacetimes in Cartesian coordinates $x^\mu=(t,x,y,z)$. 
+We solve the Einstein equations in generalized harmonic form \eqref{eqn:efe_gh_modified} with constraint damping, coupled with the massless Klein-Gordon equation \eqref{eqn:eoms2cart}.
+We obtain asymptotically AdS spacetimes in Cartesian coordinates $x^\mu=(t,x,y,z)$. 
 The solution is determined in terms of the metric, scalar field and source function variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$ defined in Section~\ref{subsec:cartevvarboucon}. We substitute the definitions of these variables, \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}, in the equations of motion and analytically remove all the purely AdS terms.
 The resulting PDEs are discretized with second order finite difference derivative stencils, and then integrated in time using an iterative Newton-Gauss-Seidel relaxation procedure with a three time level hierarchy.
 %, in order to obtain $(\bar{g}_{\mu\nu} \bar{\varphi})$.  
-The source function variables $\bar{H}_\mu$ near the AdS boundary are set as in \eqref{eqn:target_gauge_txyz}, whilst deep in the bulk they are set to zero (and hence to their harmonic gauge values). We use some smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk}  for the details of our full implementation. % to Section~\ref{sec:gauge_choice} which discusses its form near the AdS boundary, and Appendix~\ref{sec:GCbulk} for its values in the bulk.
+The source function variables $\bar{H}_\mu$ near the AdS boundary are set as in \eqref{eqn:target_gauge_txyz}, whilst deep in the bulk they are set to zero.
+%HB: actually, barH=0 means H=Hads
+%(and hence to their harmonic gauge values). 
+We use smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk}  for the details of our full implementation. % to Section~\ref{sec:gauge_choice} which discusses its form near the AdS boundary, and Appendix~\ref{sec:GCbulk} for its values in the bulk.
 
 We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters.
 Although these libraries have adaptive mesh refinement capabilities, numerical evolution is performed on a grid with fixed refinement.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1]$, $z \in [-1,1]$.
-The typical grid resolution uses $N_x=N_y=N_z=325$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$. \textcolor{blue}{{\bf PF:} how many levels of refinement do we use in a typical run?}
+The typical grid resolution uses $N_x=N_y=N_z=325$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$. 
+The results presented here were obtained without the use of refined regions in the grid, although the code has adaptive mesh refinement capabilities.
+%\textcolor{blue}{{\bf PF:} how many levels of refinement do we use in a typical run?}
+
 The time step of evolution is determined by $\Delta t=\lambda \Delta$.
 Although we do not perform a detailed analysis of the stability of our finite difference scheme, we expect the Courant-Friedrichs-Lewy (CFL) condition for stability to be satisfied if we set the CFL factor $\lambda$ to a value well below 1. Thus, we use $\lambda=0.3$. Notice that the most remarkable advantage of using Cartesian coordinates is that the CFL condition does not severely restrict the CFL factor as it would in spherical coordinates, hence allowing simulations to reach large evolution times $t$ in affordable running times. 
 In contrast, spherical coordinates $(t,\rho,\theta,\phi)$ with fixed resolution $\Delta\rho,\Delta\theta,\Delta\phi$ would necessitate $\lambda<\rho_{min}$ in order for the CFL condition to be satisfied, where $\rho_{min}$ is the smallest value that the $\rho$ coordinate takes over the evolved portion of the grid. 
 Here, $\lambda\equiv\Delta t/\min(\Delta\rho,\Delta\theta,\Delta\phi)$.
-At points next to the origin, which must be evolved in studies of gravitational collapse and black hole formation, $\rho$ takes its smallest value $\Delta\rho$, so $\rho_{min}=\Delta\rho$. Hence, $\Delta t$ becomes prohibitively small for high resolutions (i.e., small $\Delta\rho$).
+At points next to the origin, which must be evolved in studies of gravitational collapse and black hole formation, $\rho$ takes its smallest value $\Delta\rho$, so $\rho_{min}=\Delta\rho$. Hence, in spherical coordinates, $\Delta t$ would become prohibitively small for high resolutions (i.e., small $\Delta\rho$).
 
 The following components play a fundamental role in the numerical implementation of the initial-boundary value problem.
-Reflective Dirichlet boundary conditions \eqref{eq:dirbc} are imposed at the AdS boundary $\rho=1$. 
-In general the AdS boundary does not lie on Cartesian grid points, which necessitates a slightly more elaborated method to impose these boundary conditions. 
-For each variable, consider the points at most one grid point away from the boundary in the interior (i.e., $\rho(x,y,z)<1$). The value at each of them is set by first order interpolation between the Dirichlet value at the boundary and the value at the closest point further into the interior, along the Cartesian direction corresponding to the coordinate with largest absolute value. \textcolor{blue}{{\bf PF:} the previous sentences are a repetition of the discussion at the end of Sec. 3.1. Either we have it here or there, but not in both places.}
-Points with $\rho\geq1-\Delta/2$ are excised to avoid issues with quantities that would diverge (also analytically) at $\rho=1$. On the other hand, variables at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ are set by using one-sided spatial stencils that do not refer to adjacent excised points. Time-symmetric initial data, sourced by a massless real scalar field, are obtained by solving the conformal decomposition of the Hamiltonian constraint \eqref{eq:hamconsfinal}. 
+%Reflective Dirichlet boundary conditions \eqref{eq:dirbc} are imposed at the AdS boundary $\rho=1$. 
+%In general the AdS boundary does not lie on Cartesian grid points, which necessitates a slightly more elaborated method to impose these boundary conditions. 
+%For each variable, consider the points at most one grid point away from the boundary in the interior (i.e., $\rho(x,y,z)<1$). The value at each of them is set by first order interpolation between the Dirichlet value at the boundary and the value at the closest point further into the interior, along the Cartesian direction corresponding to the coordinate with largest absolute value. 
+%\textcolor{blue}{{\bf PF:} the previous sentences are a repetition of the discussion at the end of Sec. 3.1. Either we have it here or there, but not in both places.}
+%Points with $\rho\geq1-\Delta/2$ are excised to avoid issues with quantities that would diverge (also analytically) at $\rho=1$. On the other hand, variables at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ are set by using one-sided spatial stencils that do not refer to adjacent excised points. 
+Reflective Dirichlet boundary conditions \eqref{eq:dirbc} are imposed at the AdS boundary $\rho=1$.
+In general the AdS boundary does not lie on Cartesian grid points, so we set boundary conditions at points at most one grid point away from the boundary via interpolation as detailed in Section~\ref{sec:pre_sta}.
+Time-symmetric initial data, sourced by a massless real scalar field, are obtained by solving the conformal decomposition of the Hamiltonian constraint \eqref{eq:hamconsfinal}. 
 The solution to \eqref{eq:hamconsfinal} is computed, after second order finite discretization, through a full approximation storage (FAS) multigrid algorithm with v-cycling and Newton-Gauss-Seidel relaxation, built into the PAMR/AMRD libraries. We ensure that initial data satisfies the generalized harmonic constraints. See Appendix~\ref{sec:initdata} for more details and the complete choice of initial data.
 
 \subsection{Apparent Horizon Finder and Excision}
@@ -890,7 +902,9 @@ Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\
 \label{eq:floweq}
 \frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)},
 \end{equation}
-where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the true position of the AH, $R(\theta,\phi)$ is expected to become closer to the AH after each iteration. The process stops when either the $L^2$-norm of $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is below some specified tolerance, i.e., $R(\theta,\phi)$ is sufficiently close to the AH, or the user-specified maximum number of iterations has been reached, i.e., either there is no AH at time $t$ or this method was not able to find it. The latter typically occurs if we start from an initial guess $\rho_0$ which is not sufficiently close to the AH.
+where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the position of the AH, the $R(\theta,\phi)$ is expected to progressively approach the AH after each iteration. 
+This process stops when either the $L^2$-norm of $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is below some specified tolerance, i.e., $R(\theta,\phi)$ is sufficiently close to the AH, or the user-specified maximum number of iterations has been reached, i.e., either there is no AH at time $t$ or this method was not able to find it. 
+%The latter typically occurs if we start from an initial guess $\rho_0$ which is not sufficiently close to the AH.
 
 This AH finder is based on a $(\theta,\phi)$ grid\footnote{The grid on which the AH finder is executed is completely independent of the specifics of the Cartesian evolution grid given in Section~\ref{sec:numcauprob}.} with equal grid spacings $\Delta \theta=\Delta\phi=\Delta_{AH}$. The outward null expansion at grid points $(\theta,\phi)$ is obtained by first order interpolation in three dimensions from the values of the expansion at Cartesian grid points that surround $(\theta,\phi)$. These values are calculated from the definition of outward null expansion once the spacetime metric at time $t$ is known.
 We observe that a $N_\theta\times N_\phi=9\times 17$ resolution is enough to find the AH in the simulations considered in Section~\ref{sec:results} in less than $10^{4}$ iterations. Since \eqref{eq:floweq} is a parabolic equation, the ``time'' step $\Delta s$ must be at least of order $\Delta_{AH}^2$ for stability. When using $n=10$ and an initial range for $\rho$ values between 0.1 and 0.5, as we do in our simulations, we find that the AH finder works effectively if $\Delta s$ takes much smaller values. Specifically, we set $\Delta s=10^{-4}$.
