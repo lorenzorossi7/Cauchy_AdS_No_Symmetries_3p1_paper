@@ -447,7 +447,7 @@ g&=&\frac{1}{\bar{z}^2}\biggl[\biggl\{ d\bar{z}^2- \left(1+\frac{\bar{z}^2}{2}+\
 \end{eqnarray}
 Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\theta}\bar{\theta}}, g_{\bar{\phi}\bar{\phi}}$.
 
-\textcolor{red}{We can use the holographic renormalization prescription of \cite{Balasubramanian:1999re} to read off the boundary CFT stress tensor from \eqref{eq:asyFG} in FG coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary $\bar{z}=0$:
+\textcolor{red}{We can use the holographic renormalization prescription of \cite{Balasubramanian:1999re} to read off the boundary CFT stress tensor from \eqref{eq:asyFG} in FG coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary $\bar{z}=0$, through the operative formula given in CITE[arXiv:hep-th/0002230v3]:
 \begin{equation}
 \label{eq:bdysetFGform}
 \langle T_{\bar{a}\bar{b}}\rangle_{CFT}=\frac{3}{16\pi}g^{(3)}_{\bar{a}\bar{b}},
@@ -461,9 +461,9 @@ where $g^{(3)}_{\bar{a}\bar{b}}$ are the $z^3$ terms of the metric components in
 \langle T_{\bar{t}\bar{\phi}}\rangle_{CFT}&=&\frac{3}{16\pi}f_{t\phi} \nonumber \\
 \langle T_{\bar{\theta}\bar{\theta}}\rangle_{CFT}&=&\frac{1}{16\pi} (3f_{\theta\theta}+f_{\rho\rho}) \nonumber \\
 \langle T_{\bar{\theta}\bar{\phi}}\rangle_{CFT}&=&\frac{3}{16\pi}f_{\theta\phi} \nonumber \\
-\langle T_{\bar{\phi}\bar{\phi}}\rangle_{CFT}&=&\frac{\sin^2\bar{\theta}}{16\pi} \biggl(\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}\biggr),
+\langle T_{\bar{\phi}\bar{\phi}}\rangle_{CFT}&=&\frac{\sin^2\bar{\theta}}{16\pi} \biggl(\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}\biggr).
 \end{eqnarray}
-We will come back to this point in Section~\ref{sec:bouset2}, where we compute the boundary stress-energy tensor in $(t,\theta,\phi)$ coordinates.}
+We will come back to these expressions in Section~\ref{sec:bouset2}, where we compute the boundary stress-tensor starting from the metric in global spherical coordinates.}
 
 
 %\section{Prescription for Stability}\label{sec:pre_sta}
@@ -754,14 +754,15 @@ In the simulations we output the vacuum expectation value of the operator dual t
 %We also use the notation $x^a=(t,\theta,\phi)$ to denote the coordinates on the AdS boundary at $\rho=1$. 
 %The indices $a,b,c,\dots$ of tensors defined on the tangent space of the AdS boundary are raised and lowered by the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
-To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \bar{\varphi}\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have 
+To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \varphi\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have
 \begin{equation}
-\langle \bar{\varphi}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}\bar{\varphi}=\bar{\varphi}_{(1)}.
+\langle \varphi\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}\bar{\varphi}=\bar{\varphi}_{(1)}
 \end{equation}
+\textcolor{red}{up to a rescaling of $\langle \varphi\rangle_{CFT}$.}
 
 Let us denote the coordinates on timelike hypersurfaces at fixed $\rho$, such as $\partial M_q$ and the AdS boundary, by $x^a=(t,\theta,\phi)$.
 %Their expressions are more easily obtained and displayed in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, defined in the usual way in terms of the Cartesian coordinates used in the code, as they are adapted to the AdS boundary.
-In analogy with $\langle \bar{\varphi}\rangle_{CFT}$, to compute the holographic stress-energy tensor of the boundary CFT, $\langle T_{ab}\rangle_{CFT}$, we first compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at $\partial M_q$ as prescribed in \cite{Balasubramanian:1999re}. 
+In analogy with $\langle \varphi\rangle_{CFT}$, to compute the holographic stress-energy tensor of the boundary CFT, $\langle T_{ab}\rangle_{CFT}$, we first compute the quasi-local stress-energy tensor $^{(q)}T_{\alpha\beta}$ at $\partial M_q$ as prescribed in \cite{Balasubramanian:1999re}. 
 We have
 \begin{equation}
 \label{eq:qslocset}
@@ -776,7 +777,7 @@ Restricting this to the indices corresponding to the coordinates $x^a$, we can c
 \end{equation}
 %The indices $a,b,c,\dots$ along the AdS boundary are lowered or raised by the metric of the AdS boundary, $\gamma_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
-From $^{(q)}T_{\alpha\beta}$ we also compute the AdS mass as follows \cite{Balasubramanian:1999re}. At each time $t$ of evolution, we take a spacelike two-dimensional surface $\mathcal{S}$ in $\partial M_q$, with induced metric $\sigma_{ab}=\omega_{ab}+u_a u_b$, where $u^a$ is the future pointing unit vector normal to $\mathcal{S}$ in $\partial M_q$, \textcolor{blue}{{\bf PF:} we should write $u^a$ in terms of the lapse and shift} lapse $N$ and shift $N^a$. The AdS mass is then given by
+From $^{(q)}T_{\alpha\beta}$ we also compute the AdS mass as follows \cite{Balasubramanian:1999re}. At each time $t$ of evolution, we take a spacelike two-dimensional surface $\mathcal{S}$ in $\partial M_q$, with induced metric $\sigma_{ab}=\omega_{ab}+u_a u_b$, where $u_a=-N(dt)_a$ is the future pointing unit 1-form normal to $\mathcal{S}$ in $\partial M_q$, lapse $N$ and shift $N^a$. The AdS mass is then given by
 \begin{equation}
 M_{AdS}=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{ab} u^a u^b).
 \end{equation}
@@ -791,7 +792,7 @@ The holographic stress-energy tensor can be expressed in terms of the leading or
 \langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
 \langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
 \end{eqnarray}
-where we have set $L=1$. \textcolor{red}{Notice that, in order to obtain these expressions, we have not imposed that the metric components satisfy the Einstein equations. On the contrary, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. In fact, it is straightforward to see that the two equations agree if we assume the validity of the lowest order of the Einstein equations in spherical coordinates given in Appendix~\ref{sec:sphevvarboucon}. In fact, we only need \eqref{eq:indeq1_3p1}. For example, starting from \eqref{eq:set_explicit}, imposing \eqref{eq:indeq1_3p1} and using the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ and $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$ at the boundary $\rho=1$\footnote{$\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) can be trivially seen from \eqref{eqn:invertFGcoords}. $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$ at $\rho=1$ can be seen by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph}}, we find precisely the expressions \eqref{eq:set_explicit_2}.}
+where we have set $L=1$. \textcolor{red}{Notice that, in order to obtain these expressions, we have not imposed that the metric components satisfy the Einstein equations. On the contrary, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. In fact, it is straightforward to see that the two equations agree if we assume the validity of the lowest order of the Einstein equations in spherical coordinates given in Appendix~\ref{sec:sphevvarboucon}. In fact, we only need \eqref{eq:indeq1_3p1}. For example, starting from \eqref{eq:set_explicit}, imposing \eqref{eq:indeq1_3p1} and using the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at the boundary $\rho=1$ and $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$\footnote{$\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) can be trivially seen from \eqref{eqn:invertFGcoords}, while $\bar{g}_{(1)\alpha\beta}\equiv\frac{\partial \bar{g}_{\alpha\beta}}{\partial q}\bigr|_{q=0}=f_{\alpha\beta}$, where the second equality is obtained by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph} to write $\bar{g}_{\alpha\beta}$ in terms of $f_{\alpha\beta}$ and the corresponding $\rho$-dependent factors.}, we find precisely the expressions \eqref{eq:set_explicit_2}.}
 
 %Likewise,  for the total mass in AdS we find
 For the total mass in AdS we find
@@ -800,7 +801,7 @@ For the total mass in AdS we find
 M=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
 \end{equation}
 
-We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and  solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
+We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way, assuming that $\langle T_{ab}\rangle_{CFT}$ satisfies the weak energy condition\footnote{\textcolor{red}{If $\pm \langle T_{ab}\rangle_{CFT}$ fail to satisfy the weak energy condition, the $L^2$-norm of $\langle T_{ab}\rangle_{CFT}$, $||\langle T_{ab}\rangle_{CFT}||_2$, can have complex conjugate pairs of eigenvalues and no real time-like eigenvector, as pointed out in footnote 9 of CITE[arXiv:1309.1439v4 [hep-th]].}}, we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 %Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 
 One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab} \langle T_{ab}\rangle_{CFT}$. We obtain
@@ -1008,11 +1009,11 @@ We start by noting that the numerical values for the total mass $M$ in AdS, obta
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyphi/sphereplots_bdyphi_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of the expectation value of the scalar field of the boundary CFT, $\langle \bar{\varphi}\rangle_{CFT}$. The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter with threshold frequency $\omega=0.5$. (Highest resolution: $N_x=N_y=N_z=325$.)
+\parbox{5.0in}{\caption{Snapshots of the expectation value of the scalar field of the boundary CFT, $\langle \varphi\rangle_{CFT}$. The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter with threshold frequency $\omega=0.5$. (Highest resolution: $N_x=N_y=N_z=325$.)
         }\label{fig:snapshotsbdyphi}}
 \end{figure}
 
-Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the expectation value of the scalar operator $\langle \bar{\varphi}\rangle_{CFT}$ of the boundary CFT.
+Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the expectation value of the scalar operator $\langle \varphi\rangle_{CFT}$ of the boundary CFT.
 Unlike the $z=0$ slice snapshots of Figure \ref{fig:snapshotsscalarfield}, these plots of the boundary $\mathbb{R}\times S^2$ encode the asymmetry in all three Cartesian directions in the bulk, as they appear on the boundary at $\rho = \sqrt{x^2+y^2+z^2}=1$. 
 In fact, the asymmetry of the initial data is already visible at $t=0$, where the different values of eccentricities along the three Cartesian direction (largest along $x$ and smallest along $y$) are evident in this plot. At this time, the boundary scalar field is overall very small, which is expected since the initial $\bar{\varphi}$, given by \eqref{eq:scaGaupro}, is localised near $\rho=0$.
 Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes during evolution, but interestingly it is always strongest along $x$ and weakest along $y$ or vice-versa. Furthermore, a direct comparison with Figure \ref{fig:snapshotsscalarfield} shows that the features present at a certain $t$ at the boundary take approximately $\pi/2\simeq1.6$ to reach the interior of the bulk, i.e., about a light-crossing time, as expected. At later times, mirroring the evolution in the bulk, the scalar field at the boundary becomes negligible as the spacetime settles down to Schwarzschild-AdS.
@@ -1570,7 +1571,7 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
  f^{bdy}_{\Delta}(p_{bdy})=\frac{x_{bdy}-x_2}{x_1-x_2}f_\Delta(p_1)+\frac{x_{bdy}-x_1}{x_2-x_1}f_\Delta(p_2).
  \end{equation}
  \end{enumerate}
- \textcolor{red}{Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme, which we aim to correct in the future by extrapolating points on a uniform grid with given resolution at the boundary, is dealt with by linearly interpolating data through the Wolfram Mathematica software.}
+ \textcolor{red}{Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme is dealt with by linearly interpolating data through the Wolfram Mathematica software. We aim to correct this in the future by considering a uniform grid with given resolution at the boundary, and extrapolating the values at these boundary grid points from bulk points along a radial direction.}
 
 Notice that, as \eqref{eq:firstordextrap} shows, second order convergence of boundary values $f^{bdy}_{\Delta}$ is a direct consequence of second order bulk convergence of $f_\Delta$, which is confirmed by Figure~\ref{fig:L2norm_iresallconvergence-crop} in our simulations. Despite this fact, some modifications must be made to our extrapolation scheme if we wish to perform explicit convergence tests on our boundary data. We now explain the reason for this and the necessary modifications. We assume the validity of the Richardson expansion [CITE Richardson, L. F. The approximate arithmetic solution by finite differences of physical problems involving differential equations, with applications to the stresses in a masonry dam. Phil. Trans. Roy. Soc., 210:307-357, 1910.] for $f_{\Delta}$ at any grid point $p$,
 \begin{equation}
