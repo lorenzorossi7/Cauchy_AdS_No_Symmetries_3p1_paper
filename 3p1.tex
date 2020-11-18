@@ -1717,6 +1717,29 @@ This is the method we use for the boundary plots in Section~\ref{sec:resbouset} 
 
 
 \section{Poincar\'e Patch}\label{sec:poincare}
+Here we analyze the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context. 
+The metric of a Poincar\'e patch of AdS$_4$ can be written in Poincar\'e coordinates $(t,z,x_1,x_2)$ as
+\begin{equation}
+\hat{g} = \frac{L^2}{z^2} \left( -dt^2 + dz^2 + dx_1{}^2 + dx_2{}^2  \right).
+\end{equation}
+
+To include the Poincar\'e horizon $z\rightarrow \infty$ in our computational domain, we compactify the bulk coordinate $z=(1-\rho^2)/\rho^2$ to have the Poincar\'e horizon at $\rho=0$ and the boundary at $\rho=1$, giving the following form for the metric of AdS$_4$
+\begin{equation}
+\hat{g} = \frac{L^2 \rho^4}{(1-\rho^2)^2} \left( -dt^2 + (4/\rho^6)d\rho^2 + dx_1^2 + dx_2^2  \right).
+\end{equation}
+The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$. 
+The corresponding evolution variables in this Poincar\'e setting give exactly the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
+
+Using the same steps as in Appendix~\ref{sec:sphevvarboucon}, we obtain the following gauge:
+\begin{eqnarray}
+\label{eq:hbold_poincare}
+\bar{H}_{(1)t}&=&\frac{3}{2} \bar{g}_{(1)\text{$t$$\rho $}} \nonumber\\
+\bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\nonumber\\
+\bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\nonumber\\
+\bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }.
+\end{eqnarray}
+We have verified that this gauge leads to stable evolution on Poincar\'e AdS$_4$, the results of which will appear in the sequel.
+
 
 
 % Bibliography
