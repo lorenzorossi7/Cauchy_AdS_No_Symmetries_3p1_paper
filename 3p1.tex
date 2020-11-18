@@ -360,7 +360,7 @@ for arbitrary $b(t,\theta,\phi)$. In Cartesian coordinates, these fall-offs read
 \label{eq:carbouncondh}
 h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho=1}(1-\rho)+\mathcal{O}((1-\rho)^{2}), \\
 \label{eq:carbouncondphi}
-\varphi&=&c(t,x,y,z)|_{\rho=1}(1-\rho)^3+\mathcal{O}((1-\rho))^{4}), 
+\varphi&=&c(t,x,y,z)|_{\rho=1}(1-\rho)^3+\mathcal{O}((1-\rho)^{4}), 
 \end{eqnarray}
 for arbitrary $f_{\mu\nu}$ and $c$, and where $\rho = \rho(x,y,z)$.
 
@@ -1720,17 +1720,26 @@ This is the method we use for the boundary plots in Section~\ref{sec:resbouset} 
 Here we analyze the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context. 
 The metric of a Poincar\'e patch of AdS$_4$ can be written in Poincar\'e coordinates $(t,z,x_1,x_2)$ as
 \begin{equation}
+\label{eq:AdSpoincare}
 \hat{g} = \frac{L^2}{z^2} \left( -dt^2 + dz^2 + dx_1{}^2 + dx_2{}^2  \right).
 \end{equation}
-
 To include the Poincar\'e horizon $z\rightarrow \infty$ in our computational domain, we compactify the bulk coordinate $z=(1-\rho^2)/\rho^2$ to have the Poincar\'e horizon at $\rho=0$ and the boundary at $\rho=1$, giving the following form for the metric of AdS$_4$
 \begin{equation}
 \hat{g} = \frac{L^2 \rho^4}{(1-\rho^2)^2} \left( -dt^2 + (4/\rho^6)d\rho^2 + dx_1^2 + dx_2^2  \right).
 \end{equation}
-The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$. 
-The corresponding evolution variables in this Poincar\'e setting give exactly the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
 
-Using the same steps as in Appendix~\ref{sec:sphevvarboucon}, we obtain the following gauge:
+Let us now consider asymptotically AdS spacetimes.
+Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}, \eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
+We can thus read off the fall-offs of the metric components from the rest of the FG expansion. 
+Let us now translate these into coordinates $(t,\rho,x_1,x_2)$. The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
+The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}$ functions of $(t,x_1,x_2)$.
+Therefore, for coupling with Klein-Gordon matter, the scalar field fall-off preserving the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c$ function of $(t,x_1,x_2)$. The metric fall-offs also imply the fall-offs of the source function, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}$ functions of $(t,x_1,x_2)$.
+As a result of this, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
+
+%The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$. 
+%The corresponding evolution variables in this Poincar\'e setting give exactly the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
+
+Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the following gauge:
 \begin{eqnarray}
 \label{eq:hbold_poincare}
 \bar{H}_{(1)t}&=&\frac{3}{2} \bar{g}_{(1)\text{$t$$\rho $}} \nonumber\\
