@@ -930,7 +930,7 @@ The geometry of the initial slice is sourced by a massless real scalar field wit
 \end{eqnarray}
 The amplitude of the profile is $A=0.55$ and  the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$, so that the most prominent distortion is on the $(x,y)$-plane. The width of the Gaussian is $\Delta=0.2$. 
 We choose the initial slice to be a moment of time symmetry, and the details of the time-symmetric initial data sourced by this matter field are collected in Appendix~\ref{sec:initdata}. 
-As we see in that appendix, the momentum constraint is trivially satisfied for this type of data, so only the Hamiltonian constraint needs to be solved. We evolve this initial data up to $t=31$ in units of AdS radius $L=1$ (approximately 20 light crossing times), well after the end of gravitational collapse and the resulting black hole formation. 
+As we see in that Appendix, the momentum constraint is trivially satisfied for this type of data, so only the Hamiltonian constraint needs to be solved. We evolve this initial data up to $t=31$ in units of AdS radius $L=1$ (approximately 20 light crossing times), well after the end of gravitational collapse and the resulting black hole formation. 
 The initial data has zero total angular momentum 
 %computed via the prescription in [CITE hep-th/9902121],
 and angular momentum conservation [CITE arXiv:1211.6347v3 [gr-qc]] ensures that this is zero at all times. 
@@ -1006,19 +1006,20 @@ At later times, $t\simeq 9$, the value of the scalar field becomes consistent wi
 \fi
 
 %This can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}, in which we compare the numerical solution at the end of our simulations, $t=31$, to the Schwarzschild-AdS metric with mass $(M_{AdS})_h(t=31)=0.403$ (in units of AdS radius $L=1$), namely the highest resolution value of $M_{AdS}$ (given by equation \eqref{eq:AdSmasscalc}) at $t=31$, as follows. 
-Evidence that the late-time solution is close to Schwarzschild-AdS can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}.
+The late-time solution is close to Schwarzschild-AdS, which can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}.
 Here, we compare the numerical solution at the last time slice, i.e., $t=31$, to the Schwarzschild-AdS metric with conserved mass obtained from our highest resolution run ($M=0.403$).
 This comparison is achieved with the following procedure.
 First, we compute the Riemann cube scalar $R^3=R_{\mu\nu\rho\sigma}R^{\rho\sigma\gamma\delta}R_{\gamma\delta}^{\;\;\;\;\mu\nu}$, and the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ for our numerical solution at the last time slice. 
 Second, we compute the corresponding values, $R^3_{AdS}$ and $K_{AdS}$, in pure $AdS_4$.
 We then use all four quantities to show the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the Kretschmann scalar $\frac{K}{K_{AdS}}-1$ for the Schwarzschild-AdS spacetime, shown as the black line in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}. 
-We do the same for the numerical solution for different resolutions at grid points along the $x$ axis (i.e., at $y=z=0$, coloured lines of top panel) and the $y$ axis (i.e., at $x=z=0$, coloured lines of bottom panel). 
+We do the same for the numerical solution for different resolutions at grid points along the $x$ axis ($y=z=0$ coloured lines of top panel) and the $y$ axis ($x=z=0$ coloured lines of bottom panel). 
 
 The black vertical lines in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS} denotes the value of $\frac{K}{K_{AdS}}-1$ at the horizon of Schwarzschild-AdS. 
 Notice that $\frac{K}{K_{AdS}}-1=0$ at the AdS boundary by construction, so going to larger values of $\frac{K}{K_{AdS}}-1$ is equivalent to moving towards the centre of the grid.
 Therefore the black vertical lines give an indication of the position of the AH relative to the AdS boundary.
 The two panels of Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS} indicate that, sufficiently close to the AdS boundary, the curvature of the numerical solution is almost identical to Schwarzschild-AdS. For clarity, this is shown using only values of the Riemann cube and Kretschmann scalars along the $x$ and $y$ axes, but we verified this for values from the entire grid. 
-At any given resolution, the numerical curvature starts to differ from their Schwarzschild-AdS values as we get close to the AH (and it diverges strongly at values of $\frac{K}{K_{AdS}}-1$ corresponding to positions very close to the excision surface, as expected but not shown in the figure). 
+At any given resolution, the numerical curvature starts to differ from their Schwarzschild-AdS values as we get close to the AH. 
+%(and it diverges strongly at values of $\frac{K}{K_{AdS}}-1$ corresponding to positions very close to the excision surface, as expected but not shown in the figure). 
 %However, the higher the resolution the closer we get to Schwarzschild-AdS even inside the AH.
 %Finally, we notice that for low resolutions a persistent asymmetry between the $x$ and $y$ axes is visible also at late times both outside and inside the horizon, but this disappears for high enough resolutions.
 However, these differences converge away as resolution is increased.
@@ -1028,7 +1029,8 @@ Finally, although there is an asymmetry at any given resolution between the $x$ 
 \label{sec:resbouset}
 
 In this section we consider the evolution of quantities on the $\mathbb{R} \times S^2$ boundary at $\rho=1$, defined in Section~\ref{sec:bouset2}. 
-These quantities are obtained via third order extrapolation from points in the interior, with the only exception of the $t=0$ plot of Figure \ref{fig:snapshotsbdyphi}: this is computed analytically from the initial distorted Gaussian profile \eqref{eq:scaGaupro}, as extrapolation would give values smaller than the solution error of the function. 
+These quantities are obtained via third order extrapolation from points in the interior, with the only exception of the $t=0$ plot of Figure \ref{fig:snapshotsbdyphi}, which is computed analytically from the initial distorted Gaussian profile \eqref{eq:scaGaupro}.
+%as extrapolation would give values smaller than the solution error of the function. 
 
 \iffalse
 \begin{figure}[!h]
@@ -1049,15 +1051,16 @@ We start by noting that the numerical values for the total mass $M$ in AdS, obta
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyphi/sphereplots_bdyphi_L3_2by2.png}
 \parbox{5.0in}{\caption{
 %Snapshots of the expectation value of the scalar field of the boundary CFT, $\langle \varphi\rangle_{CFT}$. 
-Snapshots of the leading-order coefficient $\bar{\varphi}_{(1)}$ in the near-boundary expansion of the bulk scalar field given in \eqref{eqn:qexp}. 
+Snapshots of the leading-order coefficient $\bar{\varphi}_{(1)}$ in the near-boundary expansion of the bulk scalar field. 
 The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter with threshold frequency $\omega=0.5$. (Highest resolution: $N_x=N_y=N_z=325$.)
         }\label{fig:snapshotsbdyphi}}
 \end{figure}
 
-Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the expectation value of the scalar operator $\langle \varphi\rangle_{CFT}$ of the boundary CFT.
+%Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the expectation value of the scalar operator $\langle \varphi\rangle_{CFT}$ of the boundary CFT.
+Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the leading-order coefficient $\bar{\varphi}_{(1)}$ in the near-boundary expansion of the bulk scalar field given in \eqref{eqn:qexp}.
 Unlike the $z=0$ slice snapshots of Figure \ref{fig:snapshotsscalarfield}, these plots of the boundary $\mathbb{R}\times S^2$ encode the asymmetry in all three Cartesian directions in the bulk, as they appear on the boundary at $\rho = \sqrt{x^2+y^2+z^2}=1$. 
 In fact, the asymmetry of the initial data is already visible at $t=0$, where the different values of eccentricities along the three Cartesian direction (largest along $x$ and smallest along $y$) are evident in this plot. At this time, the boundary scalar field is overall very small, which is expected since the initial $\bar{\varphi}$, given by \eqref{eq:scaGaupro}, is localised near $\rho=0$.
-Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes during evolution, but interestingly it is always strongest along $x$ and weakest along $y$ or vice-versa. Furthermore, a direct comparison with Figure \ref{fig:snapshotsscalarfield} shows that the features present at a certain $t$ at the boundary take approximately $\pi/2\simeq1.6$ to reach the interior of the bulk, i.e., about a light-crossing time, as expected. At later times, mirroring the evolution in the bulk, the scalar field at the boundary becomes negligible as the spacetime settles down to Schwarzschild-AdS.
+Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes during evolution, but interestingly it is always strongest along $x$ and weakest along $y$ or vice-versa. Furthermore, a direct comparison with Figure \ref{fig:snapshotsscalarfield} shows that the features present at a certain $t$ at the boundary take approximately $\pi/2\simeq1.6$ to reach the interior of the bulk, i.e., about a light-crossing time, as expected. At later times, mirroring the evolution in the bulk, $\bar{\varphi}_{(1)}$ decays exponentially in time as the spacetime settles down to Schwarzschild-AdS.
 
 \begin{figure}[!h]
         \centering
@@ -1074,7 +1077,7 @@ After that, $\epsilon$ undergoes a phase of strong evolution with several change
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/timeseries/L2-norm_trace_anisotropy_energydensityminusschw_maxminusminenergydensity/fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity_L3.pdf}
-\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate given by the deviation of the $L^2$-norm of $\langle \text{tr}T\rangle_{CFT}$ from its predicted zero value for the 2+1 CFT (red line). We consider the following boundary quantities: difference between maximum and minimum of boundary energy density $\epsilon$ (blue line), $L^2$-norm of difference between $\epsilon$ and the Schwarzschild-AdS value $\epsilon_{Schw-AdS}=\frac{M}{4\pi}$ (green line), with Schwarzschild mass $M=(M)_h=0.403$ (i.e., the value of $M$ for the resolution with grid spacing $h$), $L^2$-norm of boundary anistropy $\Delta p$ (magenta line). Plot obtained from the data of the highest resolution run ($N_x=N_y=N_z=325$), but at any resolution these quantities exhibit the same hierarchy, although at different scales. Boundary quantities are computed by third order extrapolation.
+\parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate given by the deviation of the $L^2$-norm of $\langle \text{tr}T\rangle_{CFT}$ from its predicted zero value for the 2+1 CFT (red line). We consider the following boundary quantities: difference between maximum and minimum of boundary energy density $\epsilon$ (blue line), $L^2$-norm of difference between $\epsilon$ and the Schwarzschild-AdS value $\epsilon_{Schw-AdS}=\frac{M}{4\pi}$ (green line), with Schwarzschild mass $M=(M)_h=0.403$ (i.e., the value of $M$ for the resolution with grid spacing $h$), $L^2$-norm of boundary anistropy $\Delta p$ (magenta line). This plot is obtained from the data of the highest resolution run ($N_x=N_y=N_z=325$), but at any resolution these quantities exhibit the same hierarchy, although at different scales. Boundary quantities are computed by third order extrapolation.
         }\label{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}}
 \end{figure}
 
@@ -1082,7 +1085,9 @@ More information about the energy density of the boundary field theory can be de
 The trace $\langle \text{tr}T\rangle_{CFT}$ vanishes for a conformal field theory in 2 +1 dimensions, which is the case for our $\mathbb{R} \times S^2$ boundary.
 In Section~\ref{sec:bouset2}, we had spelled out how this trace, in our scheme, is tied to how well we are solving the Einstein field equations.
 We thus use the $L^2$-norm of the numerical values of $\langle \text{tr}T\rangle_{CFT}$ (red line) as an error estimate for boundary quantities. We compare this error with the difference between maximum and minimum of $\epsilon$ (blue line), the $L^2$-norm of the difference between $\epsilon$ and its Schwarzschild-AdS value $\epsilon_{Schw-AdS}=\frac{M}{4\pi}$ (green line), with $M=(M)_h=0.403$, i.e., the highest resolution value of $M_{AdS}$, and the $L^2$-norm of $\Delta p$ (magenta line). We compute these quantities from the data of the highest resolution simulation (i.e., $N_x=N_y=N_z=325$), but at any resolution the hierarchy is the same, although it appears at different scales.
-If we exclude very early times, we see that (i) $\max(\epsilon)-\min(\epsilon)$ is consistent with 0, which confirms that the energy density becomes uniform in time; (ii) $||\epsilon-\epsilon_{Schw-AdS}||_2$ is consistent with 0 and decreasing in time, which shows that the energy density settles down to $\epsilon_{Schw-AdS}$, as expected, (iii) $||\Delta p||_2$ is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
+If we exclude very early times, we see that $\max(\epsilon)-\min(\epsilon)$ is consistent with 0, which confirms that the energy density becomes uniform in time.
+We also see that $||\epsilon-\epsilon_{Schw-AdS}||_2$ is consistent with 0 and decreasing in time, which shows that the energy density settles down to $\epsilon_{Schw-AdS}$, as expected.
+Finally, $||\Delta p||_2$ is consistent with 0, as appropriate for the boundary anistropy of Schwarzschild-AdS.
 
 
 
