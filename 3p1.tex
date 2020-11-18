@@ -93,7 +93,7 @@ $\,$
 	 
 \begin{center}
 
-{\huge \textbf{Cauchy Evolution of Asymptotically AdS Spacetimes with No Symmetries}}
+{\huge \textbf{Cauchy Evolution of Asymptotically Global AdS Spacetimes with No Symmetries}}
 
 \vspace{30pt}
 		
@@ -123,7 +123,7 @@ School of Mathematical Sciences, Queen Mary University of London, Mile End Road,
 We present the first proof-of-principle Cauchy evolutions of asymptotically AdS spacetimes with no imposed symmetries, employing a numerical scheme based on the generalized harmonic form of the Einstein equations.
 In this scheme, the main difficulty in removing all symmetry assumptions can be phrased in terms of finding a set of generalized harmonic source functions that are consistent with AdS boundary conditions.
 We detail an explicit set of source functions that achieves fully general evolution in four dimensions.
-A similar prescription also leads to stable evolution in higher spacetime dimensions, various couplings with matter fields, and on a Poincar\'{e} patch.
+A similar prescription should also lead to stable evolution in higher spacetime dimensions, various couplings with matter fields, and on the Poincar\'{e} patch.
 We apply this scheme to obtain the first long-time stable 3+1 simulations of four dimensional spacetimes with a negative cosmological constant, using initial data sourced by a massless scalar field.
 We present preliminary results of gravitational collapse and the subsequent quasi-normal ringdown to a static black hole in the bulk, mirrored by evolution towards a homogeneous state on the boundary.
 These results are a direct precursor to important specialized studies of AdS dynamics with no symmetry assumptions.}
@@ -196,16 +196,18 @@ The results presented here are based on a code with adaptive mesh refinement cap
 %The main purpose of this article is to present the first proof-of-principle Cauchy evolution of asymptotically AdS spacetimes that has been achieved with no symmetry assumptions, by employing a code that solves the Einstein equations coupled with matter fields for asymptotically AdS spacetimes with a generalized harmonic evolution scheme, with adaptive mesh refinement capabilities.
 %This code is the next step in an ongoing program initiated in \cite{Bantilan:2017kok} that uses (asymptotically) Cartesian coordinates in global AdS, now enabled with a breakthrough set of generalized harmonic source functions that is crucial in successfully stabilizing evolution in AdS with no symmetries.
 
+\textcolor{blue}{{\bf PF:} we need a paragraph commenting on the ingoing scheme by Chesler and Yaffe. I'll give it a go later}
+
 As [cite] demonstrate, a crucial requirement for obtaining stable evolution in AdS is a gauge choice that is consistent with the conditions imposed at the AdS boundary.
 In most cases, a gauge choice leading to stable numerical evolution is typically found in spacetimes with a certain degree of symmetry.
 %In this work, we detail a prescription that provides this gauge choice in a setting with no symmetry assumptions for $d=4$ spacetime dimensions.
-In the present work, we detail a gauge choice in $d=4$ spacetime dimensions that leads to stable evolution in a setting with no symmetry assumptions.
+In the present work, we detail a gauge choice in $d=4$ spacetime dimensions that leads to stable evolution in an asymptotically global AdS setting with no symmetry assumptions.
 %various couplings with matter fields, and many (if not all) types of global or non-global Poincar\'{e} coordinates, as long as reflective Dirichlet boundary conditions are imposed at the AdS boundary (as explained in Section~\ref{subsec:cartevvarboucon}).
 %If we wish to evolve points at the centre of the grid, which is the case when we want to analyze gravitational collapse and black hole formation, global (asymptotically) Cartesian coordinates (defined precisely in Section~\ref{subsec:asyAdS}) are of particular interest as the Courant-Friedrichs-Lewy (CFL) condition does not restrict the size of the time step too severely, \footnote{Unlike, for example, in spherical coordinates.} thus allowing reasonably affordable computing times for the simulations.
 This work is a direct precursor to fully general studies of gravitational collapse and black hole formation in AdS.
 Cartesian coordinates are suitable in this context, as they are regular everywhere, do not contain coordinate singularities, and do not have the well-known limitation suffered by spherical coordinates in the form of severely shorter time steps imposed by the Courant-Friedrichs-Lewy (CFL) condition. 
 Similar coordinates were used in \cite{Bantilan:2017kok} to study the collapse of a massless scalar field in global $AdS_5$ with axisymmetry.
-In anticipation of these fully general studies, we choose to write our prescription in terms of global Cartesian coordinates, and with second order finite difference derivative stencils to discretize the initial constraint equations and the evolution equations.
+In anticipation of these fully general studies, we choose to write our prescription in terms of global Cartesian coordinates, and with second order finite difference derivative stencils to discretize the initial constraint equations and the evolution equations. Other choices of finite differencing discretization should also work. 
 
 The rest of this article is organized as follows. 
 In Section~\ref{sec:setup} we describe the setup. We start with a short review of Anti-de Sitter spacetime, and discuss two characterizations of asymptotically AdS boundary conditions.
@@ -252,7 +254,7 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 \end{equation}
 
 Second, we define Cartesian coordinates $x^\mu=(t,x,y,z)$ by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
-This brings the metric of AdS$_4$ into its final form, suitable for our simulations
+This brings the metric of AdS$_4$ into its final form, suitable for our simulations:
 \begin{eqnarray}\label{eqn:ads4_final}
 \hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
 &+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
@@ -291,7 +293,7 @@ that for any $X$ generator of $O(3,2)$;
 It is shown in \cite{Henneaux:1985tv} that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
 The fall-offs obtained from \eqref{eqn:asyKilleq} in any spacetime dimension is shown in \cite{Henneaux:2006hk}.
 In the 4-dimensional case, the result of \cite{Henneaux:2006hk} is the same as the one in \cite{Henneaux:1985tv}, and requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
-In addition, given that in this work we only consider spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.
+In addition, given that in this work we only consider spacetimes that evolve according to the equations of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.
 
 %HB: I suggest we do not linger explaining the precise details of the Henneaux-Teitelbom approach, as it is now considered somewhat outdated, and it is now understood that the boundary conditions can be determined by solving the field equations asymptotically i.e. FG expansion. The references are still useful as they are the ones that clearly display the falloffs in coordinates closer to the ones we use in the code
 %Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
@@ -528,10 +530,10 @@ For evolved variables defined in this way, the boundary conditions \eqref{eq:car
         }\label{fig:lego_circle_dirbc}}
 \end{figure}
 
-The only complication comes from the fact that in Cartesian coordinates $\rho=\sqrt{x^2+y^2+z^2}$, so the AdS boundary $\rho=1$ generally does not lie on a Cartesian grid point. 
-We thus implement Dirichlet conditions as follows, illustrated in Figure~\ref{fig:lego_circle_dirbc}.
-For any given evolution variable, we set its value at grid points that are at most one grid point away from $\rho=1$ by first order interpolation between the Dirichlet boundary value and the value at the closest point further into the interior $\rho<1$. 
-For the latter, we move along the Cartesian direction corresponding to the coordinate with the largest absolute value. 
+The only complication comes from the fact that  $\rho=\sqrt{x^2+y^2+z^2}$ in Cartesian coordinates, so the AdS boundary $\rho=1$ generally does not lie on a Cartesian grid point. 
+We thus implement Dirichlet conditions as follows, see Figure~\ref{fig:lego_circle_dirbc}. 
+For any given evolution variable, we set its value at grid points with $\rho<1-\Delta/2$ (i.e., the green dots inside the blue dotted line in Figure~\ref{fig:lego_circle_dirbc}) by first order interpolation between the Dirichlet value at boundary points (red dots) and the value at the adjacent point further into the interior $\rho<1$ (purple dots). To identify the latter, we move along the Cartesian direction corresponding to the coordinate of the green dot with the largest absolute value. This direction is represented by light blue arrows. Notice that points with $\rho\geq1-\Delta/2$ are excised to avoid issues with quantities that would diverge (also analytically) at $\rho=1$.
+%For any given evolution variable, we set its value at grid points that are at most one grid point away from $\rho=1$ by first order interpolation between the Dirichlet boundary value and the value at the closest point further into the interior $\rho<1$.  For the latter, we move along the Cartesian direction corresponding to the coordinate with the largest absolute value. 
 %\textcolor{red}{A diagram here explaining which points are used and in which direction is necessary.}
 %For any given evolution variable, we thus take its Dirichlet boundary condition at $\rho=1$ and its values at points further to the interior $\rho<1$ and use those to set its value, by first order interpolation, at grid points that are at most one grid point away from $\rho=1$.
 
