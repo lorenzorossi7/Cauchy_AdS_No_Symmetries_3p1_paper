@@ -256,9 +256,11 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 Second, we define Cartesian coordinates $x^\mu=(t,x,y,z)$ by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$ where $\rho=\sqrt{x^2+y^2+z^2}$, in order to bypass the severe restriction on time step size at the origin $\rho=0$ of a grid in polar coordinates. 
 This brings the metric of AdS$_4$ into its final form, suitable for our simulations:
 \begin{eqnarray}\label{eqn:ads4_final}
-\hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\left( -dt^2 \hat{f}(\rho) +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \right. \nonumber \\
-&+\frac{4}{\rho^2} \left[\left(-2 x y\right) dx dy + \left(- 2 y z\right) dy dz + \left(- 2 x z\right) dx dz \right. \nonumber \\
-&\left. \left. + \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \right] \right).
+\hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\Big[ -\hat{f}(\rho)dt^2  +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2  \nonumber \\
+&\hspace{0.75cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
+&\hspace{0.75cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]
+%&\hspace{0.75cm}+\frac{4}{\rho^2} \big[-2 x y\, dx dy +- 2 y z\, dy dz - 2 x z\,dx dz  \nonumber \\
+%&\hspace{0.75cm}+ \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \big] \Big).
 \end{eqnarray}
 
 
@@ -1345,7 +1347,7 @@ Moreover, by solving the system of 6 equations given by the first derivatives of
 \label{sec:HoloRen}
 
 %\textcolor{blue}{HB: I see that the details in red below are for computing the stress tensor in coordinates that we don't use. We don't need to include them in this paper, I suggest we keep them in our notes for internal consumption, but remove them from the draft.}\\
-We can straightforwardly compute the boundary stress tensor from \eqref{eq:asyFG} using the holographic renormalization prescription of \cite{deHaro:2000vlm} in spherical coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary. We get,
+We can straightforwardly compute the boundary stress tensor from \eqref{eq:asyFG} using the holographic renormalization prescription of \cite{deHaro:2000vlm} in spherical coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary. We have,
 \begin{equation}
 \label{eq:bdysetFGform}
 \langle T_{\bar{a}\bar{b}}\rangle_{CFT}=\frac{3}{16\pi}g^{(3)}_{\bar{a}\bar{b}},
@@ -1667,7 +1669,7 @@ Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the followi
 \bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\nonumber\\
 \bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }.
 \end{eqnarray}
-We have verified that this gauge leads to stable evolution on Poincar\'e AdS$_4$, the results of which will appear in the sequel.
+We have verified that this gauge leads to stable evolution on Poincar\'e AdS$_4$, the results of which will appear in the sequel. We close by noting that \cite{Bantilan:2020pay} obtained a similar stable gauge to evolve dynamical black holes in the background of the AdS soliton. 
 
 
 
