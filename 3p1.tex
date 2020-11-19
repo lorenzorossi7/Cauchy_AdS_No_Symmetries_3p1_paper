@@ -416,7 +416,7 @@ Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equa
 Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. 
 
 If we make the further requirement that the topology of the boundary is the same as in the of pure AdS case, i.e., $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and this characterization becomes equivalent to the previous one obtained from the original arguments in \cite{Henneaux:1985tv}. 
-The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the ``radial-radial'' component of any asymptotically AdS metric is 1 and ``radial-non-radial'' components are 0 in a neighbourhood of the AdS boundary.
+The FG form of the metric immediately provides the near-boundary behaviour of the metric and it shows that coordinates can be defined so that the $\bar{z}\bar{z}$ component of any asymptotically AdS metric is 1 and $\bar{z}\bar{a}$ components are 0 in a neighbourhood of the AdS boundary.
 
 We conclude this section by showing an explicit example of how FG coordinates can be found in the case of general asymptotically $AdS_4$ spacetimes. We set $L=1$ for simplicity.
 We start from the general form for the asymptotically AdS metric in spherical coordinates $x^\alpha$, given by $g_{\alpha\beta}=\hat{g}_{\alpha\beta}+h_{\alpha\beta}$, where the deviations from pure AdS are given by the asymptotically AdS boundary conditions \eqref{eq:sphbounconh}.
@@ -990,7 +990,9 @@ Finally, although there is an asymmetry at any given resolution between the $x$ 
 \label{sec:resbouset}
 
 In this section we consider the evolution of the quantities on the AdS boundary at $\rho=1$ that are defined in Section~\ref{sec:bouset2}. 
-These quantities are obtained via third order extrapolation from points in the interior, with the only exception of the $t=0$ plot of Figure \ref{fig:snapshotsbdyphi}, which is computed analytically from the initial distorted Gaussian profile \eqref{eq:scaGaupro}. Snapshots on the boundary $S^2$ are obtained by the additional application of a low-pass filter. \textcolor{red}{See  Appendix~\ref{sec:extrapconvbdy} for the explanation of the entire extrapolation scheme.}
+These quantities are obtained via third order extrapolation from points in the interior, with the only exception of the $t=0$ plot of Figure \ref{fig:snapshotsbdyphi}, which is computed analytically from the initial distorted Gaussian profile \eqref{eq:scaGaupro}. 
+%Snapshots on the boundary $S^2$ are obtained by the additional application of a low-pass filter. 
+See Appendix~\ref{sec:extrapconvbdy} for a detailed explanation of the extrapolation scheme.
 %as extrapolation would give values smaller than the solution error of the function. 
 
 We start by noting that the numerical values for the total mass $M$ in AdS, obtained from equation \eqref{eq:AdSmasscalc}, are approximately constant during the evolution, as expected by mass conservation [CITE arXiv:1211.6347v3 [gr-qc]]. More precisely, a small drift of  the total mass  is observed numerically, however this becomes smaller as we increase the resolution and it is consistent with zero within our error estimate for boundary quantities that we will discuss shortly.
@@ -1002,7 +1004,9 @@ We start by noting that the numerical values for the total mass $M$ in AdS, obta
 \parbox{5.0in}{\caption{
 %Snapshots of the expectation value of the scalar field of the boundary CFT, $\langle \varphi\rangle_{CFT}$. 
 Snapshots of the leading-order coefficient $\bar{\varphi}_{(1)}$ in the near-boundary expansion of the bulk scalar field. 
-The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter with threshold frequency $\omega=0.5$. (Highest resolution: $N_x=N_y=N_z=325$.)
+The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter;
+%with threshold frequency $\omega=0.5$; 
+see Appendix~\ref{sec:extrapconvbdy}. (Highest resolution: $N_x=N_y=N_z=325$.)
         }\label{fig:snapshotsbdyphi}}
 \end{figure}
 
@@ -1015,7 +1019,9 @@ Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes dur
 \begin{figure}[!h]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensity/sphereplots_bdyenergydensity_L3_2by2.png}
-\parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary, obtained by third order extrapolation and smoothened via a low-pass filter with threshold frequency $\omega=0.25$. The scale of each snapshot has fixed interval length centred at the mean value of  $\epsilon$ at the corresponding evolution time to make the approach to a uniform configuration more visible. (Highest resolution: $N_x=N_y=N_z=325$.)
+\parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary, obtained by third order extrapolation and smoothened via a low-pass filter;
+%with threshold frequency $\omega=0.25$
+see Appendix~\ref{sec:extrapconvbdy}. The scale of each snapshot has fixed interval length centred at the mean value of  $\epsilon$ at the corresponding evolution time to make the approach to a uniform configuration more visible. (Highest resolution: $N_x=N_y=N_z=325$.)
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
@@ -1394,7 +1400,8 @@ The projection operator onto $\Sigma$ is defined by
 \gamma^\mu_\nu=\delta^\mu_\nu+n^\mu n_\nu.
 \end{equation}
 (Notice that $\gamma^\mu_\nu$ is idempotent, i.e., $\gamma^\mu_\rho \gamma^\rho_\nu=\gamma^\mu_\nu$, as appropriate for a projector.)
-This operator can be applied to any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. Let us now consider a tensor defined on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor defined on the tangent space of $\Sigma$ at $p$, under a natural (i.e., basis-independent) isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{ij}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices $i,j,k,\dots$ of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{ij}$.
+This operator can be applied to any tensor at a point $p\in\Sigma$ to obtain the part of that tensor tangent to $\Sigma$. For instance, given a vector $X$ at a point $p\in\Sigma$, $X_{||}^\mu=\gamma^\mu_\nu X^\nu$ is the part of $X$ tangent to $\Sigma$, i.e., $X_{||}^\mu n_\mu=0$. 
+Let us now consider a tensor defined on the tangent space of the spacetime manifold $M$ at a point $p\in\Sigma$. If the tensor is invariant under projection onto $\Sigma$, then it can be identified with a tensor defined on the tangent space of $\Sigma$ at $p$, under a natural (i.e., basis-independent) isomorphism. For example, $\gamma_{\mu\nu}=g_{\mu\nu}+n_\mu n_\nu$ at points on $\Sigma$ can be identified with the Riemannian metric of $\Sigma$ defined as the pull-back\footnote{We refer to the pull-back w.r.t. the inclusion map that embeds $\Sigma$ in $M$.} on $\Sigma$ of the spacetime metric $g_{\mu\nu}$, given by $\gamma_{ij}$ in spatial Cartesian coordinates. (See CITE[ S.W. Hawking and G.F.R. Ellis, The large scale structure of space-time, Cambridge University Press, Cambridge, (1973)] for more details.) Indices of tensors invariant under projection onto $\Sigma$ can be raised and lowered by $\gamma_{\mu\nu}$ or $g_{\mu\nu}$, equivalently. Indices $i,j,k,\dots$ of tensors on the tangent space of $\Sigma$ can be raised and lowered by $\gamma_{ij}$.
 
 The projection of $\nabla_\mu n_\nu$ defines the extrinsic curvature of $\Sigma$:\footnote{We can make sense of covariant derivatives of $n_\mu$ by extending its definition on $\Sigma$ \eqref{eq:uninormal} to a 1-form field over a neighbourhood of $\Sigma$, which can be done in an arbitrary way without changing the value of $K_{\mu\nu}$ on $\Sigma$ given by \eqref{eq:extrcurv}.}
 \begin{equation}
@@ -1598,10 +1605,10 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
  \label{eq:firstordextrap}
  f^{bdy}_{\Delta}(p_{bdy})=\frac{x_{bdy}-x_2}{x_1-x_2}f_\Delta(p_1)+\frac{x_{bdy}-x_1}{x_2-x_1}f_\Delta(p_2).
  \end{equation}
- \item \textcolor{red}{In order to avoid issues arising from singularities in the definition of spherical coordinates in terms of Cartesian coordinates, we do not extrapolate boundary points $z_{bdy}=0$. We, instead, fill each of these points by copying the value at one of the closest boundary extrapolated points. Notice that this provides data that is regular at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$.}
+ \item In order to avoid issues arising from singularities in the definition of spherical coordinates in terms of Cartesian coordinates, we do not extrapolate boundary points $z_{bdy}=0$. We, instead, fill each of these points by copying the value at one of the closest boundary extrapolated points. Notice that this provides data that is regular at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$.
  \end{enumerate}
-\textcolor{red}{Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme is dealt with by linearly interpolating boundary data. We aim to correct this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. Furthermore, the data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we found it appropriate to apply a low-pass filter to quantities to be shown on the boundary $S^2$. Our smoothing algorithm preserves regularity at $z_{bdy}=0, y_{bdy}> 0$\footnote{This is achieved by applying the low-pass filter on a double copy of the boundary sphere.}, but it is necessary to re-enforce regularity at $(z_{bdy},y_{bdy},x_{bdy})=(0,0,\pm1)$, which is done as explained in point 5 above. Figures \ref{fig:snapshotsbdyphi} and \ref{fig:snapshotsenergydensity} are obtained in this way, employing the third order version of \eqref{eq:firstordextrap} as mentioned at the beginning of this section.
-Further motivation to rely on this entire extrapolation scheme comes from a comparison between boundary data extracted in this way and analytic values in cases where the latter are easily obtained, e.g. boundary scalar field values at $t=0$. We verified that the two sets give visually indistinguishable results.}
+Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme is dealt with by linearly interpolating boundary data. We aim to correct this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. Furthermore, the data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we found it appropriate to apply a low-pass filter to quantities to be shown on the boundary $S^2$. Our smoothing algorithm preserves regularity at $z_{bdy}=0, y_{bdy}> 0$\footnote{This is achieved by applying the low-pass filter on a double copy of the boundary sphere.}, but it is necessary to re-enforce regularity at $(z_{bdy},y_{bdy},x_{bdy})=(0,0,\pm1)$, which is done as explained in point 5 above. Figures \ref{fig:snapshotsbdyphi} and \ref{fig:snapshotsenergydensity} are obtained in this way, employing the third order version of \eqref{eq:firstordextrap} as mentioned at the beginning of this section.
+%Further motivation to rely on this entire extrapolation scheme comes from a comparison between boundary data extracted in this way and analytic values in cases where the latter are easily obtained, e.g. boundary scalar field values at $t=0$. We verified that the two sets give visually indistinguishable results.
 
 Notice that, as \eqref{eq:firstordextrap} shows, second order convergence of boundary values $f^{bdy}_{\Delta}$ is a direct consequence of second order bulk convergence of $f_\Delta$, which is confirmed by Figure~\ref{fig:L2norm_iresallconvergence-crop} in our simulations. Despite this fact, some modifications must be made to our extrapolation scheme if we wish to perform explicit convergence tests on our boundary data. We now explain the reason for this and the necessary modifications. We assume the validity of the Richardson expansion [CITE Richardson, L. F. The approximate arithmetic solution by finite differences of physical problems involving differential equations, with applications to the stresses in a masonry dam. Phil. Trans. Roy. Soc., 210:307-357, 1910.] for $f_{\Delta}$ at any grid point $p$,
 \begin{equation}
@@ -1652,12 +1659,21 @@ To include the Poincar\'e horizon $z\rightarrow \infty$ in our computational dom
 \hat{g} = \frac{L^2 \rho^4}{(1-\rho^2)^2} \left( -dt^2 + (4/\rho^6)d\rho^2 + dx_1^2 + dx_2^2  \right).
 \end{equation}
 
+%Let us now consider asymptotically AdS spacetimes.
+%Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}, \eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
+%We can thus read off the fall-offs of the metric components from the rest of the FG expansion. 
+%Let us now translate these into coordinates $(t,\rho,x_1,x_2)$. The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
+%The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}$ functions of $(t,x_1,x_2)$.
+%Therefore, for coupling with Klein-Gordon matter, the scalar field fall-off preserving the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c$ function of $(t,x_1,x_2)$. The metric fall-offs also imply the fall-offs of the source function, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}$ functions of $(t,x_1,x_2)$.
+%As a result of this, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
 Let us now consider asymptotically AdS spacetimes.
 Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}, \eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
-We can thus read off the fall-offs of the metric components from the rest of the FG expansion. 
-Let us now translate these into coordinates $(t,\rho,x_1,x_2)$. The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
-The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}$ functions of $(t,x_1,x_2)$.
-Therefore, for coupling with Klein-Gordon matter, the scalar field fall-off preserving the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c$ function of $(t,x_1,x_2)$. The metric fall-offs also imply the fall-offs of the source function, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}$ functions of $(t,x_1,x_2)$.
+We can thus read off the fall-offs of the metric components from the rest of the FG expansion.
+%Let us now translate these into coordinates $(t,\rho,x_1,x_2)$.
+The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
+The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}(t,x_1,x_2)$ coefficients.
+The scalar field fall-off that preserves the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c(t,x_1,x_2)$ coefficient.
+The fall-offs of the source function can be inferred from the metric fall-offs, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}(t,x_1,x_2)$ coefficients.
 As a result of this, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
 
 %The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$. 
