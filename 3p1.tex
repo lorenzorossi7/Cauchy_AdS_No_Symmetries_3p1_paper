@@ -747,23 +747,6 @@ Consider a gauge in which $\bar{H}_{(1)t}$ takes the value $\bar{H}_{(1)t}(t>t_0
 %are imposing no conditions on  $\bar{g}_{(1)tz}$.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}
 
 
-\iffalse
-%
-%So, we expect order $q^{-2}$ and $q^{-1}$ of the right hand sides of \eqref{eqn:efett}-\eqref{eqn:efezz} to vanish for the solution of the full evolution equations, for any choice of source functions. 
-It is also important to develop an understanding of the reason why the choice of $\bar{H}_\mu$ is not completely free (despite the fact that this is simply a gauge choice in generalized harmonic coordinates).
-Notice that \eqref{eq:efefullexp} implies that $A_{(i)\mu\nu}=0$ for all $i\neq3$ for a solution of the full evolution equations, for any choice of source functions.
-However, for some values of $\bar{H}_\mu$ a solution might not exist or it might not be possible for the numerical scheme to find it. To see this explicitly in a simple way, it is more convenient to switch to spherical coordinates $(t,\rho,\theta,\phi)$ and look at the near-boundary expansion of the $tt$-component of the Einstein equations:
-\begin{equation}\label{eqn:efettsph}
-\tilde{\Box}\bar{g}_{(1)tt}=(-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho})q^{-2}+\mathcal{O}(q^{-1}).
-\end{equation}
-We see that $A_{(1)tt}=-3 \bar{g}_{(1)\rho\rho}+2\bar{H}_{(1)\rho}$ and our criterion would lead to the choice $\bar{H}_{(1)\rho}=\frac{3}{2} \bar{g}_{(1)\rho\rho}$, which cancels the order $q^{-2}$ in $\tilde{\Box}\bar{g}_{(1)tt}$.
-As a first example, suppose we choose, instead, $\bar{H}_{(1)\rho}=\frac{3}{2}( \bar{g}_{(1)\rho\rho}+c_\rho)$, where $c_\rho$ is constant, $c_\rho\ne0$. In this case, $A_{(1)tt}$ cannot vanish so this is an example of a gauge choice for which a solution does not exist.
-As a second example, let us now choose a gauge that becomes constant (possibily vanishing as in the harmonic gauge w.r.t. pure AdS) after some time $t_0$ in the evolution, i.e., $\bar{H}_{\alpha}(t>t_0)=\frac{3}{2}c_{\alpha},c_{\alpha}\in \mathbb{R}$. The fact that $A_{(1)tt}$ must vanish implies that $\bar{g}_{(1)\rho\rho}(t>t_0)=c_\rho$. This poses no restriction on the solution. However, in practice, our  would fail to find such a solution (and it would develop infinities near the AdS boundary) since we are imposing no conditions on  $\bar{g}_{(1)\rho\rho}$.\footnote{The Dirichlet boundary condition $\bar{g}_{\rho\rho}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)\rho\rho}$.}
-
-In summary, we see that the presence of boundary conditions, necessary in an initial-boundary value problem, and the \textcolor{blue}{asymptotic behaviour of the dynamical fields near this boundary} is what restricts the gauge choice. We also see that a gauge choice for which the vanishing of $A_{(1)\mu\nu}$ is either impossible or imposes conditions at the boundary not included in the Dirichlet boundary conditions cannot result in a stable evolution.
-Our criterion leads to the simplest gauge choice that does not have any of these issues, thus it is expected to work. These arguments also suggest that our choice of source functions is far from being unique: we expect to be able to find a solution for any gauge choice such that $A_{(1)\mu\nu}=0$ is (i) possible and (ii) it does not impose conditions stronger than those already imposed by the Dirichlet boundary conditions. In particular, the requirement that the gauge choice analytically satisfies $A_{(1)\mu\nu}=0$, which is our criterion, is not essential, because this will hold automatically (up to solution error) for any numerical solution; all we need is to be able to find such solution. \textcolor{blue}{\bf PF: I don't understand what you want to say by ``all we need is to be able to find such solution". Isn't this the whole purpose of what we are doing?}
-\fi
-
 
 %\section{Boundary scalar field and stress-energy tensor}
 \section{Boundary Stress Tensor}
@@ -985,25 +968,6 @@ At later times, $t\simeq 9$, the value of the scalar field becomes consistent wi
 %        }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
 %\end{figure}
 
-\iffalse
-\begin{figure*}
- \centering
-\begin{multicols}{2}
-    \includegraphics[width=3.1in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/y00_z00_plotalongxrelRieCubeofrelkretschallres.pdf}\par 
-    \includegraphics[width=3.1in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/x00_z00_plotalongyrelRieCubeofrelkretschallres.pdf}\par 
-    \end{multicols}
-\parbox{5.0in}{\caption{caption here}}
-\end{figure*}
-\fi
-
-\iffalse
-\begin{figure}
-  \centering
-  \subfloat{\includegraphics[width=4.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/y00_z00_plotalongxrelRieCubeofrelkretschallres.pdf} \label{fig:a}} \\
-  \subfloat{\includegraphics[width=4.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/x00_z00_plotalongyrelRieCubeofrelkretschallres.pdf} \label{fig:b}}
-  \caption{a + b} \label{fig:AB}
-\end{figure}
-\fi
 
 %This can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}, in which we compare the numerical solution at the end of our simulations, $t=31$, to the Schwarzschild-AdS metric with mass $(M_{AdS})_h(t=31)=0.403$ (in units of AdS radius $L=1$), namely the highest resolution value of $M_{AdS}$ (given by equation \eqref{eq:AdSmasscalc}) at $t=31$, as follows. 
 The late-time solution is close to Schwarzschild-AdS, which can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}.
@@ -1031,17 +995,6 @@ Finally, although there is an asymmetry at any given resolution between the $x$ 
 In this section we consider the evolution of quantities on the $\mathbb{R} \times S^2$ boundary at $\rho=1$, defined in Section~\ref{sec:bouset2}. 
 These quantities are obtained via third order extrapolation from points in the interior, with the only exception of the $t=0$ plot of Figure \ref{fig:snapshotsbdyphi}, which is computed analytically from the initial distorted Gaussian profile \eqref{eq:scaGaupro}.
 %as extrapolation would give values smaller than the solution error of the function. 
-
-\iffalse
-\begin{figure}[!h]
-        \centering
-        \includegraphics[width=4.5in,clip=true]{plots/timeseries/AdSmass/fullplotfillregtAdSmassallres.pdf}
-\parbox{5.0in}{\caption{Time evolution of AdS mass for different resolutions.
-        }\label{fig:AdSmass-crop}}
-\end{figure}
-
-We start by looking at the values of the AdS mass, given by \eqref{eq:AdSmasscalc}, with respect to $t$ for different resolutions in Figure \ref{fig:AdSmass-crop}, which shows that the Schwarzschild-AdS spacetime that our deformed black hole settles down to has a mass of around $0.4$ in units of AdS radius $L=1$. In this plot we also notice an unphysical mass loss for low resolutions, although $M_{AdS}$ converges to a constant in time as resolution increases, as desired. In particular, data displays first order convergence instead of the second order of boundary data, inherited from bulk convergence. We believe that this can be understood as follows. As explained in Appendix~\ref{sec:extrapconvbdy}, we can only expect to see second order convergence at the boundary if we consider values extrapolated via the scheme satisfying the common points criterion (see point 1. of Appendix~\ref{sec:extrapconvbdy}) restricted to the convergent range given at point 2. of Appendix~\ref{sec:extrapconvbdy}. However, once convergence has been verified, we use more accurate data obtained via a scheme that no longer requires 1., but it allows the use of any point in the range given at 2.. As a consequence, we can no longer predict second order for this data. In fact, even if we considered data for the AdS mass density extrapolated from common points, we would have a similar issue in Figure \ref{fig:AdSmass-crop} due to the method used to approximate the integral of equation \eqref{eq:AdSmasscalc} through the Wolfram Mathematica software. More precisely, before numerically integrating (via the NIntegrate command with default GlobalAdaptive method), the values for the AdS mass density at boundary points are interpolated (with first order interpolation, as this is the only one allowed by the Interpolation command for unstructured grids, such as the ones we have at the boundary) to obtain an integrand function defined over the entire boundary $S^2$. This interpolation does not use points common to all resolutions, hence the argument at point 1. of Appendix~\ref{sec:extrapconvbdy} (this time applied to interpolation) tells us again that we cannot expect second order convergence. Despite these complications, as we increase the bulk grid refinement, all these approximations become more and more accurate and we expect to get closer to the true value of the boundary function. In other words, we expect some order of convergence at each boundary point. Therefore, it is not surprising that Figure \ref{fig:AdSmass-crop} shows the lowest possible convergence order, i.e., the first one.
-\fi
 
 We start by noting that the numerical values for the total mass $M$ in AdS, obtained from equation \eqref{eq:AdSmasscalc}, are approximately constant during the evolution, as expected by mass conservation [CITE arXiv:1211.6347v3 [gr-qc]]. More precisely, a small drift of  the total mass  is observed numerically, however this becomes smaller as we increase the resolution and it is consistent with zero within our error estimate for boundary quantities that we will discuss shortly.
 %given by the $L^2$-norm of the deviation from the theoretical zero value of $\langle trT\rangle_{CFT}$ (red line of Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}).
@@ -1628,7 +1581,7 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
  f^{bdy}_{\Delta}(p_{bdy})=\frac{x_{bdy}-x_2}{x_1-x_2}f_\Delta(p_1)+\frac{x_{bdy}-x_1}{x_2-x_1}f_\Delta(p_2).
  \end{equation}
  \end{enumerate}
- \textcolor{red}{Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme is dealt with by linearly interpolating boundary data through the Wolfram Mathematica software. We aim to correct this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary.}
+Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. This issue of our extrapolation scheme is dealt with by linearly interpolating boundary data. We aim to correct this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary.
 
 Notice that, as \eqref{eq:firstordextrap} shows, second order convergence of boundary values $f^{bdy}_{\Delta}$ is a direct consequence of second order bulk convergence of $f_\Delta$, which is confirmed by Figure~\ref{fig:L2norm_iresallconvergence-crop} in our simulations. Despite this fact, some modifications must be made to our extrapolation scheme if we wish to perform explicit convergence tests on our boundary data. We now explain the reason for this and the necessary modifications. We assume the validity of the Richardson expansion [CITE Richardson, L. F. The approximate arithmetic solution by finite differences of physical problems involving differential equations, with applications to the stresses in a masonry dam. Phil. Trans. Roy. Soc., 210:307-357, 1910.] for $f_{\Delta}$ at any grid point $p$,
 \begin{equation}
@@ -1651,60 +1604,8 @@ In practice, we saw that boundary convergence follows the trend of bulk converge
 Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove convergence to the true value $f(p_{bdy})$, but rather to its approximation $f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)$. For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with vanishing true value (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$. A more detailed analysis must be made to examine the explicit form $e_{extr}(p_{bdy},p_1,p_2)$ and be able to find the rate of convergence to $f(p_{bdy})$. In our study, we simply make the natural assumption that $e_{extr}(p_{bdy},p_1,p_2)$ decreases as we increase resolution, so  $f^{bdy}_{\Delta}(p_{bdy})$ is a sufficiently accurate approximation of $f(p_{bdy})$ for sufficiently high resolution (i.e., sufficiently small $\Delta$).
 
 
-\textcolor{blue}{{\bf PF:} Should we comment that this extrapolation procedure implies that the data on the boundary won't be uniformly distributed. How do we deal with this?}
 
 
-
-
-\iffalse
-
-As explained in Section~\ref{sec:bouset2}, given a Cartesian grid with spacing $\Delta$, since the AdS boundary generally does not lie on points of the grid, we can only obtain the approximated value $f^{bdy}_{\Delta}$ of any boundary quantity $f$ through extrapolation, using the numerical values of $f$ on grid points near the boundary, which we denote by $f_\Delta$. In this section we describe how grid points are chosen for extrapolationand we show convergence for the extrapolation scheme by computing the factor \eqref{eq:qconv} for $f^{bdy}_{\Delta}$ at boundary points, which is expected as a consequence of bulk convergence (see~\ref{sec:convbulk}) at the chosen points. For simplicity, we consider first order extrapolation, i.e., we extrapolate using two grid points. The following can be generalized to higher extrapolation orders in a straightforward way.
-
-If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation must be satisfied. We will now explain them with the help of Figure~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
-\begin{enumerate}
- \item \emph{Common points.} Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$, extrapolated from the grid points $p_1,p_2$. $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2)$ multiplied by factors that depend on the coordinates of $p_{bdy},p_1,p_2$. Therefore, assuming the validity of the Richardson expansion for $f_\Delta$ (see \eqref{eq:Richexp}), we obtain the Richardson expansion for $f^{bdy}_{\Delta}$: 
- \begin{equation}
- f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)+c_\Delta(p_1,p_2)\Delta^2+\mathcal{O}(\Delta^3),
- \end{equation}
-where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the solution error in $f_\Delta$. From this we immediately see that the convergence factor \eqref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2$ are the same for all 3 resolutions involved.
- 
-\item \emph{Convergent range.} For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Figure~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Figure~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous thin blue line in Figure~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Figure~\ref{fig:lego_circle}). However, in practice, we see that we need to restrict the choice of suitable points to those satisfying $\rho<1-9\Delta/2$ (inside the thick blue line) and $\max(x,y,z)>1-\frac{17}{2}\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ (outside the black line), where $n_\Delta$ denotes the degree of the three resolutions used for convergence, $n_{9h/4}=0,n_{3h/2}=1,n_{h}=2$ (notice that $\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ is a constant for all three resolutions), in order to avoid unphysical of non-converging values of boundary quantities.
- \end{enumerate}
-Furthermore, among the points satisfying 1. and 2., we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
-
-%If we wish to test convergence of $f^{bdy}_{\Delta}$ in the continuum limit $\Delta\rightarrow0$, there are two crucial criteria for the choice of grid points that are \emph{suitable} for extrapolation. We will now explain them with the help of Fig.~\ref{fig:lego_circle}, which shows an example of the result of the application of these criteria in the first quadrant of a $z=const.$ surface of the grid for first order extrapolation.
-%\begin{enumerate}
-% \item Consider the value of $f^{bdy}_{\Delta}$ at any boundary point $p_{bdy}$. If we obtain this by $n^{th}-$order extrapolation, $f^{bdy}_{\Delta}(p_{bdy})$ is a combination of the values $f_\Delta(p_1),f_\Delta(p_2),\dots,f_\Delta(p_{n+1})$ (where $p_1,p_2,\dots,p_{n+1}$ are the bulk points used for extrapolation) multiplied by factors that depend on the coordinates of $p_{bdy},p_1,\dots,p_{n_{\Delta}+1}$. Theqrefore, we can write  $f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2,\dots,p_{n+1})+c_\Delta(p_1,p_2,\dots,p_{n+1})\Delta^2$ where the first term is the true value of $f$ at $p_{bdy}$, the second term is the error due to the extrapolation approximation and the third term is the error coming from the numerical error in $f_\Delta$. From this we immediately see that the convergence factor \eqref{eq:qconv} at point $p_{bdy}$ can be expected to asymptote to 2 as $\Delta\rightarrow0$ only if the points $p_1,p_2,\dots,p_{n+1}$ are the same for all 3 resolutions involved.
- 
- %\item For each resolution, grid points with $\rho\geq 1-\Delta/2$ (points outside the dotted line in Fig.~\ref{fig:lego_circle}) are excised due to the fact that some quantities diverge at $\rho=1$, the value of functions at points with $1-3\Delta/2\leq \rho < 1-\Delta/2$ (points between the dotted line and the dashed line in Fig.~\ref{fig:lego_circle}) are set by using forward/backward stencils, and the value of functions at points with $1-5\Delta/2\leq \rho < 1-3\Delta/2$ (between the dashed line and the continuous blue line in Fig.~\ref{fig:lego_circle}) are set by using centred stencils which, however, use neighbouring points set by forward/backward stencils. For all these reasons, we can only expect convergence if we pick grid points with  $\rho<1-5\Delta/2$ (inside the continuous blue line in Fig.~\ref{fig:lego_circle}).
- %\end{enumerate}
-%Furthermore, among the points satisfying (i) and (ii), we want the ones that are closest to the boundary in order for extrapolation to provide a more accurate approximation.
-
-\begin{figure}[h]
-        \centering
-        \includegraphics[width=5.0in,clip=true]{plots/lego_circle/Lego_circle_new.pdf}
-\parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for the lowest resolution, with grid spacing $\Delta$, among the three involved in a convergence test ($const.$ is chosen as the $z-$coordinate value of one of the points common to all three resolutions). We show a typical example in which common points are 4 grid points away from each other along each direction.
-        }\label{fig:lego_circle}}
-\end{figure}
- 
-Once suitable points have been found (the green dots in Fig.~\ref{fig:lego_circle}), the extrapolation technique proceeds as follows:
- \begin{itemize}
- \item consider the first suitable point, $p_1$, and identify the coordinate with the largest value, e.g. $x$, and its sign, e.g. $x>0$. If two coordinates have the same value, then we pick $x$ over $y$ or $z$ and $y$ over $z$.
- \item take the next point, $p_2$, used for first order extrapolation along the identified axis ($x$ in our example) in the direction of the bulk (decreasing $x$ in the example), making sure that they also satisfy 1. (2. is trivially satisfied by construction). Each $p_2$ is represented in yellow in Figure~\ref{fig:lego_circle}.
- \item use first order extrapolation on $f_\Delta(p_1),f_\Delta(p_{2})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary (one of the red dots in Figure~\ref{fig:lego_circle}). In our example, $p_{bdy}$ is the point with coordinates $(x,y,z)=(\sqrt{1-y(p_1)^2-z(p_1)^2},y(p_1),z(p_1))$.
- \item repeat the previous steps until the last suitable point.
- \end{itemize}
-
-CONVERGENCE PLOTS
-
-This extrapolation scheme is validated by Figure [CONVERGENCE], which shows second-order convergence at the boundary for CHOSEN FUNCTION with this extrapolation scheme, as expected from having second-order convergence in the bulk (see ~\ref{sec:convbulk}) at all points used for extrapolation.
-
-Notice, from the discussion in (i), that we do not expect to converge to the true value $f(p_{bdy})$ of a boundary quantity in the continuum limit $\Delta\rightarrow0$, but rather to its approximation $f(p_{bdy})+c_{extr}(p_{bdy},p_1,p_2)$.
-For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with true value 0 (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$.
-
-Once convergence shows satisfactory trends for this extrapolation algorithm, we can relax the ``common points'' requirement 1., i.e., we can extrapolate from suitable points (selected within the convergent range discussed in 2.) and their neighbours in the direction of the bulk without requiring that all the points used are common to all resolutions. %Let us call this a \emph{free points} extrapolation scheme. 
-This is the method we use for the boundary plots in Section~\ref{sec:resbouset} as it allows to extrapolate from points closer to the AdS boundary, thus giving a better approximation (i.e., a smaller extrapolation error, $c_{extr}$). Furthermore, for those plots we employ third order extrapolation (which employs four bulk points) since this improves the accuracy of the extrapolated numerical values even more, as tested by comparing with analytic predictions in cases where these are possible.
-\fi
 
 
 
