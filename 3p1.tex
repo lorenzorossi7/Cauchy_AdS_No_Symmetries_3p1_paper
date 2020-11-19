@@ -181,7 +181,7 @@ The dynamical far-from-equilibrium strongly interacting regime is precisely the 
 
 Our current understanding of gravity in AdS, however, remains limited for several reasons.
 First, evolution in AdS is notoriously hard, in part because it is an initial-boundary value problem whose systematic study is still in its infancy. 
-Cauchy evolution in AdS requires data to be prescribed not only at an initial space-like hypersurface, but also at spatial and null infinity which constitute the time-like boundary of an asymptotically AdS spacetime.
+Cauchy evolution in AdS requires data to be prescribed not only at an initial spacelike hypersurface, but also at spatial and null infinity which constitute the timelike boundary of an asymptotically AdS spacetime.
 Second, the most interesting phenomena involve spacetimes that have very little or no symmetry, making these evolutions beyond the reach of most numerical codes. 
 Third, for many of these phenomena, there is a variety of physical scales that must be adequately resolved to correctly capture the relevant physics.
 
@@ -211,7 +211,7 @@ In anticipation of these fully general studies, we choose to write our prescript
 
 The rest of this article is organized as follows. 
 In Section~\ref{sec:setup} we describe the setup. We start with a short review of Anti-de Sitter spacetime, and discuss two characterizations of asymptotically AdS boundary conditions.
-In Section~\ref{sec:pre_sta} we detail our prescription to obtain stable Cauchy evolution with no symmetries in Cartesian coordinates. The crucial ingredients are reflective Dirichlet boundary conditions imposed on appropriate evolution variables, and a specific choice of generalized harmonic source functions. Furthermore, in Appendix~\ref{sec:sphevvarboucon}, we follow our prescription for the interesting case of spherical coordinates and we obtain the corresponding stable gauge.
+In Section~\ref{sec:pre_sta} we detail our prescription to obtain stable Cauchy evolution with no symmetries in Cartesian coordinates. The crucial ingredients are reflective Dirichlet boundary conditions imposed on appropriate evolution variables, and a specific choice of generalized harmonic source functions. Furthermore, in Appendix~\ref{sec:sphevvarboucon}, we follow our prescription for the interesting case of spherical coordinates and we obtain the corresponding stable gauge. In Appendix~\ref{sec:poincare}, we do the same for the Poincar\'e patch.
 In Section~\ref{sec:bouset2} we define several boundary quantities, whose evolution describes the physics at the AdS boundary.
 In Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations. 
 Section~\ref{sec:results} contains results of simulations of gravitational collapse without symmetry assumptions obtained with this new code. We conclude with a discussion in Section~\ref{sec:Discussion}. 
@@ -243,7 +243,7 @@ In terms of global coordinates that cover the whole spacetime, given by $(t,r,\t
 \begin{equation}\label{eqn:ads4}
 \hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 , \nonumber
 \end{equation}
-with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round unit 2-sphere. The crucial feature of this spacetime is the presence of a \emph{time-like} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. 
+with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round unit 2-sphere. The crucial feature of this spacetime is the presence of a \emph{timelike} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. 
 In other words, any Cauchy problem in this setting is an initial-boundary value problem.
 
 To proceed, first we compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.
@@ -266,24 +266,15 @@ This brings the metric of AdS$_4$ into its final form, suitable for our simulati
 
 We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. In this Section we present a review of two different characterizations of such spacetimes and the relation between them. In doing so, we write down the boundary conditions that asymptotically AdS spacetimes must satisfy.
 
-%Their definition has been given in different ways in the literature, so we will have to state the one relevant for this study. 
-%In [CITE Henneaux-Teitelbom], the authors implicitly assume that these spacetimes $(M,g)$ allow a definition of spatial infinity $\mathcal{I}$ (via conformal compactification) with the same topology as the AdS boundary, i.e., $\mathbb{R}\times S^2$.
-
-% topology and conformal boundary metric given by a conformal transformation of the pure AdS metric $\hat{g}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
-
-%spatial infinity of pure AdS, i.e., $\mathbb{R}\times S^2$ topology and conformal boundary metric given by a conformal transformation of the pure AdS metric $\hat{g}$, which means in particular that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. Then, they proceed on defining asymptotically AdS spacetimes by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions
-
-%Let us start from the definition presented in [CITE Henneaux-Teitelbom]. The authors implicitly consider spacetimes $(M,g)$ that admit a conformal compactification, and thus a definition of spatial infinity $\mathcal{I}$. Then, asymptotically AdS spacetimes are defined by requiring that, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, satisfies three conditions:
-
 Let us start from the original arguments presented in \cite{Henneaux:1985tv}. 
-The authors implicitly considered spacetimes $(M,g)$ that admit a conformal compactification, and thus a definition of spatial infinity $\mathcal{I}$.
+The authors implicitly considered spacetimes $(M,g)$ that admit a conformal compactification, and thus a definition of conformal boundary $\partial M$.
 They defined asymptotically AdS spacetimes by requiring that the spacetime asymptotically approaches the pure AdS solution. 
 More precisely, for any set of global coordinates $x^\alpha$, the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, is required to satisfy three conditions:
 \begin{enumerate}
-\item[(i)] It is consistent with the asymptotic decay of the Kerr-AdS metric near $\mathcal{I}$ in that set of coordinates;
-\item[(ii)] Its fall-off near $\mathcal{I}$ is invariant under the global AdS symmetry group $O(3,2)$ i.e.,
+\item[(i)] It is consistent with the asymptotic decay of the Kerr-AdS metric near $\partial M$ in that set of coordinates;
+\item[(ii)] Its fall-off near $\partial M$ is invariant under the global AdS symmetry group $O(3,2)$ i.e.,
 \begin{equation}\label{eqn:asyKilleq}
-(\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near spatial infinity $\mathcal{I}$},
+(\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\;\;\;\; \textrm{near the boundary $\partial M$},
 \end{equation}
 that for any $X$ generator of $O(3,2)$;
 \item[(iii)] The surface integral charges associated with the generators of $O(3,2)$ are finite.
@@ -292,31 +283,44 @@ that for any $X$ generator of $O(3,2)$;
 %HB: these sentences don't add anything new, best to start with the paragraph "Notice that ..."
 It is shown in \cite{Henneaux:1985tv} that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
 The fall-offs obtained from \eqref{eqn:asyKilleq} in any spacetime dimension is shown in \cite{Henneaux:2006hk}.
-In the 4-dimensional case, the result of \cite{Henneaux:2006hk} is the same as the one in \cite{Henneaux:1985tv}, and requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
+In the 4-dimensional case, the result of \cite{Henneaux:2006hk} is the same as the one in \cite{Henneaux:1985tv}, and requiring (ii) is sufficient to obtain the fall-off near the boundary that satisfies also (i) and (iii).
 In addition, given that in this work we only consider spacetimes that evolve according to the equations of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.
 
 %HB: I suggest we do not linger explaining the precise details of the Henneaux-Teitelbom approach, as it is now considered somewhat outdated, and it is now understood that the boundary conditions can be determined by solving the field equations asymptotically i.e. FG expansion. The references are still useful as they are the ones that clearly display the falloffs in coordinates closer to the ones we use in the code
-%Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
+%Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\partial M$. An important consequence is that $\partial M$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\partial M$ is a timelike boundary of the conformally compactified spacetime.
 %Another important consequence is that we can define certain classes of coordinates as follows.
-%Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+%Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\partial M$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
 
-Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$.
-Thus $\mathcal{I}$ has the same conformal structure as the pure AdS boundary,
+Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\partial M$.
+This has two consequences for the terminology regularly used in the literature, as well as in this work.
+First, we can refer to $\partial M$ as AdS boundary because it has the same conformal structure as the pure AdS boundary:
+%(thus we will still refer to it as AdS boundary), 
+$\mathbb{R}\times S^2$ topology and metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary, e.g., the metric of the Einstein Static Universe.
+%which implies that $\partial M$ is a timelike boundary of the conformally compactified spacetime.
+%Another important consequence is that
+Second, we can define certain classes of coordinates in terms of the corresponding fall-offs of the metric components near the boundary, as follows.
+%In order to express these conditions in terms of explicit fall-offs, we can define certain classes of coordinates as follows.
+Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are completely specified only near the boundary $\partial M$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+
+\iffalse
+Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\partial M$.
+Thus $\partial M$ has the same conformal structure as the pure AdS boundary,
 %(thus we will still refer to it as AdS boundary), 
 with $\mathbb{R}\times S^2$ topology, and metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary, e.g., the metric of the Einstein Static Universe.
-%which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime.
+%which implies that $\partial M$ is a timelike boundary of the conformally compactified spacetime.
 %Another important consequence is that
 We can also define certain classes of coordinates in terms of the corresponding fall-offs of the metric components.
 %In order to express these conditions in terms of explicit fall-offs, we can define certain classes of coordinates as follows.
-Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\partial M$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+\fi
 
 %\iffalse
 %It is shown in [CITE Henneaux-Teitelbom] that the explicit fall-off satisfying (i) and (ii) automatically implies (iii).
-%Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\mathcal{I}$. An important consequence is that $\mathcal{I}$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\mathcal{I}$ is a time-like boundary of the conformally compactified spacetime. 
+%Notice that (ii) implies that the full metric $g_{\alpha\beta}$ approaches the pure AdS metric $\hat{g}_{\alpha\beta}$ near $\partial M$. An important consequence is that $\partial M$ has the same conformal structure as the pure AdS boundary (thus we will still refer to it as AdS boundary), i.e., $\mathbb{R}\times S^2$ topology and conformal metric given by a conformal transformation of the purely AdS metric $\hat{g}_{\alpha\beta}$ at the boundary (e.g. the metric of the Einstein Static Universe), which implies that $\partial M$ is a timelike boundary of the conformally compactified spacetime. 
 
 %{\bf HB: this long-winded paragraph interrupts the flow and doesn't quite fit where it is currently placed. Up to this point, Section (2.2) is giving a clear pedagogical discussion, and this paragraph suddenly switches gears to talk about the concept of "Cartesian" and "spherical". Consider trimming down considerably, or moving to an Appendix.
 %e.g. if you decide to trim down, can immediately remove the last three sentences starting from "Furthermore..." and ending in "...  that satisfy the Einstein equations" as they are unnecessary and can be completely removed.}\\
-%{\em Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we will denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\mathcal{I}$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
+%{\em Given a set of coordinates $x^\alpha$ in which the pure AdS metric components are $\hat{g}_{\alpha\beta}$, we will denote by $x^\alpha$ all sets of coordinates in which the full metric components $g_{\alpha\beta}$ approach the pure AdS metric components in the form $\hat{g}_{\alpha\beta}$. For example, we will denote any set of coordinates in which the metric $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_compact} by $(t,\rho,\theta,\phi)$ and we will refer to them as spherical coordinates.\footnote{Note that these coordinates should only be regarded as asymptotically spherical coordinates, since they are well-defined only near the boundary $\partial M$} Similarly, we will denote any set of coordinates in which $g$ asymptotes to $\hat{g}$ in the form \eqref{eqn:ads4_final} by $(t,x,y,z)$ and we will refer to them as Cartesian coordinates.\footnote{As in the case of the spherical coordinates, these Cartesian coordinates  should be regarded as asymptotically Cartesian coordinates.}
 %Furthermore, \eqref{eqn:asyKilleq} is explicitly solved in [CITE [1201.2132]] (this is done for any spacetime dimensions but we focus here on the 4 dimensional case) in (asymptotically) $(t,r,\theta,\phi)$ coordinates for a solution ansatz of the form $h_{\alpha\beta}\sim r^{p_{\alpha\beta}}$. The result is the same as the one in [CITE Henneaux-Teitelbom], which shows that requiring (ii) is sufficient to obtain the fall-off near spatial infinity that satisfies also (i) and (iii).
 %In addition, given that in this work we only consider spacetimes that evolve according to the laws of General Relativity, we can restrict this definition to spacetimes that satisfy the Einstein equations.}
 
@@ -396,15 +400,15 @@ In this approach, one starts with the notion of a spacetime $(M,g)$ that is loca
 This allows asymptotically AdS spacetimes to be defined without making any assumption, for example, on the topology of the boundary. 
 The FG theorem states that
 %, for this type of spacetimes in 4 dimensions, 
-we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
+we can always find a coordinate system $x^{\bar{\alpha}}=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 \begin{equation}
 \label{eqn:FGmetric}
-g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{ij}(\bar{z},\bar{x})d\bar{x}^id\bar{x}^j),
+g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{\bar{a}\bar{b}}(\bar{t},\bar{z},\bar{\theta},\bar{\phi})dx^{\bar{a}}dx^{\bar{b}}),
 \end{equation}
 where 
 \begin{equation}
 \label{eqn:FGbdymetric}
-g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{x})+g_{(2)ij}(\bar{x})\bar{z}^2+\mathcal{O}(\bar{z}^3).
+g_{ij}(\bar{z},\bar{x})=g_{(0)ij}(\bar{t},\bar{\theta},\bar{\phi})+g_{(2)ij}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^2+\mathcal{O}(\bar{z}^3).
 \end{equation}
 Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$. 
 Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. 
@@ -442,7 +446,7 @@ Defining
 \begin{eqnarray}
 \label{eqn:FGcoords}
 \bar{t}&=&t+\frac{z^5 \left(2 f_{t\rho}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,t}(t,\theta,\phi)\right)}{10 }+\mathcal{O}(z^6)\\
-\bar{z}&=&z\left(1+\frac{1}{6}z^3f_{\rho\rho}(t,\theta,\phi)+\mathcal{O}(z^4)\right)\\
+\bar{z}&=&z+\frac{1}{6}z^4f_{\rho\rho}(t,\theta,\phi)+\mathcal{O}(z^5)\\
 \bar{\theta}&=&\theta-\frac{z^5 \left(2 f_{\rho\theta}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\theta}(t,\theta,\phi)\right)}{10}+\mathcal{O}(z^6)\\
 \bar{\phi}&=&\phi-\frac{z^5 \left(2 f_{\rho\phi}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\phi}(t,\theta,\phi)\right)}{10}+\mathcal{O}(z^6),
 \end{eqnarray}
@@ -450,7 +454,7 @@ which can be inverted near the boundary as
 \begin{eqnarray}
 \label{eqn:invertFGcoords}
 t&=&\bar{t}-\frac{\bar{z}^5 \left(2 f_{t\rho}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{t}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10}+\mathcal{O}(\bar{z}^6),\\
-z&=&\bar{z}\left(1-\frac{1}{6}\bar{z}^3f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})+\mathcal{O}(\bar{z}^4)\right),\\
+z&=&\bar{z}-\frac{1}{6}\bar{z}^4f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})+\mathcal{O}(\bar{z}^5),\\
 \theta&=&\bar{\theta}+\frac{\bar{z}^5 \left(2 f_{\rho\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\theta}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10}+\mathcal{O}(\bar{z}^6),\\
 \phi&=&\bar{\phi}+\frac{\bar{z}^5 \left(2 f_{\rho\phi}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\phi}}(\bar{t},\bar{\theta},\bar{\phi})\right)}{10}+\mathcal{O}(\bar{z}^6),
 \end{eqnarray}
@@ -473,8 +477,8 @@ Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\
 \section{Boundary Prescription}\label{sec:pre_sta}
 
 In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolutions.
-We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates on global AdS or on a Poincar\'{e} patch.
-The other crucial ingredient is the imposition of the asymptotically AdS boundary conditions \eqref{eq:carbouncondh},\eqref{eq:carbouncondphi},\eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, in the way explained in the next section.
+We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates on global AdS or on a Poincar\'{e} patch. We see the application to spherical coordinates in Appendix~\ref{sec:sphevvarboucon} and to the Poincar\'e patch in Appendix~\ref{sec:poincare}.
+The other crucial ingredient is the imposition of the asymptotically AdS boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, in the way explained in the next section.
 For a discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}.
 
 %In this work, we present the results obtained for the four dimensional case with Klein-Gordon coupling in global Cartesian coordinates.
@@ -736,7 +740,7 @@ In the simulations we output the vacuum expectation value of the operator dual t
 %The indices $a,b,c,\dots$ of tensors defined on the tangent space of the AdS boundary are raised and lowered by the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
 %HB: as we discussed in slack, this definition is only used once, in Figure 3. We can bypass it completely, as I suggest doing here. If we want to include it again, we need to provide full details of the operator that the bulk scalar field is dual to, e.g., that there are formally two operators possible with operator dimensions \Delta_+ and \Delta_-, that our boundary conditions for the bulk scalar field picks out \Delta_+, and we then need to explain our conventions for displaying its vev, with all numerical factors taken into account. We don't need any of these extra details for the message we're trying to convey, I suggest leaving it out
-%To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \varphi\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a time-like hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have
+%To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \varphi\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a timelike hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have
 %\begin{equation}
 %\langle \varphi\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}\bar{\varphi}=\bar{\varphi}_{(1)}
 %\end{equation}
@@ -785,8 +789,8 @@ For the total mass in AdS we find
 M=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
 \end{equation}
 
-We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way, assuming that $\langle T_{ab}\rangle_{CFT}$ satisfies the weak energy condition\footnote{If $\pm \langle T_{ab}\rangle_{CFT}$ fail to satisfy the weak energy condition, the $L^2$-norm of $\langle T_{ab}\rangle_{CFT}$, $||\langle T_{ab}\rangle_{CFT}||_2$, can have complex conjugate pairs of eigenvalues and no real time-like eigenvector, as pointed out in footnote 9 of CITE[arXiv:1309.1439v4 [hep-th]].}, we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
-%Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) time-like eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
+We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way, assuming that $\langle T_{ab}\rangle_{CFT}$ satisfies the weak energy condition\footnote{If $\pm \langle T_{ab}\rangle_{CFT}$ fail to satisfy the weak energy condition, the $L^2$-norm of $\langle T_{ab}\rangle_{CFT}$, $||\langle T_{ab}\rangle_{CFT}||_2$, can have complex conjugate pairs of eigenvalues and no real timelike eigenvector, as pointed out in footnote 9 of CITE[arXiv:1309.1439v4 [hep-th]].}, we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) timelike eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
+%Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) timelike eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 
 One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab} \langle T_{ab}\rangle_{CFT}$. We obtain\footnote{The expression~\eqref{eq:tracecalc} has a factor of $1/G$ that corresponds to the large-$N$ scaling of the expectation value of the stress tensor in the boundary 2+1-dimensional CFT. We keep our standard convention of $G=1$ when quoting numerical results.}
 \begin{equation}
@@ -833,8 +837,6 @@ We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in para
 Although these libraries have adaptive mesh refinement capabilities, numerical evolution is performed on a grid with fixed refinement.
 The numerical grid is in $(t,x,y,z)$ with $t \in [0,t_{max}]$, $x \in [-1,1]$, $y \in [-1,1]$, $z \in [-1,1]$.
 The typical grid resolution uses $N_x=N_y=N_z=325$ points in each of the Cartesian directions, with equal grid spacings $\Delta x = \Delta y = \Delta z\equiv \Delta$. 
-The results presented here were obtained without the use of refined regions in the grid, although the code has adaptive mesh refinement capabilities.
-%\textcolor{blue}{{\bf PF:} how many levels of refinement do we use in a typical run?}
 
 The time step of evolution is determined by $\Delta t=\lambda \Delta$.
 Although we do not perform a detailed analysis of the stability of our finite difference scheme, we expect the Courant-Friedrichs-Lewy (CFL) condition for stability to be satisfied if we set the CFL factor $\lambda$ to a value well below 1. Thus, we use $\lambda=0.3$. Notice that the most remarkable advantage of using Cartesian coordinates is that the CFL condition does not severely restrict the CFL factor as it would in spherical coordinates, hence allowing simulations to reach large evolution times $t$ in affordable running times. 
@@ -1052,8 +1054,8 @@ We leave this for future studies.
 In this work we limited ourselves to $d=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. 
 Interestingly, a comparison between \eqref{eqn:target_gauge_txyz} and the corresponding result in [cite arXiv:1706.04199 [hep-th] ] (see eq. (S10) in that previous work) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$. 
 Furthermore, we have applied the scheme presented here to cases with different types of matter fields, different types of global coordinates, and to coordinates on a Poincar\'{e} patch. 
-For instance, in Appendix~\ref{sec:sphevvarboucon} we followed the prescription of Section~\ref{sec:pre_sta} to obtain the stable gauge also in spherical coordinates. 
-In Appendix~\ref{sec:poincare}, we write down a gauge that stabilizes evolution on a Poincar\'e patch of AdS$_4$.
+For instance, in Appendix~\ref{sec:sphevvarboucon} we followed the prescription of Section~\ref{sec:pre_sta} to obtain the stable gauge also in spherical coordinates.
+In Appendix~\ref{sec:poincare}, the same procedure leads to a gauge that stabilizes evolution on a Poincar\'e patch of AdS$_4$.
 In other words, this framework makes numerical Cauchy evolution in asymptotically AdS spacetimes possible in full generality, with no need to impose symmetries.
 
 We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this Cauchy evolution scheme. The most direct application would be the study of gravitational collapse of a massless scalar field with zero angular momentum in $AdS_4$. This has been analyzed in spherical symmetry by [CITE Bizon-Rostworowski] and in axisymmetry by [Bantilan-Figueras-Kunesch], although the two studies probe different ranges for the amplitude of the scalar field, so a direct comparison cannot be made. Solving the evolution equations through our scheme, the details of the collapse could be analysed even further in full generality.
@@ -1360,7 +1362,7 @@ The explicit components of the stress tensor in \eqref{eq:bdysetFGform} are give
 \langle T_{\bar{\phi}\bar{\phi}}\rangle_{CFT}&=&\frac{\sin^2\bar{\theta}}{16\pi} \biggl(\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}\biggr).
 \end{eqnarray}
 
-On the other hand, in Section~\ref{sec:bouset2} of the main text we compute the boundary stress-tensor starting from the metric in global spherical coordinates and then using the prescription of \cite{Balasubramanian:1999re}. Of course, the expressions \eqref{eq:set_explicit} and \eqref{eq:set_explicit_2} are equivalent, as we now explain. To obtain \eqref{eq:set_explicit}, we have not imposed that the metric components satisfy the Einstein equations. On the other hand, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the bulk metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. In fact, it is straightforward to see that the two equations agree if we assume the validity of the lowest order of the Einstein equations in spherical coordinates given in \eqref{eqn:efett_3p1}. In fact, we only need \eqref{eq:indeq1_3p1}. For example, starting from \eqref{eq:set_explicit}, imposing \eqref{eq:indeq1_3p1} and using the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at the boundary $\rho=1$ together with $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$,\footnote{Note that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) from \eqref{eqn:invertFGcoords}, while $\bar{g}_{(1)\alpha\beta}\equiv\frac{\partial \bar{g}_{\alpha\beta}}{\partial q}\bigr|_{q=0}=f_{\alpha\beta}$, where the second equality is obtained by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph} to write $\bar{g}_{\alpha\beta}$ in terms of $f_{\alpha\beta}$ and the corresponding $\rho$-dependent factors.} we find precisely the expressions \eqref{eq:set_explicit_2}.
+On the other hand, in Section~\ref{sec:bouset2} of the main text we compute the boundary stress-tensor starting from the metric in global spherical coordinates and then using the prescription of \cite{Balasubramanian:1999re}. Of course, the expressions \eqref{eq:set_explicit} and \eqref{eq:set_explicit_2} are equivalent, as we now explain. To obtain \eqref{eq:set_explicit}, we have not imposed that the metric components satisfy the Einstein equations. On the other hand, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the bulk metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. It is straightforward to see that the two equations agree if we assume the validity of the lowest order of the Einstein equations in spherical coordinates given in \eqref{eqn:efett_3p1}. In fact, we only need \eqref{eq:indeq1_3p1}. For example, starting from \eqref{eq:set_explicit}, imposing \eqref{eq:indeq1_3p1} and using the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at the boundary $\rho=1$ together with $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$,\footnote{Note that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) from \eqref{eqn:invertFGcoords}, while $\bar{g}_{(1)\alpha\beta}\equiv\frac{\partial \bar{g}_{\alpha\beta}}{\partial q}\bigr|_{q=0}=f_{\alpha\beta}$, where the second equality is obtained by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph} to write $\bar{g}_{\alpha\beta}$ in terms of $f_{\alpha\beta}$ and the corresponding $\rho$-dependent factors.} we find precisely the expressions \eqref{eq:set_explicit_2}.
 
 
 
@@ -1368,7 +1370,7 @@ On the other hand, in Section~\ref{sec:bouset2} of the main text we compute the 
 \section{Initial Data}
 \label{sec:initdata}
 
-The Cauchy problem in GR requires the prescription of initial data on a space-like hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. In asymptotically AdS spacetime, in addition we have to specify boundary conditions at the boundary of AdS; we have dealt with boundary conditions in Section \ref{sec:pre_sta}. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\dots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
+The Cauchy problem in GR requires the prescription of initial data on a spacelike hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. In asymptotically AdS spacetime, in addition we have to specify boundary conditions at the boundary of AdS; we have dealt with boundary conditions in Section \ref{sec:pre_sta}. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\dots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
 With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{ij}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{ij}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
 In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
 
@@ -1377,7 +1379,7 @@ In summary, the complete set of initial data that we prescribe is $\bar{\varphi}
 
 Here we review the constraints in GR and how they are solved in our numerical scheme.
 We start by defining the relevant quantities on the initial spacelike hypersurface $\Sigma$. %We will do so using the indices associated with Cartesian coordinates, but the following definitions are tensorial relations that read the same in any basis. 
-The time-like, future-directed unit 1-form normal to $\Sigma$ is given by
+The timelike, future-directed unit 1-form normal to $\Sigma$ is given by
 \begin{equation}
 \label{eq:uninormal}
 n_\mu=-\alpha (dt)_\mu,
@@ -1629,7 +1631,8 @@ Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove conve
 
 
 
-\section{Poincar\'e Patch}\label{sec:poincare}
+\section{Boundary Prescription in the Poincar\'e Patch}\label{sec:poincare}
+%\section{Poincar\'e Patch}\label{sec:poincare}
 
 %Here we analyze the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context. 
 Here we follow the prescription of Section~\ref{sec:pre_sta} in the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context.
