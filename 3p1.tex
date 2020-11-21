@@ -1008,7 +1008,7 @@ Finally, Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp
 
 As a proof-of-principle, we evolve initial data that undergoes gravitational collapses within one light-crossing time, and follow the subsequent ring-down to the Schwarzschild-AdS solution.
 %In this section we discuss the most evident features of the long-time evolution of time-symmetric initial data in the presence of a massless real scalar field with Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
-The geometry of the initial slice is sourced by a massless real scalar field with a Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$ as follows:
+The geometry of the initial slice is sourced by a massless real scalar field with a Gaussian profile, distorted along each Cartesian direction and centred at $x=y=z=0$:
 \begin{eqnarray}
 \label{eq:scaGaupro}
 \bar{\varphi}|_{t=0}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
@@ -1016,14 +1016,15 @@ The geometry of the initial slice is sourced by a massless real scalar field wit
 \end{eqnarray}
 The amplitude of the profile is $A=0.55$ and  the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$, so that the most prominent distortion is on the $(x,y)$-plane. The width of the Gaussian is $\Delta=0.2$. 
 We choose the initial slice to be a moment of time symmetry, and the details of the time-symmetric initial data sourced by this matter field are collected in Appendix~\ref{sec:initdata}. 
-As we see in that appendix, the momentum constraint is trivially satisfied for this type of data, so only the Hamiltonian constraint needs to be solved. We evolve this initial data up to $t=31$ in units of the characteristic length scale $L=1$ (approximately 20 light crossing times), well after the end of gravitational collapse and the resulting black hole formation. 
+As we see in that appendix, the momentum constraint is trivially satisfied for this type of data, so only the Hamiltonian constraint has to be solved. We evolve this initial data up to $t=31$ in units of the characteristic length scale $L=1$ (approximately 20 light crossing times), well after the end of gravitational collapse and the resulting black hole formation. 
 The initial data has zero total angular momentum, 
 %computed via the prescription in [CITE hep-th/9902121],
 and angular momentum conservation [CITE arXiv:1211.6347v3 [gr-qc]] ensures that this is zero at all times. 
-Therefore, we can expect the black hole to settle down to the Schwarzschild-AdS solution. However, for generic initial data with non-vanishing total angular momentum, this may not be the final state: \cite{Holzegel:2011uu} conjectured that Schwarzschild-AdS, or more generally Kerr-AdS, may suffer from a non-linear instability for generic perturbations.
+Therefore, we can expect the black hole to settle down to the Schwarzschild-AdS solution. However, for generic initial data with non-vanishing total angular momentum, this may not be the final state: Ref. \cite{Holzegel:2011uu} conjectured that Schwarzschild-AdS, or more generally Kerr-AdS, may suffer from a non-linear instability for generic perturbations.
 %a rigorous proof for the uniqueness of Schwarzschild-AdS with the assumptions made in this initial data has not yet been obtained.\footnote{For example, in our setting, one could imagine that there exist asymptotically AdS spacetimes with zero angular momentum describing a rotating black hole whose angular momentum is compensated by the angular momentum of a scalar (or gravitational) cloud. However, such alternative configurations seem to be, if they exist, rather fine-tuned. It is thus highly unlikely that an arbitrary choice of initial conditions evolves to similar scenarios.}
+We will leave this interesting problem for future work.
 
-We now will focus, separately, on the evolution of quantities defined in the bulk of the numerical grid and quantities defined on the AdS boundary.
+%We now will describe the evolution of quantities defined in the bulk of the numerical grid and of quantities defined on the AdS boundary.
 
 %- Intro
 %. long run 
@@ -1052,9 +1053,9 @@ The internal boundary of the coloured region is the excision surface: we excise 
         }\label{fig:snapshotsscalarfield}}
 \end{figure}
 
-Figure \ref{fig:snapshotsscalarfield} shows four representative times of the scalar field variable's profile $\bar{\varphi}$ on the equatorial plane $z=0$ for the highest resolution grid with $N_x=N_y=N_z=325$ grid points along each Cartesian direction. Notice that, in all of these, $\bar{\varphi}=0$ at the AdS boundary as required by the Dirichlet boundary condition. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts propagating towards the AdS boundary, but
+Figure \ref{fig:snapshotsscalarfield} shows  the scalar field variable's profile $\bar{\varphi}$ at four representative times on the equatorial plane $z=0$ for the highest resolution grid with $N_x=N_y=N_z=325$ grid points along each Cartesian direction. Notice that in all of these snapshots $\bar{\varphi}=0$ at the AdS boundary, as required by the Dirichlet boundary conditions. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts propagating towards the AdS boundary, but
 %before reaching it, 
-a significant portion  is attracted back towards the origin and forms an apparent horizon (AH).  This occurs at $t=0.331$ in the highest resolution simulation. The rest of the scalar field remains outside the black hole, where it keeps bouncing back and forth the AdS boundary and is gradually absorbed.
+a significant portion of it is attracted back towards the origin and collapses to form an AH.  This occurs at $t=0.331$ in the highest resolution simulation. The rest of the scalar field remains outside the black hole, where it keeps bouncing back and forth the AdS boundary and is gradually absorbed.
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction and squeezed along the $y$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$.  However, the elongation, and hence the lack of spherical symmetry,  decreases exponentially in time as the scalar field is absorbed by the black hole. 
 %Furthermore, we see that the largest part of the scalar field progressively disappears from the exterior part of the spacetime by entering the apparent horizon, hence the amplitude of the scalar field decreases. 
 %In fact, we see that the scalar field is decaying exponentially in time. 
@@ -1081,14 +1082,14 @@ Here, we compare the numerical solution at the last time slice, i.e., $t=31$, to
 This comparison is achieved with the following procedure.
 First, we compute the Riemann cube scalar $R^3=R_{\mu\nu\rho\sigma}R^{\rho\sigma\gamma\delta}R_{\gamma\delta}^{\;\;\;\;\mu\nu}$, and the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ for our numerical solution at the last time slice. 
 Second, we compute the corresponding values, $R^3_{AdS}$ and $K_{AdS}$, in pure $AdS_4$.
-We then use all four quantities to show the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the Kretschmann scalar $\frac{K}{K_{AdS}}-1$ for the Schwarzschild-AdS spacetime, shown as the black line in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}. 
+We then use all four quantities to represent the relative Riemann scalar $\frac{R^3}{R^3_{AdS}}-1$ as a function of the relative Kretschmann scalar $\frac{K}{K_{AdS}}-1$, shown as the black line in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}. 
 We do the same for the numerical solution for different resolutions at grid points along the $x$ axis ($y=z=0$ coloured lines of top panel) and the $y$ axis ($x=z=0$ coloured lines of bottom panel). 
 
 The black vertical lines in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS} denotes the value of $\frac{K}{K_{AdS}}-1$ at the horizon of Schwarzschild-AdS. 
 Notice that $\frac{K}{K_{AdS}}-1=0$ at the AdS boundary by construction, so going to larger values of $\frac{K}{K_{AdS}}-1$ is equivalent to moving towards the centre of the grid.
 Therefore the black vertical lines give an indication of the position of the AH relative to the AdS boundary.
 The two panels of Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS} indicate that, sufficiently close to the AdS boundary, the curvature of the numerical solution is almost identical to Schwarzschild-AdS. For clarity, this is shown using only values of the Riemann cube and Kretschmann scalars along the $x$ and $y$ axes, but we verified this for values from the entire grid. 
-At any given resolution, the numerical curvature starts to differ from their Schwarzschild-AdS values as we get close to the AH. 
+At any given resolution, the numerical curvature starts to differ from their Schwarzschild-AdS values as we get closer to the AH. This is expected since the gradients become larger as we approach the centre of the grid.
 %(and it diverges strongly at values of $\frac{K}{K_{AdS}}-1$ corresponding to positions very close to the excision surface, as expected but not shown in the figure). 
 %However, the higher the resolution the closer we get to Schwarzschild-AdS even inside the AH.
 %Finally, we notice that for low resolutions a persistent asymmetry between the $x$ and $y$ axes is visible also at late times both outside and inside the horizon, but this disappears for high enough resolutions.
