@@ -306,13 +306,13 @@ The authors implicitly considered spacetimes $(M,g)$ that admit a conformal comp
 %The authors defined asymptotically AdS spacetimes by requiring that the spacetime asymptotically approaches the pure AdS solution. 
 More precisely, for any set of global coordinates $x^\alpha$, the authors required the deviation of the full metric $g_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$, given by $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$, to satisfy three conditions:
 \begin{enumerate}
-\item[(i)] It is consistent with the asymptotic decay of the Kerr-AdS metric near $\partial M$ in this set of coordinates;
-\item[(ii)] Its fall-off near $\partial M$ is invariant under the global AdS symmetry group $O(3,2)$, i.e.,
+\item[(i)] it is consistent with the asymptotic decay of the Kerr-AdS metric near $\partial M$ in this set of coordinates;
+\item[(ii)] its fall-off near $\partial M$ is invariant under the global AdS symmetry group $O(3,2)$, i.e.,
 \begin{equation}\label{eqn:asyKilleq}
 (\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta}),
 \end{equation}
 near the boundary $\partial M$ for any $X$ generator of $O(3,2)$;
-\item[(iii)] The surface integral charges associated with the generators of $O(3,2)$ are finite.
+\item[(iii)] the surface integral charges associated with the generators of $O(3,2)$ are finite.
 \end{enumerate}
 \textcolor{red}{In addition, for the purposes of this article, we restrict this definition to spacetimes that satisfy the Einstein equations \eqref{eqn:eoms1}.}
 \textcolor{red}{LR: this last bit is important for the part below when we say that the FG definition becomes equivalent to the HT one: this is only true if we include the validity of the Einstein equations in the HT definition.}
@@ -564,7 +564,7 @@ Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\
 %\section{Prescription for Stability}\label{sec:pre_sta}
 \section{Boundary Prescription}\label{sec:pre_sta}
 
-In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolutions.
+In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolution.
 We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. This procedure generalizes in a straightforward manner in other asymptotically AdS spacetimes with $d\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates on global AdS or on a Poincar\'{e} patch. We see the application to spherical coordinates in Appendix~\ref{sec:sphevvarboucon} and to the Poincar\'e patch in Appendix~\ref{sec:poincare}.
 The other crucial ingredient is the imposition of the asymptotically AdS boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, as explained in the next section.
 For a discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}.
@@ -574,14 +574,11 @@ For a discussion in a simpler context with more symmetry, see~\cite{Bantilan:201
 
 The boundary conditions on asymptotically AdS spacetimes, discussed in Section~\ref{subsec:asyAdS}, can be imposed as Dirichlet boundary conditions at the boundary $\rho=1$.
 This requires appropriately defining and evolving a new set of variables, from which the full solution $(g_{\mu\nu},\varphi,H_\mu)$ can be subsequently reconstructed. 
-%Even though the code employs Cartesian coordinates, we define these variables also in spherical coordinates for completeness and because they will turn out to be useful in Section~\ref{sec:bouset2} .
-%These variables will be obtained here in Cartesian coordinates, as these are the coordinates employed in the numerical scheme that we wish to present. 
 Here, we define evolution variables in the Cartesian coordinates employed by our numerical scheme.
-%However, in Section~\ref{sec:bouset2} we choose to show expressions for quantities at the AdS boundary in spherical coordinates, therefore in Appendix~\ref{sec:sphevvarboucon} we construct the spherical version of the evolution variables and make the relation to their Cartesian analog explicit.
 Later, in Section~\ref{sec:bouset2} we will show expressions for quantities at the AdS boundary in spherical coordinates.
 In Appendix~\ref{sec:sphevvarboucon}, we explicitly show how these spherical variables relate to our Cartesian evolution variables.
 
-The Cartesian metric evolution variables, $\bar{g}_{\mu\nu}$, are defined by first considering the deviation from pure AdS in Cartesian coordinates $h_{\mu\nu}=g_{\mu\nu}-\hat{g}_{\mu\nu}$, then stripping $h_{\mu\nu}$ of as many factors of $(1-\rho^2)$ as needed so that each components falls off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.\footnote{Looking at the boundary conditions \eqref{eq:carbouncondh}, it seems natural to factor out $(1-\rho)$ rather than $(1-\rho^2)$. However, the latter is preferred since it preserves the even/odd character in the $\rho$ variable.}
+The Cartesian metric evolution variables, $\bar{g}_{\mu\nu}$, are defined by first considering the deviation from pure AdS in Cartesian coordinates, $h_{\mu\nu}=g_{\mu\nu}-\hat{g}_{\mu\nu}$, then stripping $h_{\mu\nu}$ of as many factors of $(1-\rho^2)$ as needed so that each components falls off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.\footnote{Looking at the boundary conditions \eqref{eq:carbouncondh}, it seems natural to factor out $(1-\rho)$ rather than $(1-\rho^2)$. However, the latter is preferred since it preserves the even/odd character in the $\rho$ variable.}
 We see from \eqref{eq:carbouncondh} that in four dimensions, the metric evolution variables $\bar{g}_{\mu\nu}$ that satisfy these requirements are simply 
 \begin{equation}\label{eq:gbarcart}
 \bar{g}_{\mu\nu}=h_{\mu\nu}.
@@ -596,14 +593,7 @@ Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest
 \bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }.
 \end{equation}
 
-%The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ and the pure AdS metric $\hat{g}_{\mu\nu}$ by $g_{\mu\nu} = \hat{g}_{\mu\nu} + \bar{g}_{\mu\nu}$. 
-%The evolved variables $\bar{g}_{\mu\nu}$ are constructed out of the full metric $g_{\mu\nu}$ by considering the deviations from the pure AdS metric $h_{\mu\nu}=g_{\mu\nu} - \hat{g}_{\mu\nu}$ and stripping these of as many factors of $(1-\rho^2)$ as necessary so that they fall off linearly in $(1-\rho)$ near the AdS boundary $\rho=1$. %their leading order in the near-boundary expansion is $\mathcal{O}(q)$. 
-%From the boundary conditions \eqref{eq:carbouncondh}, we immediately see that $h_{\mu\nu}=\bar{g}_{\mu\nu}$ in Cartesian coordinates, so $g_{\mu\nu} = \hat{g}_{\mu\nu}+\bar{g}_{\mu\nu}$.
-%Similarly, the evolved scalar field variable $\bar{\varphi}$ is constructed out of a real scalar field $\varphi$ by
-%$\varphi = (1-\rho^2)^2 \bar{\varphi}$.
-%Following the same argument, the evolved source function variables $\bar{H}_\mu$ are constructed out of the full generalized harmonic source functions $H_\mu$ and the values they take on in pure AdS by $\hat{H}_\mu$ by $H_\mu = \hat{H}_\mu + (1-\rho^2) \bar{H}_\mu$.
-
-For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary,
+For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary:
 \begin{equation}
 \label{eq:dirbc}
  \bar{g}_{\mu\nu}\big|_{\rho=1}=0\,,\quad \bar{\varphi}\big|_{\rho=1}=0\,,\quad \bar{H}_\mu\big|_{\rho=1}=0\,.
@@ -613,7 +603,6 @@ For evolved variables defined in this way, the boundary conditions \eqref{eq:car
 
 \subsection{Gauge Choice for Stability}\label{sec:gauge_choice}
 
-%\textcolor{red}{LR: I think I like this more quantitive version better than the previous one in which we did not explain to which order the source functions are already determined. See if you agree.}
 Coordinates over the entire spacetime are fully determined only once we choose the gauge source functions $H_\mu$. 
 In Cartesian coordinates, as can be seen from \eqref{eq:carbouncondsoufun}, $H_\mu$ are fixed up to order $1-\rho$ by its pure AdS values $\hat{H}_\mu$ in an expansion near the AdS boundary at $\rho=1$.
 As we shall see, the choice of $H_\mu$ at the next order in this expansion, $(1-\rho)^2$, cannot be completely arbitrary if we wish to achieve stable evolution.
@@ -623,12 +612,13 @@ A specification of generalized harmonic source functions at order $(1-\rho)^2$ t
 The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho) \equiv q = 0$. 
 By construction, these evolved variables are linear in $q$ at leading order:
 \begin{eqnarray}\label{eqn:qexp}
-\bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4) \label{eqn:qexpg} \\
-\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4)  \label{eqn:qexpH}\\
+\bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4), \label{eqn:qexpg} \\
+\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4)  ,\label{eqn:qexpH}\\
 \bar{\varphi} &=& \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4), \label{eqn:qexpphi}
 \end{eqnarray}
-where all the coefficients are functions of $(t,x,y,z)$, restricted to the surface $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$). 
-We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. The three lowest orders, $q^{-2},q^{-1},q^0$, are fixed by the pure AdS metric $\hat{g}$ which itself is a solution of \eqref{eqn:efe_gh_modified}, so these terms vanish trivially. The remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}.
+\textcolor{red}{where all the coefficients are functions of the coordinates $(t,x,y,z)$ restricted to the boundary $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$).}
+%where all the coefficients are functions of $(t,x,y,z)$, restricted to the surface $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$). 
+We now substitute these \textcolor{red}{variables} into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. The three lowest orders, $q^{-2}$, $q^{-1}$, $q^0$, are fixed by the pure AdS metric $\hat{g}$ which itself is a solution of \eqref{eqn:efe_gh_modified}, so these terms vanish trivially. The remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}.
 
 We are now interested in identifying the order of $q$ at which the second derivatives of $ \bar{g}_{(1) \mu \nu}$ with respect to $(t,x,y,z)$ 
 %evaluated at $\rho=1$ 
@@ -638,12 +628,18 @@ For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\
 \label{eq:tildeboxbarg}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu},
 \end{equation}
-for some functions $c^t_{\mu\nu},c^x_{\mu\nu},c^y_{\mu\nu},c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}$^{,}$\footnote{These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified},  namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$.}
-We can easily find the order in $q$ at which these terms appear by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and that $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Therefore, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.\footnote{Notice that the arguments used to draw this conclusion are independent of the number of spacetime dimensions but they rely on the assumption that we are using Cartesian coordinates. For an arbitrary set of coordinates, the power of $q$ at which the second derivatives of the operator \eqref{eq:tildeboxbarg} appear is different, and it depends in general on the specific component of \eqref{eqn:efe_gh_modified} under consideration. See~\cite{Bantilan:2012vu} for an example in spherical coordinates.}
-
-Using all this, each component of the expansion of 
-%the Einstein equations 
-\eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form
+for some functions $c^t_{\mu\nu}$, $c^x_{\mu\nu}$, $c^y_{\mu\nu}$, $c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}
+\textcolor{red}{These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}}
+%$^{,}$\footnote{These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$.}
+%We can easily find the order in $q$ at which these terms appear by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}).
+%Therefore, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
+\footnote{Notice that the arguments used to draw this conclusion are independent of the number of spacetime dimensions but they rely on the assumption that we are using Cartesian coordinates. For an arbitrary set of coordinates, the power of $q$ at which the second derivatives of the operator \eqref{eq:tildeboxbarg} appear is different, and it depends in general on the specific component of \eqref{eqn:efe_gh_modified} under consideration.
+\textcolor{red}{See Appendix~\ref{sec:sphevvarboucon} and \cite{Bantilan:2012vu} for examples in spherical coordinates in 4 and 5 dimensions, respectively.}
+%See~\cite{Bantilan:2012vu} for an example in spherical coordinates.
+}
+\textcolor{red}{LR: (Joined two paragraphs.)}
+\textcolor{red}{In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form}
+%Using all this, each component of the expansion of \eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form
 \begin{eqnarray}\label{eq:efefullexp}
 0 
 &=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+A_{(3)\mu\nu}q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5) \nonumber \\
@@ -732,9 +728,10 @@ zz}) \nonumber \\
    &&-2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
    &&+\frac{3}{4}  \bar{g}_{(1)xx} (-2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta
    +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}).
+&&+\mathcal{O}(q^{-1}),
 \end{eqnarray}
-All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion
+\textcolor{red}{where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$. LR: (this bit used to be below the expansion of $C_z$.)}
+All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion:
 \begin{eqnarray}
 \label{eqn:ct}
 C_t&=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
@@ -763,18 +760,18 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    &&+3
    \sin \theta \sin \phi  \bar{g}_{(1)yy}-6 \sin \theta  \cos \phi    \bar{g}_{(1)yz}-3 \sin \theta  \sin \phi  \bar{g}_{(1)zz}+4
    \bar{H}_{(1)z}) \nonumber \\
-   &&+\mathcal{O}(q^3),
+   &&+\mathcal{O}(q^3).
 \end{eqnarray}
-where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$.
+%where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$.
 
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
 The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following: 
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for $\bar{H}_{(1)\mu}$. For example, in the Cartesian case, this gives
 \begin{eqnarray}\label{eqn:target_gauge_txyz_step1}
-\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}) \\
-\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}) \nonumber \\
-\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+y(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2z \bar{g}_{(1)yz}) \nonumber \\
+\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \\
+\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}), \nonumber \\
+\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+y(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2z \bar{g}_{(1)yz}), \nonumber \\
 \bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})). \nonumber 
 \end{eqnarray}
 
@@ -782,20 +779,33 @@ The steps that lead to our stable gauge, in a form that can be easily applied to
 %Let $N_{(1)ow}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)ow}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
 %In the Cartesian case, $N_{(1)ow}=-2$ and there is only one independent equation given by
 
-\item Let $N_{(1)}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}). We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
+\item Let $N_{(1)}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$.
+\textcolor{red}{This gives a number of independent equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}).
+\footnote{We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the topology of the AdS boundary and make the proof less unwieldy.}}
+\textcolor{red}{Solve these equations for an equal number of metric coefficients $\bar g_{(1)\mu\nu}$ and their derivatives.
 In the Cartesian case, $N_{(1)}=-2$ and there is only one independent equation given by
 \begin{equation}
 \label{eq:cart_tracelessness}
-\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}=0.
+\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}=0,
 \end{equation}
-Solve the resulting equation(s) in terms of some of the metric coefficients at this order, $\bar g_{(1)\mu\nu}$. In the Cartesian case, we can solve \eqref{eq:cart_tracelessness} in terms of $\bar g_{(1)tt}$.
+which we can solve in terms of $\bar g_{(1)tt}$.
+}
+%This gives the equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}).
+%We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the spherical symmetry of the AdS boundary in global coordinates and make the resulting expressions less unwieldy.
+%In the Cartesian case, $N_{(1)}=-2$ and there is only one independent equation given by
+%\begin{equation}
+%\label{eq:cart_tracelessness}
+%\bar{g}_{(1)tt}-\bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}=0.
+%\end{equation}
+%Solve the resulting equation(s) in terms of some of the metric coefficients at this order, $\bar g_{(1)\mu\nu}$.
+%In the Cartesian case, we can solve \eqref{eq:cart_tracelessness} in terms of $\bar g_{(1)tt}$.
 
 \item Plug the solutions to the equations in step 2 in the gauge obtained in step 1.
 In Cartesian coordinates, using \eqref{eq:cart_tracelessness} to eliminate $\bar{g}_{(1)tt}$ from \eqref{eqn:target_gauge_txyz_step1}, we have
 \begin{eqnarray}\label{eqn:target_gauge_txyz}
 \bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),\nonumber\\
-\bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}) \nonumber \\
-\bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}) \nonumber \\
+\bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}), \nonumber \\
+\bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}), \nonumber \\
 \bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
 \end{eqnarray}
 \end{enumerate}
@@ -813,13 +823,17 @@ In Cartesian coordinates, using \eqref{eq:cart_tracelessness} to eliminate $\bar
 %\bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),
 %\end{equation}
 %which makes the leading order of \eqref{eqn:ct} vanish trivially.
-This is the asymptotic gauge condition that, as we have empirically verified, leads to stable 3+1 evolution of asymptotically AdS$_4$ spacetimes in Cartesian coordinates. However, this gauge choice is not unique, e.g., notice that this choice does not fix the values of $\bar{H}_\mu$ in the bulk, which are still arbitrary. 
-The functional form that we choose for our $\bar{H}_\mu$  in the bulk is detailed explicitly in Appendix \ref{sec:GCbulk}.
+\textcolor{red}{This is the asymptotic gauge condition that, as we have empirically verified, leads to stable 3+1 evolution of asymptotically AdS$_4$ spacetimes in Cartesian coordinates.
+Other asymptotic choices may correspond to similar stability properties.
+The choice of $\bar{H}_\mu$ in the bulk is still completely arbitrary and the functional form that we choose for our simulations is detailed explicitly in Appendix~\ref{sec:GCbulk}.}
+%This is the asymptotic gauge condition that, as we have empirically verified, leads to stable 3+1 evolution of asymptotically AdS$_4$ spacetimes in Cartesian coordinates.
+%However, this gauge choice is not unique, e.g., notice that this choice does not fix the values of $\bar{H}_\mu$ in the bulk, which are still arbitrary. 
+%The functional form that we choose for our $\bar{H}_\mu$ in the bulk is detailed explicitly in Appendix \ref{sec:GCbulk}.
 
 %Let us explain the rationale for our procedure.
 %We start by recalling that, if the generalized harmonic constraints are satisfied at $t=0$,\footnote{This condition is satisfied by our initial data, see Appendix~\ref{sec:initdata}.} then they are satisfied at all times during evolution due to the properties of the generalized harmonic scheme. Then, we notice that the form \eqref{eq:efefullexp} of the Einstein equations implies that our task is to find a solution such that  $A_{(i)\mu\nu}=0$  for all $i\neq3$, for any choice of source functions. This is what motivates the steps above: we want to find a gauge that, provided that the $C_\mu$ vanish, ``eases'' the job of the numerical scheme, in the sense that it makes the lowest order of the expansion of the Einstein equations near the AdS boundary, $A_{(1)\mu\nu}$, vanish. This explains why we do not stop at the gauge obtained in step 1, \eqref{eqn:target_gauge_txyz_step1}: it does not satisfy $A_{(1)\mu\nu}=0$. Thus, from experience, we do not expect it to be stable.
 The rationale for this procedure is the following.
-Recall that if $C^\mu=0$ and $\partial_t C^\mu=0$ are satisfied at $t=0$,\footnote{This condition is satisfied by our initial data, see Appendix~\ref{sec:initdata}.}, and the boundary conditions are consistent with $C^\mu=0$ being satisfied on the boundary for all time, then at the analytical level, the generalized harmonic constraint $C^\mu=0$ remains satisfied in the interior for all time. 
+Recall that if $C_\mu=0$ and $\partial_t C_\mu=0$ are satisfied at $t=0$\footnote{This condition is satisfied by our initial data, see Appendix~\ref{sec:initdata}.}, and the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all time, then at the analytical level, the generalized harmonic constraint $C_\mu=0$ remains satisfied in the interior for all time. 
 The addition of constraint damping terms ensures that this remains true at the level of the discretized equations\footnote{For the form of these constraint damping terms, see Appendix~\ref{sec:GHfor}}.
 Thus, in solving the expanded system of equations \eqref{eqn:efe_gh_modified}, we are assured that only the subset of solutions that are also solutions of the Einstein equations are being considered.
 With this in mind, the near-boundary form of \eqref{eqn:efe_gh_modified}, given by \eqref{eq:efefullexp}, implies that our task in obtaining a solution is to satisfy $A_{(i)\mu\nu}=0$ for all $i$, and for some choice of source function variables $\bar{H}_\mu$. 
@@ -838,9 +852,9 @@ Finally, it is also important to develop an understanding of the reason why the 
 Although identifying every cause for the instability of a simulation is usually very complicated, one practical reason is clear and can be understood with the following example in Cartesian coordinates.
 \textcolor{red}{Suppose we choose a gauge in which, after some time $t>t_0$, $\bar{H}_{(1)t}$ takes the value
 \begin{equation} 
-\bar{H}_{(1)t}(t>t_0)=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z b_t)\,,
+\bar{H}_{(1)t}(t>t_0)=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z b_t),
 \end{equation} 
-where $b_t\in \mathbb{R}$ is a possibly vanishing constant after some time $t_0$ in the evolution. }
+where $b_t\in \mathbb{R}$ is a possibly vanishing constant.}
 %Suppose we choose a gauge in which $\bar{H}_{(1)t}$ after some time $t>t_0$ takes the value
 %\begin{equation} 
 %\bar{H}_{(1)t}=\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z b_t)\,,
@@ -1250,7 +1264,8 @@ as
 where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols \textcolor{red}{associated with}
 %associated to 
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
-\textcolor{red}{It can be proved that the constraints $C_\alpha=0$ are satisfied for all values of $x^0$, as long as $C_\alpha=0$ at $x^0=0$. However, the latter is typically satisfied by numerical initial data only up to truncation error. Thus, to suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.}
+\textcolor{red}{It can be proved that the constraints $C_\alpha=0$ are satisfied for all values of $x^0$, as long as $C_\alpha=0$ and $\partial_{x^0}C_\alpha=0$ at $x^0=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all time.
+However, for numerical initial data, the constraints and their derivative w.r.t. $x^0$ vanish at $x^0=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.}
 %To suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
 We thus obtain the final form of our evolution equations:
 \begin{eqnarray}
