@@ -767,7 +767,9 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
 The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following: 
 \begin{enumerate}
-\item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for $\bar{H}_{(1)\mu}$. For example, in the Cartesian case, this gives
+\item \textcolor{red}{Solve the leading order of the near-boundary generalized harmonic constraints for $\bar{H}_{(1)\mu}$.
+For example, in the Cartesian case, the leading orders of \eqref{eqn:ct}--\eqref{eqn:cz} vanish for}
+%Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct}--\eqref{eqn:cz}, for $\bar{H}_{(1)\mu}$. For example, in the Cartesian case, this gives
 \begin{eqnarray}\label{eqn:target_gauge_txyz_step1}
 \bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \\
 \bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}), \nonumber \\
@@ -1277,8 +1279,8 @@ C_\gamma \right) \nonumber \\
 &=&   \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
 \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right).
 \end{eqnarray}
-
-See, for example, \cite{Pretorius:2004jg,Bantilan:2012vu} for more details. 
+\textcolor{red}{LR: (I joined two paragraphs.)}
+See, for example, \cite{Pretorius:2004jg,Bantilan:2012vu} for more details \textcolor{red}{on this formulation}. 
 In our simulations we use the values $\kappa=-10$ and $P=-1$.
 \footnote{\cite{Bantilan:2012vu} mentions that it is important to use $P$ close to $-1$, while the value of $\kappa$ is not too important to achieve effective constraint damping.}
 
