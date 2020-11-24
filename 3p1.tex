@@ -92,7 +92,7 @@ $\,$
 %\hfill{ICCUB-19-015}
 %\end{flushright}
 
-\vspace{40pt}  
+\vspace{40pt} 
 	 
 \begin{center}
 
@@ -167,7 +167,7 @@ This matter field does not play any fundamental role in our scheme; we introduce
 Ingoing characteristic (e.g., Eddington-Finkelstein) coordinates have been successfully used to simulate dynamical spacetimes containing black branes in asymptotically AdS spacetimes in Poincar\'{e} coordinates in full generality, i.e., no symmetry assumptions.\footnote{The same coordinates were used to successfully evolve single black hole spacetimes in asymptotically flat spaces \cite{Gomez:1998uj} and in global AdS \cite{Chesler:2018txn}.} This method has been applied to a variety of settings and by now the literature on the subject is vast and we will not review it here. We refer the reader to \cite{Chesler:2013lia} for a detailed review. This approach, however, will fail whenever the ingoing radial null geodesics form caustics within the numerical domain, which can happen whenever there is a strong localized perturbation of the background spacetime. For instance, the dynamical formation of localized black holes in the background of the AdS soliton spacetime \cite{Bantilan:2020pay} or even a localized black hole falling through the Poincar\'{e} horizon of AdS are just two possible examples where the ingoing coordinates of \cite{Chesler:2013lia} are likely to become singular due to the formation of caustics.\footnote{In asymptotically flat spaces, it has not been possible thus far to simulate all stages of a black hole binary with characteristic coordinates precisely because of the formation of caustics outside the black holes.} 
 On the other hand, Cauchy evolution in conjunction with generalized harmonic coordinates is well-known to successfully handle strong, highly dynamical and localized gravitational fields, such as those produced by the individual black holes in a binary. 
 Whilst it is possible that many problems that have been solved using ingoing coordinates in the Poincar\'{e} patch of AdS can also be solved with Cauchy evolution, the latter can be applied to situations where ingoing coordinates will almost certainly fail. Furthermore, the use of Cauchy evolution benefits from the infrastructure developed over many years to numerically solve the black hole binary problem in general relativity \cite{Pretorius:2005gq,Campanelli:2005dd,Baker:2005vv}. 
-In particular, the code described in the present work has built-in adaptive mesh refinement and is designed to run in large supercomputing clusters; both of these features will likely turn out to be crucial in solving certain key open problems in AdS.  
+In particular, the code described in the present work has built-in adaptive mesh refinement and is designed to run in large supercomputing clusters; both of these features will likely turn out to be crucial in solving certain key open problems in AdS. 
 
 A crucial requirement for obtaining stable evolution in AdS is a gauge choice that is consistent with the conditions imposed at the AdS boundary (see, for example, \cite{Bantilan:2012vu}).
 In most cases, a gauge choice leading to stable numerical evolution is typically found in spacetimes with a certain degree of symmetry.
@@ -184,7 +184,7 @@ In Section~\ref{sec:pre_sta} we detail our prescription for obtaining stable Cau
 The crucial ingredients for this perscription are reflective Dirichlet boundary conditions imposed on appropriate evolution variables, and a specific choice of generalized harmonic source functions. In Section~\ref{sec:bouset2} we define boundary quantities whose evolution describes the physics at the AdS boundary.
 In Section~\ref{sec:numerical_scheme} we outline the generalized harmonic scheme that we use in our simulations. 
 Section~\ref{sec:results} contains preliminary results of simulations of gravitational collapse with no symmetry assumptions.
-We conclude with a discussion in Section~\ref{sec:Discussion}. We have relegated some technical details to several appendices.  In Appendix \ref{sec:GHfor} we write down the Einstein equations in harmonic coordinates.   In Appendix~\ref{sec:sphevvarboucon}, we follow our prescription for the interesting case of global AdS in spherical coordinates and we obtain the corresponding stable gauge.  In Appendix~\ref{sec:poincare}, we do the same for the Poincar\'e patch.  Appendix \ref{sec:initdata}  contains a  description of our construction of initial data for the class of spacetimes considered in the paper, while in Appendix \ref{sec:GCbulk} we provide the details of our complete gauge choice, including the bulk.  In Appendix \ref{sec:extrapconvbdy} we explain how we carry out the extrapolation to read off the boundary quantities. Some convergence tests are presented in Appendix \ref{sec:convbulk}.
+We conclude with a discussion in Section~\ref{sec:Discussion}. We have relegated some technical details to several appendices. In Appendix \ref{sec:GHfor} we write down the Einstein equations in harmonic coordinates. In Appendix~\ref{sec:sphevvarboucon}, we follow our prescription for the interesting case of global AdS in spherical coordinates and we obtain the corresponding stable gauge. In Appendix~\ref{sec:poincare}, we do the same for the Poincar\'e patch. Appendix \ref{sec:initdata} contains a description of our construction of initial data for the class of spacetimes considered in the paper, while in Appendix \ref{sec:GCbulk} we provide the details of our complete gauge choice, including the bulk. In Appendix \ref{sec:extrapconvbdy} we explain how we carry out the extrapolation to read off the boundary quantities. Some convergence tests are presented in Appendix \ref{sec:convbulk}.
 Throughout, we use geometric units where Newton's constant is set to $G=1$ and the speed of light is set to $c=1$.
 
 
@@ -208,7 +208,7 @@ The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$
 We then recast \eqref{eqn:eoms1} into generalized harmonic form.
 See Appendix~\ref{sec:GHfor} for the explicit form of the resulting equations that we evolve, and \cite{Pretorius:2004jg} for more details about the theoretical aspects of the formulation.
 The numerical solution we obtain is given 
-in terms of the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a  choice of gauge source functions $H_\alpha$. 
+in terms of the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a choice of gauge source functions $H_\alpha$. 
 
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e., $\varphi=0$) solution of \eqref{eqn:eoms1} and \eqref{eqn:eoms2} in four dimensions.
 In terms of global coordinates that cover the whole spacetime, given by $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$, this metric can be expressed as
@@ -226,11 +226,11 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 \hat{g}_{\alpha\beta}dx^{\alpha}dx^{\beta} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + 4(1+\rho^2)^2 \hat{f}(\rho)^{-1} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right).
 \end{equation}
 
-Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$,  $z=\rho\sin\theta\sin\phi$, where $\rho=\sqrt{x^2+y^2+z^2}$.
+Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$, where $\rho=\sqrt{x^2+y^2+z^2}$.
 This allows us to bypass the severe restriction that would be imposed on the time step size near the $\rho=0$ of a grid in spherical coordinates.
 This brings the metric of AdS$_4$ into its final form, suitable for our numerical simulations:
 \begin{eqnarray}\label{eqn:ads4_final}
-\hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\Big[ -\hat{f}(\rho)dt^2  +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2  \nonumber \\
+\hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\Big[ -\hat{f}(\rho)dt^2 +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2 \nonumber \\
 &\hspace{0.75cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
 &\hspace{0.75cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,.
 \end{eqnarray}
@@ -298,7 +298,7 @@ H_\alpha&=&\hat{H}_\alpha+f_\alpha(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)
 H_\rho&=&\hat{H}_\rho+f_\rho(t,\theta,\phi)(1-\rho)^2+\mathcal{O}((1-\rho)^3),
 \end{eqnarray}
 for arbitrary $f_\alpha$.
-In Cartesian coordinates,  denoting the pure AdS values by $\hat{H}_\mu$, \eqref{eq:carbouncondh} and \eqref{eq:defsoufunsph} imply
+In Cartesian coordinates, denoting the pure AdS values by $\hat{H}_\mu$, \eqref{eq:carbouncondh} and \eqref{eq:defsoufunsph} imply
 \begin{equation}\label{eq:carbouncondsoufun}
 H_\mu=\hat{H}_\mu+f_\mu(t,x,y,z)|_{\rho=1}(1-\rho)^2+\mathcal{O}((1-\rho)^3)
 \end{equation}
@@ -326,21 +326,21 @@ We conclude this section by showing an explicit example of how FG coordinates ca
 In what follows, we set the characteristic length scale to $L=1$ for simplicity.
 We start from the general form for the asymptotically AdS metric in spherical coordinates $x^\alpha$, given by $g_{\alpha\beta}=\hat{g}_{\alpha\beta}+h_{\alpha\beta}$.
 The deviations $h_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$ have falloffs that are given by the asymptotically AdS boundary conditions \eqref{eq:sphbounconh}.
-Defining $z=2(1-\rho)/(1+\rho)$, we can  bring the pure AdS metric \eqref{eqn:ads4_compact} into the FG form.
+Defining $z=2(1-\rho)/(1+\rho)$, we can bring the pure AdS metric \eqref{eqn:ads4_compact} into the FG form.
 Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can use \eqref{eq:sphbounconh} to immediately write down the metric falloffs in terms of our new coordinate $z$.
 The metric in these coordinates reads
 \begin{eqnarray}
 \label{eq:metnewcoords}
 g&=&\frac{1}{z^2}\biggl[ 
-\left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 - \left(1+\frac{z^2}{2}+f_{tt}z^3+\mathcal{O}(z^4)\right)dt^2  \\
-&&\hspace{0.75cm} + \left(1-\frac{z^2}{2}+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 +  \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2\nonumber\\ 
+\left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 - \left(1+\frac{z^2}{2}+f_{tt}z^3+\mathcal{O}(z^4)\right)dt^2 \\
+&&\hspace{0.75cm} + \left(1-\frac{z^2}{2}+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 + \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2\nonumber\\ 
 &&\hspace{0.75cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi 
  \nonumber\\
 &&\hspace{0.75cm}-2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta
 -2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr]\,,\nonumber
 \end{eqnarray}
-where the coefficients $f_{\alpha\beta}$ in the expansion above are functions of $(t,\theta,\phi)$.  
-Notice that the metric in \eqref{eq:metnewcoords} is not in the FG form  yet because the $zz$ component is not $1/z^2$ up to the desired order in $z$, and the $tz$, $z\theta$, $z\phi$ components are not 0 up to $\mathcal{O}(z^2)$.
+where the coefficients $f_{\alpha\beta}$ in the expansion above are functions of $(t,\theta,\phi)$. 
+Notice that the metric in \eqref{eq:metnewcoords} is not in the FG form yet because the $zz$ component is not $1/z^2$ up to the desired order in $z$, and the $tz$, $z\theta$, $z\phi$ components are not 0 up to $\mathcal{O}(z^2)$.
 Defining 
 \begin{eqnarray}
 \label{eqn:FGcoords}
@@ -360,16 +360,16 @@ z&=&\bar{z}-\frac{1}{6}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^4+\m
 we finally obtain the metric in FG form:
 \begin{align}
 g=\frac{1}{\bar{z}^2}\biggl[ d\bar{z}^2 &-\left(1+\frac{\bar{z}^2}{2}+\left( \textstyle{f_{tt}-\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3+\mathcal{O}(\bar{z}^4) \right)d\bar{t}^2 \nonumber \\
-&+  \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{f_{\theta\theta}+\frac{1}{3}f_{\rho\rho}} \right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\theta}^2\nonumber\\
-& +   \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\phi}^2\nonumber\\
-&+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi}  + 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
+&+ \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{f_{\theta\theta}+\frac{1}{3}f_{\rho\rho}} \right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\theta}^2\nonumber\\
+& +  \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\phi}^2\nonumber\\
+&+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi} + 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
 \nonumber\\
 &+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
 \biggr]\,,
 \label{eq:asyFG}
 \end{align}
 where now the coefficients $f_{\alpha\beta}$ are functions of $(\bar t, \bar\theta, \bar\phi)$. 
-Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\theta}\bar{\theta}}, g_{\bar{\phi}\bar{\phi}}$. From the form of the metric in \eqref{eq:asyFG}, we could  use the holographic renormalization prescription of \cite{deHaro:2000vlm} to read off the boundary CFT stress tensor. See Appendix \ref{sec:HoloRen} for more details.
+Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\theta}\bar{\theta}}, g_{\bar{\phi}\bar{\phi}}$. From the form of the metric in \eqref{eq:asyFG}, we could use the holographic renormalization prescription of \cite{deHaro:2000vlm} to read off the boundary CFT stress tensor. See Appendix \ref{sec:HoloRen} for more details.
 
 
 
@@ -404,7 +404,7 @@ Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest
 \bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }\,.
 \end{equation}
 
-For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary:
+For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as Dirichlet boundary conditions at the AdS boundary:
 \begin{equation}
 \label{eq:dirbc}
  \bar{g}_{\mu\nu}\big|_{\rho=1}=0\,,\quad \bar{\varphi}\big|_{\rho=1}=0\,,\quad \bar{H}_\mu\big|_{\rho=1}=0\,.
@@ -423,7 +423,7 @@ The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\
 By construction, these evolved variables are linear in $q$ at leading order:
 \begin{eqnarray}\label{eqn:qexp}
 \bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4), \label{eqn:qexpg} \\
-\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4)  ,\label{eqn:qexpH}\\
+\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) ,\label{eqn:qexpH}\\
 \bar{\varphi} &=& \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4), \label{eqn:qexpphi}
 \end{eqnarray}
 where all the coefficients are functions of the coordinates $(t,x,y,z)$ on the boundary $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$).
@@ -436,7 +436,7 @@ For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\
 \tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu}\,,
 \end{equation}
 for some functions $c^t_{\mu\nu}$, $c^x_{\mu\nu}$, $c^y_{\mu\nu}$, $c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices.}
-These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
+These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
 \footnote{$\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$ is true in any number of dimensions but only for Cartesian coordinates. For an arbitrary set of coordinates, the leading power in $\hat{g}^{\mu\nu}$, and hence the order at which the operator \eqref{eq:tildeboxbarg} appears, depends on the specific component under consideration.
 See Appendix~\ref{sec:sphevvarboucon} and \cite{Bantilan:2012vu} for examples in spherical coordinates in 4 and 5 dimensions, respectively.}
 In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form:
@@ -455,49 +455,49 @@ Similar arguments show that terms involving the massless scalar field with the f
 We now write these coefficients explicitly, i.e., we write \eqref{eq:waveEFE} including only the $q^{-2}$ terms.
 The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$:
 \begin{eqnarray}\label{eqn:efett}
-\tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta  \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
+\tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
 &&+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
-   \sin \theta  \sin \phi (2 \cos \phi  \bar{g}_{(1) yz}+\sin\phi
-   \bar{g}_{(1) zz}) \nonumber \\
-   &&-2 (\cos \phi \bar{H}_{(1) y}+\sin\phi
-   \bar{H}_{(1) z}))+3 \sin 2 \theta  \cos \phi \bar{g}_{(1) xy}+3
-   \sin 2 \theta  \sin \phi \bar{g}_{(1) xz})q^{-2} \nonumber \\
+  \sin \theta \sin \phi (2 \cos \phi \bar{g}_{(1) yz}+\sin\phi
+  \bar{g}_{(1) zz}) \nonumber \\
+  &&-2 (\cos \phi \bar{H}_{(1) y}+\sin\phi
+  \bar{H}_{(1) z}))+3 \sin 2 \theta \cos \phi \bar{g}_{(1) xy}+3
+  \sin 2 \theta \sin \phi \bar{g}_{(1) xz})q^{-2} \nonumber \\
 &&+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efetx}
 \tilde{\Box}\bar{g}_{(1)tx}&=&-2 \cos \theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
-   (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
-   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+  (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
+  \bar{H}_{(1) t})  q^{-2} \nonumber \\
 &&+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efety}
 \tilde{\Box}\bar{g}_{(1)ty}&=&-2 \cos \phi \sin\theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
-   (\cos \phi  \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
-   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+  (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
+  \bar{H}_{(1) t})  q^{-2} \nonumber \\
 &&+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efetz}
 \tilde{\Box}\bar{g}_{(1)tz}&=&-2 \sin \theta \sin\phi (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
-   (\cos \phi \bar{g}_{(1) ty}+\sin \phi  \bar{g}_{(1)tz})-2
-   \bar{H}_{(1) t})    q^{-2} \nonumber \\
+  (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
+  \bar{H}_{(1) t})  q^{-2} \nonumber \\
 &&+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efexx}
 \tilde{\Box}\bar{g}_{(1)xx}&=&\frac{1}{4} (3 (-4 \cos ^2\theta (\bar{g}_{(1) tt}+2 \bar{g}_{(1)
-   xx})+(\cos 2 \theta +3) (\bar{g}_{(1) yy}+\bar{g}_{(1)
+  xx})+(\cos 2 \theta +3) (\bar{g}_{(1) yy}+\bar{g}_{(1)
 zz}) \nonumber \\
-&&+8 \cos \theta  \bar{H}_{(1) x})-8 \sin \theta  \cos \phi 
-   (3 \cos \theta  \bar{g}_{(1)xy}+\bar{H}_{(1) y}) \nonumber \\
-   &&-8 \sin\theta \sin\phi (3 \cos\theta \bar{g}_{(1) xz}+\bar{H}_{(1) z}) \nonumber \\
-   &&+6 \sin^2\theta  \cos 2 \phi  (\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+12
-   \sin^2\theta  \sin 2 \phi  \bar{g}_{(1) yz})    q^{-2} +\mathcal{O}(q^{-1}),\\
+&&+8 \cos \theta \bar{H}_{(1) x})-8 \sin \theta \cos \phi 
+  (3 \cos \theta \bar{g}_{(1)xy}+\bar{H}_{(1) y}) \nonumber \\
+  &&-8 \sin\theta \sin\phi (3 \cos\theta \bar{g}_{(1) xz}+\bar{H}_{(1) z}) \nonumber \\
+  &&+6 \sin^2\theta \cos 2 \phi (\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+12
+  \sin^2\theta \sin 2 \phi \bar{g}_{(1) yz})  q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efexy}
-\tilde{\Box}\bar{g}_{(1)xy}&=&-\frac{1}{2} (2 \sin \theta  \cos \phi  (3 \cos \theta (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}+\bar{g}_{(1)yy}-\bar{g}_{(1)zz})-4 \bar{H}_{(1) x}) \nonumber \\
-&&+3 \bar{g}_{(1)xy} (2 \cos 2\theta  \sin ^2\phi +\cos 2 \phi +3)+6 \sin ^2\theta  \sin 2 \phi 
-   \bar{g}_{(1)xz} \nonumber \\
-   &&+6 \sin 2 \theta  \sin \phi  \bar{g}_{(1)yz}-8 \cos
-   \theta  \bar{H}_{(1) y})    q^{-2} +\mathcal{O}(q^{-1}),\\
+\tilde{\Box}\bar{g}_{(1)xy}&=&-\frac{1}{2} (2 \sin \theta \cos \phi (3 \cos \theta (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}+\bar{g}_{(1)yy}-\bar{g}_{(1)zz})-4 \bar{H}_{(1) x}) \nonumber \\
+&&+3 \bar{g}_{(1)xy} (2 \cos 2\theta \sin ^2\phi +\cos 2 \phi +3)+6 \sin ^2\theta \sin 2 \phi 
+  \bar{g}_{(1)xz} \nonumber \\
+  &&+6 \sin 2 \theta \sin \phi \bar{g}_{(1)yz}-8 \cos
+  \theta  \bar{H}_{(1) y})    q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efexz}
 \tilde{\Box}\bar{g}_{(1)xz}&=&- (\sin \theta  \sin \phi  (3 \cos \theta  (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}-\bar{g}_{(1)yy}+\bar{g}_{(1)zz})-4
@@ -528,14 +528,14 @@ zz}) \nonumber \\
    &&-2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
    &&+\frac{3}{4}  \bar{g}_{(1)xx} (-2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta
    +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),
+&&+\mathcal{O}(q^{-1}), 
 \end{eqnarray}
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$. 
 All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion:
 \begin{eqnarray}
 \label{eqn:ct}
-C_t&=&q^2 (-3 \cos \theta  \bar{g}_{(1)tx}-3 \sin \theta  \cos \phi  \bar{g}_{(1)ty}-3 \sin \theta  \sin \phi \bar{g}_{(1)tz}+2
-   \bar{H}_{(1) t}) \nonumber \\
+C_t&=&q^2 (-3 \cos \theta \bar{g}_{(1)tx}-3 \sin \theta \cos \phi \bar{g}_{(1)ty}-3 \sin \theta \sin \phi \bar{g}_{(1)tz}+2
+  \bar{H}_{(1) t}) \nonumber \\
    &&+\mathcal{O}(q^3),\\
 %
 \label{eqn:cx}
@@ -562,8 +562,8 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    \bar{H}_{(1)z}) \nonumber \\
    &&+\mathcal{O}(q^3).
 \end{eqnarray}
-
-In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
+ 
+In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
 The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following.
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints for $\bar{H}_{(1)\mu}$.
@@ -576,7 +576,7 @@ For example, in the Cartesian case, the leading orders of \eqref{eqn:ct}--\eqref
 \end{eqnarray}
 
 \item Let $N_{(1)}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$.
-This gives a number of independent equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see  Section~\ref{sec:bouset2}).\footnote{We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the AdS boundary and make the proof less unwieldy.}
+This gives a number of independent equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see Section~\ref{sec:bouset2}).\footnote{We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the AdS boundary and make the proof less unwieldy.}
 Solve these equations for an equal number of metric coefficients $\bar g_{(1)\mu\nu}$ and their derivatives.
 In the Cartesian case, $N_{(1)}=-2$ and there is only one independent equation given by
 \begin{equation}
@@ -595,12 +595,12 @@ In Cartesian coordinates, using \eqref{eq:cart_tracelessness} to eliminate $\bar
 \end{eqnarray}
 \end{enumerate}
 This is the asymptotic gauge condition that we have empirically verified leads to stable 3+1 evolution of asymptotically AdS$_4$ spacetimes in Cartesian coordinates.
-Other  choices of asymptotic source functions may enjoy similar stability properties.
+Other choices of asymptotic source functions may enjoy similar stability properties.
 The choice of $\bar{H}_\mu$ in the bulk is still completely arbitrary and the functional form that we implement for our simulations is detailed explicitly in Appendix~\ref{sec:GCbulk}.
 
 The rationale for this procedure is as follows.
 Recall that if $C_\mu=0$ and $\partial_t C_\mu=0$ are satisfied at $t=0$,\footnote{This condition is satisfied by our initial data, see Appendix~\ref{sec:initdata}.} and the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all time, then at the analytical level, the generalized harmonic constraint $C_\mu=0$ remains satisfied in the interior for all time. 
-The addition of constraint damping terms ensures that this remains true at the level of the discretized equations.  
+The addition of constraint damping terms ensures that this remains true at the level of the discretized equations. 
 Thus, in solving the expanded system of equations \eqref{eqn:efe_gh_modified}, we are assured that only the subset of solutions that are also solutions of the Einstein equations are being considered.
 With this in mind, the near-boundary form of \eqref{eqn:efe_gh_modified}, given by \eqref{eq:efefullexp}, implies that our task in obtaining a solution is to satisfy $A_{(i)\mu\nu}=0$ for all $i$, and for some choice of source function variables $\bar{H}_\mu$. 
 This task is significantly eased by picking a gauge, through a suitable choice of $\bar{H}_\mu$, that eliminates $A_{(1)\mu\nu}$, i.e., the lowest order of the expansion of the Einstein equations near the AdS boundary.
@@ -614,7 +614,7 @@ Suppose we choose a gauge in which, after some time $t>t_0$, $\bar{H}_{(1)t}$ ta
 \end{equation} 
 where $b_t\in \mathbb{R}$ is a possibly vanishing constant.
 According to \eqref{eqn:target_gauge_txyz_step1}, the requirement that $C_t=0$ now implies $\bar{g}_{(1)tz}=b_t$. 
-Even though this condition does not violate any of the requirements above, it is an additional Dirichlet boundary condition that must be imposed for $t>t_0$ if we hope to find a solution for this example.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}  Although imposing boundary conditions that change with time is of interest in certain studies motivated by the AdS/CFT correspondence, for simplicity we do not consider such cases in this article. It should be straightforward to generalize our prescription for  time-dependent boundary conditions. 
+Even though this condition does not violate any of the requirements above, it is an additional Dirichlet boundary condition that must be imposed for $t>t_0$ if we hope to find a solution for this example.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.} Although imposing boundary conditions that change with time is of interest in certain studies motivated by the AdS/CFT correspondence, for simplicity we do not consider such cases in this article. It should be straightforward to generalize our prescription for time-dependent boundary conditions. 
 
 
 
@@ -629,12 +629,12 @@ To compute the holographic stress-energy tensor of the boundary CFT, $\langle T_
 We have
 \begin{equation}
 \label{eq:qslocset}
-^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;   \Theta_{\alpha\beta}-\Theta \omega_{\alpha\beta}-\frac{2}{L}\omega_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
+^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;  \Theta_{\alpha\beta}-\Theta \omega_{\alpha\beta}-\frac{2}{L}\omega_{\alpha\beta}+L \;G_{\alpha\beta} \biggr),
 \end{equation}
 where $\Theta_{\alpha\beta}=-\omega^\gamma_{\alpha}\omega^\delta_\beta\nabla_{\gamma}S_{\delta}$ is the extrinsic curvature of $\partial M_q$, $\omega_{\alpha\beta}=g_{\alpha\beta}-S_\alpha S_\beta$ is the induced metric on $\partial M_q$ (in four-dimensional form), $S^\alpha$ is the spacelike, outward pointing timelike unit vector normal to $\partial M_q$ and $G_{\alpha\beta}$ is the Einstein tensor of $\partial M_q$.\footnote{Notice the different sign in the last term of \eqref{eq:qslocset} with respect to to \cite{Balasubramanian:1999re}.}$^{,}$\footnote{All these tensors, although defined on the tangent space of the spacetime manifold $M$, are invariant under projection $\omega^\alpha_{\beta}=\delta^\alpha_{\beta}-S^\alpha S_\beta$ onto $\partial M_q$. Therefore, they can be identified, under a natural (i.e., basis-independent) isomorphism, with tensors defined on the tangent space of $\partial M_q$. The components of tensors on $\partial M_q$ in coordinates $x^a$ is simply given by taking the components of tensors on $M$ in coordinates $x^\alpha$ and disregarding every combination of indices that includes an index $\rho$. See \cite{Hawking:1973uf} for more details on this correspondence.} We will be interested in the value of $^{(q)}T_{\alpha\beta}$ for $q$ close to 0, i.e., near the AdS boundary.
 Restricting the indices corresponding to the coordinates $x^a$, we can compute the boundary stress-energy tensor as
 \begin{equation}
-\langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ab}\,.
+\langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q} \;^{(q)}T_{ab}\,.
 \end{equation}
 
 From $^{(q)}T_{\alpha\beta}$ we also compute the total AdS mass as follows \cite{Balasubramanian:1999re}. At each time $t$ of evolution, we take a spacelike two-dimensional surface $\mathcal{S}$ in $\partial M_q$, with induced metric $\sigma_{ab}=\omega_{ab}+u_a u_b$, where $u_a=-N(dt)_a$ is the future pointing unit 1-form normal to $\mathcal{S}$ in $\partial M_q$, lapse $N$ and shift $N^a$. The total AdS mass is then given by
@@ -695,7 +695,7 @@ We obtain asymptotically AdS spacetimes in Cartesian coordinates $x^\mu=(t,x,y,z
 The solution is determined in terms of the metric, scalar field and source function variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$ defined in Section~\ref{subsec:cartevvarboucon}. We substitute the definitions of these variables, \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}, in the equations of motion and analytically remove all the purely AdS terms.
 The resulting PDEs are discretized with second order finite difference derivative stencils, and then integrated in time using an iterative Newton-Gauss-Seidel relaxation procedure with a three time level hierarchy.
 The source function variables $\bar{H}_\mu$ near the AdS boundary are set as we have prescribed in \eqref{eqn:target_gauge_txyz}, whilst deep in the bulk they are set to zero. 
-In between, we use smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk}  for the details of our full implementation. 
+In between, we use smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk} for the details of our full implementation. 
 
 We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters.
 Although these libraries have adaptive mesh refinement capabilities, numerical evolution is performed on a grid with fixed refinement.
@@ -744,7 +744,7 @@ When an AH is found, we excise Cartesian grid points in an ellipsoid included in
 More specifically, the excision ellipsoid has Cartesian semi-axes, $a_x^{ex},a_y^{ex},a_z^{ex}$, determined by $a_x^{ex}=x_{AH}(1-\delta_{ex})$, where $x_{AH}$ is the $x$-coordinate value of the intersection between the AH and the $x$-axis, and similarly for $a_y^{ex}$ and $a_z^{ex}$. We set the excision buffer to $\delta_{ex}=0.4$. 
 In our simulations, we assume that the characteristics of the equations of motion in the AH region flow towards the origin, although we do not compute the characteristics explicitly.\footnote{This is a reasonable assumption given the causal properties of a black hole. In fact, if this assumption were not true, we would see clear signs of constraint violations developing near the excision surface.} As a consequence, the solution at points inside the AH only evolves to affect points, at later times, that are further inside the AH. In other words, the information needed to solve the equations of motion on and outside the excision surface at a certain time is entirely contained in the numerical domain at previous times. This allows us to solve the equations of motion at the excision surface by employing one-sided stencils that do not reference points inside the excised region, with no need to impose conditions at the excision boundary. By construction, the excised surface is the same for all three time levels involved in the Newton-Gauss-Seidel relaxation for evolution variables at time $t$. Therefore, we only need to use the one-sided version of the spatial stencils. 
 
-It commonly occurs that the excised surface moves during evolution and previously excised points become unexcised. In this case, we initialize the value of newly unexcised points closest to the previous surface using  fourth order extrapolated values from adjacent exterior points along each Cartesian direction. We do so for any variable and at all three time levels of the hierarchy.
+It commonly occurs that the excised surface moves during evolution and previously excised points become unexcised. In this case, we initialize the value of newly unexcised points closest to the previous surface using fourth order extrapolated values from adjacent exterior points along each Cartesian direction. We do so for any variable and at all three time levels of the hierarchy.
 Finally, Kreiss-Oliger dissipation~\cite{kreiss1973methods} is essential to damp unphysical high-frequency noise that arise at excision grid boundaries; we use a typical dissipation parameter of $\epsilon_{KO}=0.35$.
 
 
@@ -758,7 +758,7 @@ The geometry of the initial slice is sourced by a massless real scalar field wit
 \bar{\varphi}|_{t=0}&=&A e^{-(\tilde{r}(x,y,z)/\Delta)^2},\\
 \tilde{r}(x,y,z)&\equiv&\sqrt{ x^2(1-e_x^2)+ y^2(1-e_y^2)+ z^2(1-e_z^2)}. \nonumber
 \end{eqnarray}
-The amplitude of the profile is $A=0.55$ and  the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$, so that the most prominent distortion is on the $(x,y)$-plane. The width of the Gaussian is $\Delta=0.2$. 
+The amplitude of the profile is $A=0.55$ and the eccentricities are $e_x=0.3, e_y=0.2, e_z=0.25$, so that the most prominent distortion is on the $(x,y)$-plane. The width of the Gaussian is $\Delta=0.2$. 
 We choose the initial slice to be a moment of time symmetry, and the details of the time-symmetric initial data sourced by this matter field are collected in Appendix~\ref{sec:initdata}. 
 As we see in that appendix, the momentum constraint is trivially satisfied for this type of data, so only the Hamiltonian constraint has to be solved. We evolve this initial data up to $t=31$ in units of the characteristic length scale $L=1$ (approximately 20 light crossing times), well after the end of gravitational collapse and the resulting black hole formation. 
 The initial data has zero total angular momentum, 
@@ -768,7 +768,7 @@ We will leave this interesting problem for future work.
 
 \subsection{Collapse and ringdown}\label{sec:rescolring}
 
-We describe here the evolution in the bulk: this  consists of an initial  short phase, in which the scalar field collapses and forms a black hole, and a long ringdown stage, in which the spacetime settles down to Schwarzschild-AdS. 
+We describe here the evolution in the bulk: this consists of an initial short phase, in which the scalar field collapses and forms a black hole, and a long ringdown stage, in which the spacetime settles down to Schwarzschild-AdS. 
 
 \begin{figure}[!h]
         \centering
@@ -780,7 +780,7 @@ The internal boundary of the coloured region is the excision surface: we excise 
 
 Figure \ref{fig:snapshotsscalarfield} shows the profile of the scalar field variable, $\bar{\varphi}$, at four representative times on the equatorial plane $z=0$ for the highest resolution grid, with $N_x=N_y=N_z=325$ grid points along each Cartesian direction. Notice that in all of these snapshots $\bar{\varphi}=0$ at the AdS boundary, as required by the Dirichlet boundary conditions. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts propagating towards the AdS boundary, but a significant portion of it is attracted back towards the origin and collapses to form an AH. This occurs at $t=0.331$ in the highest resolution simulation. The rest of the scalar field remains outside the black hole, where it keeps bouncing back and forth the AdS boundary and is gradually absorbed.
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction and squeezed along the $y$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. 
-At later times, $t\simeq 9$, the value of the scalar field becomes consistent with 0 up to solution error\footnote{We estimate the solution error  by comparing $\bar{\varphi}$ at different resolutions.} and the spacetime settles down to a Schwarzschild-AdS black hole spacetime with mass $M=0.403$.
+At later times, $t\simeq 9$, the value of the scalar field becomes consistent with 0 up to solution error\footnote{We estimate the solution error by comparing $\bar{\varphi}$ at different resolutions.} and the spacetime settles down to a Schwarzschild-AdS black hole spacetime with mass $M=0.403$.
 
 \begin{figure}[!h]
         \centering
@@ -837,7 +837,7 @@ Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes dur
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/bdyplots/L3/bdyenergydensity/sphereplots_bdyenergydensity_L3_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ at the boundary, obtained by third order extrapolation and smoothened via a low-pass filter;
-see Appendix~\ref{sec:extrapconvbdy}. The scale of each snapshot has fixed interval length centred at the mean value of  $\epsilon$ at the corresponding evolution time to make the approach to a uniform configuration more visible. Highest resolution: $N_x=N_y=N_z=325$.
+see Appendix~\ref{sec:extrapconvbdy}. The scale of each snapshot has fixed interval length centred at the mean value of $\epsilon$ at the corresponding evolution time to make the approach to a uniform configuration more visible. Highest resolution: $N_x=N_y=N_z=325$.
         }\label{fig:snapshotsenergydensity}}
 \end{figure}
 
@@ -887,17 +887,17 @@ In other words, this framework makes numerical Cauchy evolution in asymptoticall
 We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this Cauchy evolution scheme. The most direct application would be the study of gravitational collapse of a real massless scalar field in AdS with no symmetry assumptions and with angular momentum.
 The numerical study of gravitational collapse in AdS was done in any number $d\geq 4$ of spacetime dimensions by \cite{Bizon:2011gg,Jalmuzna:2011qw} assuming spherical symmetry. 
 In these papers it was shown that a class of small perturbations of amplitude $\epsilon$ undergo gravitational collapse and form a black hole on a time-scale $\mathcal{O}(\epsilon^{-2})$, due to a turbulent cascade of energies from large to small distances until a horizon forms.
-Subsequently, \cite{Bantilan:2017kok} considered the same massless scalar field model in AdS$_5$ in a 2+1 setting, and it was observed that for a certain class of initial data, the subsequent evolution resulted in collapse that happens faster away from spherical symmetry.
+Subsequently, \cite{Bantilan:2017kok} considered the same massless scalar field model in AdS$_5$ in a 2+1 setting, and it was observed that, for a certain class of initial data, the subsequent evolution resulted in collapse that happens faster away from spherical symmetry.
 The authors in \cite{Choptuik:2017cyd} then considered the inclusion of angular momentum in a 1+1 setting for a particular metric ansatz, and observed delayed collapse.
-The scheme described in this article makes fully general 3+1 evolution possible, with which full picture of gravitational collapse in AdS can be uncovered.
+The scheme described in this article makes fully general 3+1 evolution possible, with which the full picture of gravitational collapse in AdS can be uncovered.
 
 Another immediate application of this scheme is the study of binary black hole mergers and black hole instabilities in global AdS.
-The superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown. The ability of our code to run large scale simulations with adaptive mesh refinement capabilities suggests that it should be the adequate tool to address  the question of the end-state of superradiant instability of the Kerr-AdS black hole. 
+The superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown. The ability of our code to run large scale simulations with adaptive mesh refinement capabilities suggests that it should be the adequate tool to address the question of the end-state of superradiant instability of the Kerr-AdS black hole. 
 
 
 
 \section*{Acknowledgements}
-HB and PF are supported by the European Research Council Grant No. ERC-2014-StG 639022-NewNGR. PF is also supported by a Royal Society University Research Fellowship (Grant No. UF140319 and URF\textbackslash R\textbackslash 201026) and by a Royal Society Enhancement Award (Grant No. RGF\textbackslash EA\textbackslash 180260).  LR is supported by a QMUL PhD scholarship. We acknowledge the use of Athena at HPC Midlands+, which was funded by the EPSRC on 
+HB and PF are supported by the European Research Council Grant No. ERC-2014-StG 639022-NewNGR. PF is also supported by a Royal Society University Research Fellowship (Grant No. UF140319 and URF\textbackslash R\textbackslash 201026) and by a Royal Society Enhancement Award (Grant No. RGF\textbackslash EA\textbackslash 180260). LR is supported by a QMUL PhD scholarship. We acknowledge the use of Athena at HPC Midlands+, which was funded by the EPSRC on 
 grant EP/P020232/1, in this research, as part of the HPC Midlands+ consortium. This research also utilised Queen Mary's Apocrita HPC facility, supported by QMUL Research-IT. http://doi.org/10.5281/zenodo.438045.
 
 \appendix
@@ -933,7 +933,7 @@ We thus obtain the final form of our evolution equations:
 {g^{\gamma\delta}}_{,(\alpha} g_{\beta) \gamma, \delta} - H_{(\alpha, \beta)} + H_\gamma {\Gamma^\gamma}_{\alpha\beta} \nonumber \\
 &-& {\Gamma^\gamma}_{\delta \alpha} {\Gamma^\delta}_{\gamma \beta} - \kappa \left( 2 n_{(\alpha} C_{\beta)} - (1+P) g_{\alpha\beta} n^\gamma 
 C_\gamma \right) \nonumber \\
-&=&   \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
+&=&  \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
 \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
 \end{eqnarray}
 \textcolor{red}{where $n_\alpha=-\partial_\alpha t$ is the timelike, future-directed unit 1-form normal to slices of constant $t$.
@@ -977,7 +977,7 @@ We remind the reader that new evolution variables are defined in order to apply 
 The boundary conditions on $h_{\alpha\beta}$ \eqref{eq:sphbounconh} tell us that
 \begin{eqnarray}\label{eq:gbarsph}
 \bar{g}_{\rho\alpha}&=&\frac{h_{\rho\alpha} }{1-\rho^2}\qquad \textrm{ if $\alpha\neq\rho$}, \\ \nonumber
-\bar{g}_{\alpha\beta}&=&h_{\alpha\beta}  \qquad\;\;\;\;\, \textrm{ otherwise}.
+\bar{g}_{\alpha\beta}&=&h_{\alpha\beta} \qquad\;\;\;\;\, \textrm{ otherwise}.
 \end{eqnarray}
 
 Despite the notation, we emphasize that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor (as it should be clear from their definition), therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eqref{eq:gbarsph} and \eqref{eq:gbarcart} remembering that $h$ is indeed a tensor: 
@@ -995,7 +995,7 @@ which the same as the one in Cartesian coordinates, as expected for a scalar fie
 Finally, the boundary conditions \eqref{eq:sphbouncondsoufunc} on $H_\alpha$ suggest the use of the evolution variables
 \begin{eqnarray}
  \bar{H}_\alpha&=&\frac{H_\alpha-\hat{H}_\alpha}{(1-\rho^2)^2 } \qquad \textrm{ if $\alpha\neq\rho$,} \\ \nonumber
-  \bar{H}_\rho&=&\frac{H_\rho-\hat{H}_\rho}{1-\rho^2 }
+ \bar{H}_\rho&=&\frac{H_\rho-\hat{H}_\rho}{1-\rho^2 }
  \end{eqnarray}
 in spherical coordinates.
 
@@ -1016,8 +1016,8 @@ We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}
 %
 \label{eqn:efetrho_3p1}
 \tilde{\Box}\bar{g}_{(1)t\rho}&=&\frac{1}{2}q^{-2} (-\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}-\bar{g}_{(1)
-   \text{$tt$},t}+\csc ^2\theta \left(2 \bar{g}_{(1) \text{$t$$\phi $},\phi }-\bar{g}_{(1)
-   \phi \phi ,t}\right) \nonumber\\
+  \text{$tt$},t}+\csc ^2\theta \left(2 \bar{g}_{(1) \text{$t$$\phi $},\phi }-\bar{g}_{(1)
+  \phi \phi ,t}\right) \nonumber\\
    &&+2 \bar{g}_{(1) \text{$t$$\theta $},\theta }-2 \bar{H}_{(1) \rho ,t}-3
    \cot \theta  \bar{g}_{(1) \text{$t$$\theta $}}-40 \bar{g}_{(1) \text{$t$$\rho $}}+20
    \bar{H}_{(1) t}) +\mathcal{O}(q^{-1}),\\
@@ -1326,7 +1326,7 @@ This can be solved through the conformal approach, initiated in \cite{Lichnerowi
 \label{eq:confdec}
 \gamma_{ij}=\zeta^4 \hat{\gamma}_{ij},
 \end{equation}
-where $\zeta$ is a smooth positive function on $\Sigma$, satisfying the AdS boundary condition $\zeta|_{\rho=1}=1$. Let $\hat{D}$ be the Levi-Civita connection of $\hat{\gamma}_{ij}$ and $^{(3)}\hat{R}$ the corresponding Ricci scalar. Using  \eqref{eq:confdec} and its inverse, $\gamma^{ij}=\zeta^{-4} \hat{\gamma}^{ij}$, we obtain
+where $\zeta$ is a smooth positive function on $\Sigma$, satisfying the AdS boundary condition $\zeta|_{\rho=1}=1$. Let $\hat{D}$ be the Levi-Civita connection of $\hat{\gamma}_{ij}$ and $^{(3)}\hat{R}$ the corresponding Ricci scalar. Using \eqref{eq:confdec} and its inverse, $\gamma^{ij}=\zeta^{-4} \hat{\gamma}^{ij}$, we obtain
 \begin{equation}
 \label{eq:confRicci}
 ^{(3)}R=\frac{1}{\zeta^4}\left(^{(3)}\hat{R}-\frac{8}{\zeta}\hat{\gamma}^{ij}\hat{D}_i \hat{D}_j \zeta\right).
@@ -1362,7 +1362,7 @@ The initial metric variables $\bar{g}_{ij}|_{t=0}$ are then easily reconstructed
 
 In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{ij}|_{t=0}=0$; (ii) we make the initial gauge choice $\bar{g}_{ti}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{ij}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{tt}|_{t=0}$ and $\partial_t\bar{g}_{t \mu}|_{t=0}$.
 
-In doing so, the only restriction to consider is the one already obtained in step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of  the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
+In doing so, the only restriction to consider is the one already obtained in step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
   \begin{equation}
   \label{eq:transfunc}
     f(\rho) =
@@ -1476,14 +1476,14 @@ Then, from \eqref{eq:firstordextrap}, we obtain the Richardson expansion for $f^
  \label{eq:bdyRichexp}
  f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)+e_\Delta(p_1,p_2)\Delta^2+\mathcal{O}(\Delta^3),
  \end{equation}
-where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation and the remaining error terms come from the solution error in $f_\Delta$. The typical  convergence test involves the computation of the convergence factor
+where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation and the remaining error terms come from the solution error in $f_\Delta$. The typical convergence test involves the computation of the convergence factor
 \begin{equation}\label{eq:qconv}
 Q(p_{bdy})=\frac{1}{\ln(3/2)}\ln\left( \frac{f_{9h/4}(p_{bdy})-f_{3h/2}(p_{bdy})}{f_{3h/2}(p_{bdy})-f_{h}(p_{bdy})} \right)
 \end{equation}
 at each $p_{bdy}$. We clearly see that $Q(p_{bdy})$ can be expected to asymptote to 2 as $\Delta\rightarrow0$, thus confirming second order convergence in the continuum limit, only if the points $p_1,p_2$ are the same for all 3 resolutions involved. Therefore, our extrapolation scheme must be modified to select pair of bulk points, $p_1$ and $p_2$, for extrapolation that are present in all three grids involved in the convergence test. 
 In practice, we saw that boundary convergence follows the trend of bulk convergence only if, in addition to this modification, we restrict to $p_1$ points in the range mentioned in step 1 above. The reason for this should be investigated further. 
 
-Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove convergence to the true value $f(p_{bdy})$, but rather to its approximation $f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)$. For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with vanishing true value (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$. A more detailed analysis must be made to examine the explicit form $e_{extr}(p_{bdy},p_1,p_2)$ and be able to find the rate of convergence to $f(p_{bdy})$. In our study, we simply make the natural assumption that $e_{extr}(p_{bdy},p_1,p_2)$ decreases as we increase resolution, so  $f^{bdy}_{\Delta}(p_{bdy})$ is a sufficiently accurate approximation of $f(p_{bdy})$ for sufficiently high resolution (i.e., sufficiently small $\Delta$).
+Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove convergence to the true value $f(p_{bdy})$, but rather to its approximation $f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)$. For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with vanishing true value (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$. A more detailed analysis must be made to examine the explicit form $e_{extr}(p_{bdy},p_1,p_2)$ and be able to find the rate of convergence to $f(p_{bdy})$. In our study, we simply make the natural assumption that $e_{extr}(p_{bdy},p_1,p_2)$ decreases as we increase resolution, so $f^{bdy}_{\Delta}(p_{bdy})$ is a sufficiently accurate approximation of $f(p_{bdy})$ for sufficiently high resolution (i.e., sufficiently small $\Delta$).
 
 
 \section{Convergence of the Independent Residual}\label{sec:convbulk}
