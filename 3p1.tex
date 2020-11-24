@@ -639,7 +639,7 @@ or, rearranging the terms in order to obtain wave-like equations,
 \label{eq:waveEFE}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2).
 \end{equation}
-\textcolor{red}{Similar arguments show that terms involving matter fields appear at the next order w.r.t. the one of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This holds in any dimension and in any set of coordinates, and it implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, since only the lowest order coefficients of the expansion of the Einstein equations are relevant.}
+\textcolor{red}{Similar arguments show that terms involving matter fields appear at the next order w.r.t. the order of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This holds in any dimension and in any set of coordinates, and it implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, since only the lowest order coefficients in the expansion of the Einstein equations are relevant.}
 
 \textcolor{red}{We now write these coefficients explicitly, i.e., we write \eqref{eq:waveEFE} including only the $q^{-2}$ terms.}
 The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$:
@@ -851,7 +851,7 @@ where $b_t\in \mathbb{R}$ is a possibly vanishing constant.
 %\end{equation} 
 %where $b_t\in \mathbb{R}$ is a possibly vanishing constant after some time $t_0$ in the evolution. 
 According to \eqref{eqn:target_gauge_txyz_step1}, the requirement that $C_t=0$ now implies $\bar{g}_{(1)tz}=b_t$. 
-Although this condition does not violate any of the requirements above, it is an additional Dirichlet boundary condition that must be imposed for $t>t_0$ if we hope to find a solution for this example.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}  Although imposing boundary conditions that change with time is of interest in certain studies motivated by the AdS/CFT correspondence, for simplicity we do not consider such cases in this article. It should be straightforward to generalize our prescription for  time-dependent boundary conditions. 
+Even though this condition does not violate any of the requirements above, it is an additional Dirichlet boundary condition that must be imposed for $t>t_0$ if we hope to find a solution for this example.\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}  Although imposing boundary conditions that change with time is of interest in certain studies motivated by the AdS/CFT correspondence, for simplicity we do not consider such cases in this article. It should be straightforward to generalize our prescription for  time-dependent boundary conditions. 
 
 %Although this condition does not violate any of the requirements above\footnote{The Dirichlet boundary condition $\bar{g}_{tz}|_{\rho=1}=0$ clearly does not restrict $\bar{g}_{(1)tz}$.}, our numerical scheme would fail to find such a solution and it would develop infinities near the AdS boundary. To avoid this, one would have to impose the additional Dirichlet boundary condition $\bar{g}_{(1)tz}=b_t$ for $t>t_0$.
 
@@ -868,7 +868,7 @@ Although this condition does not violate any of the requirements above, it is an
 %The indices $a,b,c,\dots$ of tensors defined on the tangent space of the AdS boundary are raised and lowered by the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
 In the simulations we output the holographic stress-energy tensor of the dual CFT.
-In this Section, we obtain the analytic expression for this object in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary topology $\mathbb{R}\times S^2$.\footnote{Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by our numerical scheme into their counterparts $\bar{g}_{\alpha\beta}$ in spherical coordinates. We do this in Appendix~\ref{sec:sphevvarboucon}, through the transformation \eqref{eq:cartosph}.}
+In this section, we obtain the analytic expression for this object in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, as they are adapted to the AdS boundary topology $\mathbb{R}\times S^2$.\footnote{Thus, in order to obtain their numerical values, we will have to convert the evolution variables in Cartesian coordinates $\bar{g}_{\mu\nu}$ provided by our numerical scheme into their counterparts $\bar{g}_{\alpha\beta}$ in spherical coordinates. We do this in Appendix~\ref{sec:sphevvarboucon}, through the transformation \eqref{eq:cartosph}.}
 
 %HB: as we discussed in slack, this definition is only used once, in Figure 3. We can bypass it completely, as I suggest doing here. If we want to include it again, we need to provide full details of the operator that the bulk scalar field is dual to, e.g., that there are formally two operators possible with operator dimensions \Delta_+ and \Delta_-, that our boundary conditions for the bulk scalar field picks out \Delta_+, and we then need to explain our conventions for displaying its vev, with all numerical factors taken into account. We don't need any of these extra details for the message we're trying to convey, I suggest leaving it out
 %To compute the vacuum expectation value of the operator dual to scalar field at the boundary, $\langle \varphi\rangle_{CFT}$, consider first the restriction of the bulk scalar field $\bar{\varphi}$ at a timelike hypersurface $\partial M_q$ at fixed $q=1-\rho$, which we denote by $\;^{(q)}\bar{\varphi}$. We then have
@@ -891,23 +891,23 @@ where $\Theta_{\alpha\beta}=-\omega^\gamma_{\alpha}\omega^\delta_\beta\nabla_{\g
 Restricting the indices corresponding to the coordinates $x^a$, we can compute the boundary stress-energy tensor as
 %This enables us to compute the boundary stress-energy tensor as
 \begin{equation}
-\langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ab}.
+\langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q}  \;^{(q)}T_{ab}\,.
 \end{equation}
 %The indices $a,b,c,\dots$ along the AdS boundary are lowered or raised by the metric of the AdS boundary, $\gamma_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$.
 
 From $^{(q)}T_{\alpha\beta}$ we also compute the total AdS mass as follows \cite{Balasubramanian:1999re}. At each time $t$ of evolution, we take a spacelike two-dimensional surface $\mathcal{S}$ in $\partial M_q$, with induced metric $\sigma_{ab}=\omega_{ab}+u_a u_b$, where $u_a=-N(dt)_a$ is the future pointing unit 1-form normal to $\mathcal{S}$ in $\partial M_q$, lapse $N$ and shift $N^a$. The total AdS mass is then given by
 \begin{equation}
-M=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{ab} u^a u^b).
+M=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{ab} u^a u^b)\,.
 \end{equation}
 
-The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find,
+The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find\footnote{The expressions~\eqref{eq:set_explicit} have a factor of $1/G$ that corresponds to the large-$N$ scaling of the expectation value of the stress tensor in the boundary 2+1-dimensional CFT. When quoting numerical results, we keep convention of working in geometric units with $G=1$.}
 \begin{eqnarray}
 \label{eq:set_explicit}
-\langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
-\langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta} \nonumber \\
-\langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi} \nonumber \\
-\langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr) \nonumber \\
-\langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi} \nonumber \\
+\langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
+\langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta}, \nonumber \\
+\langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi}, \nonumber \\
+\langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
+\langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi}, \nonumber \\
 \langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
 \end{eqnarray}
 where we have set the characteristic length scale to $L=1$. 
@@ -921,7 +921,7 @@ M=\int_0^\pi d\theta \int_0^{2\pi}d\phi\frac{\sin\theta}{16\pi} \biggl(2\bar{g}_
 We can now use the metric of the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$, to raise one index of $\langle T_{ab}\rangle_{CFT}$ and solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary. In this way, assuming that $\langle T_{ab}\rangle_{CFT}$ satisfies the weak energy condition,\footnote{If $\pm \langle T_{ab}\rangle_{CFT}$ fail to satisfy the weak energy condition, the $L^2$-norm of $\langle T_{ab}\rangle_{CFT}$, $||\langle T_{ab}\rangle_{CFT}||_2$, can have complex conjugate pairs of eigenvalues and no real timelike eigenvector, as pointed out in footnote 9 of \cite{Chesler:2013lia}.} we obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) timelike eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 %Given the boundary stress-energy tensor, we can solve the eigenvalue problem $\langle {T^a}_{b}\rangle_{CFT} v^b=\Lambda_v v^a$ at each point along the AdS boundary and obtain the energy density of the boundary CFT, $\epsilon$, as minus the eigenvalue associated to the unique (up to rescaling) timelike eigenvector. Similarly, the boundary anisotropy is given by $\Delta p\equiv|p_1-p_2|$, where $p_1$ and $p_2$ are the eigenvalues associated with, respectively, the remaining two spacelike eigenvectors.
 
-One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab} \langle T_{ab}\rangle_{CFT}$. We obtain\footnote{The expression~\eqref{eq:tracecalc} has a factor of $1/G$ that corresponds to the large-$N$ scaling of the expectation value of the stress tensor in the boundary 2+1-dimensional CFT. When quoting numerical results, we keep convention of working in geometric units with $G=1$.}
+One useful quantity to compute is the trace of the stress-energy tensor, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab} \langle T_{ab}\rangle_{CFT}$. We obtain
 \begin{equation}
 \label{eq:tracecalc}
 \langle \text{tr}T\rangle_{CFT}=\frac{3}{8\pi}\biggl(\bar{g}_{(1)tt}-\bar{g}_{(1)\rho\rho}-\bar{g}_{(1)\theta\theta}-\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr).
@@ -937,19 +937,22 @@ In other words, tracelessness of the boundary stress tensor is, in our scheme, d
 We check that we are indeed converging to such a solution in Appendix~\ref{sec:convbulk}.
 %given our boundary conditions, the vanishing of the generalized harmonic constraints analitycally ensures the vanishing of the trace of the boundary stress-energy tensor, expected for a CFT in 2+1 dimensions.
 In practice, we monitor $\langle \text{tr}T\rangle_{CFT}$ to estimate truncation error.
-Another important check that we performed is the conservation of the analytic form of $\langle T_{ab}\rangle_{CFT}$. The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.
+Another important check that we performed is the conservation of the analytic form of $\langle T_{ab}\rangle_{CFT}$. 
+\textcolor{red}{The simplest way to prove this is by using the near-boundary expansion of the Einstein equations in spherical coordinates, as done in Appendix~\ref{sec:sphevvarboucon}.}
+%The proof of the conservation of the boundary stress-energy tensor is conceptually straightforward but lengthy, so it is presented in Appendix~\ref{sec:sphevvarboucon}.
 %We will instead show in Section~\ref{sec:resbouset} that the conservation is satisfied numerically during the evolution. Since this test is computationally expensive, we will only do it  for 4 representative time steps.
 
-Finally we note that since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use third order extrapolation from their bulk point values. The details of the implementation in our numerical simulations can be found in Appendix~\ref{sec:extrapconvbdy}.
+Finally we note that, since the AdS boundary generally does not lie on points of the Cartesian grid, to obtain the values of quantities at the boundary we use third order extrapolation from their bulk point values. 
+The details of the implementation in our numerical simulations can be found in Appendix~\ref{sec:extrapconvbdy}.
 
 %\textcolor{blue}{{\bf PF:} we should add a footnote explaining how to write the holographi stress tensor in CFT language: factors of $N^2$ and other numerical factors.}
 
 \section{Numerical Scheme}\label{sec:numerical_scheme}
 
-In this section we consider the core elements of the numerical scheme used in this study. %Some of them are presented in detail in other parts of this article. 
-We start by discussing the numerical features on which this scheme relies for solving the initial-boundary value problem in AdS. 
+In this section we consider the core elements of the numerical scheme used in this study.
+We start by discussing the numerical features on which this scheme relies for solving the initial-boundary value problem in AdS.
 We then describe our apparent horizon finder and the method with which we excise trapped regions.
-%All the PDEs that we mention are discretized with second order finite difference derivative stencils.
+
 
 \subsection{Numerics of the Initial-Boundary Value Problem}
 \label{sec:numcauprob}
@@ -962,7 +965,7 @@ The resulting PDEs are discretized with second order finite difference derivativ
 The source function variables $\bar{H}_\mu$ near the AdS boundary are set as we have prescribed in \eqref{eqn:target_gauge_txyz}, whilst deep in the bulk they are set to zero. 
 %HB: actually, barH=0 means H=Hads
 %(and hence to their harmonic gauge values). 
-Inbetween, we use smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk}  for the details of our full implementation. % to Section~\ref{sec:gauge_choice} which discusses its form near the AdS boundary, and Appendix~\ref{sec:GCbulk} for its values in the bulk.
+In between, we use smooth transition functions to interpolate between the near boundary and the bulk regions, see Appendix~\ref{sec:GCbulk}  for the details of our full implementation. % to Section~\ref{sec:gauge_choice} which discusses its form near the AdS boundary, and Appendix~\ref{sec:GCbulk} for its values in the bulk.
 
 We use the PAMR/AMRD libraries \cite{PAMR} for running these simulations in parallel on Linux computing clusters.
 Although these libraries have adaptive mesh refinement capabilities, numerical evolution is performed on a grid with fixed refinement.
@@ -974,7 +977,7 @@ The typical grid resolution uses $N_x=N_y=N_z=325$ points in each of the Cartesi
 %In contrast, spherical coordinates $(t,\rho,\theta,\phi)$ with fixed resolution $\Delta\rho,\Delta\theta,\Delta\phi$ would necessitate $\lambda<\rho_{min}$ in order for the CFL condition to be satisfied, where $\rho_{min}$ is the smallest value that the $\rho$ coordinate takes over the evolved portion of the grid. 
 %Here, $\lambda\equiv\Delta t/\min(\Delta\rho,\Delta\theta,\Delta\phi)$.
 %At points next to the origin, which must be evolved in studies of gravitational collapse and black hole formation, $\rho$ takes its smallest value $\Delta\rho$, so $\rho_{min}=\Delta\rho$. Hence, in spherical coordinates, $\Delta t$ would become prohibitively small for high resolutions (i.e., small $\Delta\rho$).
-The time step of evolution is determined by $\Delta t=\lambda \Delta$, where $\Delta$ is the smallest coordinate distance between any two points on the grid.
+The time step of evolution is determined by $\Delta t=\lambda \Delta$. %, where $\Delta$ is the smallest coordinate distance between any two points on the grid.
 Although we do not perform a detailed analysis of the stability of our finite difference scheme, the Courant-Friedrichs-Lewy (CFL) condition for stability is expected to be satisfied as long as the CFL factor $\lambda$ is set to a value well below 1. Thus, we use $\lambda=0.3$. Notice that the most remarkable advantage of using Cartesian coordinates is that the CFL condition does not severely restrict the CFL factor as it would in spherical coordinates, hence allowing simulations to reach large evolution times with modest computational resources.
 In contrast, spherical coordinates $(t,\rho,\theta,\phi)$ with fixed resolution $\Delta\rho,\Delta\theta,\Delta\phi$ would necessitate $\Delta t = \lambda \min(\Delta\rho, \rho_{min} \Delta\theta, \rho_{min} \Delta\theta \Delta\phi)$.
 At points next to the origin, which must be evolved in studies of gravitational collapse and black hole formation, $\rho$ takes its smallest value $\rho_{min}=\Delta\rho$. 
@@ -1012,20 +1015,23 @@ The solution to \eqref{eq:hamconsfinal} is computed, after second order finite d
 \subsection{Apparent Horizon Finder and Excision}
 \label{sec:AH_exc}
 
-Once the solution is obtained at a certain time $t$, we can search for the position $R(\theta,\phi)$ of an apparent horizon (AH). We use the following flow method in spherical coordinates $(\rho,\theta,\phi)$, obtained in the usual way from the Cartesian coordinates of the solution. We consider $n$ two-dimensional surfaces at constant, equally spaced, values of $\rho$ within a user-specified range between 0 and 1, and we pick the one with smallest $L^2$-norm of the outward null expansion. Let $\rho_0$ be the $\rho$ coordinate on this surface. 
+Once the solution is obtained at a certain time $t$, we can search for the position $R(\theta,\phi)$ of an apparent horizon (AH). We use the following flow method in spherical coordinates $(\rho,\theta,\phi)$, obtained in the usual way from the Cartesian coordinates of the solution. We consider $n$ two-dimensional surfaces at constant, equally spaced, values of $\rho$ within a user-specified range included in (0,1), and we pick the one with smallest $L^2$-norm of the outward null expansion. Let $\rho_0$ be the $\rho$ coordinate on this surface. 
 Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ we find the solution to the equation
 \begin{equation}
 \label{eq:floweq}
 \frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)},
 \end{equation}
-where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the position of the AH, the $R(\theta,\phi)$ is expected to progressively approach the AH after each iteration. 
+where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the position of the AH, $R(\theta,\phi)$ is expected to progressively approach the AH after each iteration. 
 This process stops when either the $L^2$-norm of $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is below some specified tolerance, i.e., $R(\theta,\phi)$ is sufficiently close to the AH, or the user-specified maximum number of iterations has been reached, i.e., either there is no AH at time $t$ or this method was not able to find it. 
 %The latter typically occurs if we start from an initial guess $\rho_0$ which is not sufficiently close to the AH.
 
-This AH finder is based on a $(\theta,\phi)$ grid with equal grid spacings $\Delta \theta=\Delta\phi=\Delta_{AH}$.\footnote{The grid on which the AH finder is executed is completely independent of the specifics of the Cartesian evolution grid that was described in Section~\ref{sec:numcauprob}.} The outward null expansion at a given grid point $(\theta,\phi)$ on the AH is obtained by first order interpolation in three dimensions from the values of the expansion at Cartesian grid points that surround it. These values are calculated from the definition of outward null expansion once the spacetime metric at time $t$ is known.
+This AH finder is based on a $(\theta,\phi)$ grid with equal grid spacings $\Delta \theta=\Delta\phi=\Delta_{AH}$.\footnote{The grid on which the AH finder is executed is completely independent of the specifics of the Cartesian evolution grid that was described in Section~\ref{sec:numcauprob}.} 
+\textcolor{red}{The outward null expansion at a given AH finder grid point $(\theta,\phi)$ is obtained by first order interpolation in three dimensions from the values of the expansion at Cartesian grid points that surround $(\theta,\phi)$.}
+%The outward null expansion at a given grid point $(\theta,\phi)$ on the AH is obtained by first order interpolation in three dimensions from the values of the expansion at Cartesian grid points that surround $(\theta,\phi)$. 
+These values are calculated from the definition of outward null expansion once the spacetime metric at time $t$ is known.
 We observe that a $N_\theta\times N_\phi=9\times 17$ resolution is enough to find the AH in the simulations considered in Section~\ref{sec:results} in less than $10^{4}$ iterations. Since \eqref{eq:floweq} is a parabolic equation, the ``time'' step $\Delta s$ must be at least of order $\Delta_{AH}^2$ for stability. When using $n=10$ initial trial surfaces and an initial range for $\rho$ values between 0.1 and 0.5, as we do in our simulations, we find that the AH finder works effectively if $\Delta s$ takes much smaller values. Specifically, we set $\Delta s=10^{-4}$.
 
-When an AH is found, we excise Cartesian grid points in an ellipsoid included in the AH and centred at the centre of the AH, in order to avoid the formation of geometric singularities in the computational domain.\footnote{This method is effective in removing singularities if the following common assumptions are valid on the spacetimes that we consider: (i) weak cosmic censorship is not violated, i.e., geometric singularities are contained inside a black hole event horizon, (ii) the AH at any time $t$ is contained in $t$-constant slices of the event horizon, (iii) the AH at any $t$ provides a sufficiently accurate approximation for $t$-constant slices of the event horizon.}
+When an AH is found, we excise Cartesian grid points in an ellipsoid included in the AH and centred at the centre of the AH, in order to avoid the formation of geometric singularities in the computational domain.\footnote{This method is effective in removing singularities if the following common assumptions are valid on the spacetimes that we consider: (i) weak cosmic censorship is not violated, i.e., geometric singularities are contained inside a black hole event horizon; (ii) the AH at any time $t$ is contained in $t$-constant slices of the event horizon; (iii) the AH at any $t$ provides a sufficiently accurate approximation for $t$-constant slices of the event horizon.}
 More specifically, the excision ellipsoid has Cartesian semi-axes, $a_x^{ex},a_y^{ex},a_z^{ex}$, determined by $a_x^{ex}=x_{AH}(1-\delta_{ex})$, where $x_{AH}$ is the $x$-coordinate value of the intersection between the AH and the $x$-axis, and similarly for $a_y^{ex}$ and $a_z^{ex}$. We set the excision buffer to $\delta_{ex}=0.4$. 
 In our simulations, we assume that the characteristics of the equations of motion in the AH region flow towards the origin, although we do not compute the characteristics explicitly.\footnote{This is a reasonable assumption given the causal properties of a black hole. In fact, if this assumption were not true, we would see clear signs of constraint violations developing near the excision surface.} As a consequence, the solution at points inside the AH only evolves to affect points, at later times, that are further inside the AH. In other words, the information needed to solve the equations of motion on and outside the excision surface at a certain time is entirely contained in the numerical domain at previous times. This allows us to solve the equations of motion at the excision surface by employing one-sided stencils that do not reference points inside the excised region, with no need to impose conditions at the excision boundary. By construction, the excised surface is the same for all three time levels involved in the Newton-Gauss-Seidel relaxation for evolution variables at time $t$. Therefore, we only need to use the one-sided version of the spatial stencils. 
 
