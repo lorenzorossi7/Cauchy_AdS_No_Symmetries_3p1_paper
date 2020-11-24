@@ -180,7 +180,7 @@ At the heart of this push to understand AdS is a deep connection between gravity
 Through this connection, the study of AdS spacetimes has become immediately relevant to fundamental questions in many areas in physics, such as fluid dynamics~\cite{Baier:2007ix,Bhattacharyya:2010owp,Hubeny:2011hd}, relativistic heavy ion collisions~\cite{Chesler:2010bi,Casalderrey-Solana:2013aba,Casalderrey-Solana:2013sxa,Chesler:2015wra}, and superconductivity~\cite{Gubser:2008px,Hartnoll:2008kx,Hartnoll:2008vx}.
 %just to mention a few.
 See, for example, \cite{CasalderreySolana:2011us,Chesler:2015lsa,Zaanen:2015oix,Hartnoll:2016apf} for excellent reviews. 
-The reason the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important -- and in most cases the only -- window into the real-time dynamics of strongly interacting quantum field theories far from equilibrium. 
+The reason why the study of AdS is crucial for our understanding of these phenomena is that AdS/CFT provides an important -- and in most cases the only -- window into the real-time dynamics of strongly interacting quantum field theories far from equilibrium. 
 The dynamical far-from-equilibrium strongly interacting regime is precisely the one that is least explored and understood, and the one that has the best chance of making contact with certain experiments.
 %Within GR, the dynamics of AdS provides a detailed look at how the Einstein equations behave in the fully non-linear regime and with non-trivial boundary conditions.
 %This has led to important efforts to understand fundamental phenomena in gravity in this new setting.%, including gravitational collapse and superradiance. 
@@ -245,7 +245,7 @@ Throughout, we use geometric units where Newton's constant is set to $G=1$ and t
 \subsection{Anti-de Sitter Spacetime}\label{subsec:AdS}
 The dynamics of gravity with a cosmological constant $\Lambda$ in four dimensions coupled to a real massless scalar field $\varphi$ can be described by the following action:
 \begin{equation}\label{eqn:action}
-S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^{\alpha\beta} \partial_\alpha \varphi \partial_\beta \varphi \right) ,
+S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^{\alpha\beta} \partial_\alpha \varphi \partial_\beta \varphi \right),
 \end{equation}
 where $R$ is the Ricci scalar of the metric $g_{\alpha\beta}$ with determinant $g$.
 The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$ and $\varphi$ gives the equations of motion
@@ -253,7 +253,7 @@ The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$
 \label{eqn:eoms1}
 &&R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right),\\
 \label{eqn:eoms2}
-&&g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0.
+&&g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0\,.
 \end{eqnarray}
 
 %We recast this set of equations into its generalized harmonic form; see Appendix~\ref{sec:GHfor} for the form of the evolution equations \eqref{eqn:eoms1} in this framework, and [CITE PAPERS] for more details about the theoretical aspects of the formulation.
@@ -265,7 +265,7 @@ in terms of the metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a  choi
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e., $\varphi=0$) solution of \eqref{eqn:eoms1} and \eqref{eqn:eoms2} in four dimensions.
 In terms of global coordinates that cover the whole spacetime, given by $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$, this metric can be expressed as
 \begin{equation}\label{eqn:ads4}
-\hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 ,
+\hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 \,,
 \end{equation}
 with a characteristic length scale $L$ that is related to the cosmological constant by $\Lambda = - 3/L^2$, and where $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round unit 2-sphere. 
 A crucial feature of this spacetime is the presence of a \emph{timelike} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. 
@@ -287,7 +287,7 @@ This brings the metric of AdS$_4$ into its final form, suitable for our numerica
 \begin{eqnarray}\label{eqn:ads4_final}
 \hat{g}_{\mu\nu}dx^{\mu}dx^{\nu}=&\frac{1}{\left(1-\rho^2\right)^2 }\Big[ -\hat{f}(\rho)dt^2  +4\rho^{-2}\hat{f}(\rho)^{-1} \left(1+\rho^2\right)^2 (x dx + y dy + z dz)^2  \nonumber \\
 &\hspace{0.75cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
-&\hspace{0.75cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big].
+&\hspace{0.75cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,.
 %&\hspace{0.75cm}+\frac{4}{\rho^2} \big[-2 x y\, dx dy +- 2 y z\, dy dz - 2 x z\,dx dz  \nonumber \\
 %&\hspace{0.75cm}+ \left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \big] \Big).
 \end{eqnarray}
@@ -306,7 +306,7 @@ More precisely, for any set of global coordinates $x^\alpha$, the authors requir
 \item[(i)] it is consistent with the asymptotic decay of the Kerr-AdS metric near $\partial M$ in this set of coordinates;
 \item[(ii)] its fall-off near $\partial M$ is invariant under the global AdS symmetry group $O(3,2)$, i.e.,
 \begin{equation}\label{eqn:asyKilleq}
-(\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta}),
+(\mathcal{L}_X h)_{\alpha\beta}=\mathcal{O}(h_{\alpha\beta})\,,
 \end{equation}
 near the boundary $\partial M$ for any $X$ generator of $O(3,2)$;
 \item[(iii)] the surface integral charges associated with the generators of $O(3,2)$ are finite.
@@ -451,7 +451,7 @@ for arbitrary $f_\mu$ and $\rho=\rho(x,y,z)$.
 %An equivalent characterization of asymptotically AdS spacetimes can be expressed in terms of the well-known Fefferman-Graham (FG) expansion [cite C. Fefferman and C. Robin Graham, in Elie Cartan et les Mathematiques d'aujourdhui (Asterisque, 1985) 95]. We start by defining a spacetime $(M,g)$  that is only locally asymptotically AdS, as a spacetime that admits a conformal compactification (which allows to define a boundary) and satisfies the Einstein equations \eqref{eqn:eoms1}, without making any assumption, for example, on the topology of the boundary. The FG theorem states that, for this type of spacetimes in 4 dimensions, we can always find a coordinate system $\bar{x}^\alpha=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 
 A different characterization of asymptotically AdS spacetimes can be given in terms of the well-known Fefferman-Graham (FG) expansion \cite{AST_1985__S131__95_0}.
-In this approach, one starts with the definition of a locally asymptotically AdS spacetime $(M,g)$ as a spacetime that admits a conformal compactification, thus allowing the definition of a conformal boundary $\partial M$, and satisfies the Einstein equations \eqref{eqn:eoms1}. No assumption is made at this stage on the topology of the boundary.
+In this approach, one starts with the definition of a locally asymptotically AdS spacetime $(M,g)$ as a spacetime that admits a conformal compactification, thus allowing the definition of a conformal boundary $\partial M$, and that satisfies the Einstein equations \eqref{eqn:eoms1}. No assumption is made at this stage on the topology of the boundary.
 %In this approach, one starts with the notion of a spacetime $(M,g)$ that satisfies the Einstein equations \eqref{eqn:eoms1} and that is locally asymptotically AdS, i.e., admits a conformal compactification, allowing one to define a boundary.
 %This allows asymptotically AdS spacetimes to be defined without making any assumption, for example, about the topology of the boundary. 
 The FG theorem states that
@@ -459,16 +459,16 @@ The FG theorem states that
 we can always find a coordinate system $x^{\bar{\alpha}}=(\bar{t},\bar{z},\bar{\theta},\bar{\phi})$ in a neighbourhood of the boundary for which the boundary is at $\bar{z}=0$ and the metric can be written in the form
 \begin{equation}
 \label{eqn:FGmetric}
-g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{\bar{a}\bar{b}}(\bar{t},\bar{z},\bar{\theta},\bar{\phi})dx^{\bar{a}}dx^{\bar{b}}),
+g=\frac{L^2}{\bar{z}^2}(d\bar{z}^2+g_{\bar{a}\bar{b}}dx^{\bar{a}}dx^{\bar{b}}),
 \end{equation}
 where 
 \begin{equation}
 \label{eqn:FGbdymetric}
-g_{\bar{a}\bar{b}}(\bar{z},\bar{x})=g_{(0)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})+g_{(2)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^2+\mathcal{O}(\bar{z}^3).
+g_{\bar{a}\bar{b}}(\bar{t},\bar{z},\bar{\theta},\bar{\phi})=g_{(0)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})+g_{(2)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^2+\mathcal{O}(\bar{z}^3).
 \end{equation}
-Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})$ in terms of $g_{(0)\bar{a}\bar{b}}(\bar{t},\bar{\theta},\bar{\phi})$.
+Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)\bar{a}\bar{b}}$ in terms of $g_{(0)\bar{a}\bar{b}}$.
 %Then, the near-boundary (i.e., about $\bar{z}=0$) expansion of the Einstein equations completely determines the coefficient $g_{(2)ij}(\bar{x})$ in terms of $g_{(0)ij}(\bar{x})$. 
-Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$. 
+Therefore the dynamics that makes this spacetime differ from pure AdS appears at order $\bar{z}^3$ of $g_{\bar{a}\bar{b}}$. 
 
 If we make the further requirement that the topology of the boundary is the same as in the pure AdS case, i.e., $\mathbb{R}\times S^2$, the spacetime becomes globally asymptotically AdS and this characterization becomes equivalent to the one obtained from the original arguments in \cite{Henneaux:1985tv}. 
 The FG form \eqref{eqn:FGmetric} of the metric immediately provides the near-boundary behaviour and shows that coordinates can be defined so that the $\bar{z}\bar{z}$ component of any asymptotically AdS metric goes as $1/\bar{z}^2$, and $\bar{z}\bar{a}$ components are 0 in a neighbourhood of the AdS boundary.
@@ -492,7 +492,7 @@ The metric in these coordinates reads
 %&&+ 2 \left(f_{t\theta}(t,\theta,\phi)z^3+\mathcal{O}(z^4)\right)dt d\theta + 2 \left(f_{t\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)dt d\phi  \nonumber\\
 %&&+ 2\left( f_{\theta\phi}(t,\theta,\phi) z^3+\mathcal{O}(z^4)\right)d\theta d\phi\nonumber \\
 %&&-2\left(f_{t\rho}(t,\theta,\phi)z^4+\mathcal{O}(z^5)\right)dtdz -2\left(f_{\rho\theta}(t,\theta,\phi)z^4+\mathcal{O}(z^5)\right)dzd\theta\nonumber\\
-%&&-2\left(f_{\rho\phi}(t,\theta,\phi)z^4 +\mathcal{O}(z^5) \right)dzd\phi\biggr]\,,
+%&&-2\left(f_{\rho\phi}(t,\theta,\phi)z^4 +\mathcal{O}(z^5) \right)dzd\phi\biggr],
 %%%%%%
 %%%%%%
 %g&=&\frac{1}{z^2}\biggl[ \biggl\{
@@ -510,7 +510,7 @@ g&=&\frac{1}{z^2}\biggl[
 &&\hspace{0.75cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi 
  \nonumber\\
 &&\hspace{0.75cm}-2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta
--2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr],\nonumber
+-2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr]\,,\nonumber
 \end{eqnarray}
 where the coefficients $f_{\alpha\beta}$ in the expansion above are functions of $(t,\theta,\phi)$.  
 Notice that the metric in \eqref{eq:metnewcoords} is not in the FG form  yet because the $zz$ component is not $1/z^2$ up to the desired order in $z$, and the $tz$, $z\theta$, $z\phi$ components are not 0 up to $\mathcal{O}(z^2)$.
@@ -547,7 +547,7 @@ g=\frac{1}{\bar{z}^2}\biggl[ d\bar{z}^2 &-\left(1+\frac{\bar{z}^2}{2}+\left( \te
 &+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi}  + 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
 \nonumber\\
 &+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
-\biggr],
+\biggr]\,,
 \label{eq:asyFG}
 \end{align}
 where now the coefficients $f_{\alpha\beta}$ are functions of $(\bar t, \bar\theta, \bar\phi)$. 
@@ -575,16 +575,16 @@ In Appendix~\ref{sec:sphevvarboucon}, we explicitly show how these spherical var
 The Cartesian metric evolution variables, $\bar{g}_{\mu\nu}$, are defined by first considering the deviation from pure AdS in Cartesian coordinates, $h_{\mu\nu}=g_{\mu\nu}-\hat{g}_{\mu\nu}$, then stripping $h_{\mu\nu}$ of as many factors of $(1-\rho^2)$ as needed so that each components falls off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.\footnote{Looking at the boundary conditions \eqref{eq:carbouncondh}, it seems natural to factor out $(1-\rho)$ rather than $(1-\rho^2)$. However, the latter is preferred since it preserves the even/odd character in the $\rho$ variable.}
 We see from \eqref{eq:carbouncondh} that in four dimensions, the metric evolution variables $\bar{g}_{\mu\nu}$ that satisfy these requirements are simply 
 \begin{equation}\label{eq:gbarcart}
-\bar{g}_{\mu\nu}=h_{\mu\nu}.
+\bar{g}_{\mu\nu}=h_{\mu\nu}\,.
 \end{equation}
 Similarly, the Cartesian boundary condition on the scalar field \eqref{eq:carbouncondphi} suggests that we use the evolution variable
 \begin{equation}
 \label{eq:phibarcart}
-\bar{\varphi}=\frac{\varphi }{(1-\rho^2)^2}.
+\bar{\varphi}=\frac{\varphi }{(1-\rho^2)^2}\,.
 \end{equation}
 Finally, the boundary conditions \eqref{eq:carbouncondsoufun} on $H_\mu$ suggest the use of
 \begin{equation}\label{eq:soufunb}
-\bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }.
+\bar{H}_\mu=\frac{H_\mu-\hat{H}_\mu}{1-\rho^2 }\,.
 \end{equation}
 
 For evolved variables defined in this way, the boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} can be easily imposed as  Dirichlet boundary conditions at the AdS boundary:
@@ -620,17 +620,13 @@ appear.
 For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, i.e., 
 \begin{equation}
 \label{eq:tildeboxbarg}
-\tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu},
+\tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu}\,,
 \end{equation}
-for some functions $c^t_{\mu\nu}$, $c^x_{\mu\nu}$, $c^y_{\mu\nu}$, $c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices}
-These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}
-%$^{,}$\footnote{These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$.}
-%We can easily find the order in $q$ at which these terms appear by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}).
-%Therefore, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
-\footnote{Notice that the arguments used to draw this conclusion are independent of the number of spacetime dimensions but they rely on the assumption that we are using Cartesian coordinates. For an arbitrary set of coordinates, the power of $q$ at which the second derivatives of the operator \eqref{eq:tildeboxbarg} appear is different, and it depends in general on the specific component of \eqref{eqn:efe_gh_modified} under consideration.
-See Appendix~\ref{sec:sphevvarboucon} and \cite{Bantilan:2012vu} for examples in spherical coordinates in 4 and 5 dimensions, respectively.
-%See~\cite{Bantilan:2012vu} for an example in spherical coordinates.
-}
+for some functions $c^t_{\mu\nu}$, $c^x_{\mu\nu}$, $c^y_{\mu\nu}$, $c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices.}
+These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see  eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.
+\footnote{\textcolor{red}{$\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$ is true in any number of dimensions but only for Cartesian coordinates. For an arbitrary set of coordinates, the leading power in $\hat{g}^{\mu\nu}$, and thus the order at which the operator \eqref{eq:tildeboxbarg} appears, depends on the specific component under consideration.}
+%The arguments used to draw this conclusion are independent of the number of spacetime dimensions but they rely on the assumption that we are using Cartesian coordinates. For an arbitrary set of coordinates, the power of $q$ at which the second derivatives of the operator \eqref{eq:tildeboxbarg} appear is different, and it depends in general on the specific component of \eqref{eqn:efe_gh_modified} under consideration.
+See Appendix~\ref{sec:sphevvarboucon} and \cite{Bantilan:2012vu} for examples in spherical coordinates in 4 and 5 dimensions, respectively.}
 In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form:
 %Using all this, each component of the expansion of \eqref{eqn:efe_gh_modified} near $q=0$ can be written in the schematic form
 \begin{eqnarray}\label{eq:efefullexp}
@@ -638,14 +634,14 @@ In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} n
 &=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+A_{(3)\mu\nu}q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5) \nonumber \\
 &=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5)
 \end{eqnarray}
-%Notice that this expansion is valid, with the displayed orders, in any set of coordinates, as it only depends on the fact that the evolution variables are linear in $q$ at leading order.
 or, rearranging the terms in order to obtain wave-like equations,
 \begin{equation}
 \label{eq:waveEFE}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2).
 \end{equation}
+\textcolor{red}{Similar arguments show that terms involving matter fields appear at the next order w.r.t. the one of $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This holds in any dimension and in any set of coordinates, and it implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, as only the lowest order coefficients of the expansion of the Einstein equations are relevant.}
 
-Here we write these components explicitly including only the $q^{-2}$ terms. 
+\textcolor{red}{We now write these coefficients explicitly, i.e. we write \eqref{eq:waveEFE} including only the $q^{-2}$ terms.}
 The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$:
 \begin{eqnarray}\label{eqn:efett}
 \tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta  \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
@@ -758,7 +754,7 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
 %where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$.
 
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or  Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
-The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following: 
+The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following.
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints for $\bar{H}_{(1)\mu}$.
 For example, in the Cartesian case, the leading orders of \eqref{eqn:ct}--\eqref{eqn:cz} vanish for:
@@ -1256,9 +1252,8 @@ as
 &&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta}\right) \,, \label{eqn:Eeqs} 
 \end{eqnarray}
 where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
-%associated to 
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
-It can be proven that the constraints $C_\alpha=0$ are satisfied for all times $t$, as long as $C_\alpha=0$ and $\partial_{t}C_\alpha=0$ at $t=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all times.
+It can be proven that the constraints $C_\alpha=0$ are satisfied for all times $t\equiv x^0$, as long as $C_\alpha=0$ and $\partial_{t}C_\alpha=0$ at $t=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all times.
 However, for numerical initial data, the constraints and their derivative w.r.t. $t$ vanish at $t=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
 %To suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
 We thus obtain the final form of our evolution equations:
@@ -1269,8 +1264,10 @@ We thus obtain the final form of our evolution equations:
 &-& {\Gamma^\gamma}_{\delta \alpha} {\Gamma^\delta}_{\gamma \beta} - \kappa \left( 2 n_{(\alpha} C_{\beta)} - (1+P) g_{\alpha\beta} n^\gamma 
 C_\gamma \right) \nonumber \\
 &=&   \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
-\frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right).
+\frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
 \end{eqnarray}
+\textcolor{red}{where $n_\alpha=-\partial_\alpha t$ is the timelike, future-directed unit 1-form normal to slices of constant $t$.
+Notice that the principal part of \eqref{eqn:efe_gh_modified}, $-\frac{1}{2} g^{\gamma \delta} \partial_\gamma \partial_\delta g_{\alpha\beta}$, is a wave operator acting on metric components. Thus, the well-posedness of the wave equation suggests that the initial-boundary value problem in generalized harmonic form is well-posed, if we make reasonable assumptions on the remaining components of the problem.}
 See, for example, \cite{Pretorius:2004jg,Bantilan:2012vu} for more details on this formulation. 
 In our simulations we use the values $\kappa=-10$ and $P=-1$.
 \footnote{\cite{Bantilan:2012vu} mentions that it is important to use $P$ close to $-1$, while the value of $\kappa$ is not too important to achieve effective constraint damping.}
