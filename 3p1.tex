@@ -766,10 +766,10 @@ At later times, $t\simeq 9$, the value of the scalar field becomes consistent wi
 
 \begin{figure}[t!]
         \centering
-        \includegraphics[width=5.0in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combined_withzoom_fullplotrelRieCubeofrelkretschallres.pdf}
+        \includegraphics[width=5.02in,clip=true]{plots/bulkplots/compare_res/relriemanncube-relkretsch/combined_withzoom_fullplotrelRieCubeofrelkretschallres.pdf}
 \parbox{5.0in}{\caption{
 Riemann cube scalar relative to AdS$_4$, $(R^3/R^3_{\text{AdS}})-1$, as a function of Kretschmann scalar relative to AdS$_4$, $(K/K_{\text{AdS}})-1$.
-In each panel, the black line denotes the result for a slice of Schwarzschild-AdS with mass given by $M_h=0.403$ (in units of the characteristic length scale $L=1$), i.e., the value of $M$ (see eq. \eqref{eq:AdSmasscalc}) for the highest resolution run with grid spacing $h$. The black vertical line denotes the value of $\frac{K}{K_{\text{AdS}}}-1$ at the horizon of the Schwarzschild-AdS black hole. The relative Kretschmann increases as we move closer to the origin of the spacetime.
+In each panel, the black curve denotes the result for a slice of Schwarzschild-AdS with mass given by $M_h=0.403$ (in units of the characteristic length scale $L=1$), i.e., the value of $M$ (see eq. \eqref{eq:AdSmasscalc}) for the highest resolution run with grid spacing $h$. The black vertical line denotes the value of $\frac{K}{K_{\text{AdS}}}-1$ at the horizon of the Schwarzschild-AdS black hole. The relative Kretschmann increases as we move closer to the origin of the spacetime.
 Top panel: the coloured lines denote the Riemann-Kretschmann dependence obtained from grid points on the $x$-axis (i.e., $y=z=0$) of the numerical solution at $t=31$. 
 Bottom panel: the coloured lines denote the Riemann-Kretschmann dependence obtained from grid points on the $y$-axis (i.e., $x=z=0$) of the numerical solution at $t=31$.
         }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
@@ -1203,10 +1203,10 @@ As a result, the corresponding evolution variables in this Poincar\'e setting ar
 Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the following gauge:
 \begin{eqnarray}
 \label{eq:hbold_poincare}
-\bar{H}_{(1)t}&=&\frac{3}{2} \bar{g}_{(1)\text{$t$$\rho $}} \nonumber\\
-\bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\nonumber\\
-\bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\nonumber\\
-\bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }.
+\bar{H}_{(1)t}&=&\frac{3}{2} \bar{g}_{(1)\text{$t$$\rho $}}\,, \nonumber\\
+\bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\,,\nonumber\\
+\bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\,,\nonumber\\
+\bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }\,.
 \end{eqnarray}
 We have verified that this gauge leads to stable evolution in asymptotically AdS$_4$ spacetimes in Poincar\'e coordinates. 
 We close by noting that \cite{Bantilan:2020pay} obtained a similar stable gauge to evolve dynamical black holes in the background of the AdS soliton. 
@@ -1228,7 +1228,7 @@ We start by defining the relevant quantities on the initial spacelike hypersurfa
 The timelike, future-directed unit 1-form normal to $\Sigma$ is given by
 \begin{equation}
 \label{eq:uninormal}
-n_\mu=-\alpha (dt)_\mu,
+n_\mu=-\alpha (dt)_\mu\,,
 \end{equation}
 where $\alpha=1/\sqrt{-g^{\mu\nu}(dt)_\mu (dt)_\nu}$ is the lapse function. 
 The projection operator onto $\Sigma$ is defined by
@@ -1427,7 +1427,7 @@ Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove conve
 
 To show that the solution is converging to a solution of the Einstein equations, we compute the independent residual that is obtained by taking the numerical solution, substituting it back into a discretized version of the Einstein equations.
 At each grid point, we then take the maximum value over all components of the Einstein equations, which we denote by $\Phi_\Delta$. 
-The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions
+The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions:
 \begin{equation}\label{eq:qires}
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
 \end{equation}
