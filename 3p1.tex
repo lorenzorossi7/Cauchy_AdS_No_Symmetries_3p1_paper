@@ -908,8 +908,7 @@ as
 where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
 It can be proven that the constraints $C_\alpha=0$ are satisfied for all times $t\equiv x^0$, as long as $C_\alpha=0$ and $\partial_{t}C_\alpha=0$ at $t=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\mu=0$ being satisfied on the boundary for all times.
-However, for numerical initial data, the constraints and their derivative with respect to $t$ vanish at $t=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
-%To suppress constraint-violating solutions that do not satisfy $C_\alpha=0$, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
+However, for numerical initial data, the constraints and their derivatives with respect to $t$ vanish at $t=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
 We thus obtain the final form of our evolution equations:
 \begin{eqnarray}
 \label{eqn:efe_gh_modified}
@@ -920,43 +919,31 @@ C_\gamma \right) \nonumber \\
 &=&  \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
 \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
 \end{eqnarray}
-\textcolor{red}{where $n_\alpha=-\partial_\alpha t$ is the timelike, future-directed unit 1-form normal to slices of constant $t$.
-Notice that the principal part of \eqref{eqn:efe_gh_modified}, $-\frac{1}{2} g^{\gamma \delta} \partial_\gamma \partial_\delta g_{\alpha\beta}$, is a wave operator acting on metric components. Thus, the well-posedness of the wave equation suggests that the initial-boundary value problem in generalized harmonic form is well-posed, if we make reasonable assumptions on the remaining components of the problem.}
+where $n_\alpha=-\partial_\alpha t$ is the timelike, future-directed unit 1-form normal to slices of constant $t$.
+Notice that the principal part of \eqref{eqn:efe_gh_modified}, $-\frac{1}{2} g^{\gamma \delta} \partial_\gamma \partial_\delta g_{\alpha\beta}$, is a wave operator acting on metric components. Thus, the well-posedness of the wave equation suggests that the initial-boundary value problem in generalized harmonic form is well-posed, if we make reasonable assumptions on the remaining components of the problem.
 See, for example, \cite{Pretorius:2004jg,Bantilan:2012vu} for more details on this formulation. 
-In our simulations we use the values $\kappa=-10$ and $P=-1$.
-\footnote{\cite{Bantilan:2012vu} mentions that it is important to use $P$ close to $-1$, while the value of $\kappa$ is not too important to achieve effective constraint damping.}
+In our simulations we use the values $\kappa=-10$ and $P=-1$.\footnote{Ref. \cite{Bantilan:2012vu} mentions that it is important to use $P$ close to $-1$, while the value of $\kappa$ is not too important to achieve effective constraint damping.}
 
 In this work, we are interested in the case where matter fields are given by a single massless real scalar field $\varphi$, hence the stress-energy tensor reads
 \begin{equation}
 \label{eq:KHmomtens}
-T_{\alpha\beta}=\partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi,
+T_{\alpha\beta}=\partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi.
 \end{equation}
-and $\varphi$ is coupled to $g_{\alpha\beta}$ through the Klein-Gordon equation \eqref{eqn:eoms2}, which we write here for completeness in terms of partial derivatives with respect to the chosen set of coordinates:
+
+For completeness, we also write the Klein-Gordon equation \eqref{eqn:eoms2} for the scalar field $\varphi$ in terms of partial derivatives with respect to the chosen set of coordinates:
 \begin{equation}\label{eqn:eoms2cart}
 g^{\alpha\beta} \partial_{\alpha} \partial_{\beta} \varphi -g^{\alpha\beta} \Gamma^{\gamma}{}_{\beta\alpha}\partial_\gamma\varphi= 0.
 \end{equation}
 
 
-
-
-
-
-
-
-
-
-
 \section{Boundary Prescription for Spherical Coordinates}\label{sec:sphevvarboucon}
 
-Although spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$ are not suitable for numerically evolving points near the origin (see discussion in Section~\ref{sec:numcauprob}), they are convenient to extract the physics of the CFT at the AdS boundary $\rho=1$, since they are adapted to the boundary topology $\mathbb{R}\times S^2$.
-In this section we apply the prescription outlined in Section~\ref{sec:pre_sta} to the case of asymptotically AdS spacetimes in 4 dimensions in spherical coordinates. Similarly to the Cartesian case, we first define the spherical coordinate version of the evolution variables $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$. We also write down the transformations between these variables and their Cartesian version, \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}. Then, we obtain the stable gauge in spherical coordinates by following the steps introduced in Section~\ref{sec:gauge_choice}. We compare this with a different potentially stable gauge that can be inferred from the one used in~\cite{Bantilan:2012vu}. Finally, we show that tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}, is a consequence of the lowest order of the Einstein equations, provided that the leading order of the generalized harmonic constraints is satisfied.\footnote{In fact, tracelessness was already proved in Section~\ref{sec:bouset2} by converting Cartesian variables into spherical ones. We prove it again in this section employing only spherical coordinates.}
-
-
-%Here we apply the prescription of Section~\ref{subsec:cartevvarboucon} to the case of asymptotically AdS spacetimes in spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$, in order to construct the spherical coordinate version of the Cartesian evolution variables $(\bar{g}_{\mu\nu},\bar{\varphi},\bar{H}_\mu)$. We also write down the transformations between these two sets of variables in different coordinates.
+Although spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$ are not suitable for numerically evolving points near the origin (see discussion in Section~\ref{sec:numcauprob}), they are convenient to extract the physics of the CFT at the AdS boundary, since they are adapted to the boundary topology $\mathbb{R}\times S^2$.
+In this section we apply the prescription outlined in Section~\ref{sec:pre_sta} to the case of asymptotically AdS spacetimes in $D=4$ spacetime dimensions in spherical coordinates. Similarly to the Cartesian case, we first define the spherical coordinate version of the evolution variables $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$. We also write down the transformations between these variables and their Cartesian version, \eqref{eq:gbarcart}--\eqref{eq:soufunb}. Then, we obtain the stable gauge in spherical coordinates by following the steps introduced in Section~\ref{sec:gauge_choice}. We compare this with a different potentially stable gauge that can be inferred from the one used in~\cite{Bantilan:2012vu}. Finally, we show that tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}, is a consequence of the lowest order of the Einstein equations in the near boundary expansion, provided that the leading order of the generalized harmonic constraints is satisfied.\footnote{In fact, tracelessness was already proved in Section~\ref{sec:bouset2} by converting Cartesian variables into spherical ones. We prove it again in this section employing only spherical coordinates.}
 
 \subsection{Evolution Variables and Boundary conditions}
 
-We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as in the Cartesian coordinate case, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, and (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary at $\rho=1$.
+We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as in the Cartesian coordinate case, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, and (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary.
 
 The boundary conditions on $h_{\alpha\beta}$ \eqref{eq:sphbounconh} tell us that
 \begin{eqnarray}\label{eq:gbarsph}
@@ -983,9 +970,9 @@ Finally, the boundary conditions \eqref{eq:sphbouncondsoufunc} on $H_\alpha$ sug
  \end{eqnarray}
 in spherical coordinates.
 
-Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no simple transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g.,\eqref{eq:sphbouncondsoufunc} in spherical coordinates.
+Neither $H_\alpha,\hat{H}_\alpha,\bar{H}_\alpha$ nor $H_\mu,\hat{H}_\mu,\bar{H}_\mu$ are components of the same tensor, so there is no simple transformation from one set to the other. The two triplets of quantities can only be obtained from the definition of source functions in terms of the full metric $g$ in the appropriate set of coordinates, e.g., equation \eqref{eq:sphbouncondsoufunc} in spherical coordinates.
 
-In a numerical scheme in spherical coordinates employing the framework presented in this article, reflective Dirichlet boundary conditions could be easily imposed as
+In a numerical scheme in spherical coordinates employing the framework presented in this article, reflective Dirichlet boundary conditions can be easily imposed as
 \begin{equation}
 \label{eq:dirbc_sphcoords}
  \bar{g}_{\alpha\beta}\big|_{\rho=1}=0\,,\quad \bar{\varphi}\big|_{\rho=1}=0\,,\quad \bar{H}_\alpha\big|_{\rho=1}=0\,.
@@ -993,7 +980,7 @@ In a numerical scheme in spherical coordinates employing the framework presented
 
 \subsection{Gauge Choice for Stability}\label{sec:gau_choice_sphcoords}
 
-Since the evolution variables in spherical coordinates, $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$, are linear in $q=1-\rho$ by construction, we can borrow the near-boundary expansions \eqref{eqn:qexpg}, \eqref{eqn:qexpH}, \eqref{eqn:qexpphi}. 
+Since the evolution variables in spherical coordinates, $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$, are linear in $q=1-\rho$ by construction, we can borrow the near-boundary expansions \eqref{eqn:qexpg}--\eqref{eqn:qexpphi}. 
 We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. Rewriting the resulting equations in the wave-like form \eqref{eq:waveEFE}, we obtain
 \begin{eqnarray}\label{eqn:efett_3p1}
 \tilde{\Box}\bar{g}_{(1)tt}&=&q^{-2} \left(2 \bar{H}_{(1) \rho }-3 \bar{g}_{(1) \rho \rho }\right)+O\left(q^{-1}\right)\\
@@ -1095,7 +1082,7 @@ We now follow the three steps of Section~\ref{sec:gauge_choice} to obtain a stab
    \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi }).
 \end{eqnarray}
 
-\item Plug \eqref{eqn:target_gauge_trhothetaphi_step1} into the $q^{-2}$ terms of \eqref{eqn:efett_3p1}--\eqref{eqn:efephiphi_3p1}. This gives 4 independent equations:
+\item Plug \eqref{eqn:target_gauge_trhothetaphi_step1} into the $q^{-2}$ terms of \eqref{eqn:efett_3p1}--\eqref{eqn:efephiphi_3p1}. This gives the following independent equations:
 \begin{eqnarray}
 \label{eq:indeq1_3p1}
 &&-\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}=0,\\
@@ -1132,13 +1119,13 @@ By looking at the gauge choice made in~\cite{Bantilan:2012vu} (see eq. (74)) to 
 \bar{H}_{(1)\theta}&=&2 \bar{g}_{(1) \rho \theta }\nonumber\\
 \bar{H}_{(1)\phi}&=&2 \bar{g}_{(1) \rho \phi }.
 \end{eqnarray}
-\eqref{eq:hbold_3p1} cannot be made equivalent to \eqref{eqn:target_gauge_trhothetaphi} by any of the equations found above. Thus, it is likely that we have found two, inequivalent, gauge choices, both of which would work well to give stability to a generalized harmonic numerical scheme in spherical coordinates with no symmetry assumptions. This could be confirmed by alternate use of the two gauges in numerical simulations.
+\eqref{eq:hbold_3p1} cannot be made equivalent to \eqref{eqn:target_gauge_trhothetaphi} by any of the equations found above. Thus, it is likely that we have found two, inequivalent, gauge choices, both of which should result in  stable evolutions in a generalized harmonic numerical scheme in spherical coordinates with no symmetry assumptions. This could be confirmed by alternate use of the two gauges in numerical simulations.
 
 \subsection{Tracelessness and Conservation of Boundary Stress Tensor}
 
-We conclude this section by showing that tracelessness and conservation of $\langle T_{ab}\rangle_{CFT}$ follow from \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1}, i.e., from the lowest order of the Einstein equations, provided that the leading order of the generalized harmonic constraints is satisfied. 
+We conclude this subsection by showing that tracelessness and conservation of $\langle T_{ab}\rangle_{CFT}$ follow from \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1}, i.e., from the lowest order of the Einstein equations, provided that the leading order of the generalized harmonic constraints are satisfied. 
 
-With the notation of Section~\ref{sec:bouset2}, let $x^a=(t,\theta,\phi)$ be the coordinates along the AdS boundary $\rho=1$, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ be the metric of the AdS boundary, and $\mathcal{D}$ be the Levi-Civita connection of $\lambda_{ab}$, i.e., $\mathcal{D}$ is torsion-free and $\mathcal{D}_a\lambda_{bc}=0$. Then, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab}\langle T_{ab}\rangle_{CFT}$ is the trace of the boundary-stress tensor and $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=\lambda^{ac}\mathcal{D}_c \langle T_{ab}\rangle_{CFT}$ is its divergence. 
+With the notation of Section~\ref{sec:bouset2}, let $x^a=(t,\theta,\phi)$ be the coordinates along the AdS boundary, $\lambda_{ab}dx^a dx^b=-dt^2+d\theta^2+\sin^2\theta d\phi^2$ be the metric of the AdS boundary, and $\mathcal{D}$ be the Levi-Civita connection of $\lambda_{ab}$, i.e., $\mathcal{D}$ is torsion-free and $\mathcal{D}_a\lambda_{bc}=0$. Then, $\langle \text{tr}T\rangle_{CFT}=\lambda^{ab}\langle T_{ab}\rangle_{CFT}$ is the trace of the boundary-stress tensor and $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=\lambda^{ac}\mathcal{D}_c \langle T_{ab}\rangle_{CFT}$ is its divergence. 
 We want to prove that $\langle \text{tr}T\rangle_{CFT}=0$ and $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=0$. 
 The expression of $\langle \text{tr}T\rangle_{CFT}$ in terms of the leading order of the metric variables in spherical coordinates was already written in \eqref{eq:tracecalc}. We repeat it here for completeness:
 \begin{equation}
@@ -1168,7 +1155,6 @@ Moreover, by solving the system of 6 equations given by the first derivatives of
 \subsection{Boundary stress tensor from holographic renormalization}
 \label{sec:HoloRen}
 
-%\textcolor{blue}{HB: I see that the details in red below are for computing the stress tensor in coordinates that we don't use. We don't need to include them in this paper, I suggest we keep them in our notes for internal consumption, but remove them from the draft.}\\
 We can straightforwardly compute the boundary stress tensor from \eqref{eq:asyFG} using the holographic renormalization prescription of \cite{deHaro:2000vlm} in spherical coordinates $x^{\bar{a}}=(\bar{t},\bar{\theta},\bar{\phi})$ on the AdS boundary. We have,
 \begin{equation}
 \label{eq:bdysetFGform}
@@ -1187,44 +1173,31 @@ The explicit components of the stress tensor in \eqref{eq:bdysetFGform} are give
 \end{eqnarray}
 
 On the other hand, in Section~\ref{sec:bouset2} we compute the boundary stress-tensor starting from the metric in global spherical coordinates and then using the prescription of \cite{Balasubramanian:1999re}. Of course, the expressions \eqref{eq:set_explicit} and \eqref{eq:set_explicit_2} are equivalent, as we now explain. To obtain \eqref{eq:set_explicit}, we have not imposed that the metric components satisfy the Einstein equations. On the other hand, \eqref{eq:bdysetFGform} gives the correct boundary stress-energy tensor if the bulk metric solves the Einstein equations, in agreement with the assumptions of the FG theorem. It is thus expected that \eqref{eq:set_explicit} and \eqref{eq:set_explicit_2} agree if we assume the validity of the lowest order of the Einstein equations in the form that takes into account the generalized harmonic constraints, i.e., \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1}.
-%In fact, it is straightforward to see that the two equations agree if we assume the validity of the lowest order of the Einstein equations in spherical coordinates given in \eqref{eqn:efett_3p1}. 
 In fact, we only need \eqref{eq:indeq1_3p1}. For example, starting from \eqref{eq:set_explicit}, imposing \eqref{eq:indeq1_3p1} and using the fact that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at the boundary $\rho=1$ together with $\bar{g}_{(1)\alpha\beta}=f_{\alpha\beta}$,\footnote{Note that $\bar{t}=t,\bar{\theta}=\theta,\bar{\phi}=\phi$ at $\rho=1$ (i.e., $\bar{z}=0$) from \eqref{eqn:invertFGcoords}, while $\bar{g}_{(1)\alpha\beta}\equiv\frac{\partial \bar{g}_{\alpha\beta}}{\partial q}\bigr|_{q=0}=f_{\alpha\beta}$, where the second equality is obtained by comparing \eqref{eq:sphbounconh} with \eqref{eq:gbarsph} to write $\bar{g}_{\alpha\beta}$ in terms of $f_{\alpha\beta}$ and the corresponding $\rho$-dependent factors.} we find precisely the expressions \eqref{eq:set_explicit_2}.
 
 
 \section{Boundary Prescription for the Poincar\'e Patch}\label{sec:poincare}
-%\section{Poincar\'e Patch}\label{sec:poincare}
 
-%Here we analyze the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context. 
-Here we follow the prescription of Section~\ref{sec:pre_sta} in the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes evolution in that context.
-The metric of a Poincar\'e patch of AdS$_4$ can be written in Poincar\'e coordinates $(t,z,x_1,x_2)$ as
+Here we follow the prescription of Section~\ref{sec:pre_sta} in the case of Poincar\'e AdS and display a choice of generalized harmonic source functions that stabilizes the evolution in this case.
+
+The metric of the Poincar\'e patch of AdS$_4$ can be written  as
 \begin{equation}
 \label{eq:AdSpoincare}
 \hat{g} = \frac{L^2}{z^2} \left( -dt^2 + dz^2 + dx_1{}^2 + dx_2{}^2  \right).
 \end{equation}
-To include the Poincar\'e horizon $z\rightarrow \infty$ in our computational domain, we compactify the bulk coordinate $z=(1-\rho^2)/\rho^2$ to have the Poincar\'e horizon at $\rho=0$ and the boundary at $\rho=1$, giving the following form for the metric of AdS$_4$
+in terms of Poincar\'e coordinates $(t,z,x_1,x_2)$. To include the Poincar\'e horizon $z\rightarrow \infty$ in our computational domain, we compactify the bulk coordinate $z=(1-\rho^2)/\rho^2$ to have the Poincar\'e horizon at $\rho=0$ and the AdS boundary at $\rho=1$. This gives the following form for the metric of AdS$_4$:
 \begin{equation}
 \hat{g} = \frac{L^2 \rho^4}{(1-\rho^2)^2} \left( -dt^2 + (4/\rho^6)d\rho^2 + dx_1^2 + dx_2^2  \right).
 \end{equation}
 
-%Let us now consider asymptotically AdS spacetimes.
-%Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}, \eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
-%We can thus read off the fall-offs of the metric components from the rest of the FG expansion. 
-%Let us now translate these into coordinates $(t,\rho,x_1,x_2)$. The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
-%The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}$ functions of $(t,x_1,x_2)$.
-%Therefore, for coupling with Klein-Gordon matter, the scalar field fall-off preserving the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c$ function of $(t,x_1,x_2)$. The metric fall-offs also imply the fall-offs of the source function, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}$ functions of $(t,x_1,x_2)$.
-%As a result of this, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
 Let us now consider asymptotically AdS spacetimes.
-Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}, \eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
+Since \eqref{eq:AdSpoincare} is in the form given by the leading order of the FG expansion, \eqref{eqn:FGmetric}--\eqref{eqn:FGbdymetric}, we see that $(t,z,x_1,x_2)$ are FG coordinates.
 We can thus read off the fall-offs of the metric components from the rest of the FG expansion.
-%Let us now translate these into coordinates $(t,\rho,x_1,x_2)$.
-The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$.
+The evolved fields consist of the spacetime metric $g_{\mu\nu}$, possibly a scalar field $\varphi$, and  the generalized harmonic source functions $H_\mu$.
 The fall-offs of the metric components $g_{\mu\nu}$ read the same as \eqref{eq:carbouncondh}, with $f_{\mu\nu}(t,x_1,x_2)$ coefficients.
 The scalar field fall-off that preserves the metric asymptotics is given by \eqref{eq:carbouncondphi}, with $c(t,x_1,x_2)$ coefficient.
-The fall-offs of the source function can be inferred from the metric fall-offs, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}(t,x_1,x_2)$ coefficients.
-As a result of this, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
-
-%The evolved fields consist of the full metric $g_{\mu\nu}$, possibly scalar field matter $\varphi$, and generalized harmonic source functions $H_\mu$. 
-%The corresponding evolution variables in this Poincar\'e setting give exactly the same expressions as we had written in \eqref{eq:gbarcart}, \eqref{eq:phibarcart}, \eqref{eq:soufunb}.
+The fall-offs of the source functions can be inferred from the metric fall-offs, which are given by \eqref{eq:carbouncondsoufun}, with $f_{\mu}(t,x_1,x_2)$ coefficients.
+As a result, the corresponding evolution variables in this Poincar\'e setting are given exactly by the same expressions as we had written in \eqref{eq:gbarcart}--\eqref{eq:soufunb}.
 
 Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the following gauge:
 \begin{eqnarray}
@@ -1234,22 +1207,23 @@ Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the followi
 \bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\nonumber\\
 \bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }.
 \end{eqnarray}
-We have verified that this gauge leads to stable evolution on Poincar\'e AdS$_4$, the results of which will appear in the sequel. 
+We have verified that this gauge leads to stable evolution in asymptotically AdS$_4$ spacetimes in Poincar\'e coordinates.  These results will appear in the sequel. 
 We close by noting that \cite{Bantilan:2020pay} obtained a similar stable gauge to evolve dynamical black holes in the background of the AdS soliton. 
 
 
 \section{Initial Data}
 \label{sec:initdata}
 
-The Cauchy problem in GR requires the prescription of initial data on a spacelike hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. In asymptotically AdS spacetime, in addition we have to specify boundary conditions at the boundary of AdS; we have dealt with boundary conditions in Section \ref{sec:pre_sta}. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\dots$. %\footnote{As explained in Section~\ref{subsec:asyAdS}, this defines the coordinates only near the AdS boundary; the coordinates are completely defined only once a gauge choice has been made. We discuss the gauge choice for our numerical scheme in Appendix~\ref{sec:GCbulk}.}
-With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0},\bar{g}_{ij}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{ij}|_{t=0}$ and the gauge $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0},\partial_t\bar{g}_{t\mu}|_{t=0}$ and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph} at $t=0$.
-In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0},\bar{g}_{\mu\nu}|_{t=0},\partial_t\bar{\varphi}|_{t=0},\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
+The Cauchy problem in GR requires the prescription of initial data on a spacelike hypersurface $\Sigma$ and a choice of gauge throughout the entire evolution. In asymptotically AdS spacetime, in addition we have to specify boundary conditions at the boundary of AdS; we have dealt with boundary conditions in Section \ref{sec:pre_sta}. We pick Cartesian coordinates $x^\mu=(t,x,y,z)$ such that $t=0$ on $\Sigma$. The spatial Cartesian coordinates on $\Sigma$ are denoted by $x^i=(x,y,z)$, and the corresponding indices by $i,j,k,\dots$. 
+With this notation, the data needed for the Cauchy evolution in the generalized harmonic scheme is composed of the initial data $\bar{\varphi}|_{t=0}$, $\bar{g}_{ij}|_{t=0}$, $\partial_t\bar{\varphi}|_{t=0} $, $\partial_t\bar{g}_{ij}|_{t=0}$ and the source functions $\bar{H}_\mu$ at all times. The gauge used in our numerical scheme at $t>0$ is discussed in Appendix~\ref{sec:GCbulk}. With regard to the gauge at $t=0$, we do not set $\bar{H}_\mu|_{t=0}$ explicitly, but we make an equivalent choice for $\bar{g}_{t\mu}|_{t=0}$, and $\partial_t\bar{g}_{t\mu}|_{t=0}$, and then compute $\bar{H}_\mu|_{t=0}$ from \eqref{eq:defsoufunsph}.
+In summary, the complete set of initial data that we prescribe is $\bar{\varphi}|_{t=0}$, $\bar{g}_{\mu\nu}|_{t=0}$, $\partial_t\bar{\varphi}|_{t=0}$ and $\partial_t\bar{g}_{\mu\nu}|_{t=0}$. In this section we explain how this is done in our simulations, taking into account two crucial facts. Firstly, initial data cannot be chosen in a completely arbitrary way, but it must satisfy the constraints of GR. Secondly, the choice of the initial degrees of freedom must be consistent with the desired gauge \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
 
 \subsection{Constraints}
 \label{sec:constr}
 
 Here we review the constraints in GR and how they are solved in our numerical scheme.
-We start by defining the relevant quantities on the initial spacelike hypersurface $\Sigma$. %We will do so using the indices associated with Cartesian coordinates, but the following definitions are tensorial relations that read the same in any basis. 
+We start by defining the relevant quantities on the initial spacelike hypersurface $\Sigma$.  
+
 The timelike, future-directed unit 1-form normal to $\Sigma$ is given by
 \begin{equation}
 \label{eq:uninormal}
@@ -1346,7 +1320,7 @@ The initial metric variables $\bar{g}_{ij}|_{t=0}$ are then easily reconstructed
 
 In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{ij}|_{t=0}=0$; (ii) we make the initial gauge choice $\bar{g}_{ti}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{ij}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{tt}|_{t=0}$ and $\partial_t\bar{g}_{t \mu}|_{t=0}$.
 
-In doing so, the only restriction to consider is the one already obtained in step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
+In doing so, the only restriction to consider is the one already obtained in Step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
   \begin{equation}
   \label{eq:transfunc}
     f(\rho) =
@@ -1370,7 +1344,7 @@ To conclude, the remaining initial variables can be chosen in a completely arbit
 \section{Complete Gauge Choice}
 \label{sec:GCbulk}
 
-In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions that we impose near the boundary in order to obtain stable evolutions. Furthermore, the gauge at $t=0$, $\bar{H}_{\mu}|_{t=0}$, is determined by the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph} at $t=0$. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \eqref{eqn:target_gauge_txyz} on each spatial slice and with the initial values $\bar{H}_{\mu}|_{t=0}$ during evolution. In this section we describe how all this is implemented in our numerical scheme.
+In Section~\ref{sec:gauge_choice} we discussed the gauge choice of source functions that we impose near the boundary in order to obtain stable evolutions. Furthermore, the gauge at $t=0$, $\bar{H}_{\mu}|_{t=0}$, is determined from the initial data, detailed in Appendix~\ref{sec:initdata}, through the definition of source functions \eqref{eq:defsoufunsph} at $t=0$. All that remains is to make a gauge choice of $\bar{H}_\mu$ in the bulk, and smoothly join this with the target boundary values \eqref{eqn:target_gauge_txyz} on each spatial slice and with the initial values $\bar{H}_{\mu}|_{t=0}$ during evolution. In this section we describe how all this is implemented in our numerical scheme.
 
 We start by choosing a zero value for $\bar{H}_\mu$ in the bulk, as this is the simplest choice. Therefore, the values of the source functions on each spatial slice, after the time transition from $t=0$, are given by
 \begin{eqnarray}
@@ -1394,28 +1368,12 @@ With these ingredients, we can finally write the complete gauge choice made in o
 \end{equation}
 From the properties of $g(t,\rho)$, we see that $\bar{H}_\mu=\bar{H}_{\mu}|_{t=0}$ at $t=0$ and $\bar{H}_\mu=F_\mu$ for $t\gg\xi_1$ in the interior and $t\gg\xi_2$ near the boundary. Since the target gauge is crucial for stability and needs to be reached quickly, $\xi_2$ is typically set to a small value. On the other hand, it is not necessary, and perhaps even troublesome, to deal with a fast transition in the bulk, therefore $\xi_1$ takes a larger value. In our simulations, we set $\rho_{0a}=0.0,\rho_{0b}=0.95,\rho_{1a}=0.05,\rho_{1b}=0.95,\xi_1=0.1,\xi_2=0.0025$.
 
-%HB
-%\section{Convergence Tests in the Bulk}\label{sec:convbulk}
-
-%Here we display a pair of numerical tests that demonstrate convergence trends for a representative simulation with no mesh refinement.
-%We do this for [pick simulation] with initial data parameters [display parameters]
-%
-%Let us denote the value of the field $f$ at the grid point $p$ with coordinates $(t,x,y,z)$ in a simulation with mesh spacing $\Delta$ by $f_\Delta(t,x,y,z)$. Assuming the validity of the Richardson expansion [CITE Richardson, L. F. The approximate arithmetic solution by finite differences of physical problems involving differential equations, with applications to the stresses in a masonry dam. Phil. Trans. Roy. Soc., 210:307-357, 1910.] for $f_\Delta(t,x,y,z)$, we have
-%\begin{equation}
-%\label{eq:Richexp}
-%f_\Delta(t,x,y,z)=f(t,x,y,z)+e_\Delta(t,x,y,z), \;\;\text{with} \;\; e_\Delta(t,x,y,z)=c(t,x,y,z)\Delta^2+\mathcal{O}(\Delta^3).
-%\end{equation}
-%To show that the solution $f_\Delta(t,x,y,z)$ converges to a function $f(t,x,y,z)$ in the continuum limit $\Delta\rightarrow0$, we compute the rate of convergence $Q(t,x,y,z)$ at each point of interest
-%\begin{equation}\label{eq:qconv}
-%Q(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{f_{9h/4}(t,x,y,z)-f_{3h/2}(t,x,y,z)}{f_{3h/2}(t,x,y,z)-f_{h}(t,x,y,z)} \right).
-%\end{equation}
-%We use second-order accurate finite difference stencils, and there is a factor of 3/2 between successive resolutions.
-%Thus, assuming the validity of \eqref{eq:Richexp}, we expect $Q$ to asymptote to $Q=2$ in the limit $\Delta\rightarrow0$.
-
 
 \section{Boundary Extrapolation}\label{sec:extrapconvbdy}
 
-As explained in Section~\ref{sec:bouset2}, since the AdS boundary generally does not lie on points of the Cartesian grid, we can only obtain the approximated value of any boundary quantity $f$ through extrapolation from the numerical values of $f$ on grid points near the boundary. In this section we describe how extrapolation is implemented in our scheme with the help of Figure~\ref{fig:lego_circle}. For simplicity, we consider first order extrapolation, i.e., extrapolation from two grid points. The following can be generalized to higher extrapolation orders in a straightforward way. In particular, third order extrapolation is used for the plots in Section~\ref{sec:resbouset}, since this improves the accuracy of the extrapolated numerical values.\footnote{This fact was tested by comparing values obtained with increasing extrapolation order and analytic values, in cases where the latter are known, e.g. boundary scalar field values at $t=0$.}
+As explained in Section~\ref{sec:bouset2}, since the AdS boundary generally does not lie on points of the Cartesian grid, we can only obtain the approximated value of any boundary quantity $f$ through extrapolation from the numerical values of $f$ on grid points near the boundary. In this section we describe how extrapolation is implemented in our scheme with the help of Figure~\ref{fig:lego_circle}. 
+
+For simplicity, we consider first order extrapolation, i.e., extrapolation from two grid points. The following can be generalized to higher extrapolation orders in a straightforward way. In particular, third order extrapolation is used for the plots in Section~\ref{sec:resbouset}, since this improves the accuracy of the extrapolated numerical values.\footnote{This fact was tested by comparing values obtained with increasing extrapolation order and analytic values, in cases where the latter are known, e.g. boundary scalar field values at $t=0$.}
 
 \begin{figure}[t!]
         \centering
@@ -1428,7 +1386,7 @@ Given a Cartesian grid with spacing $\Delta$, let $f_\Delta$ denote the values o
 We extrapolate the values $f^{bdy}_{\Delta}$ through the following procedure:
  \begin{enumerate}
  \item Restrict to the points with Cartesian coordinates $(x,y,z)$ satisfying $\rho(x,y,z)<1-9\Delta/2$ (inside the orange dashed line of Figure~\ref{fig:lego_circle}) and $\max(x,y,z)>1-\frac{17}{2}\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ (outside the continuous orange line of Figure~\ref{fig:lego_circle}), where $n_\Delta$ denotes the degree of the three resolutions used for convergence, $n_{9h/4}=0,n_{3h/2}=1,n_{h}=2$ (notice that $\left(\frac{3}{2}\right)^{n_\Delta}\Delta$ is a constant for all three resolutions). We have empirically found that considering points outside of this region in the next steps leads to unphysical or non-converging values.
- \item For any point in the range defined at step 1, identify the coordinate with the largest absolute value, e.g. $x$, and its sign, say $x>0$. If two coordinates have the same absolute value, then we pick $x$ over $y$ and $z$, and $y$ over $z$. Each direction identified in this way is represented by a light blue arrow. Among all the points along the identified direction ($x$ in our example) and within the range of step 1, pick the closest point to the boundary. We denote this point by $p_1$ and its coordinates by $(x_1,y_1,z_1)$. For each direction identified as above, the corresponding $p_1$ point is represented as a green dot in Figure~\ref{fig:lego_circle}.
+ \item For any point in the range defined at step 1, identify the coordinate with the largest absolute value, e.g., $x$, and its sign, say $x>0$. If two coordinates have the same absolute value, then we pick $x$ over $y$ and $z$, and $y$ over $z$. Each direction identified in this way is represented by a light blue arrow. Among all the points along the identified direction ($x$ in our example) and within the range of step 1, pick the closest point to the boundary. We denote this point by $p_1$ and its coordinates by $(x_1,y_1,z_1)$. For each direction identified as above, the corresponding $p_1$ point is represented as a green dot in Figure~\ref{fig:lego_circle}.
  \item Consider the nearest point to $p_1$ along the identified axis in the direction of the bulk (decreasing $x$ in the example). We denote this point by $p_2$ and its coordinates by $(x_2,y_2,z_2)$. For each $p_1$ point, the corresponding $p_2$ is represented as a purple dot in Figure~\ref{fig:lego_circle}. In our example $x_2=x_1-\Delta,y_2=y_1,z_2=z_1$.
  \item Use first order extrapolation on $f_\Delta(p_1),f_\Delta(p_{2})$ to determine the value of $f^{bdy}_{\Delta}(p_{bdy})$ where $p_{bdy}$ is the boundary point along the identified axis in the direction of the boundary.  
 For each pair $p_1,p_2$, the corresponding $p_{bdy}$ is represented by a red dot in Figure~\ref{fig:lego_circle} and the AdS boundary is represented by a red line.
@@ -1438,16 +1396,11 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
  f^{bdy}_{\Delta}(p_{bdy})=\frac{x_{bdy}-x_2}{x_1-x_2}f_\Delta(p_1)+\frac{x_{bdy}-x_1}{x_2-x_1}f_\Delta(p_2).
  \end{equation}
  \item In order to avoid issues arising from singularities in the definition of spherical coordinates in terms of Cartesian coordinates, we do not extrapolate boundary points \textcolor{red}{with} $z_{bdy}=0$. 
-\textcolor{red}{We, instead, fill each of these points by copying the mean value of the closest boundary extrapolated points. This ensures continuity at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$, i.e., points with $\phi=0\sim 2\pi$.}
- %We, instead, fill each of these points by copying the value at one of the closest boundary extrapolated points. 
-%Notice that this provides data that is regular at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$.
+Instead, we fill each of these points by copying the mean value of the closest boundary extrapolated points. This ensures continuity at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$, i.e., points with $\phi=0\sim 2\pi$.
  \end{enumerate}
+ 
  Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. 
- \textcolor{red}{We aim to improve this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. For now, we fill the empty regions by linearly interpolating boundary values. The data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we found it appropriate to apply a low-pass filter to quantities to be shown on the boundary $S^2$. More precisely, we apply the filter on three copies of the boundary sphere joined along the semi-circle $z_{bdy}=0$, $y_{bdy}\geq 0$ and then we plot the smooth data of the central copy. After re-enforcing continuity at the semi-circle as explained in point 5 above, this strategy provides regular smooth data at the semi-circle if the original raw data is approximately periodic in $\phi$ with period $2\pi$, which is expected for data on a sphere.}
-%This issue of our extrapolation scheme is dealt with by linearly interpolating boundary data. We aim to correct this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. Furthermore, the data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we found it appropriate to apply a low-pass filter to quantities to be shown on the boundary $S^2$. \textcolor{red}{More precisely, we apply the low-pass filter on three copies of the boundary sphere joined along the semi-circle $z_{bdy}=0$, $y_{bdy}\geq 0$ and then we plot the smooth data of the middle copy. After re-enforcing continuity at the semi-circle as explained in point 5 above, this strategy provides regular smooth data at the semi-circle if the original raw data is approximately periodic in $\phi$ with period $2\pi$, as expected for data on a sphere.}
-
-%Our smoothing algorithm preserves regularity at $z_{bdy}=0, y_{bdy}> 0$\footnote{This is achieved by applying the low-pass filter on a double copy of the boundary sphere.}, but it is necessary to re-enforce regularity at $(z_{bdy},y_{bdy},x_{bdy})=(0,0,\pm1)$, which is done as explained in point 5 above. Figures \ref{fig:snapshotsbdyphi} and \ref{fig:snapshotsenergydensity} are obtained in this way, employing the third order version of \eqref{eq:firstordextrap} as mentioned at the beginning of this section.
-%Further motivation to rely on this entire extrapolation scheme comes from a comparison between boundary data extracted in this way and analytic values in cases where the latter are easily obtained, e.g. boundary scalar field values at $t=0$. We verified that the two sets give visually indistinguishable results.
+ We aim to improve this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. For now, we fill the empty regions by linearly interpolating boundary values. The data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we found it appropriate to apply a low-pass filter to quantities to be shown on the boundary $S^2$. More precisely, we apply the filter on three copies of the boundary sphere joined along the semi-circle $z_{bdy}=0$, $y_{bdy}\geq 0$ and then we plot the smooth data of the central copy. After re-enforcing continuity at the semi-circle as explained in step 5 above, this strategy provides regular smooth data at the semi-circle if the original raw data is approximately periodic in $\phi$ with period $2\pi$, which is expected for data on a sphere.
 
 Notice that, as \eqref{eq:firstordextrap} shows, second order convergence of boundary values $f^{bdy}_{\Delta}$ is a direct consequence of second order bulk convergence of $f_\Delta$, which is confirmed by Figure~\ref{fig:L2norm_iresallconvergence-crop} in our simulations. Despite this fact, some modifications must be made to our extrapolation scheme if we wish to perform explicit convergence tests on our boundary data. We now explain the reason for this and the necessary modifications. We assume the validity of the Richardson expansion \cite{doi:10.1098/rsta.1911.0009} for $f_{\Delta}$ at any grid point $p$,
 \begin{equation}
@@ -1460,11 +1413,11 @@ Then, from \eqref{eq:firstordextrap}, we obtain the Richardson expansion for $f^
  \label{eq:bdyRichexp}
  f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)+e_\Delta(p_1,p_2)\Delta^2+\mathcal{O}(\Delta^3),
  \end{equation}
-where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation and the remaining error terms come from the solution error in $f_\Delta$. The typical convergence test involves the computation of the convergence factor
+where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation. The remaining error terms come from the solution error in $f_\Delta$. The typical convergence test involves the computation of the convergence factor
 \begin{equation}\label{eq:qconv}
 Q(p_{bdy})=\frac{1}{\ln(3/2)}\ln\left( \frac{f_{9h/4}(p_{bdy})-f_{3h/2}(p_{bdy})}{f_{3h/2}(p_{bdy})-f_{h}(p_{bdy})} \right)
 \end{equation}
-at each $p_{bdy}$. We clearly see that $Q(p_{bdy})$ can be expected to asymptote to 2 as $\Delta\rightarrow0$, thus confirming second order convergence in the continuum limit, only if the points $p_1,p_2$ are the same for all 3 resolutions involved. Therefore, our extrapolation scheme must be modified to select pair of bulk points, $p_1$ and $p_2$, for extrapolation that are present in all three grids involved in the convergence test. 
+at each boundary point $p_{bdy}$. We clearly see that $Q(p_{bdy})$ can be expected to asymptote to 2 as $\Delta\rightarrow0$, thus confirming second order convergence in the continuum limit, only if the points $p_1,p_2$ are the same for all 3 resolutions involved. Therefore, our extrapolation scheme must be modified to select pair of bulk points, $p_1$ and $p_2$, for extrapolation that are present in all three grids involved in the convergence test. 
 In practice, we saw that boundary convergence follows the trend of bulk convergence only if, in addition to this modification, we restrict to $p_1$ points in the range mentioned in step 1 above. The reason for this should be investigated further. 
 
 Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove convergence to the true value $f(p_{bdy})$, but rather to its approximation $f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)$. For this reason, the convergence test \eqref{eq:qires} cannot be performed at the boundary for functions with vanishing true value (such as $\langle trT \rangle_{CFT}$), because their extrapolated value is not just the term linear in $\Delta^2$ but it also includes the extrapolation error $c_{extr}$. A more detailed analysis must be made to examine the explicit form $e_{extr}(p_{bdy},p_1,p_2)$ and be able to find the rate of convergence to $f(p_{bdy})$. In our study, we simply make the natural assumption that $e_{extr}(p_{bdy},p_1,p_2)$ decreases as we increase resolution, so $f^{bdy}_{\Delta}(p_{bdy})$ is a sufficiently accurate approximation of $f(p_{bdy})$ for sufficiently high resolution (i.e., sufficiently small $\Delta$).
@@ -1473,7 +1426,7 @@ Finally, \eqref{eq:bdyRichexp} shows that this type of test does not prove conve
 \section{Convergence of the Independent Residual}\label{sec:convbulk}
 
 To show that the solution is converging to a solution of the Einstein equations, we compute the independent residual that is obtained by taking the numerical solution, substituting it back into a discretized version of the Einstein equations.
-At each grid point, we then take the maximum value over all components of the Einstein equations, which we denote $\Phi_\Delta$. 
+At each grid point, we then take the maximum value over all components of the Einstein equations, which we denote by $\Phi_\Delta$. 
 The independent residual should be purely numerical truncation error, so we can compute a convergence factor for it by using only two resolutions
 \begin{equation}\label{eq:qires}
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
@@ -1487,7 +1440,7 @@ Again, with second-order accurate finite difference stencils and with a factor o
         }\label{fig:L2norm_iresallconvergence-crop}}
 \end{figure}
 
-Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. However, the $L^2$-norm hides the fact that the order of convergence is lower (between 1 and 2) near the AdS boundary due to the fact that we use first order differencing stencils and first order interpolation, through which we impose the Dirichlet boundary conditions (see~\ref{subsec:cartevvarboucon}). More precisely, near-boundary convergence is higher for the lowest pair of resolutions than for the highest one, which shows values closer to 1 (as expected for first order interpolation). This is the reason why the $L^2$-norm of the lowest pair is largest.
+Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. However, the $L^2$-norm hides the fact that the order of convergence is lower (between 1 and 2) near the AdS boundary due to the fact that we use first order differencing stencils and first order interpolation to impose the Dirichlet boundary conditions (see Section~\ref{subsec:cartevvarboucon}). More precisely, near-boundary convergence is higher for the lowest pair of resolutions than for the highest one, which shows values closer to 1 (as expected for first order interpolation). This is the reason why the $L^2$-norm of the lowest pair (blue dashed curve in Fig. \ref{fig:L2norm_iresallconvergence-crop}) is larger.
 
 
 
