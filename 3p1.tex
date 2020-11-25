@@ -869,7 +869,9 @@ For instance, in Appendix~\ref{sec:sphevvarboucon} we followed the prescription 
 In Appendix~\ref{sec:poincare}, the same procedure leads to a gauge that stabilizes evolution on a Poincar\'e patch of AdS$_4$.
 In other words, this framework makes numerical Cauchy evolution in asymptotically AdS spacetimes possible in full generality, with no need to impose symmetries.
 
-We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this Cauchy evolution scheme. The most direct application would be the study of gravitational collapse of a real massless scalar field in AdS with no symmetry assumptions and with angular momentum.
+We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this Cauchy evolution scheme.
+We want to highlight two of the most important of these here.
+The first is the study of gravitational collapse in AdS with no symmetry assumptions and with angular momentum.
 The numerical study of gravitational collapse in AdS was done in any number $D\geq 4$ of spacetime dimensions by \cite{Bizon:2011gg,Jalmuzna:2011qw} assuming spherical symmetry. 
 In these papers it was shown that a class of small perturbations of amplitude $\epsilon$ undergo gravitational collapse and form a black hole on a time-scale $\mathcal{O}(\epsilon^{-2})$, due to a turbulent cascade of energies from large to small distances until a horizon forms.
 Subsequently, \cite{Bantilan:2017kok} considered the same massless scalar field model in AdS$_5$ in a 2+1 setting, and it was observed that, for a certain class of initial data, the subsequent evolution resulted in collapse that happens faster away from spherical symmetry.
@@ -877,8 +879,8 @@ On the other hand, the authors in \cite{Choptuik:2017cyd} used a particular metr
 A complete picture of generic gravitational collapse in AdS is still far from clear.
 The scheme described in this article makes it possible to incorporate all the relevant physics and definitively settle this question.
 
-Another immediate application of this scheme is the study of binary black hole mergers and black hole instabilities in global AdS.
-The superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. 
+The second important problem we wish to highlight is the study of the superradiant instability in AdS.
+Superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. 
 The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. 
 Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown.
 To settle this question, it will be necessary to keep track of progressively smaller spatial scales during the course of the evolution, which typically go hand-in-hand with progressively richer dynamics.
@@ -950,7 +952,7 @@ In this section we apply the prescription outlined in Section~\ref{sec:pre_sta} 
 
 \subsection{Evolution Variables and Boundary conditions}
 
-We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as in the Cartesian coordinate case, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, and (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary.
+We remind the reader that new evolution variables are defined in order to apply the boundary conditions found in Section~\ref{subsec:asyAdS} as simple Dirichlet conditions at the AdS boundary $\rho=1$. In the same way as in the Cartesian coordinate case where we defined metric evolution variables $\bar{g}_{\mu\nu}$ in \eqref{eq:gbarcart}, the metric evolution variables in spherical coordinates $\bar{g}_{\alpha\beta}$ are defined by (i) considering the deviation from pure AdS tensor $h_{\alpha\beta}=g_{\alpha\beta}-\hat{g}_{\alpha\beta}$ in spherical coordinates, and (ii) stripping $h_{\alpha\beta}$ of as many factors of $(1-\rho^2)$ as needed so that they fall off linearly in $(1-\rho)$ near the AdS boundary.
 
 The boundary conditions on $h_{\alpha\beta}$ \eqref{eq:sphbounconh} tell us that
 \begin{eqnarray}\label{eq:gbarsph}
@@ -1126,7 +1128,8 @@ By looking at the gauge choice made in~\cite{Bantilan:2012vu} (see eq. (74)) to 
 \bar{H}_{(1)\theta}&=&2 \bar{g}_{(1) \rho \theta }\nonumber\\
 \bar{H}_{(1)\phi}&=&2 \bar{g}_{(1) \rho \phi }.
 \end{eqnarray}
-\eqref{eq:hbold_3p1} cannot be made equivalent to \eqref{eqn:target_gauge_trhothetaphi} by any of the equations found above. Thus, it is likely that we have found two, inequivalent, gauge choices, both of which should result in  stable evolutions in a generalized harmonic numerical scheme in spherical coordinates with no symmetry assumptions. This could be confirmed by alternate use of the two gauges in numerical simulations.
+Notice that by setting certain terms in \eqref{eqn:target_gauge_trhothetaphi} to zero, one recovers \eqref{eq:hbold_3p1}.
+It will be interesting to confirm numerical stability of \eqref{eqn:target_gauge_trhothetaphi} with empirical studies.
 
 \subsection{Tracelessness and Conservation of Boundary Stress Tensor}
 
@@ -1214,7 +1217,7 @@ Using the same steps as in Section~\ref{sec:gauge_choice}, we obtain the followi
 \bar{H}_{(1)x_1}&=&\frac{3}{2} \bar{g}_{(1) \rho x_1 }\nonumber\\
 \bar{H}_{(1)x_2}&=&\frac{3}{2} \bar{g}_{(1) \rho x_2 }.
 \end{eqnarray}
-We have verified that this gauge leads to stable evolution in asymptotically AdS$_4$ spacetimes in Poincar\'e coordinates.  These results will appear in the sequel. 
+We have verified that this gauge leads to stable evolution in asymptotically AdS$_4$ spacetimes in Poincar\'e coordinates.  
 We close by noting that \cite{Bantilan:2020pay} obtained a similar stable gauge to evolve dynamical black holes in the background of the AdS soliton. 
 
 
@@ -1439,15 +1442,13 @@ The independent residual should be purely numerical truncation error, so we can 
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
 \end{equation}
 Again, with second-order accurate finite difference stencils and with a factor of 3/2 between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
-
 \begin{figure}[t!]
         \centering
         \includegraphics[width=5.0in,clip=true]{plots/timeseries/L2norm_iresallconvergence/fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
 \parbox{5.0in}{\caption{Time evolution for $L^2$-norm of convergence factor for independent residual of Einstein equations at different resolutions.
         }\label{fig:L2norm_iresallconvergence-crop}}
 \end{figure}
-
-Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. However, the $L^2$-norm hides the fact that the order of convergence is lower (between 1 and 2) near the AdS boundary due to the fact that we use first order differencing stencils and first order interpolation to impose the Dirichlet boundary conditions (see Section~\ref{subsec:cartevvarboucon}). More precisely, near-boundary convergence is higher for the lowest pair of resolutions than for the highest one, which shows values closer to 1 (as expected for first order interpolation). This is the reason why the $L^2$-norm of the lowest pair (blue dashed curve in Fig. \ref{fig:L2norm_iresallconvergence-crop}) is larger.
+Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. 
 
 
 
