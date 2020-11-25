@@ -883,7 +883,7 @@ The authors of \cite{Chesler:2018txn} see a second transition at late times that
 Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown.
 To settle this question, it will be necessary to keep track of progressively smaller spatial scales during the course of the evolution, which typically go hand-in-hand with progressively richer dynamics.
 On top of the computationally expensive nature of 3+1 simulations, it will be necessary to keep track of the evolution on sufficiently long time scales until the endpoint is reached, requiring commensurately large-scale computational resources.
-The ability of our code to run large-scale simulations with AMR suggests that it should be the adequate tool to address the question of the end-state of the superradiant instability of the Kerr-AdS black hole.
+We leave this important study for future work.
 
 
 
@@ -1402,7 +1402,7 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
  \label{eq:firstordextrap}
  f^{bdy}_{\Delta}(p_{bdy})=\frac{x_{bdy}-x_2}{x_1-x_2}f_\Delta(p_1)+\frac{x_{bdy}-x_1}{x_2-x_1}f_\Delta(p_2).
  \end{equation}
- \item In order to avoid issues arising from singularities in the definition of spherical coordinates in terms of Cartesian coordinates, we do not extrapolate boundary points \textcolor{red}{with} $z_{bdy}=0$. 
+ \item In order to avoid issues arising from singularities in the definition of spherical coordinates in terms of Cartesian coordinates, we do not extrapolate boundary points with $z_{bdy}=0$. 
 Instead, we fill each of these points by copying the mean value of the closest boundary extrapolated points. This ensures continuity at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$, i.e., points with $\phi=0\sim 2\pi$.
  \end{enumerate}
  
