@@ -157,7 +157,7 @@ In particular, the code described in the present work has built-in adaptive mesh
 
 A key requirement for obtaining stable evolution in AdS is a gauge choice that is consistent with the conditions imposed at the AdS boundary (see, for example, \cite{Bantilan:2012vu}).
 In most cases, a gauge choice leading to stable numerical evolution is typically found in spacetimes with a certain degree of symmetry.
-In the present work, we detail a gauge choice in $d=4$ spacetime dimensions that leads to stable evolution in an asymptotically global AdS setting with no symmetry assumptions.
+In the present work, we detail a gauge choice in $D=4$ spacetime dimensions that leads to stable evolution in an asymptotically global AdS setting with no symmetry assumptions.
 This work is a direct precursor to fully general studies of gravitational collapse and black hole formation in AdS.
 In this context, Cartesian coordinates are suitable as they are regular everywhere, do not contain coordinate singularities, and do not have the well-known limitation suffered by spherical coordinates in the form of severely shorter time steps imposed by the Courant-Friedrichs-Lewy (CFL) condition. In addition, most AMR infrastructures are designed for this type of coordinates. 
 Similar coordinates were used in \cite{Bantilan:2017kok} to study the non-spherically symmetric collapse of a massless scalar field in global AdS$_5$ with SO(3) symmetry. 
@@ -225,7 +225,7 @@ This brings the metric of AdS$_4$ into its final form, suitable for our numerica
 \subsection{Asymptotically anti-de Sitter Spacetimes}\label{subsec:asyAdS}
 
 We will be interested in the Cauchy evolution of asymptotically AdS spacetimes. 
-In this section we present a review of two different characterizations of such spacetimes and the relation between them, specializing to the case of $d=4$ spacetime dimensions for concreteness. 
+In this section we present a review of two different characterizations of such spacetimes and the relation between them, specializing to the case of $D=4$ spacetime dimensions for concreteness. 
 In doing so, we will also be able to write down the boundary conditions for asymptotically AdS spacetimes in terms of these two different characterizations.
 
 Let us start from the original arguments presented in \cite{Henneaux:1985tv}. 
@@ -363,7 +363,7 @@ Notice that $f_{\rho\rho}$ has been reabsorbed in $g_{\bar{t}\bar{t}}, g_{\bar{\
 
 In this section, we present our prescription to obtain a choice of generalized harmonic gauge source functions that achieves stable evolution.
 We choose to do so using Cartesian coordinates, as they provide a suitable chart to evolve points near the centre of the grid, which is necessary when analyzing gravitational collapse and black hole formation. 
-This procedure generalizes in a straightforward manner to other asymptotically AdS spacetimes in $d\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates on global AdS or on the Poincar\'{e} patch. We consider the application to spherical coordinates in Appendix~\ref{sec:sphevvarboucon}, and to the Poincar\'e patch in Appendix~\ref{sec:poincare}.
+This procedure generalizes in a straightforward manner to other asymptotically AdS spacetimes in $D\geq 4$ spacetime dimensions, different coupling with matter fields, and coordinates on global AdS or on the Poincar\'{e} patch. We consider the application to spherical coordinates in Appendix~\ref{sec:sphevvarboucon}, and to the Poincar\'e patch in Appendix~\ref{sec:poincare}.
 We impose asymptotically AdS boundary conditions \eqref{eq:carbouncondh}, \eqref{eq:carbouncondphi}, \eqref{eq:carbouncondsoufun} as reflective Dirichlet boundary conditions on appropriate evolution variables, as explained in the next section.
 For a discussion in a simpler context with more symmetry, see~\cite{Bantilan:2012vu}.
 
@@ -859,9 +859,11 @@ Even though these deviations are consistent with our error estimates, they may n
 It will be interesting to conduct a detailed analysis by decomposing the scalar field profile into spherical harmonics and showing that the radial part is non-vanishing near the boundary for a very long time.
 We leave this for future studies.
 
-In this work we limited ourselves to $d=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study Cartesian evolution of asymptotically AdS spacetimes in any $d\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. 
-Interestingly, a comparison between \eqref{eqn:target_gauge_txyz} and the corresponding result in \cite{Bantilan:2017kok} (see eq. (S10) in that previous work) clearly suggests a trend for the expression of the stable gauge in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. 
-If this trend were confirmed, repeating the calculation above would not be necessary when changing the value of $D$. 
+In this work we limited ourselves to $D=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study Cartesian evolution of asymptotically AdS spacetimes in any $D\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. 
+Interestingly, a comparison between \eqref{eqn:target_gauge_txyz} and the corresponding result in \cite{Bantilan:2017kok} (see eq. (S10) in that previous work) clearly suggests a trend for the expression of the stable gauge \textcolor{red}{as we relax symmetries, and thus increase the number of spatial coordinates on which the solution depends.}
+%in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. 
+If this trend were confirmed, repeating the calculation above would not be necessary \textcolor{red}{when increasing the number of spatial degrees of freedom.}
+%when changing the value of $D$. 
 See \cite{Bantilan:2020pay} for an example in higher dimensions where this was done explicitly.
 Furthermore, the scheme presented here can be applied to cases with different types of matter fields, different types of global coordinates, and to coordinates on a Poincar\'{e} patch.
 For instance, in Appendix~\ref{sec:sphevvarboucon} we followed the prescription of Section~\ref{sec:pre_sta} to obtain the stable gauge also in spherical coordinates.
@@ -869,7 +871,7 @@ In Appendix~\ref{sec:poincare}, the same procedure leads to a gauge that stabili
 In other words, this framework makes numerical Cauchy evolution in asymptotically AdS spacetimes possible in full generality, with no need to impose symmetries.
 
 We expect to be able to tackle several interesting problems in asymptotically AdS spacetimes using this Cauchy evolution scheme. The most direct application would be the study of gravitational collapse of a real massless scalar field in AdS with no symmetry assumptions and with angular momentum.
-The numerical study of gravitational collapse in AdS was done in any number $d\geq 4$ of spacetime dimensions by \cite{Bizon:2011gg,Jalmuzna:2011qw} assuming spherical symmetry. 
+The numerical study of gravitational collapse in AdS was done in any number $D\geq 4$ of spacetime dimensions by \cite{Bizon:2011gg,Jalmuzna:2011qw} assuming spherical symmetry. 
 In these papers it was shown that a class of small perturbations of amplitude $\epsilon$ undergo gravitational collapse and form a black hole on a time-scale $\mathcal{O}(\epsilon^{-2})$, due to a turbulent cascade of energies from large to small distances until a horizon forms.
 Subsequently, \cite{Bantilan:2017kok} considered the same massless scalar field model in AdS$_5$ in a 2+1 setting, and it was observed that, for a certain class of initial data, the subsequent evolution resulted in collapse that happens faster away from spherical symmetry.
 The authors in \cite{Choptuik:2017cyd} then considered the inclusion of angular momentum in a 1+1 setting for a particular metric ansatz, and observed delayed collapse.
@@ -893,7 +895,7 @@ grant EP/P020232/1, in this research, as part of the HPC Midlands+ consortium. T
 The generalized harmonic formulation of the Einstein equations is based on coordinates $x^\alpha$ that each satisfies a wave equation $\Box x^{\alpha}=H^\alpha$ with source functions $H^\alpha$.
 As long as the constraints $C^\alpha \equiv H^\alpha-\Box x^\alpha=0$ are satisfied,
 %As long as the constraint $C^\alpha \equiv H^\alpha-\Box x^\alpha=0$ is satisfied, 
-we can then write the trace-reversed Einstein equations in $d$ dimensions with cosmological constant $\Lambda$
+we can then write the trace-reversed Einstein equations in $D$ dimensions with cosmological constant $\Lambda$
 \begin{equation}
 0=R_{\alpha\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right)
 \end{equation}
