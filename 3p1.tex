@@ -849,8 +849,9 @@ Finally, $||\Delta p||_2$ is consistent with zero, as appropriate for the bounda
 
 \section{Discussion}\label{sec:Discussion}
 
-We have presented the first proof-of-principle Cauchy evolution of an asymptotically AdS spacetime determined by the Einstein-Klein-Gordon equations with no symmetry assumptions. Stability of the numerical scheme is achieved through the gauge choice \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
-We have used this scheme to obtain preliminary results of the numerical solution for stationary initial data with completely asymmetric Gaussian massless scalar field.
+We have presented the first proof-of-principle Cauchy evolution scheme with no symmetry assumptions that solves the Einstein-Klein-Gordon equations for asymptotically AdS spacetimes. 
+Stability of this numerical scheme is achieved through the gauge choice \eqref{eqn:target_gauge_txyz} near the AdS boundary. 
+We have used this scheme to obtain preliminary results using stationary initial data constructed from completely asymmetric Gaussian initial profiles of a massless scalar field.
 
 We observe the collapse of the scalar field into a black hole and the subsequent ringdown to a Schwarzschild-AdS  black hole spacetime, in both bulk and boundary quantities.
 Deviations from Schwarzschild-AdS at late times are consistent with zero within estimates of the numerical error. 
@@ -860,10 +861,8 @@ It will be interesting to conduct a detailed analysis by decomposing the scalar 
 We leave this for future studies.
 
 In this work we limited ourselves to $D=4$ spacetime dimensions, but the calculation outlined in Section~\ref{sec:gauge_choice} would be almost identical if we were to study Cartesian evolution of asymptotically AdS spacetimes in any $D\geq4$ dimensions. In particular, the stable gauge found with this method would be the same up to a numerical factor. 
-Interestingly, a comparison between \eqref{eqn:target_gauge_txyz} and the corresponding result in \cite{Bantilan:2017kok} (see eq. (S10) in that previous work) clearly suggests a trend for the expression of the stable gauge \textcolor{red}{as we relax symmetries, and thus increase the number of spatial coordinates on which the solution depends.}
-%in $D+1$ dimensions for any number $D\geq1$ of spatial dimensions. 
-If this trend were confirmed, repeating the calculation above would not be necessary \textcolor{red}{when increasing the number of spatial degrees of freedom.}
-%when changing the value of $D$. 
+Interestingly, a comparison between \eqref{eqn:target_gauge_txyz} and the corresponding result in \cite{Bantilan:2017kok} (see eq. (S10) in that previous work) clearly suggests a trend for the expression of the stable gauge as we relax symmetries, and thus increase the number of spatial coordinates on which the solution depends.
+If this trend were confirmed, repeating the calculation above would not be necessary when increasing the number of spatial degrees of freedom.
 See \cite{Bantilan:2020pay} for an example in higher dimensions where this was done explicitly.
 Furthermore, the scheme presented here can be applied to cases with different types of matter fields, different types of global coordinates, and to coordinates on a Poincar\'{e} patch.
 For instance, in Appendix~\ref{sec:sphevvarboucon} we followed the prescription of Section~\ref{sec:pre_sta} to obtain the stable gauge also in spherical coordinates.
@@ -874,11 +873,17 @@ We expect to be able to tackle several interesting problems in asymptotically Ad
 The numerical study of gravitational collapse in AdS was done in any number $D\geq 4$ of spacetime dimensions by \cite{Bizon:2011gg,Jalmuzna:2011qw} assuming spherical symmetry. 
 In these papers it was shown that a class of small perturbations of amplitude $\epsilon$ undergo gravitational collapse and form a black hole on a time-scale $\mathcal{O}(\epsilon^{-2})$, due to a turbulent cascade of energies from large to small distances until a horizon forms.
 Subsequently, \cite{Bantilan:2017kok} considered the same massless scalar field model in AdS$_5$ in a 2+1 setting, and it was observed that, for a certain class of initial data, the subsequent evolution resulted in collapse that happens faster away from spherical symmetry.
-The authors in \cite{Choptuik:2017cyd} then considered the inclusion of angular momentum in a 1+1 setting for a particular metric ansatz, and observed delayed collapse.
-The scheme described in this article makes fully general 3+1 evolution possible, with which the full picture of gravitational collapse in AdS can be uncovered.
+On the other hand, the authors in \cite{Choptuik:2017cyd} used a particular metric ansatz in a 1+1 setting to consider the inclusion of angular momentum, and observed delayed collapse.
+A complete picture of generic gravitational collapse in AdS is still far from clear.
+The scheme described in this article makes it possible to incorporate all the relevant physics and definitively settle this question.
 
 Another immediate application of this scheme is the study of binary black hole mergers and black hole instabilities in global AdS.
-The superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown. The ability of our code to run large scale simulations with AMR suggests that it should be the adequate tool to address the question of the end-state of the superradiant instability of the Kerr-AdS black hole. 
+The superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. 
+The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. 
+Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown.
+To settle this question, it will be necessary to keep track of progressively smaller spatial scales during the course of the evolution, which typically go hand-in-hand with progressively richer dynamics.
+On top of the computationally expensive nature of 3+1 simulations, it will be necessary to keep track of the evolution on sufficiently long time scales until the endpoint is reached, requiring commensurately large-scale computational resources.
+The ability of our code to run large-scale simulations with AMR suggests that it should be the adequate tool to address the question of the end-state of the superradiant instability of the Kerr-AdS black hole.
 
 
 
