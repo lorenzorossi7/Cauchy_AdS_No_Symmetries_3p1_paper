@@ -886,12 +886,12 @@ we can then write the trace-reversed Einstein equations in $D$ dimensions with c
 as
 \begin{eqnarray}
 0
-&=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right) \nonumber \\
-&=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right) \nonumber \\
+&=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
+&=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
 &=& -\frac{1}{2} g^{\gamma\delta} g_{\alpha\beta,\gamma\delta} - g^{\gamma\delta}{}_{,(\alpha}g_{\beta)\gamma,\delta} - H_{(\alpha,\beta)} + H_\gamma \Gamma^\gamma{}_{\alpha\beta} \nonumber \\
-&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta}\right) \,, \label{eqn:Eeqs} 
+&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\ \label{eqn:Eeqs} 
 \end{eqnarray}
-where the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
+where $\bar{T}_{\alpha\beta} = T_{\alpha\beta} - {T^\gamma}_\gamma g_{\alpha\beta}/(d-2)$, the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
 It can be proven that the constraints $C_\alpha=0$ are satisfied for all times $t\equiv x^0$, as long as $C_\alpha=0$ and $\partial_{t}C_\alpha=0$ at $t=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\alpha=0$ being satisfied on the boundary for all times.
 However, for numerical initial data, the constraints and their derivatives with respect to $t$ vanish at $t=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
@@ -963,6 +963,8 @@ In a numerical scheme in spherical coordinates employing the framework presented
 
 Since the evolution variables in spherical coordinates, $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$, are linear in $q=1-\rho$ by construction, we can borrow the near-boundary expansions \eqref{eqn:qexpg}--\eqref{eqn:qexpphi}. 
 We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. Rewriting the resulting equations in the wave-like form \eqref{eq:waveEFE}, we obtain
+
+\begin{widetext}
 \begin{eqnarray}\label{eqn:efett_3p1}
 \tilde{\Box}\bar{g}_{(1)tt}&=&q^{-2} \left(2 \bar{H}_{(1) \rho }-3 \bar{g}_{(1) \rho \rho }\right)+O\left(q^{-1}\right),\\
 %
@@ -1010,7 +1012,11 @@ We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}
 \label{eqn:efephiphi_3p1}
 \tilde{\Box}\bar{g}_{(1)\phi\phi}&=&q^{-2}  \sin^2\theta\left(3 \bar{g}_{(1) \rho \rho }-2 \bar{H}_{(1) \rho }\right)+\mathcal{O}(q^{-1}).
 \end{eqnarray}
+\end{widetext}
+
 Doing the same for the generalized harmonic constraints $0=C_\alpha\equiv H_\alpha-\Box x_\alpha$, we have
+
+\begin{widetext}
 \begin{eqnarray}
 \label{eqn:ct_3p1}
 C_t&=&\frac{1}{2} q^3 (-\bar{g}_{(1)\theta \theta,t}-\bar{g}_{(1) \rho \rho ,t}-\bar{g}_{(1)
@@ -1040,49 +1046,55 @@ C_\phi&=&\frac{1}{2} q^3 (\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta
    \text{$t$$\theta $},t}+\bar{g}_{(1) \text{$tt$},\theta }-16 \bar{g}_{(1) \rho \theta }+8
    \bar{H}_{(1)\theta})+\mathcal{O}(q^4).
 \end{eqnarray}
+\end{widetext}
 
 We now follow the three steps of Section~\ref{sec:gauge_choice} to obtain a stable gauge choice.
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct_3p1}--\eqref{eqn:cphi_3p1}, for $\bar{H}_{(1)\alpha}$. We obtain
 \begin{eqnarray}\label{eqn:target_gauge_trhothetaphi_step1}
-\bar{H}_{(1)t}&=&\frac{1}{8} (\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}+\bar{g}_{(1)
-   \text{$tt$},t}+\csc ^2\theta \left(\bar{g}_{(1) \phi \phi ,t}-2 \bar{g}_{(1) \text{$t$$\phi
-   $},\phi }\right)\nonumber\\
-   &&-2 \bar{g}_{(1) \text{$t$$\theta $},\theta }+16 \bar{g}_{(1) \text{$t$$\rho
+\bar{H}_{(1)t}&=&\frac{1}{8} (\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}+\bar{g}_{(1) \text{$tt$},t} \nonumber \\
+   &&+\csc ^2\theta \left(\bar{g}_{(1) \phi \phi ,t}-2 \bar{g}_{(1) \text{$t$$\phi$},\phi }\right)-2 \bar{g}_{(1) \text{$t$$\theta $},\theta }+16 \bar{g}_{(1) \text{$t$$\rho
    $}})\,,\nonumber \\
 \bar{H}_{(1)\rho}&=&\frac{3}{4} \left(-\csc ^2\theta \bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta}+\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}\right),\nonumber\\
-\bar{H}_{(1)\theta}&=&\frac{1}{8} (-\bar{g}_{(1)\theta \theta,\theta }+\csc ^2\theta \left(\bar{g}_{(1)
+\bar{H}_{(1)\theta}&=&\frac{1}{8} (-\bar{g}_{(1)\theta \theta,\theta } \nonumber \\
+    &&+\csc ^2\theta \left(\bar{g}_{(1)
    \phi \phi ,\theta }-2 \left(\bar{g}_{(1)\theta \phi,\phi }+\cot \theta  \bar{g}_{(1)
    \phi \phi }\right)\right)\nonumber\\
    &&+\bar{g}_{(1) \rho \rho ,\theta }+2 \bar{g}_{(1) \text{$t$$\theta
    $},t}-\bar{g}_{(1) \text{$tt$},\theta }+16 \bar{g}_{(1) \rho \theta })\,,\nonumber\\
-\bar{H}_{(1)\phi}&=&\frac{1}{8} (-2 \bar{g}_{(1)\theta \phi,\theta }+\csc ^2\theta \left(-\bar{g}_{(1)
+\bar{H}_{(1)\phi}&=&\frac{1}{8} (-2 \bar{g}_{(1)\theta \phi,\theta } \nonumber \\
+   &&+\csc ^2\theta \left(-\bar{g}_{(1)
    \phi \phi ,\phi }\right)+\bar{g}_{(1)\theta \theta,\phi }+\bar{g}_{(1) \rho \rho ,\phi
    }\nonumber\\
    &&+2 \bar{g}_{(1) \text{$t$$\phi $},t}-\bar{g}_{(1) \text{$tt$},\phi }+4 \cot \theta 
-   \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi })\,.
+   \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi }). \nonumber \\
 \end{eqnarray}
 
 \item Plug \eqref{eqn:target_gauge_trhothetaphi_step1} into the $q^{-2}$ terms of \eqref{eqn:efett_3p1}--\eqref{eqn:efephiphi_3p1}. This gives the following independent equations:
-\begin{eqnarray}
+\begin{equation}
 \label{eq:indeq1_3p1}
-&&-\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}=0,\\
+-\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}=0, 
+\end{equation}
+\begin{eqnarray}
 \label{eq:indeq2_3p1}
-&&\csc ^2\theta \left(-\bar{g}_{(1) \phi \phi ,\theta }+\bar{g}_{(1)\theta \phi,\phi
-   }+\cot \theta  \bar{g}_{(1) \phi \phi }\right)\nonumber\\
-   &&-\frac{2}{3} \bar{g}_{(1) \rho \rho
-   ,\theta }+\bar{g}_{(1) \text{$tt$},\theta }+\cot \theta  \bar{g}_{(1)\theta \theta}=0,\\
+&& \csc ^2\theta \left(-\bar{g}_{(1) \phi \phi ,\theta }+\bar{g}_{(1)\theta \phi,\phi
+   }+\cot \theta  \bar{g}_{(1) \phi \phi }\right) -\frac{2}{3} \bar{g}_{(1) \rho \rho,\theta } \nonumber \\
+   &&+\bar{g}_{(1) \text{$tt$},\theta }+\cot \theta  \bar{g}_{(1)\theta \theta}=0,
+\end{eqnarray}
+\begin{equation}
    \label{eq:indeq3_3p1}
-&&\bar{g}_{(1)\theta \theta,t}+\frac{2}{3} \bar{g}_{(1) \rho \rho ,t}+\csc ^2\theta 
+\bar{g}_{(1)\theta \theta,t}+\frac{2}{3} \bar{g}_{(1) \rho \rho ,t}+\csc ^2\theta 
    \left(\bar{g}_{(1) \phi \phi ,t}-\bar{g}_{(1) \text{$t$$\phi $},\phi }\right)-\cot \theta
    \bar{g}_{(1) \text{$t$$\theta $}}=0,\\
+\end{equation}
+\begin{equation}
       \label{eq:indeq4_3p1}
-&&\bar{g}_{(1)\theta \phi,\theta }-\bar{g}_{(1)\theta \theta,\phi }-\frac{2}{3} \bar{g}_{(1)
+\bar{g}_{(1)\theta \phi,\theta }-\bar{g}_{(1)\theta \theta,\phi }-\frac{2}{3} \bar{g}_{(1)
    \rho \rho ,\phi }+\bar{g}_{(1) \text{$tt$},\phi }+\cot \theta \bar{g}_{(1)\theta \phi}=0.
-\end{eqnarray}
+\end{equation}
 We prove below that these equations ensure tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}.
 
-\item Use \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1} to eliminate $\bar{g}_{(1)tt},\bar{g}_{(1)t\theta,t},\bar{g}_{(1)t\theta,\theta},\bar{g}_{(1)t\phi,t}$ from \eqref{eqn:target_gauge_trhothetaphi_step1}.
+\item Use \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1} to eliminate $\bar{g}_{(1)tt}$, $\bar{g}_{(1)t\theta,t}$, $\bar{g}_{(1)t\theta,\theta}$, $\bar{g}_{(1)t\phi,t}$ from \eqref{eqn:target_gauge_trhothetaphi_step1}.
 In this way we obtain a stable gauge in spherical coordinates
 \begin{eqnarray}\label{eqn:target_gauge_trhothetaphi}
 \bar{H}_{(1)t}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,t}+3 \cot \theta  \bar{g}_{(1) \text{$t$$\theta
@@ -1117,18 +1129,20 @@ The expression of $\langle \text{tr}T\rangle_{CFT}$ in terms of the leading orde
 The divergence of the boundary stress tensor is given by
 \begin{eqnarray}
 \label{eq:divergence_t}
-\mathcal{D}^a \langle T_{at}\rangle_{CFT}&=&\frac{1}{16\pi}(-3 \csc ^2\theta  \bar{g}_{(1) \phi \phi ,t}-3 \bar{g}_{(1)\theta \theta ,t}-2 \bar{g}_{(1) \rho \rho ,t}+3 \bar{g}_{(1) \text{$t$$\theta $},\theta }\nonumber\\
-&&+3 \csc^2\theta \bar{g}_{(1) \text{$t$$\phi $},\phi }+3 \cot \theta  \bar{g}_{(1)\text{$t$$\theta $}})\,, \\
+\mathcal{D}^a \langle T_{at}\rangle_{CFT}&=&\frac{1}{16\pi}(-3 \csc ^2\theta  \bar{g}_{(1) \phi \phi ,t}-3 \bar{g}_{(1)\theta \theta ,t}-2 \bar{g}_{(1) \rho \rho ,t}\nonumber\\
+&&+3 \bar{g}_{(1) \text{$t$$\theta $},\theta } +3 \csc^2\theta \bar{g}_{(1) \text{$t$$\phi $},\phi }+3 \cot \theta  \bar{g}_{(1)\text{$t$$\theta $}}) \nonumber \\
+\end{eqnarray}
+\begin{eqnarray}
 \label{eq:divergence_theta}
-\mathcal{D}^a \langle T_{a\theta}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \csc ^2\theta  \bar{g}_{(1)\theta \phi ,\phi }-2 \bar{g}_{(1) \rho \rho ,\theta }-3 \csc
-   ^2\theta \bar{g}_{(1) \phi \phi ,\theta }-3 \bar{g}_{(1) \text{$t$$\theta $},t}\nonumber\\
-   &&+3
-   \bar{g}_{(1) \text{$tt$},\theta }+3 \cot \theta  \bar{g}_{(1)\theta \theta }+3 \cot
-   \theta \csc ^2\theta  \bar{g}_{(1) \phi \phi })\,,\\
+\mathcal{D}^a \langle T_{a\theta}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \csc ^2\theta  \bar{g}_{(1)\theta \phi ,\phi }-2 \bar{g}_{(1) \rho \rho ,\theta } \nonumber \\
+&& -3 \csc^2\theta \bar{g}_{(1) \phi \phi ,\theta }-3 \bar{g}_{(1) \text{$t$$\theta $},t} +3\bar{g}_{(1) \text{$tt$},\theta } \nonumber\\
+   &&+3 \cot \theta  \bar{g}_{(1)\theta \theta }+3 \cot
+   \theta \csc ^2\theta  \bar{g}_{(1) \phi \phi }) \nonumber \\
+\end{eqnarray}
+\begin{eqnarray}
 \label{eq:divergence_phi}
-\mathcal{D}^a \langle T_{a\phi}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \bar{g}_{(1)\theta \phi ,\theta }-3 \bar{g}_{(1)\theta \theta ,\phi }-2 \bar{g}_{(1) \rho
-   \rho ,\phi }-3 \bar{g}_{(1) \text{$t$$\phi $},t}\nonumber\\
-   &&+3 \bar{g}_{(1) \text{$tt$},\phi }+3 \cot\theta \bar{g}_{(1)\theta \phi })\,.
+\mathcal{D}^a \langle T_{a\phi}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \bar{g}_{(1)\theta \phi ,\theta }-3 \bar{g}_{(1)\theta \theta ,\phi }-2 \bar{g}_{(1) \rho\rho ,\phi }\nonumber\\
+   &&-3 \bar{g}_{(1) \text{$t$$\phi $},t}+3 \bar{g}_{(1) \text{$tt$},\phi }+3 \cot\theta \bar{g}_{(1)\theta \phi }) \nonumber \\
 \end{eqnarray}
 We immediately see that $\langle \text{tr}T\rangle_{CFT}=0$ as a consequence of \eqref{eq:indeq1_3p1}.
 Moreover, by solving the system of 6 equations given by the first derivatives of \eqref{eq:indeq1_3p1} with respect to $t,\theta,\phi$ and \eqref{eq:indeq2_3p1}, \eqref{eq:indeq3_3p1}, \eqref{eq:indeq4_3p1} for $\bar{g}_{(1) \text{$tt$},t},\bar{g}_{(1) \text{$tt$},\theta},\bar{g}_{(1) \text{$tt$},\phi },\bar{g}_{(1) \text{$t$$\theta $},t}$,$\bar{g}_{(1)\text{$t$$\theta $},\theta },\bar{g}_{(1) \text{$t$$\phi $},t}$, and substituting the solution into the right hand side of \eqref{eq:divergence_t}--\eqref{eq:divergence_phi}, we see that $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=0$.
@@ -1355,12 +1369,12 @@ As explained in Section~\ref{sec:bouset2}, since the AdS boundary generally does
 
 For simplicity, we consider first order extrapolation, i.e., extrapolation from two grid points. The following can be generalized to higher extrapolation orders in a straightforward way. In particular, third order extrapolation is used for the plots in Section~\ref{sec:resbouset}, since this improves the accuracy of the extrapolated numerical values.\footnote{This fact was tested by comparing values obtained with increasing extrapolation order and analytic values, in cases where the latter are known, e.g. boundary scalar field values at $t=0$.}
 
-\begin{figure}[t!]
+\begin{figure*}[t!]
         \centering
         \includegraphics[width=6.1in,clip=true]{Lego_circle_new.pdf}
 \parbox{5.0in}{\caption{Visual description of first order extrapolation technique in the first quadrant of a $z=const.$ surface for a grid with spatial refinement $\Delta$.
         }\label{fig:lego_circle}}
-\end{figure}
+\end{figure*}
 
 Given a Cartesian grid with spacing $\Delta$, let $f_\Delta$ denote the values of $f$ at bulk grid points and $f^{bdy}_{\Delta}$ denote the extrapolated values of $f$ at boundary points. 
 We extrapolate the values $f^{bdy}_{\Delta}$ through the following procedure.
@@ -1389,10 +1403,12 @@ f_\Delta(p)=f(p)+e(p)\Delta^2+\mathcal{O}(\Delta^3),
 \end{equation}
 where $f(p)$ is the true value of $f$ at $p$ and the rest of the right hand side is the solution error of $f_\Delta(p)$. The validity of this expansion is confirmed by bulk convergence of $f_\Delta$ to $f$.
 Then, from \eqref{eq:firstordextrap}, we obtain the Richardson expansion for $f^{bdy}_{\Delta}$ at any extrapolated boundary point $p_{bdy}$:
- \begin{equation}
+ \begin{eqnarray}
  \label{eq:bdyRichexp}
- f^{bdy}_{\Delta}(p_{bdy})=f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)+e_\Delta(p_1,p_2)\Delta^2+\mathcal{O}(\Delta^3),
- \end{equation}
+ f^{bdy}_{\Delta}(p_{bdy})
+&=&f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)+e_\Delta(p_1,p_2)\Delta^2 \nonumber \\
+&&+\mathcal{O}(\Delta^3),
+ \end{eqnarray}
 where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation. The remaining error terms come from the solution error in $f_\Delta$. The typical convergence test involves the computation of the convergence factor
 \begin{equation}\label{eq:qconv}
 Q(p_{bdy})=\frac{1}{\ln(3/2)}\ln\left( \frac{f_{9h/4}(p_{bdy})-f_{3h/2}(p_{bdy})}{f_{3h/2}(p_{bdy})-f_{h}(p_{bdy})} \right)
@@ -1412,12 +1428,12 @@ The independent residual should be purely numerical truncation error, so we can 
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
 \end{equation}
 Again, with second-order accurate finite difference stencils and with a factor of 3/2 between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
-\begin{figure}[t!]
+\begin{figure*}[t!]
         \centering
         \includegraphics[width=5.0in,clip=true]{fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
 \parbox{5.0in}{\caption{Time evolution for $L^2$-norm of convergence factor for independent residual of Einstein equations at different resolutions.
         }\label{fig:L2norm_iresallconvergence-crop}}
-\end{figure}
+\end{figure*}
 Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. 
 
 
