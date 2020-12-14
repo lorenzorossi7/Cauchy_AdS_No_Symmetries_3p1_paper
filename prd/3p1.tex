@@ -62,7 +62,7 @@
 \def\cO{{\cal O}}
 
 \setlength{\parindent}{2em}
-\numberwithin{equation}{section}
+\numberwithin{equation}{section} 
 \allowdisplaybreaks
 
 \begin{document}
@@ -283,38 +283,43 @@ Since $z$ asymptotes to $1-\rho$ near the AdS boundary $\rho=1$, we can use \eqr
 The metric in these coordinates reads
 \begin{eqnarray}
 \label{eq:metnewcoords}
-g&=&\frac{1}{z^2}\biggl[ 
-\left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 - \left(1+\frac{z^2}{2}+f_{tt}z^3+\mathcal{O}(z^4)\right)dt^2 \\
-&&\hspace{0.75cm} + \left(1-\frac{z^2}{2}+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 + \sin^2\theta \left(1-\frac{z^2}{2}+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2\nonumber\\ 
-&&\hspace{0.75cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi 
- \nonumber\\
-&&\hspace{0.75cm}-2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta
--2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr]\,,\nonumber
+g
+&=&\frac{1}{z^2}\biggl[ 
+- \left(1+z^2/2+f_{tt}z^3+\mathcal{O}(z^4)\right)dt^2 \nonumber \\
+&&\hspace{0.75cm} + \left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 \nonumber \\
+&&\hspace{0.75cm} + \left(1-z^2/2+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 \nonumber \\
+&&\hspace{0.75cm} + \sin^2\theta \left(1-z^2/2+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2 \nonumber \\ 
+&&\hspace{0.75cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi \nonumber \\
+&&\hspace{0.75cm}+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi - 2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz \nonumber \\
+&&\hspace{0.75cm}-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta-2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr] \nonumber \\
 \end{eqnarray}
 where the coefficients $f_{\alpha\beta}$ in the expansion above are functions of $(t,\theta,\phi)$. 
 Notice that the metric in \eqref{eq:metnewcoords} is not in the FG form yet because the $zz$ component is not $1/z^2$ up to the desired order in $z$, and the $tz$, $z\theta$, $z\phi$ components do not vanish up to $\mathcal{O}(z^2)$.
 Defining 
 \begin{eqnarray}
 \label{eqn:FGcoords}
-\bar{t}&=&t+\frac{1}{10 } \left(2 f_{t\rho}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,t}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),\\
-\bar{z}&=&z+\frac{1}{6}f_{\rho\rho}(t,\theta,\phi)z^4+\mathcal{O}(z^5),\\
-\bar{\theta}&=&\theta-\frac{1}{10} \left(2 f_{\rho\theta}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\theta}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),\\
-\bar{\phi}&=&\phi-\frac{1}{10} \left(2 f_{\rho\phi}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\phi}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),
+\bar{t}&=&t+\frac{1}{10 } \left(2 f_{t\rho}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,t}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),\nonumber \\
+\bar{z}&=&z+\frac{1}{6}f_{\rho\rho}(t,\theta,\phi)z^4+\mathcal{O}(z^5),\nonumber \\
+\bar{\theta}&=&\theta-\frac{1}{10} \left(2 f_{\rho\theta}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\theta}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),\nonumber \\
+\bar{\phi}&=&\phi-\frac{1}{10} \left(2 f_{\rho\phi}(t,\theta,\phi)+\frac{1}{3}f_{\rho\rho,\phi}(t,\theta,\phi)\right)z^5+\mathcal{O}(z^6),\nonumber \\
 \end{eqnarray}
 which can be inverted near the boundary as
 \begin{eqnarray}
 \label{eqn:invertFGcoords}
-t&=&\bar{t}-\frac{1}{10} \left(2 f_{t\rho}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{t}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),\\
-z&=&\bar{z}-\frac{1}{6}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^4+\mathcal{O}(\bar{z}^5),\\
-\theta&=&\bar{\theta}+\frac{1}{10} \left(2 f_{\rho\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\theta}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),\\
-\phi&=&\bar{\phi}+\frac{1}{10} \left(2 f_{\rho\phi}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\phi}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),
+t&=&\bar{t}-\frac{1}{10} \left(2 f_{t\rho}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{t}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),\nonumber \\
+z&=&\bar{z}-\frac{1}{6}f_{\rho\rho}(\bar{t},\bar{\theta},\bar{\phi})\bar{z}^4+\mathcal{O}(\bar{z}^5),\nonumber \\
+\theta&=&\bar{\theta}+\frac{1}{10} \left(2 f_{\rho\theta}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\theta}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),\nonumber \\
+\phi&=&\bar{\phi}+\frac{1}{10} \left(2 f_{\rho\phi}(\bar{t},\bar{\theta},\bar{\phi})+\frac{1}{3}f_{\rho\rho,\bar{\phi}}(\bar{t},\bar{\theta},\bar{\phi})\right)\bar{z}^5+\mathcal{O}(\bar{z}^6),\nonumber \\
 \end{eqnarray}
 we finally obtain the metric in FG form:
 \begin{align}
-g=\frac{1}{\bar{z}^2}\biggl[ d\bar{z}^2 &-\left(1+\frac{\bar{z}^2}{2}+\left( \textstyle{f_{tt}-\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3+\mathcal{O}(\bar{z}^4) \right)d\bar{t}^2 \nonumber \\
+g=\frac{1}{\bar{z}^2}\biggl[ 
+&d\bar{z}^2 \nonumber \\
+&-\left(1+\frac{\bar{z}^2}{2}+\left( \textstyle{f_{tt}-\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3+\mathcal{O}(\bar{z}^4) \right)d\bar{t}^2 \nonumber \\
 &+ \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{f_{\theta\theta}+\frac{1}{3}f_{\rho\rho}} \right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\theta}^2\nonumber\\
 & +  \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\phi}^2\nonumber\\
-&+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi} + 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
+&+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi} \nonumber \\
+&+ 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
 \nonumber\\
 &+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
 \biggr]\,,
