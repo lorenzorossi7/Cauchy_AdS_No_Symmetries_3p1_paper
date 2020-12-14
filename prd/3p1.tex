@@ -390,7 +390,7 @@ We are now interested in identifying the order of $q$ at which the second deriva
 For each component, we denote their combination by $\tilde{\Box}\bar{g}_{(1)\mu\nu}$, i.e., 
 \begin{equation}
 \label{eq:tildeboxbarg}
-\tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\left.\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\right |_{\rho(x,y,z)=1}\bar{g}_{(1)\mu\nu}\,,
+\tilde{\Box}\bar{g}_{(1)\mu\nu}\equiv\biggl(c^t_{\mu\nu}\frac{\partial^2}{\partial t^2}+c^x_{\mu\nu}\frac{\partial^2}{\partial x^2}+c^y_{\mu\nu}\frac{\partial^2}{\partial y^2}+c^z_{\mu\nu}\frac{\partial^2}{\partial z^2}\biggr)\bar{g}_{(1)\mu\nu}\,,
 \end{equation}
 for some functions $c^t_{\mu\nu}$, $c^x_{\mu\nu}$, $c^y_{\mu\nu}$, $c^z_{\mu\nu}$ of $(t,x,y,z)$ at $\rho(x,y,z)=1$.\footnote{None of these coefficients are tensors, despite the notation, and there is no sum over repeated indices.}
 These derivative terms are included in the first piece of \eqref{eqn:efe_gh_modified}, namely in $-\frac{1}{2}g^{\rho \sigma} \bar{g}_{\mu \nu, \rho \sigma}$. From this, we can easily find their order of $q$ by recalling that the leading order of the inverse metric is given by its purely AdS piece, $g^{\mu\nu}=\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$, and $\bar{g}_{(1)\mu\nu}$ is multiplied by $q$ in the near-boundary expression of $\bar{g}_{\mu\nu}$ (see eq. \eqref{eqn:qexpg}). Thus, $\tilde{\Box}\bar{g}_{(1)\mu\nu}$ must appear in the coefficient of order $q^{3}$ for every component of \eqref{eqn:efe_gh_modified}.\footnote{$\mathcal{O}(\hat{g}^{\mu\nu})=\mathcal{O}(q^{2})$ is true in any number of dimensions but only for Cartesian coordinates. For an arbitrary set of coordinates, the leading power in $\hat{g}^{\mu\nu}$, and hence the order at which the operator \eqref{eq:tildeboxbarg} appears, depends on the specific component under consideration.
@@ -399,7 +399,8 @@ In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} n
 \begin{eqnarray}\label{eq:efefullexp}
 0 
 &=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+A_{(3)\mu\nu}q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5) \nonumber \\
-&=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5)
+&=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q^3+A_{(4)\mu\nu}q^4 \nonumber \\
+&& +\mathcal{O}(q^5)
 \end{eqnarray}
 or, rearranging the terms in order to obtain wave-like equations,
 \begin{equation}
@@ -410,6 +411,8 @@ Similar arguments show that terms involving the massless scalar field with the f
 
 We now write the coefficients in \eqref{eq:waveEFE} explicitly, including only the $q^{-2}$ terms.
 The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$. We find:
+
+\begin{widetext}
 \begin{eqnarray}\label{eqn:efett}
 \tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
 &&+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
@@ -486,8 +489,12 @@ zz}) \nonumber \\
    +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
 &&+\mathcal{O}(q^{-1}), 
 \end{eqnarray}
+\end{widetext}
+
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$. 
 All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion. We get:
+
+\begin{widetext}
 \begin{eqnarray}
 \label{eqn:ct}
 C_t&=&q^2 (-3 \cos \theta \bar{g}_{(1)tx}-3 \sin \theta \cos \phi \bar{g}_{(1)ty}-3 \sin \theta \sin \phi \bar{g}_{(1)tz}+2
@@ -518,18 +525,20 @@ C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    \bar{H}_{(1)z}) \nonumber \\
    &&+\mathcal{O}(q^3).
 \end{eqnarray}
- 
+\end{widetext}
+
 In the generalized harmonic formulation, choosing a gauge amounts to choosing a set of generalized harmonic source functions $\bar{H}_\mu$ for the entire evolution. Although we expect that many gauge choices are allowed,~\cite{Bantilan:2012vu} mentions a few that do not give rise to stable evolutions. We now present a procedure that provides the stable gauge in our Cartesian simulations. We believe that our prescription provides a stable gauge in a variety of settings of physical interest, such as higher spacetime dimensions, various couplings to matter fields, different types of global coordinates or Poincar\'{e} coordinates. Thus, it enables numerical Cauchy evolution in AdS in full generality, that is, with no symmetry assumptions.
 The steps that lead to our stable gauge, in a form that can be easily applied to all previously mentioned cases, are the following.
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints for $\bar{H}_{(1)\mu}$.
 For example, in the Cartesian case, the leading orders of \eqref{eqn:ct}--\eqref{eqn:cz} vanish for:
 \begin{eqnarray}\label{eqn:target_gauge_txyz_step1}
-\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \\
-\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}), \nonumber \\
-\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+y(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+2z \bar{g}_{(1)yz}), \nonumber \\
-\bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})). \nonumber 
+\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \nonumber \\
+\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x\bar{g}_{(1)\psi}+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}), \nonumber \\
+\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+y\bar{g}_{(1)\psi}+2z \bar{g}_{(1)yz}), \nonumber \\
+\bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z\bar{g}_{(1)\psi}). \nonumber \\
 \end{eqnarray}
+where $\bar{g}_{(1)\psi} = \bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$.
 
 \item Let $N_{(1)}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$.
 This gives a number of independent equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see Section~\ref{sec:bouset2}).\footnote{We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the AdS boundary and make the proof less unwieldy.}
@@ -547,7 +556,7 @@ In Cartesian coordinates, using \eqref{eq:cart_tracelessness} to eliminate $\bar
 \bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}),\nonumber\\
 \bar{H}_{(1)x}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xx}+y\bar{g}_{(1)xy}+z\bar{g}_{(1)xz}), \nonumber \\
 \bar{H}_{(1)y}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xy}+y\bar{g}_{(1)yy}+z\bar{g}_{(1)yz}), \nonumber \\
-\bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}).
+\bar{H}_{(1)z}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)xz}+y\bar{g}_{(1)yz}+z\bar{g}_{(1)zz}). \nonumber \\
 \end{eqnarray}
 \end{enumerate}
 This is the asymptotic gauge condition that we have empirically verified leads to stable 3+1 evolution of asymptotically AdS$_4$ spacetimes in Cartesian coordinates.
@@ -666,14 +675,12 @@ In general the AdS boundary does not lie on Cartesian grid points, so we set bou
 at $\rho=1$. Finally, to obtain the values of quantities at the boundary, needed to extract the holographic observables, we use third order extrapolation from their bulk point values. 
 The details of the implementation in our numerical simulations can be found in Appendix~\ref{sec:extrapconvbdy}.
 
-
-
-\begin{figure}[t!]
+\begin{figure*}[t!]
         \centering
         \includegraphics[width=6.0in,clip=true]{Dirichlet_conditions.pdf}
 \parbox{5.0in}{\caption{Visual description of the implementation of Dirichlet boundary conditions through first order interpolation in a portion of a $z=$const. surface for a grid with spatial grid spacing $\Delta$.
         }\label{fig:lego_circle_dirbc}}
-\end{figure}
+\end{figure*}
 
 Last but not least, time-symmetric initial data, sourced by a massless real scalar field, are obtained by solving the conformal decomposition of the Hamiltonian constraint \eqref{eq:hamconsfinal}. 
 The solution to \eqref{eq:hamconsfinal} is computed, after second order finite discretization, through a full approximation storage (FAS) multigrid algorithm with v-cycling and Newton-Gauss-Seidel relaxation, built into the PAMR/AMRD libraries. We ensure that initial data satisfies the generalized harmonic constraints. See Appendix~\ref{sec:initdata} for more details and the complete choice of initial data.
@@ -725,19 +732,19 @@ We will leave this interesting problem for future work.
 
 We describe here the evolution in the bulk: this consists of an initial short phase, in which the scalar field collapses and forms a black hole, and a long ringdown stage, in which the spacetime settles down to Schwarzschild-AdS. 
 
-\begin{figure}[t!]
+\begin{figure*}[t!]
         \centering
         \includegraphics[width=5.2in,clip=true]{phi1_L3_snapshots_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of the scalar field profile $\bar{\varphi}$ on the $z=0$ slice in $(x,y)$ coordinates. In each plot, $x$ and $y$ are the horizontal and vertical axes, respectively, and the black square denotes the boundary of the numerical grid, i.e., $x=\pm 1$ and $y=\pm 1$. The external boundary of the coloured part is the AdS boundary. The black ellipse denotes the approximate position of the AH. This is obtained as the $z=0$ slice of the ellipsoid with Cartesian semi-axes, $x_{AH}$, $y_{AH}$, $z_{AH}$, where $x_{AH}$ is the $x$-coordinate value of the intersection between the AH and the $x$-axis, and similarly for $y_{AH}$ and $z_{AH}$.
 The internal boundary of the coloured region is the excision surface: we excise points inside an ellipsoid whose semi-axes, $a_x^{ex}$, $a_y^{ex}$, $a_z^{ex}$, are given by $a_x^{ex}=x_{AH}(1-\delta_{ex})$, and similarly for $a_y^{ex}$ and $a_z^{ex}$. We use the value $\delta_{ex}=0.4$ for the excision buffer. Highest resolution: $N_x=N_y=N_z=325$.
         }\label{fig:snapshotsscalarfield}}
-\end{figure}
+\end{figure*}
 
 Figure \ref{fig:snapshotsscalarfield} shows the profile of the scalar field variable, $\bar{\varphi}$, at four representative times on the equatorial plane $z=0$ for the highest resolution grid, with $N_x=N_y=N_z=325$ grid points along each Cartesian direction. Notice that in all of these snapshots $\bar{\varphi}=0$ at the AdS boundary, as required by the Dirichlet boundary conditions. At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. At the beginning of evolution, we see that the scalar field starts propagating towards the AdS boundary, but a significant portion of it is attracted back towards the origin and collapses to form an AH. This occurs at $t=0.331$ in the highest resolution simulation. The rest of the scalar field remains outside the black hole, where it keeps bouncing back and forth the AdS boundary and is gradually absorbed.
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction and squeezed along the $y$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. 
 At later times, $t\simeq 9$, the value of the scalar field becomes consistent with zero up to solution error\footnote{We estimate the solution error by comparing $\bar{\varphi}$ at different resolutions.} and the spacetime settles down to a Schwarzschild-AdS black hole spacetime with mass $M=0.403$.
 
-\begin{figure}[t!]
+\begin{figure*}[t!]
         \centering
         \includegraphics[width=5.02in,clip=true]{combined_withzoom_fullplotrelRieCubeofrelkretschallres.pdf}
 \parbox{5.0in}{\caption{
@@ -746,7 +753,7 @@ In each panel, the black curve denotes the result for a slice of Schwarzschild-A
 Top panel: the coloured lines denote the Riemann-Kretschmann dependence obtained from grid points on the $x$-axis (i.e., $y=z=0$) of the numerical solution at $t=31$. 
 Bottom panel: the coloured lines denote the Riemann-Kretschmann dependence obtained from grid points on the $y$-axis (i.e., $x=z=0$) of the numerical solution at $t=31$.
         }\label{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}}
-\end{figure}
+\end{figure*}
 
 The late-time solution is close to Schwarzschild-AdS, which can be seen explicitly in Figure \ref{fig:relRiemanncube-relKretschmann-comparison-SchwAdS}.
 Here, we compare the numerical solution at the last time slice, i.e., $t=31$, to a slice of the Schwarzschild-AdS metric with conserved mass obtained from our highest resolution run ($M=0.403$).
@@ -773,7 +780,7 @@ See Appendix~\ref{sec:extrapconvbdy} for a detailed explanation of the extrapola
 
 We start by noting that the numerical values for the total mass $M$ in AdS, obtained from equation \eqref{eq:AdSmasscalc}, are approximately constant during the evolution, as expected by mass conservation \cite{Fischetti:2012rd}. More precisely, a small drift of the total mass is observed numerically, however this becomes smaller as we increase the resolution and it is consistent with zero within our error estimate for boundary quantities that we will discuss shortly.
 
-\begin{figure}[!h]
+\begin{figure*}[!t]
         \centering
         \includegraphics[width=5.0in,clip=true]{sphereplots_bdyphi_L3_2by2.png}
 \parbox{5.0in}{\caption{
@@ -781,32 +788,32 @@ Snapshots of the vacuum expectation value of the dual scalar field operator $\ba
 The first snapshot is obtained analytically from the initial scalar field profile. The remaining three are obtained by third order extrapolation and subsequent smoothening via a low-pass filter;
 see Appendix~\ref{sec:extrapconvbdy}. Highest resolution: $N_x=N_y=N_z=325$.
         }\label{fig:snapshotsbdyphi}}
-\end{figure}
+\end{figure*}
 
 Figure \ref{fig:snapshotsbdyphi} shows four snapshots of the vacuum expectation value of the dual scalar field operator at the boundary, $\bar{\varphi}_{(1)}$, obtained from the near-boundary expansion of the bulk scalar field in \eqref{eqn:qexp}.
 Unlike the $z=0$ slice snapshots of Figure~\ref{fig:snapshotsscalarfield}, these plots of the boundary $S^2$ encode the asymmetry in all three Cartesian directions in the bulk, as they appear on the boundary at $\rho = \sqrt{x^2+y^2+z^2}=1$. 
 In fact, the asymmetry of the initial data is already visible at $t=0$, where the different values of eccentricities along the three Cartesian direction (largest along $x$ and smallest along $y$) are evident in this plot. At this time, the boundary scalar field is overall very small, which is expected since the initial $\bar{\varphi}$, given by \eqref{eq:scaGaupro}, is localized near $\rho=0$.
 Notice from Figure \ref{fig:snapshotsbdyphi} that the asymmetry changes axes during evolution, but interestingly it is always strongest along $x$ and weakest along $y$ or vice-versa. Furthermore, a direct comparison with Figure~\ref{fig:snapshotsscalarfield} shows that the features present at a certain $t$ at the boundary take approximately $\pi/2\simeq1.6$ to reach the interior of the bulk, i.e., about a light-crossing time, as expected. At later times, mirroring the evolution in the bulk, $\bar{\varphi}_{(1)}$ decays exponentially in time as the bulk spacetime settles down to Schwarzschild-AdS.
 
-\begin{figure}[!h]
+\begin{figure*}[!t]
         \centering
         \includegraphics[width=5.0in,clip=true]{sphereplots_bdyenergydensity_L3_2by2.png}
 \parbox{5.0in}{\caption{Snapshots of energy density $\epsilon$ of the dual boundary CFT, obtained by third order extrapolation and smoothened via a low-pass filter;
 see Appendix~\ref{sec:extrapconvbdy}. The scale of each snapshot has fixed interval length centred at the mean value of $\epsilon$ at the corresponding evolution time to make the approach to a uniform configuration more visible. Highest resolution: $N_x=N_y=N_z=325$.
         }\label{fig:snapshotsenergydensity}}
-\end{figure}
+\end{figure*}
 
 Figure \ref{fig:snapshotsenergydensity} displays the energy density $\epsilon$ of the boundary CFT.
 At $t=0$ this is strongly asymmetric along the $x$-direction, as expected from the shape of the initial scalar field profile \eqref{eq:scaGaupro}. 
 After that, $\epsilon$ undergoes a phase of strong evolution with several changes of elongation axes, sampled at $t=5.6$ and terminating at approximately $t=7.2$. From that time onwards, $\epsilon$ settles down to a uniform configuration, as appropriate for the Schwarzschild-AdS black hole. Approach to uniformity is emphasized by using colour scales with fixed interval length, centred at the mean value of $\epsilon$ at the corresponding evolution time.
 
 
-\begin{figure}[!h]
+\begin{figure*}[!t]
         \centering
         \includegraphics[width=5.0in,clip=true]{fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity_L3.pdf}
 \parbox{5.0in}{\caption{Comparison of boundary quantities with error estimate given by the deviation of the $L^2$-norm of $\langle \text{tr}T\rangle_{CFT}$ from its predicted zero value for the 2+1 CFT (red line). We consider the following boundary quantities: difference between maximum and minimum of boundary energy density $\epsilon$ (blue line), $L^2$-norm of difference between $\epsilon$ and the Schwarzschild-AdS value $\epsilon_{\text{Schw-AdS}}=\frac{M}{4\pi}$ (green line), with Schwarzschild mass $M=M_h=0.403$ (i.e., the value of $M$ for the resolution with grid spacing $h$), $L^2$-norm of boundary anistropy $\Delta p$ (magenta line). This plot is obtained from the data of the highest resolution run ($N_x=N_y=N_z=325$), but at any resolution these quantities exhibit the same hierarchy, although at different scales. Boundary quantities are computed by third order extrapolation.
         }\label{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}}
-\end{figure}
+\end{figure*}
 
 More information about the energy density of the boundary field theory can be deduced from Figure \ref{fig:fullplotfillregttraceanisotropyenergydensityminusschwmaxminusminbdyenergydensity.pdf}. 
 The trace $\langle \text{tr}T\rangle_{CFT}$ vanishes for a conformal field theory in 2 +1 dimensions, which is the case for our $\mathbb{R} \times S^2$ boundary.
