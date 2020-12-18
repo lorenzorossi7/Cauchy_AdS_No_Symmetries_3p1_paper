@@ -22,6 +22,8 @@
 \usepackage{tikz}
 \usetikzlibrary{decorations.markings,decorations.pathmorphing}
 
+\usepackage{float}
+
 \newcommand{\be}{\begin{equation}}
 \newcommand{\ee}{\end{equation}}
 \newcommand{\beqs}{\begin{eqnarray}}
@@ -141,20 +143,25 @@ Throughout, we use geometric units where Newton's constant is set to $G=1$ and t
 \section{Setup}\label{sec:setup}
 
 \subsection{Anti-de Sitter Spacetime}\label{subsec:AdS}
+
 The dynamics of gravity with a cosmological constant $\Lambda$ in four dimensions coupled to a real massless scalar field $\varphi$ can be described by the following action:
 \begin{equation}\label{eqn:action}
 S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^{\alpha\beta} \partial_\alpha \varphi \partial_\beta \varphi \right),
 \end{equation}
 where $R$ is the Ricci scalar of the metric $g_{\alpha\beta}$ with determinant $g$.
 The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$ and $\varphi$ gives the equations of motion
-\begin{equation}
+\vspace{2\baselineskip}
+\begin{eqnarray}
+%\begin{equation}
 \label{eqn:eoms1}
-R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta} + \Lambda g_{\alpha\beta} = 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right), 
-\end{equation}
-\begin{equation}
+R_{\alpha\beta}- \frac{1}{2} R g_{\alpha\beta}+ \Lambda g_{\alpha\beta}&=&\nonumber\\
+&&\hspace{-2.8cm} 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right), \\
+%\end{equation}
+%\begin{equation}
 \label{eqn:eoms2}
-g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi = 0\,.
-\end{equation}
+g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi &=& 0\,.
+%\end{equation}
+\end{eqnarray}
 
 We then recast \eqref{eqn:eoms1} into generalized harmonic form.
 See Appendix~\ref{sec:GHfor} for the explicit form of the resulting equations that we evolve, and \cite{Pretorius:2004jg} for more details about the theoretical aspects of the formulation.
@@ -162,7 +169,7 @@ The numerical solution we obtain is given
 in terms of the spacetime metric $g_{\alpha\beta}$, the scalar field $\varphi$ and a choice of gauge source functions $H_\alpha$. 
 
 The metric of AdS$_4$ is the maximally symmetric vacuum (i.e., $\varphi=0$) solution of \eqref{eqn:eoms1} and \eqref{eqn:eoms2} in four dimensions.
-In terms of global coordinates that cover the whole spacetime, given by $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi)\times[0,2\pi)$, this metric can be expressed as
+In terms of global coordinates that cover the whole spacetime, given by $(t,r,\theta,\phi)\in(-\infty,+\infty)\times(0,+\infty)\times[0,\pi]\times[0,2\pi)$, this metric can be expressed as
 \begin{equation}\label{eqn:ads4}
 \hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 \,,
 \end{equation}
@@ -177,16 +184,20 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 \hat{g} = \frac{1}{(1-\rho^2)^2} \left( -\hat{f}(\rho) dt^2 + \frac{4(1+\rho^2)^2}{\hat{f}(\rho)} d\rho^2 + 4\rho^2 d{\Omega_2}^2 \right).
 \end{equation}
 
-Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$, where $\rho=\sqrt{x^2+y^2+z^2}$.
+Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$.
 This allows us to bypass the severe restriction that would be imposed on the time step size near $\rho=0$ on a grid in spherical coordinates.
 This brings the metric of AdS$_4$ into its final form, suitable for our numerical simulations:
-\begin{equation}\label{eqn:ads4_final}
-\begin{split}
-\hat{g} = &\frac{1}{\left(1-\rho^2\right)^2 }\Big[ -\hat{f}(\rho)dt^2 +\frac{4 \left(1+\rho^2\right)^2}{\rho^2 \hat{f}(\rho)} (x dx + y dy + z dz)^2 \\
-&\hspace{0.25cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \\
-&\hspace{0.25cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,.
-\end{split}
-\end{equation}
+\begin{align}
+%\begin{equation}
+\label{eqn:ads4_final}
+%\begin{split}
+\hat{g} = \frac{1}{\left(1-\rho^2\right)^2 }\Big[ &-\hat{f}(\rho)dt^2\nonumber\\
+&+\frac{4 \left(1+\rho^2\right)^2}{\rho^2 \hat{f}(\rho)} (x dx + y dy + z dz)^2\nonumber\\
+&\hspace{-2.0cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
+&\hspace{-2.0cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,.
+%\end{split}
+%\end{equation}
+\end{align}
 
 
 \subsection{Asymptotically anti-de Sitter Spacetimes}\label{subsec:asyAdS}
@@ -243,9 +254,13 @@ h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)(1-\rho)+\mathcal{O}((1-\rho)^{2}), \\
 for arbitrary $f_{\mu\nu}$ and $f$, and where $\rho = \rho(x,y,z)$.
 
 The fall-offs of the source functions, involved in the generalized harmonic formulation employed in this study, can be deduced from \eqref{eq:sphbounconh} through the definition 
-\begin{equation}\label{eq:defsoufunsph}
-H^\alpha \equiv \Box x^\alpha = \frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\alpha}).
-\end{equation}
+\begin{align}
+\label{eq:defsoufunsph}
+%\begin{split}
+H^\alpha\equiv \Box x^\alpha&=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})\nonumber\\
+&=\frac{1}{\sqrt{-g}}\partial_\beta(\sqrt{-g}g^{\beta\alpha}).
+%\end{split}
+\end{align}
 In spherical coordinates, denoting the pure AdS values by $\hat{H}_\alpha$, \eqref{eq:sphbounconh} and \eqref{eq:defsoufunsph} imply
 \begin{eqnarray}\label{eq:sphbouncondsoufunc}
 H_\alpha&=&\hat{H}_\alpha+f_\alpha(t,\theta,\phi)(1-\rho)^3+\mathcal{O}((1-\rho)^4), \, \textrm{ if $\alpha\neq\rho$,} \nonumber \\
@@ -284,14 +299,14 @@ The metric in these coordinates reads
 \begin{eqnarray}
 \label{eq:metnewcoords}
 g
-&=&\frac{1}{z^2}\biggl[ 
+&=\frac{1}{z^2}\biggl[& 
 - \left(1+z^2/2+f_{tt}z^3+\mathcal{O}(z^4)\right)dt^2 \nonumber \\
-&&\hspace{0.75cm} + \left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 \nonumber \\
-&&\hspace{0.75cm} + \left(1-z^2/2+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 \nonumber \\
-&&\hspace{0.75cm} + \sin^2\theta \left(1-z^2/2+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2 \nonumber \\ 
-&&\hspace{0.75cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi \nonumber \\
-&&\hspace{0.75cm}+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi - 2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz \nonumber \\
-&&\hspace{0.75cm}-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta-2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr] \nonumber \\
+&&\hspace{0.0cm} + \left(1+f_{\rho\rho}z^3+\mathcal{O}(z^4)\right)dz^2 \nonumber \\
+&&\hspace{0.0cm} + \left(1-z^2/2+f_{\theta\theta}z^3 +\mathcal{O}(z^4) \right)d\theta^2 \nonumber \\
+&&\hspace{0.0cm} + \sin^2\theta \left(1-z^2/2+\frac{f_{\phi\phi}}{\sin^2\theta} z^3 +\mathcal{O}(z^4) \right)d\phi^2 \nonumber \\ 
+&&\hspace{-0.8cm}+ 2 \left( f_{t\theta}z^3 +\mathcal{O}(z^4)\right)dt d\theta + 2 \left( f_{t\phi} z^3+\mathcal{O}(z^4)\right)dt d\phi \nonumber \\
+&&\hspace{-0.8cm}+ 2 \left(f_{\theta\phi} z^3 +\mathcal{O}(z^4)\right)d\theta d\phi - 2\left(f_{t\rho}z^4 +\mathcal{O}(z^5)\right)dtdz \nonumber \\
+&&\hspace{-0.8cm}-2\left(f_{\rho\theta}z^4+\mathcal{O}(z^5)\right)dzd\theta-2\left(f_{\rho\phi}z^4 +\mathcal{O}(z^5)\right)dzd\phi\biggr] \nonumber \\
 \end{eqnarray}
 where the coefficients $f_{\alpha\beta}$ in the expansion above are functions of $(t,\theta,\phi)$. 
 Notice that the metric in \eqref{eq:metnewcoords} is not in the FG form yet because the $zz$ component is not $1/z^2$ up to the desired order in $z$, and the $tz$, $z\theta$, $z\phi$ components do not vanish up to $\mathcal{O}(z^2)$.
@@ -317,11 +332,11 @@ g=\frac{1}{\bar{z}^2}\biggl[
 &d\bar{z}^2 \nonumber \\
 &-\left(1+\frac{\bar{z}^2}{2}+\left( \textstyle{f_{tt}-\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3+\mathcal{O}(\bar{z}^4) \right)d\bar{t}^2 \nonumber \\
 &+ \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{f_{\theta\theta}+\frac{1}{3}f_{\rho\rho}} \right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\theta}^2\nonumber\\
-& +  \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\phi}^2\nonumber\\
-&+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi} \nonumber \\
-&+ 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
+&\hspace{-0.8cm} +  \sin^2\bar{\theta} \left(1-\frac{\bar{z}^2}{2}+\left(\textstyle{\frac{f_{\phi\phi}}{ \sin^2\bar{\theta}}+\frac{1}{3}f_{\rho\rho}}\right)\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{\phi}^2\nonumber\\
+&\hspace{-0.8cm}+ 2 \left(f_{t\theta}\bar{z}^3 +\mathcal{O}(\bar{z}^4) \right) d\bar{t} d\bar{\theta} + 2 \left( f_{t\phi}\bar{z}^3 +\mathcal{O}(\bar{z}^4)\right)d\bar{t} d\bar{\phi} \nonumber \\
+&\hspace{-0.8cm}+ 2\left( f_{\theta\phi} \bar{z}^3+\mathcal{O}(\bar{z}^4)\right)d\bar{\theta} d\bar{\phi} 
 \nonumber\\
-&+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
+&\hspace{-0.8cm}+\mathcal{O}(\bar{z}^5)d\bar{t}d\bar{z}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\theta}+\mathcal{O}(\bar{z}^5)d\bar{z}d\bar{\phi}
 \biggr]\,,
 \label{eq:asyFG}
 \end{align}
@@ -379,9 +394,9 @@ A specification of generalized harmonic source functions at order $(1-\rho)^2$ t
 The first step involves expanding the evolved variables, $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$ and $\bar{\varphi}$, in a power series about $(1-\rho) \equiv q = 0$. 
 By construction, these evolved variables are linear in $q$ at leading order:
 \begin{eqnarray}\label{eqn:qexp}
-\bar{g}_{\mu \nu} &=& \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4), \label{eqn:qexpg} \\
-\bar{H}_{\mu} &=& \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) ,\label{eqn:qexpH}\\
-\bar{\varphi} &=& \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4), \label{eqn:qexpphi}
+&\bar{g}_{\mu \nu} = \bar{g}_{(1) \mu \nu} q + \bar{g}_{(2) \mu \nu} q^2 + \bar{g}_{(3) \mu \nu} q^3 + \mathcal{O}(q^4), \label{eqn:qexpg} \\
+&\bar{H}_{\mu} = \bar{H}_{(1) \mu} q + \bar{H}_{(2) \mu} q^2 + \bar{H}_{(3) \mu} q^3 + \mathcal{O}(q^4) ,\label{eqn:qexpH}\\
+&\hspace{-0.5cm}\bar{\varphi} = \bar{\varphi}_{(1)} q + \bar{\varphi}_{(2)} q^2 + \bar{\varphi}_{(3)} q^3 + \mathcal{O}(q^4), \label{eqn:qexpphi}
 \end{eqnarray}
 where all the coefficients are functions of the coordinates $(t,x,y,z)$ on the boundary $\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}=1$ (or $q(x,y,z)=0$).
 We now substitute these variables into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. The three lowest orders, $q^{-2}$, $q^{-1}$, $q^0$, are fixed by the pure AdS metric $\hat{g}$ which itself is a solution of \eqref{eqn:efe_gh_modified}, so these terms vanish trivially. The remaining orders vanish only if $\bar{g}_{\mu \nu}$, $\bar{H}_{\mu}$, $\bar{\varphi}$ are a solution of \eqref{eqn:efe_gh_modified}.
@@ -399,55 +414,52 @@ In other words, each component of the expansion of \eqref{eqn:efe_gh_modified} n
 \begin{eqnarray}\label{eq:efefullexp}
 0 
 &=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+A_{(3)\mu\nu}q^3+A_{(4)\mu\nu}q^4+\mathcal{O}(q^5) \nonumber \\
-&=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q^3+A_{(4)\mu\nu}q^4 \nonumber \\
-&& +\mathcal{O}(q^5)
+&=& A_{(1)\mu\nu}q+A_{(2)\mu\nu}q^2+(\tilde{\Box}\bar{g}_{(1)\mu\nu}+B_{(3)\mu\nu})q^3\nonumber \\
+&&+A_{(4)\mu\nu}q^4  +\mathcal{O}(q^5)
 \end{eqnarray}
 or, rearranging the terms in order to obtain wave-like equations,
 \begin{equation}
 \label{eq:waveEFE}
 \tilde{\Box}\bar{g}_{(1)\mu\nu}=-A_{(1)\mu\nu}\frac{1}{q^2}-A_{(2)\mu\nu}\frac{1}{q}-B_{(3)\mu\nu}-A_{(4)\mu\nu}q+\mathcal{O}(q^2).
 \end{equation}
-Similar arguments show that terms involving the massless scalar field with the fast fall-off that we have chosen in \eqref{eq:sphbounconphi} appear at the next order with respect to the leading order in $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This holds in any dimension and in any set of coordinates, and it implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, since only the lowest order coefficients in the expansion of the Einstein equations are relevant.
+\textcolor{red}{Similar arguments show that the terms involving the scalar field, with the fast fall-off that we have chosen in \eqref{eq:sphbounconphi}, appear in $A_{(4)\mu\nu}$ and higher order coefficients of \eqref{eq:efefullexp}. A similar result holds in any number of dimensions and any set of coordinates $x^\alpha$: the terms involving fastly-decaying matter fields appear at the next order with respect to the order of $\tilde{\Box}\bar{g}_{(1)\alpha\beta}$ in the near-boundary expansion of the Einstein equations. This implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, since only the lowest order coefficients in the expansion of the Einstein equations are relevant.}
+%Similar arguments show that terms involving the massless scalar field with the fast fall-off that we have chosen in \eqref{eq:sphbounconphi} appear at the next order with respect to the leading order in $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. This holds in any dimension and in any set of coordinates, and it implies that the details of the matter sector, e.g., the value of the mass of a matter field, do not affect the results of the prescription presented here, since only the lowest order coefficients in the expansion of the Einstein equations are relevant.
 
-We now write the coefficients in \eqref{eq:waveEFE} explicitly, including only the $q^{-2}$ terms.
-The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$. We find:
-
+\textcolor{red}{We now explicitly write the lowest order terms of the Einstein equations in the wave-like form \eqref{eq:waveEFE}.}
+%We now write the coefficients in \eqref{eq:waveEFE} explicitly, including only the $q^{-2}$ terms.
+The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$. We find
+\vspace{16\baselineskip}
 \begin{widetext}
 \begin{eqnarray}\label{eqn:efett}
-\tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta \bar{g}_{(1)xx}-2 \bar{H}_{(1)x}) \nonumber \\
-&&+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
-  \sin \theta \sin \phi (2 \cos \phi \bar{g}_{(1) yz}+\sin\phi
-  \bar{g}_{(1) zz}) \nonumber \\
-  &&-2 (\cos \phi \bar{H}_{(1) y}+\sin\phi
-  \bar{H}_{(1) z}))+3 \sin 2 \theta \cos \phi \bar{g}_{(1) xy}+3
-  \sin 2 \theta \sin \phi \bar{g}_{(1) xz})q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+\tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta \bar{g}_{(1)xx}-2 \bar{H}_{(1)x})+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
+  \sin \theta \sin \phi (2 \cos \phi \bar{g}_{(1) yz} \nonumber \\
+&&+\sin\phi
+  \bar{g}_{(1) zz})-2 (\cos \phi \bar{H}_{(1) y}+\sin\phi
+  \bar{H}_{(1) z}))+3 \sin 2 \theta \cos \phi \bar{g}_{(1) xy} \nonumber \\
+&&+3
+  \sin 2 \theta \sin \phi \bar{g}_{(1) xz})q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efetx}
 \tilde{\Box}\bar{g}_{(1)tx}&=&-2 \cos \theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
   (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
-  \bar{H}_{(1) t})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+  \bar{H}_{(1) t})  q^{-2}+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efety}
 \tilde{\Box}\bar{g}_{(1)ty}&=&-2 \cos \phi \sin\theta (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
   (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
-  \bar{H}_{(1) t})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+  \bar{H}_{(1) t})  q^{-2}+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efetz}
 \tilde{\Box}\bar{g}_{(1)tz}&=&-2 \sin \theta \sin\phi (3 \cos\theta \bar{g}_{(1) tx}+3 \sin \theta
   (\cos \phi \bar{g}_{(1) ty}+\sin \phi \bar{g}_{(1)tz})-2
-  \bar{H}_{(1) t})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+  \bar{H}_{(1) t})  q^{-2}+\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efexx}
 \tilde{\Box}\bar{g}_{(1)xx}&=&\frac{1}{4} (3 (-4 \cos ^2\theta (\bar{g}_{(1) tt}+2 \bar{g}_{(1)
   xx})+(\cos 2 \theta +3) (\bar{g}_{(1) yy}+\bar{g}_{(1)
-zz}) \nonumber \\
-&&+8 \cos \theta \bar{H}_{(1) x})-8 \sin \theta \cos \phi 
-  (3 \cos \theta \bar{g}_{(1)xy}+\bar{H}_{(1) y}) \nonumber \\
-  &&-8 \sin\theta \sin\phi (3 \cos\theta \bar{g}_{(1) xz}+\bar{H}_{(1) z}) \nonumber \\
+zz}) +8 \cos \theta \bar{H}_{(1) x})\nonumber \\
+&&-8 \sin \theta \cos \phi 
+  (3 \cos \theta \bar{g}_{(1)xy}+\bar{H}_{(1) y}) -8 \sin\theta \sin\phi (3 \cos\theta \bar{g}_{(1) xz}+\bar{H}_{(1) z}) \nonumber \\
   &&+6 \sin^2\theta \cos 2 \phi (\bar{g}_{(1)yy}-\bar{g}_{(1)zz})+12
   \sin^2\theta \sin 2 \phi \bar{g}_{(1) yz})  q^{-2} +\mathcal{O}(q^{-1}),\\
 %
@@ -462,51 +474,45 @@ zz}) \nonumber \\
 \tilde{\Box}\bar{g}_{(1)xz}&=&- (\sin \theta  \sin \phi  (3 \cos \theta  (\bar{g}_{(1)tt}+\bar{g}_{(1)xx}-\bar{g}_{(1)yy}+\bar{g}_{(1)zz})-4
    \bar{H}_{(1) x}) \nonumber \\
    &&+3 \sin ^2\theta \sin 2 \phi  \bar{g}_{(1)xy}-3 \sin
-   ^2\theta  \cos 2 \phi  \bar{g}_{(1)xz} \nonumber \\
-   &&+\frac{3}{2} (\cos 2 \theta +3)
-   \bar{g}_{(1)xz}+3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)yz}-4 \cos
+   ^2\theta  \cos 2 \phi  \bar{g}_{(1)xz}+\frac{3}{2} (\cos 2 \theta +3)
+   \bar{g}_{(1)xz} \nonumber \\
+   &&+3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)yz}-4 \cos
    \theta  \bar{H}_{(1)z})    q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efeyy}
-\tilde{\Box}\bar{g}_{(1)yy}&=&-( (\sin \theta (3 \sin \theta  (2 \cos ^2\phi  \bar{g}_{(1)yy}+\sin 2 \phi  \bar{g}_{(1)yz}-\bar{g}_{(1)zz}) \nonumber \\
-&&-6 \cos\phi \bar{H}_{(1) y}+2 \sin \phi  \bar{H}_{(1) z}) \nonumber \\
+\tilde{\Box}\bar{g}_{(1)yy}&=&-( (\sin \theta (3 \sin \theta  (2 \cos ^2\phi  \bar{g}_{(1)yy}+\sin 2 \phi  \bar{g}_{(1)yz}-\bar{g}_{(1)zz}) -6 \cos\phi \bar{H}_{(1) y}+2 \sin \phi  \bar{H}_{(1) z}) \nonumber \\
 &&+6 \sin \theta \cos
    \theta \cos \phi  \bar{g}_{(1)xy}-6 \sin \theta  \cos \theta  \sin   \phi  \bar{g}_{(1)xz}+2 \cos \theta  \bar{H}_{(1) x}) \nonumber \\
-   &&-3 \sin ^2\theta \cos ^2\phi  \bar{g}_{(1)tt}+\frac{3}{4} \bar{g}_{(1)xx} (2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta +3)  )  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+   &&-3 \sin ^2\theta \cos ^2\phi  \bar{g}_{(1)tt}+\frac{3}{4} \bar{g}_{(1)xx} (2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta +3)  )  q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efeyz}
 \tilde{\Box}\bar{g}_{(1)yz}&=&-\frac{1}{2} \sin \theta (4 \sin \phi  (3 \cos \theta  \bar{g}_{(1)xy}-2 \bar{H}_{(1) y})+4 \cos \phi  (3 \cos \theta  \bar{g}_{(1)xz}-2 \bar{H}_{(1) z}) \nonumber \\
-&&+3 \sin \theta  \sin 2 \phi  (\bar{g}_{(1)tt}-\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz})+12 \sin \theta  \bar{g}_{(1)yz})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}),\\
+&&+3 \sin \theta  \sin 2 \phi  (\bar{g}_{(1)tt}-\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz})+12 \sin \theta  \bar{g}_{(1)yz})  q^{-2} +\mathcal{O}(q^{-1}),\\
 %
 \label{eqn:efezz}
-\tilde{\Box}\bar{g}_{(1)zz}&=&(-2 \cos \theta  (3 \sin \theta  \sin \phi  \bar{g}_{(1)xz}+\bar{H}_{(1)x}) \nonumber \\
-&&+ \sin \theta  (3 \sin \theta  \bar{g}_{(1)yy}-6 \sin\theta  \sin \phi  (\cos \phi  \bar{g}_{(1)yz}+\sin \phi 
-   \bar{g}_{(1)zz}) \nonumber \\
-   &&-2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
+\tilde{\Box}\bar{g}_{(1)zz}&=&(-2 \cos \theta  (3 \sin \theta  \sin \phi  \bar{g}_{(1)xz}+\bar{H}_{(1)x}) + \sin \theta  (3 \sin \theta  \bar{g}_{(1)yy}\nonumber \\
+&&-6 \sin\theta  \sin \phi  (\cos \phi  \bar{g}_{(1)yz}+\sin \phi 
+   \bar{g}_{(1)zz}) -2 \cos \phi  \bar{H}_{(1) y} +6 \sin \phi  \bar{H}_{(1)z}) -3  \sin ^2\theta  \sin ^2\phi  \bar{g}_{(1)tt} \nonumber \\
    &&+\frac{3}{4}  \bar{g}_{(1)xx} (-2 \sin ^2\theta  \cos 2 \phi +\cos 2 \theta
-   +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} \nonumber \\
-&&+\mathcal{O}(q^{-1}), 
+   +3) +3 \sin 2 \theta  \cos \phi  \bar{g}_{(1)xy})  q^{-2} +\mathcal{O}(q^{-1}), 
 \end{eqnarray}
 \end{widetext}
 
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$. 
-All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion. We get:
+All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion. We get
+\vspace{4\baselineskip}
 
 \begin{widetext}
 \begin{eqnarray}
 \label{eqn:ct}
 C_t&=&q^2 (-3 \cos \theta \bar{g}_{(1)tx}-3 \sin \theta \cos \phi \bar{g}_{(1)ty}-3 \sin \theta \sin \phi \bar{g}_{(1)tz}+2
-  \bar{H}_{(1) t}) \nonumber \\
-   &&+\mathcal{O}(q^3),\\
+  \bar{H}_{(1) t})+\mathcal{O}(q^3),\\
 %
 \label{eqn:cx}
 C_x&=&\frac{1}{2} q^2 (-3 \cos \theta  \bar{g}_{(1)tt}-3 \cos \theta  \bar{g}_{(1)xx}-6 \sin \theta  \cos \phi  \bar{g}_{(1)xy}-6 \sin
    \theta  \sin \phi  \bar{g}_{(1)xz} \nonumber \\
   &&+3 \cos \theta  \bar{g}_{(1)yy}+3
-   \cos \theta  \bar{g}_{(1)zz}+4 \bar{H}_{(1) x}) \nonumber \\
-   &&+\mathcal{O}(q^3),\\
+   \cos \theta  \bar{g}_{(1)zz}+4 \bar{H}_{(1) x})+\mathcal{O}(q^3),\\
 %
 \label{eqn:cy}
 C_y&=&\frac{1}{2} q^2 (-3 \sin \theta  \cos \phi  \bar{g}_{(1)tt}+3 \sin
@@ -514,16 +520,14 @@ C_y&=&\frac{1}{2} q^2 (-3 \sin \theta  \cos \phi  \bar{g}_{(1)tt}+3 \sin
    &&-3
    \sin \theta  \cos \phi  \bar{g}_{(1) yy}-6 \sin \theta  \sin \phi
    \bar{g}_{(1)yz}+3 \sin \theta  \cos \phi  \bar{g}_{(1)zz}+4
-   \bar{H}_{(1) y}) \nonumber \\
-   &&+\mathcal{O}(q^3),\\
+   \bar{H}_{(1) y}) +\mathcal{O}(q^3),\\
 %
 \label{eqn:cz}
 C_z&=&\frac{1}{2} q^2 (-3 \sin \theta \sin \phi  \bar{g}_{(1)tt}+3 \sin
    \theta \sin \phi \bar{g}_{(1)xx}-6 \cos \theta  \bar{g}_{(1)xz} \nonumber \\
    &&+3
    \sin \theta \sin \phi  \bar{g}_{(1)yy}-6 \sin \theta  \cos \phi    \bar{g}_{(1)yz}-3 \sin \theta  \sin \phi  \bar{g}_{(1)zz}+4
-   \bar{H}_{(1)z}) \nonumber \\
-   &&+\mathcal{O}(q^3).
+   \bar{H}_{(1)z})+\mathcal{O}(q^3).
 \end{eqnarray}
 \end{widetext}
 
@@ -610,12 +614,12 @@ M=\lim_{q\to0}\int_{\mathcal{S}} d\theta d\phi \sqrt{\sigma} N ( ^{(q)}T_{ab} u^
 The holographic stress-energy tensor can be expressed in terms of the leading order coefficients of the near-boundary expansion of $\bar{g}_{\alpha\beta}$. We find:\footnote{The expressions~\eqref{eq:set_explicit} have a factor of $1/G$ that corresponds to the large-$N$ scaling of the expectation value of the stress tensor in the boundary 2+1-dimensional CFT. When quoting numerical results, we keep convention of working in geometric units with $G=1$.}
 \begin{eqnarray}
 \label{eq:set_explicit}
-\langle T_{tt}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
-\langle T_{t\theta}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\theta}, \nonumber \\
-\langle T_{t\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)t\phi}, \nonumber \\
-\langle T_{\theta\theta}\rangle_{CFT}&=&\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
-\langle T_{\theta\phi}\rangle_{CFT}&=&\frac{3}{16\pi}\bar{g}_{(1)\theta\phi}, \nonumber \\
-\langle T_{\phi\phi}\rangle_{CFT}&=&\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
+\langle T_{tt}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{1}{16\pi} \biggl(2\bar{g}_{(1)\rho\rho}+3\bar{g}_{(1)\theta\theta}+3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
+\langle T_{t\theta}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{3}{16\pi}\bar{g}_{(1)t\theta}, \nonumber \\
+\langle T_{t\phi}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{3}{16\pi}\bar{g}_{(1)t\phi}, \nonumber \\
+\langle T_{\theta\theta}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{1}{16\pi} \biggl(3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\frac{\bar{g}_{(1)\phi\phi}}{\sin^2\theta}\biggr), \nonumber \\
+\langle T_{\theta\phi}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{3}{16\pi}\bar{g}_{(1)\theta\phi}, \nonumber \\
+\langle T_{\phi\phi}\rangle_{CFT}&\hspace{-0.15cm}=&\hspace{-0.15cm}\frac{\sin^2\theta}{16\pi} (3\bar{g}_{(1)tt}-2\bar{g}_{(1)\rho\rho}-3\bar{g}_{(1)\theta\theta}),
 \end{eqnarray}
 where we have set the characteristic length scale to $L=1$. 
 Similarly, for the total mass in AdS we find
@@ -692,7 +696,7 @@ Once the solution is obtained at a certain time $t$, we can search for the posit
 Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ we find the solution to the equation
 \begin{equation}
 \label{eq:floweq}
-\frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)},
+\frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}\,,
 \end{equation}
 where $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is the outward null expansion of the two-dimensional surface given by $F(\rho,\theta,\phi)\equiv\rho-R(\theta,\phi)=0$. We iterate this process with starting point given by the solution $R(\theta,\phi)$ to \eqref{eq:floweq} found in the previous iteration. Assuming that the initial guess $\rho_0$ is not too distant from the position of the AH, $R(\theta,\phi)$ is expected to progressively approach the AH after each iteration. 
 This process stops when either the $L^2$-norm of $\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}$ is below some specified tolerance, i.e., $R(\theta,\phi)$ is sufficiently close to the AH, or the user-specified maximum number of iterations has been reached, i.e., either there is no AH at time $t$ or this method was not able to find it. 
@@ -858,7 +862,7 @@ A promising direction is provided in \cite{Moschidis:2018ruk}, \cite{Moschidis:2
 The scheme described in this article makes it possible for numerical investigations to help settle this question, by incorporating all the relevant physics needed to study gravitational collapse in AdS in full generality.
 
 The second important problem we wish to highlight is the study of the superradiant instability in AdS.
-Superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 290 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. 
+Superradiantly unstable (see \cite{Brito:2015oca} for a review of superradiance) initial data around a Kerr-AdS black hole spacetime was evolved in \cite{Chesler:2018txn}, without imposing symmetries, up to approximately 580 light-crossing times using the characteristic scheme presented in \cite{Chesler:2013lia}. This paper showed a transition of the Kerr-AdS black hole to a rotating black hole with one helical Killing field consistent with a black resonator~\cite{Dias:2015rxy}. Since the known black resonators are rapidly rotating black holes with an ergo-region, they are also unstable to superradiance \cite{Hawking:1999dp,Green:2015kur}. Hence a cascade to smaller and smaller resonators, potentially leading to a violation of the weak cosmic censorship conjecture, was suggested \cite{Niehoff:2015oga}. 
 The authors of \cite{Chesler:2018txn} see a second transition at late times that could be the beginning of such a cascade but they do not continue the evolution further. 
 Hence, the endpoint of the Kerr-AdS superradiant instability is still unknown.
 To settle this question, it will be necessary to keep track of progressively smaller spatial scales during the course of the evolution, which typically go hand-in-hand with progressively richer dynamics.
@@ -889,7 +893,7 @@ as
 &=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
 &=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
 &=& -\frac{1}{2} g^{\gamma\delta} g_{\alpha\beta,\gamma\delta} - g^{\gamma\delta}{}_{,(\alpha}g_{\beta)\gamma,\delta} - H_{(\alpha,\beta)} + H_\gamma \Gamma^\gamma{}_{\alpha\beta} \nonumber \\
-&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\ \label{eqn:Eeqs} 
+&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta}\,, \label{eqn:Eeqs} 
 \end{eqnarray}
 where $\bar{T}_{\alpha\beta} = T_{\alpha\beta} - {T^\gamma}_\gamma g_{\alpha\beta}/(d-2)$, the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
@@ -932,13 +936,13 @@ We remind the reader that new evolution variables are defined in order to apply 
 
 The boundary conditions on $h_{\alpha\beta}$ \eqref{eq:sphbounconh} tell us that
 \begin{eqnarray}\label{eq:gbarsph}
-\bar{g}_{\rho\alpha}&=&\frac{h_{\rho\alpha} }{1-\rho^2}\,,\qquad \textrm{ if $\alpha\neq\rho$}\,, \\ \nonumber
+\bar{g}_{\rho\alpha}&=&\frac{h_{\rho\alpha} }{1-\rho^2}\,,\qquad \textrm{ if $\alpha\neq\rho$}\,, \nonumber\\
 \bar{g}_{\alpha\beta}&=&h_{\alpha\beta}\,, \qquad\;\;\;\;\, \textrm{ otherwise}.
 \end{eqnarray}
 Despite the notation, we emphasize that $\bar{g}_{\alpha\beta}$ and $\bar{g}_{\mu\nu}$ are not in general components of the same tensor (as it should be clear from their definition), therefore the usual transformation between tensor components in different sets of coordinates cannot be applied. The correct transformation can be easily deduced from \eqref{eq:gbarsph} and \eqref{eq:gbarcart}, remembering that $h$ is indeed a tensor: 
 \begin{eqnarray}\label{eq:cartosph}
-\bar{g}_{\rho\alpha}&=&\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}\,,\qquad \textrm{ if $\alpha\neq\rho$}\,, \\ \nonumber
-\bar{g}_{\alpha\beta}&=&\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}\,,\qquad\qquad \;\;\;\;\;\; \textrm{ otherwise}.
+\bar{g}_{\rho\alpha}&=&\frac{1}{(1-\rho^2)}\frac{\partial x^\mu}{\partial \rho}\frac{\partial x^\nu}{\partial x^\alpha}\bar{g}_{\mu\nu}\,,\quad \textrm{ if $\alpha\neq\rho$}\,, \nonumber\\
+\bar{g}_{\alpha\beta}&=&\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}\bar{g}_{\mu\nu}\,,\qquad\quad \;\;\;\;\;\; \textrm{ otherwise}.
 \end{eqnarray}
 Similarly, the boundary conditions on the scalar field \eqref{eq:sphbounconphi} suggest that we use the evolution variable
 \begin{equation}
@@ -992,8 +996,7 @@ We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}
    \phi }\right)+\bar{g}_{(1) \rho \rho ,\theta }\nonumber\\
    &&-2 \bar{g}_{(1) \text{$t$$\theta
    $},t}+\bar{g}_{(1) \text{$tt$},\theta }-2 \bar{H}_{(1) \rho ,\theta }-3 \cot \theta 
-   \bar{g}_{(1)\theta \theta}-40 \bar{g}_{(1) \rho \theta }+20 \bar{H}_{(1)\theta})\nonumber\\
-   &&+\mathcal{O}(q^{-1}),\\
+   \bar{g}_{(1)\theta \theta}-40 \bar{g}_{(1) \rho \theta }+20 \bar{H}_{(1)\theta})+\mathcal{O}(q^{-1}),\\
 % 
 \label{eqn:eferhophi_3p1}
 \tilde{\Box}\bar{g}_{(1)\rho\phi}&=&\frac{1}{2} q^{-2}(2 \bar{g}_{(1)\theta \phi,\theta }+\csc ^2\theta \bar{g}_{(1) \phi
@@ -1015,7 +1018,7 @@ We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}
 \end{widetext}
 
 Doing the same for the generalized harmonic constraints $0=C_\alpha\equiv H_\alpha-\Box x_\alpha$, we have
-
+\vspace{\baselineskip}
 \begin{widetext}
 \begin{eqnarray}
 \label{eqn:ct_3p1}
@@ -1052,8 +1055,8 @@ We now follow the three steps of Section~\ref{sec:gauge_choice} to obtain a stab
 \begin{enumerate}
 \item Solve the leading order of the near-boundary generalized harmonic constraints, \eqref{eqn:ct_3p1}--\eqref{eqn:cphi_3p1}, for $\bar{H}_{(1)\alpha}$. We obtain
 \begin{eqnarray}\label{eqn:target_gauge_trhothetaphi_step1}
-\bar{H}_{(1)t}&=&\frac{1}{8} (\bar{g}_{(1)\theta \theta,t}+\bar{g}_{(1) \rho \rho ,t}+\bar{g}_{(1) \text{$tt$},t} \nonumber \\
-   &&+\csc ^2\theta \left(\bar{g}_{(1) \phi \phi ,t}-2 \bar{g}_{(1) \text{$t$$\phi$},\phi }\right)-2 \bar{g}_{(1) \text{$t$$\theta $},\theta }+16 \bar{g}_{(1) \text{$t$$\rho
+\bar{H}_{(1)t}&=&\frac{1}{8} (\bar{g}_{(1)\theta \theta,t} +\csc ^2\theta \left(\bar{g}_{(1) \phi \phi ,t}-2 \bar{g}_{(1) \text{$t$$\phi$},\phi }\right)\nonumber \\
+   &&+\bar{g}_{(1) \rho \rho ,t}+\bar{g}_{(1) \text{$tt$},t}-2 \bar{g}_{(1) \text{$t$$\theta $},\theta }+16 \bar{g}_{(1) \text{$t$$\rho
    $}})\,,\nonumber \\
 \bar{H}_{(1)\rho}&=&\frac{3}{4} \left(-\csc ^2\theta \bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta}+\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}\right),\nonumber\\
 \bar{H}_{(1)\theta}&=&\frac{1}{8} (-\bar{g}_{(1)\theta \theta,\theta } \nonumber \\
@@ -1062,36 +1065,29 @@ We now follow the three steps of Section~\ref{sec:gauge_choice} to obtain a stab
    \phi \phi }\right)\right)\nonumber\\
    &&+\bar{g}_{(1) \rho \rho ,\theta }+2 \bar{g}_{(1) \text{$t$$\theta
    $},t}-\bar{g}_{(1) \text{$tt$},\theta }+16 \bar{g}_{(1) \rho \theta })\,,\nonumber\\
-\bar{H}_{(1)\phi}&=&\frac{1}{8} (-2 \bar{g}_{(1)\theta \phi,\theta } \nonumber \\
-   &&+\csc ^2\theta \left(-\bar{g}_{(1)
-   \phi \phi ,\phi }\right)+\bar{g}_{(1)\theta \theta,\phi }+\bar{g}_{(1) \rho \rho ,\phi
-   }\nonumber\\
-   &&+2 \bar{g}_{(1) \text{$t$$\phi $},t}-\bar{g}_{(1) \text{$tt$},\phi }+4 \cot \theta 
-   \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi }). \nonumber \\
+\bar{H}_{(1)\phi}&=&\frac{1}{8} (-2 \bar{g}_{(1)\theta \phi,\theta } +\csc ^2\theta \left(-\bar{g}_{(1)
+   \phi \phi ,\phi }\right)\nonumber \\
+   &&+\bar{g}_{(1)\theta \theta,\phi }+\bar{g}_{(1) \rho \rho ,\phi
+   }+2 \bar{g}_{(1) \text{$t$$\phi $},t}-\bar{g}_{(1) \text{$tt$},\phi }\nonumber\\
+   &&+4 \cot \theta 
+   \bar{g}_{(1)\theta \phi}+16 \bar{g}_{(1) \rho \phi }).
 \end{eqnarray}
 
 \item Plug \eqref{eqn:target_gauge_trhothetaphi_step1} into the $q^{-2}$ terms of \eqref{eqn:efett_3p1}--\eqref{eqn:efephiphi_3p1}. This gives the following independent equations:
-\begin{equation}
-\label{eq:indeq1_3p1}
--\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }+\bar{g}_{(1) \text{$tt$}}=0, 
-\end{equation}
 \begin{eqnarray}
+\label{eq:indeq1_3p1}
+&&\bar{g}_{(1) \text{$tt$}}-\csc ^2\theta\bar{g}_{(1) \phi \phi }-\bar{g}_{(1)\theta \theta }-\bar{g}_{(1) \rho \rho }=0, \\
 \label{eq:indeq2_3p1}
-&& \csc ^2\theta \left(-\bar{g}_{(1) \phi \phi ,\theta }+\bar{g}_{(1)\theta \phi,\phi
-   }+\cot \theta  \bar{g}_{(1) \phi \phi }\right) -\frac{2}{3} \bar{g}_{(1) \rho \rho,\theta } \nonumber \\
-   &&+\bar{g}_{(1) \text{$tt$},\theta }+\cot \theta  \bar{g}_{(1)\theta \theta}=0,
-\end{eqnarray}
-\begin{equation}
+&&\hspace{-0.4cm} \csc ^2\theta \left(-\bar{g}_{(1) \phi \phi ,\theta }+\bar{g}_{(1)\theta \phi,\phi}+\cot \theta  \bar{g}_{(1) \phi \phi }\right)\nonumber \\
+   &&\hspace{0.5cm} -\frac{2}{3} \bar{g}_{(1) \rho \rho,\theta } +\bar{g}_{(1) \text{$tt$},\theta }+\cot \theta  \bar{g}_{(1)\theta \theta}=0,\\
    \label{eq:indeq3_3p1}
-\bar{g}_{(1)\theta \theta,t}+\frac{2}{3} \bar{g}_{(1) \rho \rho ,t}+\csc ^2\theta 
-   \left(\bar{g}_{(1) \phi \phi ,t}-\bar{g}_{(1) \text{$t$$\phi $},\phi }\right)-\cot \theta
-   \bar{g}_{(1) \text{$t$$\theta $}}=0,\\
-\end{equation}
-\begin{equation}
+&&\hspace{-0.4cm}\csc ^2\theta 
+   \left(\bar{g}_{(1) \phi \phi ,t}-\bar{g}_{(1) \text{$t$$\phi $},\phi }\right)+\bar{g}_{(1)\theta \theta,t}\nonumber \\
+   &&\hspace{2.0cm}+\frac{2}{3} \bar{g}_{(1) \rho \rho ,t}-\cot \theta\bar{g}_{(1) \text{$t$$\theta $}}=0,\\
       \label{eq:indeq4_3p1}
-\bar{g}_{(1)\theta \phi,\theta }-\bar{g}_{(1)\theta \theta,\phi }-\frac{2}{3} \bar{g}_{(1)
-   \rho \rho ,\phi }+\bar{g}_{(1) \text{$tt$},\phi }+\cot \theta \bar{g}_{(1)\theta \phi}=0.
-\end{equation}
+&&\hspace{-0.4cm}\bar{g}_{(1)\theta \phi,\theta }-\bar{g}_{(1)\theta \theta,\phi }-\frac{2}{3} \bar{g}_{(1)\rho \rho ,\phi }\nonumber \\
+   &&\hspace{2.2cm}+\bar{g}_{(1) \text{$tt$},\phi }+\cot \theta \bar{g}_{(1)\theta \phi}=0.
+\end{eqnarray}
 We prove below that these equations ensure tracelessness and conservation of the boundary stress-energy tensor $\langle T_{ab}\rangle_{CFT}$, defined in Section~\ref{sec:bouset2}.
 
 \item Use \eqref{eq:indeq1_3p1}--\eqref{eq:indeq4_3p1} to eliminate $\bar{g}_{(1)tt}$, $\bar{g}_{(1)t\theta,t}$, $\bar{g}_{(1)t\theta,\theta}$, $\bar{g}_{(1)t\phi,t}$ from \eqref{eqn:target_gauge_trhothetaphi_step1}.
@@ -1100,8 +1096,10 @@ In this way we obtain a stable gauge in spherical coordinates
 \bar{H}_{(1)t}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,t}+3 \cot \theta  \bar{g}_{(1) \text{$t$$\theta
    $}}+24 \bar{g}_{(1) \text{$t$$\rho $}}\right), \nonumber\\
 \bar{H}_{(1)\rho}&=&\frac{3}{2} \bar{g}_{(1) \rho \rho }\,,\nonumber\\
-\bar{H}_{(1)\theta}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,\theta }+3 \cot \theta  \left(\bar{g}_{(1)\theta\theta}-\csc ^2\theta \bar{g}_{(1) \phi \phi }\right)+24 \bar{g}_{(1) \rho \theta }\right),\nonumber\\
-\bar{H}_{(1)\phi}&=&\frac{1}{12} \left(\bar{g}_{(1) \rho \rho ,\phi }+9 \cot \theta  \bar{g}_{(1)\theta \phi}+24 \bar{g}_{(1) \rho \phi }\right).
+\bar{H}_{(1)\theta}&=&\frac{1}{12} (3 \cot \theta  \left(\bar{g}_{(1)\theta\theta}-\csc ^2\theta \bar{g}_{(1) \phi \phi }\right)\nonumber \\
+   &&\hspace{0.5cm}+\bar{g}_{(1) \rho \rho ,\theta }+24 \bar{g}_{(1) \rho \theta }),\nonumber\\
+\bar{H}_{(1)\phi}&=&\frac{1}{12}(\bar{g}_{(1) \rho \rho ,\phi }+9 \cot \theta  \bar{g}_{(1)\theta \phi}\nonumber \\
+   &&\hspace{0.5cm}+24 \bar{g}_{(1) \rho \phi }).
 \end{eqnarray}
 \end{enumerate}
 By looking at the gauge choice made in~\cite{Bantilan:2012vu} (see eq. (74)) to obtain stability in simulations of 5-dimensional asymptotically AdS spacetimes with an SO(3) symmetry, and choosing numerical factors consistent with \eqref{eqn:target_gauge_trhothetaphi}, we can infer the following potentially stable gauge for the 4-dimensional case with no symmetry assumptions:
@@ -1129,20 +1127,16 @@ The expression of $\langle \text{tr}T\rangle_{CFT}$ in terms of the leading orde
 The divergence of the boundary stress tensor is given by
 \begin{eqnarray}
 \label{eq:divergence_t}
-\mathcal{D}^a \langle T_{at}\rangle_{CFT}&=&\frac{1}{16\pi}(-3 \csc ^2\theta  \bar{g}_{(1) \phi \phi ,t}-3 \bar{g}_{(1)\theta \theta ,t}-2 \bar{g}_{(1) \rho \rho ,t}\nonumber\\
-&&+3 \bar{g}_{(1) \text{$t$$\theta $},\theta } +3 \csc^2\theta \bar{g}_{(1) \text{$t$$\phi $},\phi }+3 \cot \theta  \bar{g}_{(1)\text{$t$$\theta $}}) \nonumber \\
-\end{eqnarray}
-\begin{eqnarray}
+\mathcal{D}^a \langle T_{at}\rangle_{CFT}&=&\frac{1}{16\pi}(-3 \csc ^2\theta  \bar{g}_{(1) \phi \phi ,t}-3 \bar{g}_{(1)\theta \theta ,t}\nonumber\\
+&&\hspace{-1.0cm}-2 \bar{g}_{(1) \rho \rho ,t}+3 \bar{g}_{(1) \text{$t$$\theta $},\theta }+3 \csc^2\theta \bar{g}_{(1) \text{$t$$\phi $},\phi }\nonumber\\
+&&\hspace{-1.0cm}+3 \cot \theta  \bar{g}_{(1)\text{$t$$\theta $}})\,, \\
 \label{eq:divergence_theta}
 \mathcal{D}^a \langle T_{a\theta}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \csc ^2\theta  \bar{g}_{(1)\theta \phi ,\phi }-2 \bar{g}_{(1) \rho \rho ,\theta } \nonumber \\
-&& -3 \csc^2\theta \bar{g}_{(1) \phi \phi ,\theta }-3 \bar{g}_{(1) \text{$t$$\theta $},t} +3\bar{g}_{(1) \text{$tt$},\theta } \nonumber\\
-   &&+3 \cot \theta  \bar{g}_{(1)\theta \theta }+3 \cot
-   \theta \csc ^2\theta  \bar{g}_{(1) \phi \phi }) \nonumber \\
-\end{eqnarray}
-\begin{eqnarray}
+&&\hspace{-1.0cm} -3 \csc^2\theta \bar{g}_{(1) \phi \phi ,\theta }-3 \bar{g}_{(1) \text{$t$$\theta $},t}+3\bar{g}_{(1) \text{$tt$},\theta } \nonumber\\
+   &&\hspace{-1.0cm}+3 \cot \theta  \bar{g}_{(1)\theta \theta }+3 \cot   \theta \csc ^2\theta  \bar{g}_{(1) \phi \phi })\,,\\
 \label{eq:divergence_phi}
 \mathcal{D}^a \langle T_{a\phi}\rangle_{CFT}&=&\frac{1}{16\pi}(3 \bar{g}_{(1)\theta \phi ,\theta }-3 \bar{g}_{(1)\theta \theta ,\phi }-2 \bar{g}_{(1) \rho\rho ,\phi }\nonumber\\
-   &&-3 \bar{g}_{(1) \text{$t$$\phi $},t}+3 \bar{g}_{(1) \text{$tt$},\phi }+3 \cot\theta \bar{g}_{(1)\theta \phi }) \nonumber \\
+   &&\hspace{-1.0cm}-3 \bar{g}_{(1) \text{$t$$\phi $},t}+3 \bar{g}_{(1) \text{$tt$},\phi }+3 \cot\theta \bar{g}_{(1)\theta \phi })\,.
 \end{eqnarray}
 We immediately see that $\langle \text{tr}T\rangle_{CFT}=0$ as a consequence of \eqref{eq:indeq1_3p1}.
 Moreover, by solving the system of 6 equations given by the first derivatives of \eqref{eq:indeq1_3p1} with respect to $t,\theta,\phi$ and \eqref{eq:indeq2_3p1}, \eqref{eq:indeq3_3p1}, \eqref{eq:indeq4_3p1} for $\bar{g}_{(1) \text{$tt$},t},\bar{g}_{(1) \text{$tt$},\theta},\bar{g}_{(1) \text{$tt$},\phi },\bar{g}_{(1) \text{$t$$\theta $},t}$,$\bar{g}_{(1)\text{$t$$\theta $},\theta },\bar{g}_{(1) \text{$t$$\phi $},t}$, and substituting the solution into the right hand side of \eqref{eq:divergence_t}--\eqref{eq:divergence_phi}, we see that $\mathcal{D}^a \langle T_{ab}\rangle_{CFT}=0$.
@@ -1393,8 +1387,8 @@ In our example, $p_{bdy}$ is the point with coordinates $(x_{bdy},y_{bdy},z_{bdy
 Instead, we fill each of these points by copying the mean value of the closest boundary extrapolated points. This ensures continuity at the semi-circle $z_{bdy}=0, y_{bdy}\geq 0$, i.e., points with $\phi=0\sim 2\pi$.
  \end{enumerate}
  
- Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. 
- We aim to improve this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. For now, we fill the empty regions by linearly interpolating boundary values. The data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we apply a low-pass filter to quantities to be shown on the boundary $S^2$. More precisely, we apply the filter on three copies of the boundary sphere joined along the semi-circle $z_{bdy}=0$, $y_{bdy}\geq 0$ and then we plot the smooth data of the central copy. After re-enforcing continuity at the semi-circle as explained in step 5 above, this strategy provides regular smooth data at the semi-circle if the original raw data is approximately periodic in $\phi$ with period $2\pi$, which is expected for data on a sphere.
+Figure~\ref{fig:lego_circle} shows that the extrapolated values are not uniformly distributed on the boundary. 
+We aim to improve this in the future by extrapolating the values at points on a uniform $(\theta,\phi)$ grid with given resolution on the $S^2$ at the boundary. For now, we fill the empty regions by linearly interpolating boundary values. The data obtained in this way displays high-frequency noise that does not allow for a clear visualisation of physical features. Therefore, we apply a low-pass filter to quantities to be shown on the boundary $S^2$. More precisely, we apply the filter on three copies of the boundary sphere joined along the semi-circle $z_{bdy}=0$, $y_{bdy}\geq 0$ and then we plot the smooth data of the central copy. After re-enforcing continuity at the semi-circle as explained in step 5 above, this strategy provides regular smooth data at the semi-circle if the original raw data is approximately periodic in $\phi$ with period $2\pi$, which is expected for data on a sphere.
 
 Notice that, as \eqref{eq:firstordextrap} shows, second order convergence of boundary values $f^{bdy}_{\Delta}$ is a direct consequence of second order bulk convergence of $f_\Delta$, which is confirmed by Figure~\ref{fig:L2norm_iresallconvergence-crop} in our simulations. Despite this fact, some modifications must be made to our extrapolation scheme if we wish to perform explicit convergence tests on our boundary data. We now explain the reason for this and the necessary modifications. We assume the validity of the Richardson expansion \cite{doi:10.1098/rsta.1911.0009} for $f_{\Delta}$ at any grid point $p$,
 \begin{equation}
@@ -1428,13 +1422,13 @@ The independent residual should be purely numerical truncation error, so we can 
 Q_{EFE}(t,x,y,z)=\frac{1}{\ln(3/2)}\ln\left( \frac{\Phi_{3h/2}(t,x,y,z)}{\Phi_{h}(t,x,y,z)} \right).
 \end{equation}
 Again, with second-order accurate finite difference stencils and with a factor of 3/2 between successive resolutions, we expect $Q$ to approach $Q=2$ as $\Delta\rightarrow0$.
-\begin{figure*}[t!]
+ \begin{figure*}[t!]
         \centering
         \includegraphics[width=5.0in,clip=true]{fullplottL2normdim2boundedrescaledconvergenceiresallallres.pdf}
-\parbox{5.0in}{\caption{Time evolution for $L^2$-norm of convergence factor for independent residual of Einstein equations at different resolutions.
+\parbox{5.0in}{\caption{Time evolution for $L^2$-norm of convergence factor for independent residual of Einstein equations at different resolutions on the $z=0$ slice.
         }\label{fig:L2norm_iresallconvergence-crop}}
 \end{figure*}
-Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. 
+Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the convergence factor \eqref{eq:qires} for two pairs of resolutions on the $z=0$ slice. It clearly shows second order convergence to a solution of the Einstein equations, after an initial transition phase. 
 
 
 
