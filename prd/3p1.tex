@@ -71,8 +71,11 @@
 
 \title{Cauchy Evolution of Asymptotically Global AdS Spacetimes with No Symmetries}
 \author{Hans Bantilan}
+\email{h.bantilan@qmul.ac.uk}
 \author{Pau Figueras}
+\email{p.figueras@qmul.ac.uk}
 \author{Lorenzo Rossi}
+\email{l.rossi@qmul.ac.uk}
 \affiliation{School of Mathematical Sciences, Queen Mary University of London, Mile End Road, London E1 4NS, United Kingdom}
 		
 \begin{abstract}
@@ -115,7 +118,7 @@ The main purpose of this article is to present the first proof-of-principle Cauc
 The results presented here are based on a code with adaptive mesh refinement (AMR) capabilities that solves the Einstein equations in generalized harmonic form for asymptotically AdS spacetimes, subject to reflective (i.e., Dirichlet) boundary conditions. We couple gravity to a massless scalar field, 
 but the latter does not play any fundamental role in our scheme; we introduce it as a convenient mechanism to arrange for initial data whose future Cauchy development contain trapped surfaces.
 
-Ingoing characteristic (e.g., Eddington-Finkelstein) coordinates have been successfully used to simulate dynamical spacetimes containing black branes in asymptotically AdS spacetimes in Poincar\'{e} coordinates in full generality, i.e., no symmetry assumptions.\footnote{The same coordinates were used to successfully evolve single black hole spacetimes in asymptotically flat spaces \cite{Gomez:1998uj} and in global AdS \cite{Chesler:2018txn}.} This method has been applied to a variety of settings and by now the literature on the subject is vast and we will not review it here. We refer the reader to \cite{Chesler:2013lia} for a detailed review. This approach, however, will fail if the ingoing radial null geodesics form caustics within the numerical domain, which can happen whenever there is a strong localized perturbation of the background spacetime. For instance, the dynamical formation of localized black holes in the background of the AdS soliton spacetime \cite{Bantilan:2020pay} or even a localized black hole falling through the Poincar\'{e} horizon of AdS are just two possible examples where the ingoing coordinates of \cite{Chesler:2013lia} are likely to become singular due to the formation of caustics.\footnote{In asymptotically flat spaces, it has not been possible thus far to simulate all stages of a black hole binary with characteristic coordinates precisely because of the formation of caustics outside the black holes \cite{Bishop:1997ik,Lehner:2001wq}.} 
+Ingoing characteristic (e.g., Eddington-Finkelstein) coordinates have been successfully used to simulate dynamical spacetimes containing black branes in asymptotically AdS spacetimes in Poincar\'{e} coordinates in full generality, i.e., no symmetry assumptions.\footnote{The same coordinates were used to successfully evolve single black holes in asymptotically flat spacetimes \cite{Gomez:1998uj} and in global AdS \cite{Chesler:2018txn}.} This method has been applied to a variety of settings and by now the literature on the subject is vast and we will not review it here. We refer the reader to \cite{Chesler:2013lia} for a detailed review. This approach, however, will fail if the ingoing radial null geodesics form caustics within the numerical domain, which can happen whenever there is a strong localized perturbation of the background spacetime. For instance, the dynamical formation of localized black holes in the background of the AdS soliton spacetime \cite{Bantilan:2020pay} or even a localized black hole falling through the Poincar\'{e} horizon of AdS are just two possible examples where the ingoing coordinates of \cite{Chesler:2013lia} are likely to become singular due to the formation of caustics.\footnote{In asymptotically flat spaces, it has not been possible thus far to simulate all stages of a black hole binary with characteristic coordinates precisely because of the formation of caustics outside the black holes \cite{Bishop:1997ik,Lehner:2001wq}.} 
 On the other hand, Cauchy evolution in conjunction with generalized harmonic coordinates is well-known to successfully handle strong, highly dynamical and localized gravitational fields, such as those produced by the individual black holes in a binary. 
 Whilst it is possible that many problems that have been solved using ingoing coordinates in the Poincar\'{e} patch of AdS can also be solved with Cauchy evolution, the latter can be applied to situations where ingoing coordinates will almost certainly fail. Furthermore, the use of Cauchy evolution benefits from the infrastructure developed over many years to numerically solve the black hole binary problem in general relativity \cite{Pretorius:2005gq,Campanelli:2005dd,Baker:2005vv}. 
 In particular, the code described in the present work has built-in AMR and is designed to run in large supercomputing clusters; both of these features will likely turn out to be crucial in solving certain key open problems in AdS. 
@@ -150,17 +153,12 @@ S = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi} \left( R - 2\Lambda \right) - g^
 \end{equation}
 where $R$ is the Ricci scalar of the metric $g_{\alpha\beta}$ with determinant $g$.
 The variation of the action \eqref{eqn:action} with respect to $g_{\alpha\beta}$ and $\varphi$ gives the equations of motion
-\vspace{2\baselineskip}
 \begin{eqnarray}
-%\begin{equation}
 \label{eqn:eoms1}
 R_{\alpha\beta}- \frac{1}{2} R g_{\alpha\beta}+ \Lambda g_{\alpha\beta}&=&\nonumber\\
 &&\hspace{-2.8cm} 8\pi \left( \partial_\alpha \varphi \partial_\beta \varphi - g_{\alpha\beta} \frac{1}{2} g^{\gamma\delta} \partial_{\gamma} \varphi \partial_{\delta} \varphi \right), \\
-%\end{equation}
-%\begin{equation}
 \label{eqn:eoms2}
 g^{\alpha\beta} \nabla_{\alpha} \nabla_{\beta} \varphi &=& 0\,.
-%\end{equation}
 \end{eqnarray}
 
 We then recast \eqref{eqn:eoms1} into generalized harmonic form.
@@ -188,15 +186,11 @@ Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rh
 This allows us to bypass the severe restriction that would be imposed on the time step size near $\rho=0$ on a grid in spherical coordinates.
 This brings the metric of AdS$_4$ into its final form, suitable for our numerical simulations:
 \begin{align}
-%\begin{equation}
 \label{eqn:ads4_final}
-%\begin{split}
 \hat{g} = \frac{1}{\left(1-\rho^2\right)^2 }\Big[ &-\hat{f}(\rho)dt^2\nonumber\\
 &+\frac{4 \left(1+\rho^2\right)^2}{\rho^2 \hat{f}(\rho)} (x dx + y dy + z dz)^2\nonumber\\
 &\hspace{-2.0cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
 &\hspace{-2.0cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,.
-%\end{split}
-%\end{equation}
 \end{align}
 
 
@@ -256,10 +250,8 @@ for arbitrary $f_{\mu\nu}$ and $f$, and where $\rho = \rho(x,y,z)$.
 The fall-offs of the source functions, involved in the generalized harmonic formulation employed in this study, can be deduced from \eqref{eq:sphbounconh} through the definition 
 \begin{align}
 \label{eq:defsoufunsph}
-%\begin{split}
 H^\alpha\equiv \Box x^\alpha&=\frac{1}{\sqrt{-g}}\partial_\beta (\sqrt{-g}g^{\beta\gamma}x^\alpha_{\;\;,\gamma})\nonumber\\
 &=\frac{1}{\sqrt{-g}}\partial_\beta(\sqrt{-g}g^{\beta\alpha}).
-%\end{split}
 \end{align}
 In spherical coordinates, denoting the pure AdS values by $\hat{H}_\alpha$, \eqref{eq:sphbounconh} and \eqref{eq:defsoufunsph} imply
 \begin{eqnarray}\label{eq:sphbouncondsoufunc}
@@ -536,12 +528,14 @@ The steps that lead to our stable gauge, in a form that can be easily applied to
 \item Solve the leading order of the near-boundary generalized harmonic constraints for $\bar{H}_{(1)\mu}$.
 For example, in the Cartesian case, the leading orders of \eqref{eqn:ct}--\eqref{eqn:cz} vanish for:
 \begin{eqnarray}\label{eqn:target_gauge_txyz_step1}
-\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \nonumber \\
-\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(x\bar{g}_{(1)\psi}+2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}), \nonumber \\
-\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+y\bar{g}_{(1)\psi}+2z \bar{g}_{(1)yz}), \nonumber \\
-\bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}+z\bar{g}_{(1)\psi}). \nonumber \\
+\bar{H}_{(1)t}&=&\frac{3}{2\sqrt{x^2+y^2+z^2}}(x \bar{g}_{(1)tx}+y\bar{g}_{(1)ty}+z\bar{g}_{(1)tz}), \nonumber\\
+\bar{H}_{(1)x}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2y \bar{g}_{(1)xy}+2z \bar{g}_{(1)xz}\nonumber \\
+&&\hspace{1.1cm}+x(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})), \nonumber \\
+\bar{H}_{(1)y}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xy}+2z \bar{g}_{(1)yz}\nonumber \\
+&&\hspace{1.1cm}+y(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})), \nonumber \\
+\bar{H}_{(1)z}&=&\frac{3}{4\sqrt{x^2+y^2+z^2}}(2x \bar{g}_{(1)xz}+2y \bar{g}_{(1)yz}\nonumber \\
+&&\hspace{1.1cm}+z(\bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz})). \nonumber\\
 \end{eqnarray}
-where $\bar{g}_{(1)\psi} = \bar{g}_{(1)tt}+ \bar{g}_{(1)xx}-\bar{g}_{(1)yy}-\bar{g}_{(1)zz}$.
 
 \item Let $N_{(1)}$ be the lowest order in $q$ appearing in the near-boundary expansions of all the $\tilde{\Box}\bar{g}_{(1)\mu\nu}$. Plug the source functions obtained in step 1 into the $q^{N_{(1)}}$ terms of the near-boundary expansions $\tilde{\Box}\bar{g}_{(1)\mu\nu}$.
 This gives a number of independent equations that, together with their derivatives, ensure tracelessness and conservation of the boundary stress-energy tensor (see Section~\ref{sec:bouset2}).\footnote{We show this in Appendix~\ref{sec:sphevvarboucon} using spherical coordinates, since they are adapted to the AdS boundary and make the proof less unwieldy.}
@@ -572,7 +566,7 @@ The addition of constraint damping terms to the Einstein equations, eq. \eqref{e
 Thus, in solving the expanded system of equations \eqref{eqn:efe_gh_modified}, we are assured that only the subset of solutions that are also solutions of the Einstein equations are being considered.
 With this in mind, the near-boundary form of \eqref{eqn:efe_gh_modified}, given by \eqref{eq:efefullexp}, implies that our task in obtaining a solution is to satisfy $A_{(i)\mu\nu}=0$ for all $i$, and for some choice of source function variables $\bar{H}_\mu$. 
 This task is significantly eased by picking a gauge, through a suitable choice of $\bar{H}_\mu$, that eliminates $A_{(1)\mu\nu}$, i.e., the lowest order of the expansion of the Einstein equations near the AdS boundary.
-This is precisely what the above set of steps is designed to do, and it is why we did not stop at the gauge obtained in Step 1, \eqref{eqn:target_gauge_txyz_step1}, which would have resulted in a gauge that does not explicitly set $A_{(1)\mu\nu}=0$. 
+This is precisely what the above set of steps is designed to do, and it is why we did not stop at the gauge obtained in step 1, \eqref{eqn:target_gauge_txyz_step1}, which would have resulted in a gauge that does not explicitly set $A_{(1)\mu\nu}=0$. 
 
 Finally, it is also important to develop an understanding of the reason why the choice of $\bar{H}_\mu$ is not completely free. 
 Although identifying every cause for the instability of a simulation is usually very complicated, one practical reason is clear and can be understood with the following example in Cartesian coordinates.
@@ -692,7 +686,7 @@ The solution to \eqref{eq:hamconsfinal} is computed, after second order finite d
 \label{sec:AH_exc}
 
 Once the solution is obtained at a certain time $t$, we can search for the position $R(\theta,\phi)$ of an apparent horizon (AH). We use the following flow method in spherical coordinates $(\rho,\theta,\phi)$, obtained in the usual way from the Cartesian coordinates of the solution. We consider $n$ two-dimensional surfaces at constant, equally spaced, values of $\rho$ within a user-specified range included in (0,1), and we pick the one with smallest $L^2$-norm of the outward null expansion. Let $\rho_0$ be the $\rho$ coordinate on this surface. 
-Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\in [0,\pi)\times [0,2\pi)$ we find the solution to the equation
+Starting from the initial guess $R(\theta,\phi)=\rho_0$, for any $(\theta,\phi)\in [0,\pi]\times [0,2\pi)$ we find the solution to the equation
 \begin{equation}
 \label{eq:floweq}
 \frac{dR(\theta,\phi)}{d s}=-\Theta(\rho,\theta,\phi)|_{\rho=R(\theta,\phi)}\,,
@@ -1307,13 +1301,14 @@ The initial metric variables $\bar{g}_{ij}|_{t=0}$ are then easily reconstructed
 
 In the previous section we explained how some components of the initial data for our simulations are obtained: (i) we impose time-symmetry, namely $\partial_t\bar{\varphi}|_{t=0}=0$ and $\partial_t\bar{g}_{ij}|_{t=0}=0$; (ii) we make the initial gauge choice $\bar{g}_{ti}|_{t=0}=0$; (ii) we choose the massless real scalar field profile $\bar{\varphi}|_{t=0}$ given by \eqref{eq:scaGaupro}; (iii) we determine $\bar{g}_{ij}|_{t=0}$ through the conformal decomposition of the Hamiltonian constraint. In this section we determine the remaining necessary components for Cauchy evolution based on the generalized harmonic scheme: $\bar{g}_{tt}|_{t=0}$ and $\partial_t\bar{g}_{t \mu}|_{t=0}$.
 
-In doing so, the only restriction to consider is the one already obtained in Step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
+In doing so, the only restriction to consider is the one already obtained in step 2 of our gauge prescription in Section~\ref{sec:gauge_choice}: the Einstein equations in a gauge that satisfies the generalized harmonic constraints impose the condition $\bar{g}_{(1)tt}=\bar{g}_{(1)xx}+\bar{g}_{(1)yy}+\bar{g}_{(1)zz}$ near the boundary. This will hold at all times of the evolution and it must be imposed on initial data. Given that there is no requirement on the value of $\bar{g}_{tt}$ in the bulk, we make the simplest choice and set that to zero. In order to smoothly transition from the bulk value of $\bar{g}_{tt}$ to its required boundary value, we use the smooth transition function
   \begin{equation}
   \label{eq:transfunc}
     f(\rho) =
     \begin{cases*}
       1\,, & if $\rho\geq \rho_{b}$, \\
-      1-R^3(\rho)(6 R^2(\rho)-15 R(\rho)+10)\,, & if $\rho_{b} > \rho\geq\rho_{a}$, \\
+      1-R^3(\rho)\\
+      \hspace{0.6cm}(6 R^2(\rho)-15 R(\rho)+10)\,, & if $\rho_{b} > \rho\geq\rho_{a}$, \\
       0\,,        & otherwise,
     \end{cases*}
   \end{equation}
@@ -1345,15 +1340,15 @@ where the spatial transition function $f_1(\rho)$ is defined as in \eqref{eq:tra
 
 Then, we define the time-transition function
 \begin{equation}
-g(t,\rho)=\frac{t}{(\xi_2 f_0(\rho)+\xi_1(1-f_0(\rho)))}\,,
+g(t,\rho)=\left(\frac{t}{\xi_2 f_0(\rho)+\xi_1(1-f_0(\rho))}\right)^4\,,
 \end{equation}
-where $f_0(\rho)$ is defined as in \eqref{eq:transfunc} with transition interval between $\rho_{0a}=0.0$ and $\rho_{0b}=0.95$. Notice that $g(0,\rho)=0$, $g(t,\rho)\gg 1$ for $t\gg\xi_1,\xi_2$ and, in particular, $g(t,\rho)$ takes large values with characteristic time $\xi_1$ in the interior region $\rho<\rho_3$ (i.e., where $f_0=0$) and characteristic time $\xi_2$ in the near-boundary region $\rho\geq\rho_4$ (i.e., where $f_0=1$).
+where $f_0(\rho)$ is defined as in \eqref{eq:transfunc} with transition interval between $\rho_{0a}=0.0$ and $\rho_{0b}=0.95$. Notice that $g(0,\rho)=0$, $g(t,\rho)\gg 1$ for $t\gg\xi_1,\xi_2$ and, in particular, $g(t,\rho)$ takes large values with characteristic time $\xi_1$ in the interior region $\rho\leq\rho_{0a}$ (i.e., where $f_0=0$) and characteristic time $\xi_2$ in the near-boundary region $\rho\geq\rho_{0b}$ (i.e., where $f_0=1$).
 
 With these ingredients, we can finally write the complete gauge choice made in our simulations
 \begin{equation}
 \bar{H}_\mu=\bar{H}_{\mu}\big|_{t=0}\exp(-g)+F_\mu[1- \exp(-g)]\,.
 \end{equation}
-From the properties of $g(t,\rho)$, we see that $\bar{H}_\mu=\bar{H}_{\mu}|_{t=0}$ at $t=0$ and $\bar{H}_\mu=F_\mu$ for $t\gg\xi_1$ in the interior and $t\gg\xi_2$ near the boundary. Since the target gauge is crucial for stability and needs to be reached quickly, $\xi_2$ is typically set to a small value. On the other hand, it is not necessary, and perhaps even troublesome, to deal with a fast transition in the bulk, therefore $\xi_1$ takes a larger value. In our simulations, we set $\rho_{0a}=0.0,\rho_{0b}=0.95,\rho_{1a}=0.05,\rho_{1b}=0.95,\xi_1=0.1,\xi_2=0.0025$.
+From the properties of $g(t,\rho)$, we see that $\bar{H}_\mu=\bar{H}_{\mu}|_{t=0}$ at $t=0$ and $\bar{H}_\mu=F_\mu$ for $t\gg\xi_1$ in the interior and $t\gg\xi_2$ near the boundary. Since the target gauge is crucial for stability and needs to be reached quickly, $\xi_2$ is typically set to a small value. On the other hand, it is not necessary, and perhaps even troublesome, to deal with a fast transition in the bulk, therefore $\xi_1$ takes a larger value. In our simulations, we set $\xi_1=0.1,\xi_2=0.0025$.
 
 
 \section{Boundary Extrapolation}\label{sec:extrapconvbdy}
@@ -1399,8 +1394,8 @@ Then, from \eqref{eq:firstordextrap}, we obtain the Richardson expansion for $f^
  \begin{eqnarray}
  \label{eq:bdyRichexp}
  f^{bdy}_{\Delta}(p_{bdy})
-&=&f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)+e_\Delta(p_1,p_2)\Delta^2 \nonumber \\
-&&+\mathcal{O}(\Delta^3),
+&=&f(p_{bdy})+e_{extr}(p_{bdy},p_1,p_2)\nonumber \\
+&&\hspace{0.8cm}+e_\Delta(p_1,p_2)\Delta^2 +\mathcal{O}(\Delta^3)\,,
  \end{eqnarray}
 where the $f(p_{bdy})$ is the true value of $f$ at $p_{bdy}$, $e_{extr}(p_{bdy},p_1,p_2)$ is the error due to the extrapolation approximation. The remaining error terms come from the solution error in $f_\Delta$. The typical convergence test involves the computation of the convergence factor
 \begin{equation}\label{eq:qconv}
@@ -1433,6 +1428,7 @@ Figure~\ref{fig:L2norm_iresallconvergence-crop} displays the $L^2$-norm of the c
 
 % Bibliography
 %-------------------------------------------------------
+\bibliographystyle{JHEP}
 \bibliography{3p1}
 
 
