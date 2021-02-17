@@ -1,0 +1,76 @@
+\documentclass[12pt, twoside]{article}
+
+%\usepackage[OT4]{fontenc}
+%\usepackage[cp1250]{inputenc}
+%\usepackage[polish]{babel}
+%\usepackage{latin2}
+\usepackage[top=1.5cm, bottom=2cm, left=2.0cm, right=2.0cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{polski}
+\usepackage{graphicx} 
+\usepackage{amsfonts}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{amssymb}
+
+%\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\textbf{
+Report on the manuscript\\
+\textit{Cauchy Evolution of Asymptotically Global AdS Spacetimes with No
+Symmetries}
+\\
+by Hans Bantilan, Pau Figueras, and Lorenzo Rossi}
+\end{center}
+\vspace{0.2cm}
+
+\noindent
+
+The authors discuss the Cauchy evolutions of asymptotically global AdS
+spacetimes with no imposed symmetries, employing a numerical scheme based on the
+generalized harmonic form of the Einstein equations. This is an excellent work
+and I have no doubts that it merits publication in \textit{Physical Review D}.
+Still, I have one suggestion that in my opinion might clarify the contnent of
+Sections II and III: on page 3 the authors define the compatification scale
+$\ell$ and set this scale to one but at this stage it is not clear from the text
+if this compactification scale is related to the AdS radius $L$ (see (II.4)) or
+not. The information that the AdS radis $L$ is also set to one (thus, in fact,
+$\ell=L$) can be found not earlier then in Sec. VI. In my opinion this fact
+should be explicitely highlited already in Sec. II because it probably has
+signifcant consequences. In particular, I would expect the formulas
+(III.21-III.24) (and probably also (III.11-III.20)) to be valid only under this
+simplifying assumption (i.e. $\ell=L$), since in this case the metric (II.6)
+simplifies significantly (it takes a diagonal form), and (III.21-III.24) can be
+indeed easily obtained. On the other hand I was unable to reproduce
+(III.21-III.24) for the general $\ell \neq L$ case. Thus, I would like to know
+whether it is my failure or the authors do assume $\ell=L$ implicitly in their
+derivations. Similarily, as far as I understand, (III.8) is simply $\sim \hat
+g^{\rho\sigma} \partial_{\rho} \partial_{\sigma} \bar g_{(1)\mu\nu}$ thus, for a
+general (off-diagonal) form of (II.6), I would expect mixed derivatives to be
+present in (III.8). Similarily, I would imagine that coding the formulas
+containing the inverse of $g_{\mu\nu} = \hat g_{\mu\nu} + h_{\mu\nu}$ would be a
+nightmare for the general case $\ell \neq L$. If I am correct about the
+assumption $\ell=L$ being used, I would urge the authors to state it explicitly
+and to simplify the form of (II.6) accordingly.
+\\
+
+\noindent
+Apart from the comment above I have just 2 minor remarks:
+\begin{enumerate}
+\item It would be nice to have correct diacritic in the names of the authors
+citetd in the refernces. In particular, in the case of [41] it can be achieved
+with Jalmuzna $\rightarrow$ \verb+Ja\l mu\.zna+ (to produce Ja\l mu\.zna)
+\item I find the sentence \textit{we see that the scalar field starts
+propagating towards the AdS boundary, but a significant portion of it is
+attracted back towards the origin} (p.12/13) a bit misleading: the authors use
+time-symmetric intial data thus they naturally contain both outgoing and ingoing
+components. 
+
+\end{enumerate} 
+
+To summarize, the manuscript reports on excellent research project and I am
+looking forward to seeing it published in PRD.
+\end{document}
