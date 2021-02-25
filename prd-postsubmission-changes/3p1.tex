@@ -171,11 +171,11 @@ In terms of global coordinates that cover the whole spacetime, given by $(t,r,\t
 \begin{equation}\label{eqn:ads4}
 \hat{g}= -\left(1+\frac{r^2}{L^2}\right) dt^2 + \left(1+\frac{r^2}{L^2}\right)^{-1} dr^2 +r^2 d{\Omega_2}^2 \,,
 \end{equation}
-with a characteristic length scale $L$\textcolor{red}{, also called AdS radius,} that is related to the cosmological constant by $\Lambda = - 3/L^2$, and where $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round unit 2-sphere. 
+with a characteristic length scale $L$, also called AdS radius, that is related to the cosmological constant by $\Lambda = - 3/L^2$, and where $d{\Omega_2}^2 = d\theta^2 + \sin^2\theta d\phi^2$ is the metric of the round unit 2-sphere. 
 A crucial feature of this spacetime is the presence of a \emph{timelike} boundary at $r \rightarrow +\infty$, which makes stable evolution of initial data possible only if boundary conditions are imposed on the evolved fields. 
 In other words, any Cauchy problem in this setting is an initial-boundary value problem.
 
-To proceed further, we first compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.\footnote{\textcolor{red}{We would like to emphasize that the arbitrary compactification scale $\ell$ is completely independent of the AdS length scale $L$.}}
+To proceed further, we first compactify $r=2\rho/(1-\rho^2/\ell^2)$ so that the AdS boundary at $r \rightarrow +\infty$ is at a finite value of the new radial coordinate, $\rho=\ell$.\footnote{We would like to emphasize that the arbitrary compactification scale $\ell$ is completely independent of the AdS length scale $L$.}
 We hereafter set $\ell=1$ without loss of generality, so that the AdS boundary is at $\rho=1$. In this way, we obtain (compactified) spherical coordinates $x^\alpha=(t,\rho,\theta,\phi)$.
 Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the metric of AdS$_4$ in this set of coordinates reads 
 \begin{equation}\label{eqn:ads4_compact}
@@ -184,8 +184,7 @@ Defining a convenient function $\hat{f}(\rho) = (1-\rho^2)^2+4\rho^2/L^2$, the m
 
 Second, we make use of Cartesian coordinates $x^\mu=(t,x,y,z)$ defined by $x=\rho\cos\theta$, $y=\rho\sin\theta\cos\phi$, $z=\rho\sin\theta\sin\phi$.
 This allows us to bypass the severe restriction that would be imposed on the time step size near $\rho=0$ on a grid in spherical coordinates.
-%This brings the metric of AdS$_4$ into its final form, suitable for our numerical simulations:
-\textcolor{red}{The metric of AdS$_4$ in Cartesian coordinates reads}
+The metric of AdS$_4$ in Cartesian coordinates reads
 \begin{align}
 \label{eqn:ads4_final}
 \hat{g} = \frac{1}{\left(1-\rho^2\right)^2 }\Big[ &-\hat{f}(\rho)dt^2\nonumber\\
@@ -193,12 +192,11 @@ This allows us to bypass the severe restriction that would be imposed on the tim
 &\hspace{-2.0cm}+\frac{4}{\rho^2} \Big(\left(y^2+z^2\right) dx^2 + \left(x^2+z^2\right) dy^2 + \left(x^2+y^2\right) dz^2 \nonumber\\
 &\hspace{-2.0cm}-2 x y\, dx dy - 2 y z\, dy dz - 2 x z\,dx dz\Big)\Big]\,,
 \end{align}
-\textcolor{red}{where $\rho=\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}$.
+where $\rho=\rho(x,y,z)\equiv\sqrt{x^2+y^2+z^2}$.
 Without loss of generality, in the rest of this work we set the AdS length scale to $L=1$. With this choice, the metric \eqref{eqn:ads4_final} takes the diagonal form:
 \begin{equation}
 \hat{g} =-\left(\frac{1+\rho^2}{1-\rho^2}\right)^2dt^2+\frac{4}{(1-\rho^2)^2} \left(dx^2 + dy^2+dz^2\right).
 \end{equation}
-}
 
 
 \subsection{Asymptotically anti-de Sitter Spacetimes}\label{subsec:asyAdS}
@@ -289,7 +287,6 @@ Therefore the dynamics that makes this spacetime differ from pure AdS appears at
 The FG form \eqref{eqn:FGmetric} of the metric immediately provides the near-boundary behaviour and shows that coordinates can be defined so that the $\bar{z}\bar{z}$ component of any asymptotically AdS metric goes as $1/\bar{z}^2$, and the $\bar{z}\bar{a}$ components vanish in a neighbourhood of the AdS boundary.
 
 We conclude this section by showing an explicit example of how FG coordinates can be found in the case of general asymptotically AdS$_4$ spacetimes. 
-%In what follows, we set the characteristic length scale to $L=1$ for simplicity.
 We start from the general form for the asymptotically AdS metric in spherical coordinates $x^\alpha$, given by $g_{\alpha\beta}=\hat{g}_{\alpha\beta}+h_{\alpha\beta}$.
 The deviations $h_{\alpha\beta}$ from the pure AdS metric $\hat{g}_{\alpha\beta}$ have fall-offs that are given by the asymptotically AdS boundary conditions \eqref{eq:sphbounconh}.
 Defining $z=2(1-\rho)/(1+\rho)$, we can bring the pure AdS metric \eqref{eqn:ads4_compact} into the FG form.
@@ -426,7 +423,6 @@ Similar arguments show that the terms involving the scalar field, with the fast 
 
 We now explicitly write the lowest order terms of the Einstein equations in the wave-like form \eqref{eq:waveEFE}.
 The near-boundary expansion is most easily obtained by first writing the Cartesian coordinates $(x,y,z)$ in terms of the boundary-adapted spherical coordinates $(q,\theta,\phi)$, and then expanding near $q=0$. We find
-\vspace{16\baselineskip}
 \begin{widetext}
 \begin{eqnarray}\label{eqn:efett}
 \tilde{\Box}\bar{g}_{(1)tt}&=&-(\cos \theta (3 \cos \theta \bar{g}_{(1)xx}-2 \bar{H}_{(1)x})+\sin\theta (3 \sin \theta \cos^2\phi \bar{g}_{(1) yy}+3
@@ -498,7 +494,6 @@ zz}) +8 \cos \theta \bar{H}_{(1) x})\nonumber \\
 
 where the coordinates $(q,\theta,\phi)$ should be understood as functions of $(x,y,z)$. 
 All that remains is to write down the generalized harmonic constraints $C_\mu \equiv H_\mu-\Box x_\mu = 0$ at leading order in the same near-boundary expansion. We get
-\vspace{4\baselineskip}
 
 \begin{widetext}
 \begin{eqnarray}
@@ -600,7 +595,7 @@ We have
 \label{eq:qslocset}
 ^{(q)}T_{\alpha\beta}=\frac{1}{8\pi}\biggl(\;  \Theta_{\alpha\beta}-\Theta \;\omega_{\alpha\beta}-2\omega_{\alpha\beta}+ G_{\alpha\beta} \biggr),
 \end{equation}
-where $\Theta_{\alpha\beta}=-\omega^\gamma_{\alpha}\omega^\delta_\beta\nabla_{\gamma}S_{\delta}$ is the extrinsic curvature of $\partial M_q$, $\omega_{\alpha\beta}=g_{\alpha\beta}-S_\alpha S_\beta$ is the induced metric on $\partial M_q$ (in four-dimensional form), $S^\alpha$ is the spacelike, outward pointing timelike unit vector normal to $\partial M_q$ and $G_{\alpha\beta}$ is the Einstein tensor of $\partial M_q$.\footnote{Notice the different sign in the last term of \eqref{eq:qslocset} with respect to \cite{Balasubramanian:1999re}. \textcolor{red}{When comparing the two results, recall that in our expressions we set $L=1$.}}$^{,}$\footnote{All these tensors, although defined on the tangent space of the spacetime manifold $M$, are invariant under projection $\omega^\alpha_{\beta}=\delta^\alpha_{\beta}-S^\alpha S_\beta$ onto $\partial M_q$. Therefore, they can be identified, under a natural (i.e., basis-independent) isomorphism, with tensors defined on the tangent space of $\partial M_q$. The components of tensors on $\partial M_q$ in coordinates $x^a$ is simply given by taking the components of tensors on $M$ in coordinates $x^\alpha$ and disregarding every combination of indices that includes an index $\rho$. See \cite{Hawking:1973uf} for more details on this correspondence.} We will be interested in the value of $^{(q)}T_{\alpha\beta}$ for $q$ close to 0, i.e., near the AdS boundary.
+where $\Theta_{\alpha\beta}=-\omega^\gamma_{\alpha}\omega^\delta_\beta\nabla_{\gamma}S_{\delta}$ is the extrinsic curvature of $\partial M_q$, $\omega_{\alpha\beta}=g_{\alpha\beta}-S_\alpha S_\beta$ is the induced metric on $\partial M_q$ (in four-dimensional form), $S^\alpha$ is the spacelike, outward pointing timelike unit vector normal to $\partial M_q$ and $G_{\alpha\beta}$ is the Einstein tensor of $\partial M_q$.\footnote{Notice the different sign in the last term of \eqref{eq:qslocset} with respect to \cite{Balasubramanian:1999re}. When comparing the two results, recall that in our expressions we set $L=1$.}$^{,}$\footnote{All these tensors, although defined on the tangent space of the spacetime manifold $M$, are invariant under projection $\omega^\alpha_{\beta}=\delta^\alpha_{\beta}-S^\alpha S_\beta$ onto $\partial M_q$. Therefore, they can be identified, under a natural (i.e., basis-independent) isomorphism, with tensors defined on the tangent space of $\partial M_q$. The components of tensors on $\partial M_q$ in coordinates $x^a$ is simply given by taking the components of tensors on $M$ in coordinates $x^\alpha$ and disregarding every combination of indices that includes an index $\rho$. See \cite{Hawking:1973uf} for more details on this correspondence.} We will be interested in the value of $^{(q)}T_{\alpha\beta}$ for $q$ close to 0, i.e., near the AdS boundary.
 Restricting the indices corresponding to the coordinates $x^a$, we can compute the boundary stress-energy tensor as
 \begin{equation}
 \langle T_{ab}\rangle_{CFT}=\lim_{q\to0}\frac{1}{q} \;^{(q)}T_{ab}\,.
@@ -745,8 +740,7 @@ The internal boundary of the coloured region is the excision surface: we excise 
 
 Figure \ref{fig:snapshotsscalarfield} shows the profile of the scalar field variable, $\bar{\varphi}$, at four representative times on the equatorial plane $z=0$ for the highest resolution grid, with $N_x=N_y=N_z=325$ grid points along each Cartesian direction. Notice that in all of these snapshots $\bar{\varphi}=0$ at the AdS boundary, as required by the Dirichlet boundary conditions. 
 At $t=0$, the asymmetry of the initial Gaussian profile is too small to be visible. 
-%At the beginning of evolution, we see that the scalar field starts propagating towards the AdS boundary, but a significant portion of it is attracted back towards the origin and collapses to form an AH. 
-\textcolor{red}{At the beginning of evolution, we see that the scalar field lump starts propagating away from the origin, and a portion of it soon forms an AH.}
+At the beginning of evolution, we see that the scalar field lump starts propagating away from the origin, and a portion of it soon forms an AH.
 This occurs at $t=0.331$ in the highest resolution simulation. The rest of the scalar field remains outside the black hole, where it keeps bouncing back and forth the AdS boundary and is gradually absorbed.
 The asymmetry on the $(x,y)$-plane is clearly visible at $t=2.6$, where the scalar field is stretched along the $x$-direction and squeezed along the $y$-direction. The elongation changes its direction multiple times during the evolution, as shown in the next two plots: it is along the $y$-axis at $t=5.0$ and again along the $x$-axis at $t=7.2$. 
 At later times, $t\simeq 9$, the value of the scalar field becomes consistent with zero up to solution error\footnote{We estimate the solution error by comparing $\bar{\varphi}$ at different resolutions.} and the spacetime settles down to a Schwarzschild-AdS black hole spacetime with mass $M=0.403$.
@@ -970,7 +964,6 @@ In a numerical scheme in spherical coordinates employing the framework presented
 
 Since the evolution variables in spherical coordinates, $(\bar{g}_{\alpha\beta},\bar{\varphi},\bar{H}_\alpha)$, are linear in $q=1-\rho$ by construction, we can borrow the near-boundary expansions \eqref{eqn:qexpg}--\eqref{eqn:qexpphi}. 
 We now substitute these into the evolution equations \eqref{eqn:efe_gh_modified}, and we expand each component in powers of $q$. Rewriting the resulting equations in the wave-like form \eqref{eq:waveEFE}, we obtain
-
 \begin{widetext}
 \begin{eqnarray}\label{eqn:efett_3p1}
 \tilde{\Box}\bar{g}_{(1)tt}&=&q^{-2} \left(2 \bar{H}_{(1) \rho }-3 \bar{g}_{(1) \rho \rho }\right)+O\left(q^{-1}\right),\\
