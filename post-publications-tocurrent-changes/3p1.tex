@@ -246,9 +246,9 @@ Here we restrict the discussion to a massless scalar field $\varphi$ with a fast
 for arbitrary $f(t,\theta,\phi)$. In Cartesian coordinates, these fall-offs read
 \begin{eqnarray}
 \label{eq:carbouncondh}
-h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)(1-\rho)+\mathcal{O}((1-\rho)^{2}), \\
+h_{\mu\nu}&=&f_{\mu\nu}(t,x,y,z)|_{\rho=1}(1-\rho)+\mathcal{O}((1-\rho)^{2}), \\
 \label{eq:carbouncondphi}
-\varphi&=&f(t,x,y,z)(1-\rho)^3+\mathcal{O}((1-\rho)^{4}), 
+\varphi&=&f(t,x,y,z)|_{\rho=1}(1-\rho)^3+\mathcal{O}((1-\rho)^{4}), 
 \end{eqnarray}
 for arbitrary $f_{\mu\nu}$ and $f$, and where $\rho = \rho(x,y,z)$.
 
@@ -882,17 +882,17 @@ The generalized harmonic formulation of the Einstein equations is based on coord
 As long as the constraints $C^\alpha \equiv H^\alpha-\Box x^\alpha=0$ are satisfied,
 we can then write the trace-reversed Einstein equations in $D$ dimensions with cosmological constant $\Lambda$,
 \begin{equation}
-0=R_{\alpha\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
+0=R_{\alpha\beta} - \frac{2\Lambda}{D-2} g_{\alpha\beta} - 8\pi\left( T_{\alpha\beta} - \frac{1}{D-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
 \end{equation}
 as
 \begin{eqnarray}
 0
-&=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
-&=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
+&=& R_{\alpha\beta} - \nabla_{(\alpha} C_{\beta)} - \frac{2\Lambda}{D-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
+&=& R_{\alpha\beta} - \nabla_{(\alpha} H_{\beta)} + \nabla_{(\alpha} \Box{x}_{\beta)} - \frac{2\Lambda}{D-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta} \nonumber \\
 &=& -\frac{1}{2} g^{\gamma\delta} g_{\alpha\beta,\gamma\delta} - g^{\gamma\delta}{}_{,(\alpha}g_{\beta)\gamma,\delta} - H_{(\alpha,\beta)} + H_\gamma \Gamma^\gamma{}_{\alpha\beta} \nonumber \\
-&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{d-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta}\,, \label{eqn:Eeqs} 
+&&- \Gamma^\gamma{}_{\alpha\delta}\Gamma^\delta{}_{\gamma\beta} - \frac{2\Lambda}{D-2} g_{\alpha\beta} - 8\pi \bar{T}_{\alpha\beta}\,, \label{eqn:Eeqs} 
 \end{eqnarray}
-where $\bar{T}_{\alpha\beta} = T_{\alpha\beta} - {T^\gamma}_\gamma g_{\alpha\beta}/(d-2)$, the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
+where $\bar{T}_{\alpha\beta} = T_{\alpha\beta} - {T^\gamma}_\gamma g_{\alpha\beta}/(D-2)$, the choice of $H_\alpha = g_{\alpha\beta} H^\beta$ fixes the gauge, $\Gamma^\alpha{}_{\beta\gamma}$ are the Christoffel symbols associated with
 the spacetime metric $g_{\alpha\beta}$, and $T_{\alpha\beta}$ is the matter stress-energy tensor. 
 It can be proven that the constraints $C_\alpha=0$ are satisfied for all times $t\equiv x^0$, as long as $C_\alpha=0$ and $\partial_{t}C_\alpha=0$ at $t=0$. In an initial-boundary value problem, this still holds if we assume that the boundary conditions are consistent with $C_\alpha=0$ being satisfied on the boundary for all times.
 However, for numerical initial data, the constraints and their derivatives with respect to $t$ vanish at $t=0$ typically only up to truncation error. Thus, to suppress constraint-violating solutions, we supplement \eqref{eqn:Eeqs} with constraint damping terms as introduced in~\cite{Gundlach:2005eh}, controlled by the parameters $\kappa$ and $P$.
@@ -903,8 +903,8 @@ We thus obtain the final form of our evolution equations:
 {g^{\gamma\delta}}_{,(\alpha} g_{\beta) \gamma, \delta} - H_{(\alpha, \beta)} + H_\gamma {\Gamma^\gamma}_{\alpha\beta} \nonumber \\
 &-& {\Gamma^\gamma}_{\delta \alpha} {\Gamma^\delta}_{\gamma \beta} - \kappa \left( 2 n_{(\alpha} C_{\beta)} - (1+P) g_{\alpha\beta} n^\gamma 
 C_\gamma \right) \nonumber \\
-&=&  \frac{2}{d-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
-\frac{1}{d-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
+&=&  \frac{2}{D-2} \Lambda g_{\alpha\beta} + 8\pi \left( T_{\alpha\beta} - 
+\frac{1}{D-2} {T^\gamma}_\gamma g_{\alpha\beta} \right),
 \end{eqnarray}
 where $n_\alpha=-\partial_\alpha t$ is the timelike, future-directed unit 1-form normal to slices of constant $t$.
 Notice that the principal part of \eqref{eqn:efe_gh_modified}, $-\frac{1}{2} g^{\gamma \delta} \partial_\gamma \partial_\delta g_{\alpha\beta}$, is a wave operator acting on metric components. Thus, the well-posedness of the wave equation suggests that the initial-boundary value problem in generalized harmonic form is well-posed, if we make reasonable assumptions on the remaining components of the problem.
